@@ -155,6 +155,10 @@ def survey1():
 def survey2():
     return render_template('survey2.html')
 
+@bp.route('/survey_test')
+def survey_test():
+    return render_template('survey1.html')
+
 @bp.route('/questions', methods=['GET', 'POST'])
 def questions():
     """Display all questions"""
