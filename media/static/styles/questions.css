@@ -18,11 +18,11 @@ body{
 .mainQuestion{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 17px;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 .question{
-  padding-top: 25px;
+  padding-top: 20px;
   display: center;
 }
 
@@ -443,7 +443,7 @@ div.trustScaleLabel > div{
 #starAlert{
   position: absolute;
   width:205px;
-  top: 291px;
+  top: 286px;
   left: 78px;
   color: #FF3333;
   font-size: 14px;
@@ -464,7 +464,7 @@ div.trustScaleLabel > div{
 
 #clearAllButton{
   position:absolute;
-  top: 291px;
+  top: 286px;
   left: 285px;
   width: 19px;
   height: 19px;
@@ -588,7 +588,7 @@ div.trustScaleLabel > div{
 #weatherStarAlert{
   position: absolute;
   width:205px;
-  top: 291px;
+  top: 286px;
   left: 78px;
   color: #FF3333;
   font-size: 14px;
@@ -600,7 +600,7 @@ div.trustScaleLabel > div{
 
 #weatherClearAllButton{
   position:absolute;
-  top: 291px;
+  top: 286px;
   left: 286px;
   width: 19px;
   height: 19px;
