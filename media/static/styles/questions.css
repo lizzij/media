@@ -53,7 +53,7 @@ body{
 }
 
 .trustOptionPrompt{
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
 }

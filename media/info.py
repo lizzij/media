@@ -150,7 +150,10 @@ def survey1():
     #     ' ORDER BY created DESC'
     # ).fetchall()
     # return render_template('completion.html', user=user)
-    # # return 'secrete'
+
+@bp.route('/survey2')
+def survey2():
+    return render_template('survey2.html')
 
 @bp.route('/questions', methods=['GET', 'POST'])
 def questions():
