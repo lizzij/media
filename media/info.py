@@ -155,7 +155,7 @@ def survey1():
 def survey2():
     return render_template('survey2.html')
 
-@bp.route('/survey_test')
+@bp.route('/survey_test1')
 def survey_test():
     return render_template('survey1.html')
 
