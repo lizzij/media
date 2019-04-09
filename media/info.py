@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
 import functools
 
@@ -38,25 +38,6 @@ def get_info(user_id_hashid, day_hashid):
     :param user_hashid: hashed user_id of the user
     :param day_hashid: hashed number of day
     """
-    user_id = decode_user_id_hashid(user_id_hashid)[0]
-    day = decode_day_hashid(day_hashid)[0]
-    info = get_db().execute(
-        'SELECT u.user_id, u.day, wechat_id, treatment'
-        ' FROM user u'
-        ' WHERE u.user_id = ? AND u.day = ?',
-        (user_id, day,)
-    ).fetchone()
-
-    if info is None:
-        abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
-
-    return render_template('info.html', info=info)
-
-    # title = unicode("漫步上海", "utf-8")
-    # subtitle = unicode("边走边拍", "utf-8")
-    # low_temp = 29
-    # high_temp = 15
-    #
     # user_id = decode_user_id_hashid(user_id_hashid)[0]
     # day = decode_day_hashid(day_hashid)[0]
     # info = get_db().execute(
@@ -69,8 +50,27 @@ def get_info(user_id_hashid, day_hashid):
     # if info is None:
     #     abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
     #
-    # return render_template('infoPage.html', info=info,
-    # title=title, subtitle=subtitle, low_temp=low_temp, high_temp=high_temp)
+    # return render_template('info.html', info=info)
+
+    title = "漫步上海"
+    subtitle = "边走边拍"
+    low_temp = 29
+    high_temp = 15
+
+    user_id = decode_user_id_hashid(user_id_hashid)[0]
+    day = decode_day_hashid(day_hashid)[0]
+    info = get_db().execute(
+        'SELECT u.user_id, u.day, wechat_id, treatment'
+        ' FROM user u'
+        ' WHERE u.user_id = ? AND u.day = ?',
+        (user_id, day,)
+    ).fetchone()
+
+    if info is None:
+        abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
+
+    return render_template('infoPage.html', info=info,
+    title=title, subtitle=subtitle, low_temp=low_temp, high_temp=high_temp)
 
 @bp.route('/<int:user_id>/<int:day>/survey', methods=['GET', 'POST'])
 def get_survey(user_id, day):
@@ -203,7 +203,7 @@ def test_display():
 #
 #     With given parameters
 #     """
-#     title = unicode("漫步老上海", "utf-8")
+#     title = ("漫步老上海", "utf-8")
 #     low_temp = 31
 #     high_temp = 25
 #     return render_template('infoPage.html', title = title, low_temp = low_temp, high_temp = high_temp)
