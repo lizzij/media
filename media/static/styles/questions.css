@@ -18,11 +18,11 @@ body{
 .mainQuestion{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 17px;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .question{
-  padding-top: 20px;
+  padding-top: 10px;
   display: center;
 }
 
@@ -779,7 +779,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 50px;
   color: #979797;
-  top: 311px;
+  /* top: 311px; */
   text-align: right;
   left: 23px;
 }
@@ -791,7 +791,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 50px;
   color: #979797;
-  top: 391px;
+  /* top: 391px; */
   text-align: right;
   left: 23px;
 }
@@ -803,7 +803,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 50px;
   color: #979797;
-  top: 471px;
+  /* top: 471px; */
   text-align: right;
   left: 23px;
 }
@@ -815,7 +815,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 50px;
   color: #979797;
-  top: 551px;
+  /* top: 551px; */
   text-align: right;
   left: 23px;
 }
@@ -827,7 +827,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 50px;
   color: #979797;
-  top: 631px;
+  /* top: 631px; */
   text-align: right;
   left: 23px;
 }
