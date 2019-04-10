@@ -18,11 +18,11 @@ body{
 .mainQuestion{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 17px;
-  padding-top: 5px;
+  padding-top: 20px;
 }
 
 .question{
-  padding-top: 5px;
+  padding-top: 20px;
   display: center;
 }
 
@@ -56,6 +56,7 @@ body{
   padding-top: 5px;
   display: flex;
   flex-direction: row;
+  font-weight: bold;
 }
 
 .trustOptionText{
@@ -212,6 +213,14 @@ div.trustScaleLabel > div{
   width: 312px;
   padding-top: 20px;
   z-index: -1;
+}
+
+#eventTime{
+  padding-top: 0px;
+}
+
+#donationWilling{
+  padding-top: 0px;
 }
 
 #stateScaleDivider{
@@ -443,7 +452,7 @@ div.trustScaleLabel > div{
 #starAlert{
   position: absolute;
   width:205px;
-  top: 271px;
+  top: 286px;
   left: 78px;
   color: #FF3333;
   font-size: 14px;
@@ -464,7 +473,7 @@ div.trustScaleLabel > div{
 
 #clearAllButton{
   position:absolute;
-  top: 271px;
+  top: 286px;
   left: 285px;
   width: 19px;
   height: 19px;
@@ -588,7 +597,7 @@ div.trustScaleLabel > div{
 #weatherStarAlert{
   position: absolute;
   width:205px;
-  top: 271px;
+  top: 286px;
   left: 78px;
   color: #FF3333;
   font-size: 14px;
@@ -600,7 +609,7 @@ div.trustScaleLabel > div{
 
 #weatherClearAllButton{
   position:absolute;
-  top: 271px;
+  top: 286px;
   left: 286px;
   width: 19px;
   height: 19px;
@@ -758,11 +767,12 @@ div.outingScaleLabel > div{
 }
 
 .outingOption{
-  height: 80px;
+  height: 110px;
 }
 
 .outingOptionPrompt{
   padding-top: 10px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: row;
 }
@@ -777,7 +787,7 @@ div.outingScaleLabel > div{
   width: 308px;
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 55px;
   color: #979797;
   /* top: 311px; */
   text-align: right;
@@ -789,7 +799,7 @@ div.outingScaleLabel > div{
   width: 308px;
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 55px;
   color: #979797;
   /* top: 391px; */
   text-align: right;
@@ -801,7 +811,7 @@ div.outingScaleLabel > div{
   width: 308px;
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 55px;
   color: #979797;
   /* top: 471px; */
   text-align: right;
@@ -813,7 +823,7 @@ div.outingScaleLabel > div{
   width: 308px;
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 55px;
   color: #979797;
   /* top: 551px; */
   text-align: right;
@@ -825,7 +835,7 @@ div.outingScaleLabel > div{
   width: 308px;
   display: flex;
   flex-direction: row;
-  font-size: 50px;
+  font-size: 55px;
   color: #979797;
   /* top: 631px; */
   text-align: right;
