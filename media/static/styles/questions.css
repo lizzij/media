@@ -68,7 +68,7 @@ body{
 }
 
 .trustOptionText{
-  font-size: 16px;
+  font-size: 14px;
   color: #4F4F4F;
   font-weight: bold;
 }
@@ -798,7 +798,8 @@ div.outingScaleLabel > div{
 }
 
 .outingOptionPrompt{
-  padding-top: 5px;
+  padding-top: 20px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: row;
 }
@@ -806,6 +807,7 @@ div.outingScaleLabel > div{
 .outingOptionText{
   font-size: 14px;
   color: #4F4F4F;
+  font-weight: bold;
 }
 
 .outingOption{
@@ -818,6 +820,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 14px;
   color: #4F4F4F;
+  font-weight: bold;
 }
 
 #outingScale1Divider{

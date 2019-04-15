@@ -1,38 +1,12 @@
 function show(shown) {
   // document.getElementById("weatherClearAllStarsButton").style.display='none';
   // document.getElementById("clearAllStarsButton").style.display='none';
-  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7'];
+  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'];
   var pageIndex;
   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
     pageId = pages[pageIndex];
     if (shown == pageId) {
-      // if (shown == 'page3') {
-      //   var alert = document.getElementById("weatherStarAlert").innerHTML;
-      //   var numStarLeft = document.getElementById("weatherStarLeftCount").innerHTML;
-      //   if ((parseInt(numStarLeft)) > 0) {
-      //     document.getElementById("weatherStarAlert").innerHTML = '请用完所有星星！';
-      //     document.getElementById('page2').style.display='block';
-      //     document.getElementById("weatherClearAllStarsButton").style.display='block';
-      //   }
-      //   else {
-      //     document.getElementById('page3').style.display='block';
-      //   }
-      // }
-      // else if (shown == 'page4') {
-      //   var alert = document.getElementById("starAlert").innerHTML;
-      //   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-      //   if ((parseInt(numStarLeft)) > 0) {
-      //     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-      //     document.getElementById('page3').style.display='block';
-      //     document.getElementById("clearAllStarsButton").style.display='block';
-      //   }
-      //   else {
-      //     document.getElementById('page4').style.display='block';
-      //   }
-      // }
-      // else {
-        document.getElementById(shown).style.display='block';
-      // }
+        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
     }
     else {
       document.getElementById(pageId).style.display='none';
@@ -200,4 +174,79 @@ function outing5Slide() {
   }
   var left = 10 + 2.97 * value;
   document.getElementById("outing5Amount").style.left = left + "px";
+}
+
+function domesticWebsiteSlide() {
+  var value=document.getElementById("domesticWebsiteSlider").value;
+  var hours;
+  var minutes;
+  if (value > 180) {
+    document.getElementById("domesticWebsiteAmount").value=`大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("domesticWebsiteAmount").value=time;
+  }
+}
+
+function foreignWebsiteSlide() {
+  var value=document.getElementById("foreignWebsiteSlider").value;
+  var hours;
+  var minutes;
+  if (value > 180) {
+    document.getElementById("foreignWebsiteAmount").value=`大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("foreignWebsiteAmount").value=time;
+  }
+}
+
+function domesticMediaSlide() {
+  var value=document.getElementById("domesticMediaSlider").value;
+  var hours;
+  var minutes;
+  if (value > 180) {
+    document.getElementById("domesticMediaAmount").value=`大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("domesticMediaAmount").value=time;
+  }
+}
+
+function foreignMediaSlide() {
+  var value=document.getElementById("foreignMediaSlider").value;
+  var hours;
+  var minutes;
+  if (value > 180) {
+    document.getElementById("foreignMediaAmount").value=`大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("foreignMediaAmount").value=time;
+  }
+}
+
+function chatWithFriendsSlide() {
+  var value=document.getElementById("chatWithFriendsSlider").value;
+  var hours;
+  var minutes;
+  if (value > 180) {
+    document.getElementById("chatWithFriendsAmount").value=`大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("chatWithFriendsAmount").value=time;
+  }
 }
