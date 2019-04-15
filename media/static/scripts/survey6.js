@@ -311,3 +311,293 @@ function walkathonSlide() {
   document.getElementById("walkathonAmount").value=walkathonAmount;
   document.getElementById("walkathonDistance").value=`我将在 [2019年3月16日] 走${value}步（${distance}公里）—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
 }
+
+function hideNumberOfTimes() {
+  document.getElementById("otherHowManyTimes").style.display = "none";
+}
+function showNumberOfTimes() {
+  document.getElementById("otherHowManyTimes").style.display = "block";
+}
+
+function hideNumberOfWeatherTimes() {
+  document.getElementById("otherHowManyWeatherTimes").style.display = "none";
+}
+function showNumberOfWeatherTimes() {
+  document.getElementById("otherHowManyWeatherTimes").style.display = "block";
+}
+
+function dunno1() {
+  var isDunno1Checked = document.getElementById("dunno1").checked
+  if (isDunno1Checked) {
+    document.getElementById("trustSlider1").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider1").style.display = "block";
+  }
+}
+
+function dunno2() {
+  var isDunno2Checked = document.getElementById("dunno2").checked
+  if (isDunno2Checked) {
+    document.getElementById("trustSlider2").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider2").style.display = "block";
+  }
+}
+
+function dunno3() {
+  var isDunno3Checked = document.getElementById("dunno3").checked
+  if (isDunno3Checked) {
+    document.getElementById("trustSlider3").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider3").style.display = "block";
+  }
+}
+
+function dunno4() {
+  var isDunno4Checked = document.getElementById("dunno4").checked
+  if (isDunno4Checked) {
+    document.getElementById("trustSlider4").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider4").style.display = "block";
+  }
+}
+
+function dunno5() {
+  var isDunno5Checked = document.getElementById("dunno5").checked
+  if (isDunno5Checked) {
+    document.getElementById("trustSlider5").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider5").style.display = "block";
+  }
+}
+
+function dunno6() {
+  var isDunno6Checked = document.getElementById("dunno6").checked
+  if (isDunno6Checked) {
+    document.getElementById("trustSlider6").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider6").style.display = "block";
+  }
+}
+
+function trust1Slide() {
+  document.getElementById("trust1Amount").value=document.getElementById("trust1").value
+  var trust=document.getElementById("trust1Amount").value;
+  var trustIds = ['trust1ScaleLabel1', 'trust1ScaleLabel2', 'trust1ScaleLabel3',
+  'trust1ScaleLabel4', 'trust1ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust1ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust1ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust1ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust1ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust1ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust1ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust1ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust1ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust1Amount").style.left = left + "px";
+}
+
+function trust2Slide() {
+  document.getElementById("trust2Amount").value=document.getElementById("trust2").value
+  var trust=document.getElementById("trust2Amount").value;
+  var trustIds = ['trust2ScaleLabel1', 'trust2ScaleLabel2', 'trust2ScaleLabel3',
+  'trust2ScaleLabel4', 'trust2ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust2ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust2ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust2ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust2ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust2ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust2ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust2ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust2ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust2Amount").style.left = left + "px";
+}
+
+function trust3Slide() {
+  document.getElementById("trust3Amount").value=document.getElementById("trust3").value
+  var trust=document.getElementById("trust3Amount").value;
+  var trustIds = ['trust3ScaleLabel1', 'trust3ScaleLabel2', 'trust3ScaleLabel3',
+  'trust3ScaleLabel4', 'trust3ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust3ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust3ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust3ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust3ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust3ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust3ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust3ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust3ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust3Amount").style.left = left + "px";
+}
+
+function trust4Slide() {
+  document.getElementById("trust4Amount").value=document.getElementById("trust4").value
+  var trust=document.getElementById("trust4Amount").value;
+  var trustIds = ['trust4ScaleLabel1', 'trust4ScaleLabel2', 'trust4ScaleLabel3',
+  'trust4ScaleLabel4', 'trust4ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust4ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust4ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust4ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust4ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust4ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust4ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust4ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust4ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust4Amount").style.left = left + "px";
+}
+
+function trust5Slide() {
+  document.getElementById("trust5Amount").value=document.getElementById("trust5").value
+  var trust=document.getElementById("trust5Amount").value;
+  var trustIds = ['trust5ScaleLabel1', 'trust5ScaleLabel2', 'trust5ScaleLabel3',
+  'trust5ScaleLabel4', 'trust5ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust5ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust5ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust5ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust5ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust5ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust5ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust5ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust5ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust5Amount").style.left = left + "px";
+}
+
+function trust6Slide() {
+  document.getElementById("trust6Amount").value=document.getElementById("trust6").value
+  var trust=document.getElementById("trust6Amount").value;
+  var trustIds = ['trust6ScaleLabel1', 'trust6ScaleLabel2', 'trust6ScaleLabel3',
+  'trust6ScaleLabel4', 'trust6ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust6ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust6ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust6ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust6ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust6ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust6ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust6ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust6ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 10 + 2.97 * trust;
+  document.getElementById("trust6Amount").style.left = left + "px";
+}
