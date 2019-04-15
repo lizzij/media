@@ -11,11 +11,11 @@ function show(shown) {
         var numStarLeft = document.getElementById("weatherStarLeftCount").innerHTML;
         if ((parseInt(numStarLeft)) > 0) {
           document.getElementById("weatherStarAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
           document.getElementById("weatherClearAllStarsButton").style.display='block';
         }
         else {
-          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
         }
       }
       else if (shown == 'page4') {
@@ -23,15 +23,15 @@ function show(shown) {
         var numStarLeft = document.getElementById("starLeftCount").innerHTML;
         if ((parseInt(numStarLeft)) > 0) {
           document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
           document.getElementById("clearAllStarsButton").style.display='block';
         }
         else {
-          document.getElementById('page4').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page4').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
         }
       }
       else {
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
+        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative; overflow: visible;';
       }
     }
     else {
