@@ -902,6 +902,7 @@ div.outingScaleLabel > div{
   padding: .1rem .5rem;
   font-size: 14px;
   border: 1px solid #979797;
+  width: 97%;
 }
 
 .form-check .form-check-input {
