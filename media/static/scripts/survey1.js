@@ -1,7 +1,7 @@
 function show(shown) {
   document.getElementById("weatherClearAllStarsButton").style.display='none';
   document.getElementById("clearAllStarsButton").style.display='none';
-  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7'];
+  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'];
   var pageIndex;
   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
     pageId = pages[pageIndex];
@@ -11,11 +11,11 @@ function show(shown) {
         var numStarLeft = document.getElementById("weatherStarLeftCount").innerHTML;
         if ((parseInt(numStarLeft)) > 0) {
           document.getElementById("weatherStarAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page2').style.display='block';
+          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
           document.getElementById("weatherClearAllStarsButton").style.display='block';
         }
         else {
-          document.getElementById('page3').style.display='block';
+          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative;';
         }
       }
       else if (shown == 'page4') {
@@ -23,15 +23,15 @@ function show(shown) {
         var numStarLeft = document.getElementById("starLeftCount").innerHTML;
         if ((parseInt(numStarLeft)) > 0) {
           document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page3').style.display='block';
+          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative;';
           document.getElementById("clearAllStarsButton").style.display='block';
         }
         else {
-          document.getElementById('page4').style.display='block';
+          document.getElementById('page4').style='display: flex;flex-direction: column;position: relative;';
         }
       }
       else {
-        document.getElementById(shown).style.display='block';
+        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
       }
     }
     else {
@@ -563,6 +563,12 @@ function donationWillingSlide() {
   document.getElementById("donationWillingAmount").value=donationWillingAmount;
 }
 
+function donationWillingSlide2() {
+  var value=document.getElementById("donationWillingSlider2").value;
+  var donationWillingAmount = `${value}元`;
+  document.getElementById("donationWillingAmount2").value=donationWillingAmount;
+}
+
 function starCountGroup1(number) {
   var starLeftCount = document.getElementById("starLeftCount").innerHTML;
   var count = document.getElementById("starCountGroup1").innerHTML;
@@ -816,4 +822,84 @@ function clearAllStars() {
     document.getElementById(starCover).innerHTML = '';
   }
   starLeft();
+}
+
+function dunno1() {
+  var isDunno1Checked = document.getElementById("dunno1").checked
+  if (isDunno1Checked) {
+    document.getElementById("trustSlider1").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider1").style.display = "block";
+  }
+}
+
+function dunno2() {
+  var isDunno2Checked = document.getElementById("dunno2").checked
+  if (isDunno2Checked) {
+    document.getElementById("trustSlider2").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider2").style.display = "block";
+  }
+}
+
+function dunno3() {
+  var isDunno3Checked = document.getElementById("dunno3").checked
+  if (isDunno3Checked) {
+    document.getElementById("trustSlider3").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider3").style.display = "block";
+  }
+}
+
+function dunno4() {
+  var isDunno4Checked = document.getElementById("dunno4").checked
+  if (isDunno4Checked) {
+    document.getElementById("trustSlider4").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider4").style.display = "block";
+  }
+}
+
+function dunno5() {
+  var isDunno5Checked = document.getElementById("dunno5").checked
+  if (isDunno5Checked) {
+    document.getElementById("trustSlider5").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider5").style.display = "block";
+  }
+}
+
+function dunno6() {
+  var isDunno6Checked = document.getElementById("dunno6").checked
+  if (isDunno6Checked) {
+    document.getElementById("trustSlider6").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider6").style.display = "block";
+  }
+}
+
+function dunno7() {
+  var isDunno7Checked = document.getElementById("dunno7").checked
+  if (isDunno7Checked) {
+    document.getElementById("trustSlider7").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider7").style.display = "block";
+  }
+}
+
+function dunno8() {
+  var isDunno8Checked = document.getElementById("dunno8").checked
+  if (isDunno8Checked) {
+    document.getElementById("trustSlider8").style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider8").style.display = "block";
+  }
 }

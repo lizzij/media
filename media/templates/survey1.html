@@ -16,10 +16,10 @@
 <body>
 
   <!-- page 1 -->
-  <div id="page1">
+  <div class="page" id="page1">
     <div id="survey">
       <!-- questions about the event -->
-      <div class="mainQuestion">让我们先来向您了解一些关于该活动的问题。关于该活动的问题:</div><!-- event name question -->
+      <div class="mainQuestion">关于该活动的问题:</div><!-- event name question -->
       <div class="question">
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">该活动的名字是？</div>
@@ -28,20 +28,18 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="eventName" value="name2"><label class="form-check-label" for="name2">名字2</label></div>
           </div>
         </div>
-      </div><!-- time on event -->
+      </div><!-- donation degree -->
       <div class="question">
-        <div class="questionPrompt">通常您一周愿意花多少小时参加类似这样的户外活动？</div>
+        <div class="questionPrompt">如果愿意的话，请问您想为这个活动捐款多少元？</div>
         <div class="questionAnswer">
-          <div class="slidecontainer" id="eventTime">
-            <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
-              <input type="range" min="0" max="700" value="0" class="slider" id="eventTimeSlider" oninput="eventTimeSlide()"></input>
-              <output class="sliderAmount" name="amount" id="eventTimeAmount" for="rangeInput">0小时 0分钟</output>
-            </div>
+          <div class="slidecontainer" id="donationWilling">
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="1000" value="0" class="slider" id="donationWillingSlider" oninput="donationWillingSlide()"></input><output class="sliderAmount" name="amount"
+                id="donationWillingAmount" for="rangeInput">0元</output></div>
           </div>
         </div>
       </div>
     </div><!-- next button -->
-    <section class="nextButton">
+    <div class="nextButton">
       <div id="p1nextButton"><button id="button">
           <div id="next">下一页</div>
         </button>
@@ -51,7 +49,7 @@
           };
         </script>
       </div>
-    </section>
+    </div>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 14%; background-color: #979797;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -59,15 +57,21 @@
 
 
   <!-- page 2 -->
-  <div id="page2" style="display:none">
+  <div class="page" id="page2" style="display:none">
     <div id="survey">
       <!-- weather prediction -->
       <div class="question">
         <div class="questionPrompt">
-          <p>有活动预计在<b>3月的第2周</b>举行。您认为那周的天气会如何？</p>
+          <p>该活动预计将在<b>3月的第2周</b>举办。您认为那周的天气将如何？</p>
           <div id="note">
             <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</p>
-            <p id="subNote"><b>注意：</b>每颗星星代表十二分之一的可能性。请用完所有星星。如果您认为某类极不可能 → 您应放置0星星。如果您认为某类是确定的 → 您应把所有星星放入该类别。如果您认为所有类都具有相同的可能性 → 您应在所有类别中放置相同数量的星星。没有正确和错误答案，所以应该根据您期望放置令牌。</p>
+            <p id="subNote"><b>注意：</b></br>
+               - 每个星星代表十分之一的可能性</br>
+               - 请用完所有十二个星星</br>
+               - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+               - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+               - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+               - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
           </div>
         </div>
         <div class="questionAnswer">
@@ -208,14 +212,20 @@
   </div>
 
   <!-- page 3 -->
-  <div id="page3" style="display:none">
+  <div class="page" id="page3" style="display:none">
     <div id="survey">
       <div class="question">
         <div class="questionPrompt">
           <p>有活动预计在<b>3月的第2周</b>举行。您认为那周的空气质量等级会如何？</p>
           <div id="note">
             <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
-              <p id="subNote"><b>注意：</b>每颗星星代表十二分之一的可能性。请用完所有星星。如果您认为某类极不可能 → 您应放置0星星。如果您认为某类是确定的 → 您应把所有星星放入该类别。如果您认为所有类都具有相同的可能性 → 您应在所有类别中放置相同数量的星星。没有正确和错误答案，所以应该根据您期望放置令牌。</p>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十二个星星</br>
+                 - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+                 - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+                 - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
           </div>
         </div>
         <div class="questionAnswer">
@@ -403,7 +413,7 @@
   </div>
 
   <!-- page 4 -->
-  <div id="page4" style="display:none">
+  <div class="page" id="page4" style="display:none">
     <div id="survey">
       <!-- people trust degree -->
       <div class="question">
@@ -414,76 +424,160 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">家人和朋友</div>
             </div>
-            <div id="Scale1Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno1" onclick="dunno1()">
+              <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
             </div>
-            <div class="trustScaleLabel">
-              <div id="trust1ScaleLabel1">完全不信任</div>
-              <div id="trust1ScaleLabel2">不信任</div>
-              <div id="trust1ScaleLabel3">中立</div>
-              <div id="trust1ScaleLabel4">信任</div>
-              <div id="trust1ScaleLabel5">非常信任</div>
+            <div id="trustSlider1">
+              <div id="Scale1Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust1ScaleLabel1">完全不信任</div>
+                <div id="trust1ScaleLabel2">不信任</div>
+                <div id="trust1ScaleLabel3">中立</div>
+                <div id="trust1ScaleLabel4">信任</div>
+                <div id="trust1ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust1" oninput="trust1Slide()"></input><output class="sliderAmount" name="amount" id="trust1Amount"
+                    for="rangeInput">0</output></div>
+              </div>
             </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust1" oninput="trust1Slide()"></input><output class="sliderAmount" name="amount" id="trust1Amount"
-                  for="rangeInput">0</output></div>
-            </div>
+
           </div><!-- option 2 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">初次见面的陌生人</div>
             </div>
-            <div id="Scale2Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno2" onclick="dunno2()">
+              <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
             </div>
-            <div class="trustScaleLabel">
-              <div id="trust2ScaleLabel1">完全不信任</div>
-              <div id="trust2ScaleLabel2">不信任</div>
-              <div id="trust2ScaleLabel3">中立</div>
-              <div id="trust2ScaleLabel4">信任</div>
-              <div id="trust2ScaleLabel5">非常信任</div>
+            <div id="trustSlider2">
+              <div id="Scale2Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust2ScaleLabel1">完全不信任</div>
+                <div id="trust2ScaleLabel2">不信任</div>
+                <div id="trust2ScaleLabel3">中立</div>
+                <div id="trust2ScaleLabel4">信任</div>
+                <div id="trust2ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust2" oninput="trust2Slide()"></input><output class="sliderAmount" name="amount" id="trust2Amount"
+                    for="rangeInput">0</output></div>
+              </div>
             </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust2" oninput="trust2Slide()"></input><output class="sliderAmount" name="amount" id="trust2Amount"
-                  for="rangeInput">0</output></div>
-            </div>
+
           </div><!-- option 3 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">外国人</div>
             </div>
-            <div id="Scale3Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno3" onclick="dunno3()">
+              <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
             </div>
-            <div class="trustScaleLabel">
-              <div id="trust3ScaleLabel1">完全不信任</div>
-              <div id="trust3ScaleLabel2">不信任</div>
-              <div id="trust3ScaleLabel3">中立</div>
-              <div id="trust3ScaleLabel4">信任</div>
-              <div id="trust3ScaleLabel5">非常信任</div>
-            </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust3" oninput="trust3Slide()"></input><output class="sliderAmount" name="amount" id="trust3Amount"
-                  for="rangeInput">0</output></div>
+            <div id="trustSlider3">
+              <div id="Scale3Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust3ScaleLabel1">完全不信任</div>
+                <div id="trust3ScaleLabel2">不信任</div>
+                <div id="trust3ScaleLabel3">中立</div>
+                <div id="trust3ScaleLabel4">信任</div>
+                <div id="trust3ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust3" oninput="trust3Slide()"></input><output class="sliderAmount" name="amount" id="trust3Amount"
+                    for="rangeInput">0</output></div>
+              </div>
             </div>
           </div><!-- option 4 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">媒体</div>
             </div>
-            <div id="Scale4Divider">
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno4" onclick="dunno4()">
+              <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
+            </div>
+            <div id="trustSlider4">
+              <div id="Scale4Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust4ScaleLabel1">完全不信任</div>
+                <div id="trust4ScaleLabel2">不信任</div>
+                <div id="trust4ScaleLabel3">中立</div>
+                <div id="trust4ScaleLabel4">信任</div>
+                <div id="trust4ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust4" oninput="trust4Slide()"></input><output class="sliderAmount" name="amount" id="trust4Amount"
+                    for="rangeInput">0</output></div>
+              </div>
+            </div>
+          </div>
+          <!-- option 5 -->
+          <div class="peopleTrustOption">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">政府</div>
+            </div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno5" onclick="dunno5()">
+              <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
+            </div>
+            <div id="trustSlider5">
+              <div id="Scale5Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust5ScaleLabel1">完全不信任</div>
+                <div id="trust5ScaleLabel2">不信任</div>
+                <div id="trust5ScaleLabel3">中立</div>
+                <div id="trust5ScaleLabel4">信任</div>
+                <div id="trust5ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust5" oninput="trust5Slide()"></input><output class="sliderAmount" name="amount" id="trust5Amount"
+                    for="rangeInput">0</output></div>
+              </div>
+            </div>
+          </div><!-- option 6 -->
+          <div class="peopleTrustOption">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">高校</div>
+            </div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno6" onclick="dunno6()">
+              <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
+            </div>
+            <div id="trustSlider6">
+            <div id="Scale6Divider">
               <div id="scaleDivider1">·</div>
               <div id="scaleDivider2">·</div>
               <div id="scaleDivider3">·</div>
@@ -491,15 +585,74 @@
               <div id="scaleDivider5">·</div>
             </div>
             <div class="trustScaleLabel">
-              <div id="trust4ScaleLabel1">完全不信任</div>
-              <div id="trust4ScaleLabel2">不信任</div>
-              <div id="trust4ScaleLabel3">中立</div>
-              <div id="trust4ScaleLabel4">信任</div>
-              <div id="trust4ScaleLabel5">非常信任</div>
+              <div id="trust6ScaleLabel1">完全不信任</div>
+              <div id="trust6ScaleLabel2">不信任</div>
+              <div id="trust6ScaleLabel3">中立</div>
+              <div id="trust6ScaleLabel4">信任</div>
+              <div id="trust6ScaleLabel5">非常信任</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust4" oninput="trust4Slide()"></input><output class="sliderAmount" name="amount" id="trust4Amount"
+              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust6" oninput="trust6Slide()"></input><output class="sliderAmount" name="amount" id="trust6Amount"
                   for="rangeInput">0</output></div>
+            </div>
+            </div>
+          </div><!-- option 7 -->
+          <div class="peopleTrustOption">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">慈善团体</div>
+            </div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno7" onclick="dunno7()">
+              <label class="form-check-label" for="dunno7">不够了解，无法回答</label>
+            </div>
+            <div id="trustSlider7">
+            <div id="Scale7Divider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="trustScaleLabel">
+              <div id="trust7ScaleLabel1">完全不信任</div>
+              <div id="trust7ScaleLabel2">不信任</div>
+              <div id="trust7ScaleLabel3">中立</div>
+              <div id="trust7ScaleLabel4">信任</div>
+              <div id="trust7ScaleLabel5">非常信任</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust7" oninput="trust7Slide()"></input><output class="sliderAmount" name="amount" id="trust7Amount"
+                  for="rangeInput">0</output></div>
+            </div>
+            </div>
+          </div><!-- option 8 -->
+          <div class="peopleTrustOption">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">公司企业</div>
+            </div>
+            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
+              <input type="checkbox" class="form-check-input" id="dunno8" onclick="dunno8()">
+              <label class="form-check-label" for="dunno8">不够了解，无法回答</label>
+            </div>
+            <div id="trustSlider8">
+            <div id="Scale8Divider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="trustScaleLabel">
+              <div id="trust8ScaleLabel1">完全不信任</div>
+              <div id="trust8ScaleLabel2">不信任</div>
+              <div id="trust8ScaleLabel3">中立</div>
+              <div id="trust8ScaleLabel4">信任</div>
+              <div id="trust8ScaleLabel5">非常信任</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust8" oninput="trust8Slide()"></input><output class="sliderAmount" name="amount" id="trust8Amount"
+                  for="rangeInput">0</output></div>
+            </div>
             </div>
           </div>
         </div>
@@ -523,126 +676,7 @@
 
 
   <!-- page 5 -->
-  <div id="page5" style="display:none">
-    <div id="survey">
-      <!-- people trust degree -->
-      <div class="question">
-        <div class="questionPrompt">您对下面这些群体的信任程度如何？</div>
-        <div class="questionAnswer">
-          <!-- option 5 -->
-          <div class="peopleTrustOption">
-            <div class="trustOptionPrompt">
-              <div class="trustOptionText">政府</div>
-            </div>
-            <div id="Scale5Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
-            </div>
-            <div class="trustScaleLabel">
-              <div id="trust5ScaleLabel1">完全不信任</div>
-              <div id="trust5ScaleLabel2">不信任</div>
-              <div id="trust5ScaleLabel3">中立</div>
-              <div id="trust5ScaleLabel4">信任</div>
-              <div id="trust5ScaleLabel5">非常信任</div>
-            </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust5" oninput="trust5Slide()"></input><output class="sliderAmount" name="amount" id="trust5Amount"
-                  for="rangeInput">0</output></div>
-            </div>
-          </div><!-- option 6 -->
-          <div class="peopleTrustOption">
-            <div class="trustOptionPrompt">
-              <div class="trustOptionText">高校</div>
-            </div>
-            <div id="Scale6Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
-            </div>
-            <div class="trustScaleLabel">
-              <div id="trust6ScaleLabel1">完全不信任</div>
-              <div id="trust6ScaleLabel2">不信任</div>
-              <div id="trust6ScaleLabel3">中立</div>
-              <div id="trust6ScaleLabel4">信任</div>
-              <div id="trust6ScaleLabel5">非常信任</div>
-            </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust6" oninput="trust6Slide()"></input><output class="sliderAmount" name="amount" id="trust6Amount"
-                  for="rangeInput">0</output></div>
-            </div>
-          </div><!-- option 7 -->
-          <div class="peopleTrustOption">
-            <div class="trustOptionPrompt">
-              <div class="trustOptionText">慈善团体</div>
-            </div>
-            <div id="Scale7Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
-            </div>
-            <div class="trustScaleLabel">
-              <div id="trust7ScaleLabel1">完全不信任</div>
-              <div id="trust7ScaleLabel2">不信任</div>
-              <div id="trust7ScaleLabel3">中立</div>
-              <div id="trust7ScaleLabel4">信任</div>
-              <div id="trust7ScaleLabel5">非常信任</div>
-            </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust7" oninput="trust7Slide()"></input><output class="sliderAmount" name="amount" id="trust7Amount"
-                  for="rangeInput">0</output></div>
-            </div>
-          </div><!-- option 8 -->
-          <div class="peopleTrustOption">
-            <div class="trustOptionPrompt">
-              <div class="trustOptionText">公司企业</div>
-            </div>
-            <div id="Scale8Divider">
-              <div id="scaleDivider1">·</div>
-              <div id="scaleDivider2">·</div>
-              <div id="scaleDivider3">·</div>
-              <div id="scaleDivider4">·</div>
-              <div id="scaleDivider5">·</div>
-            </div>
-            <div class="trustScaleLabel">
-              <div id="trust8ScaleLabel1">完全不信任</div>
-              <div id="trust8ScaleLabel2">不信任</div>
-              <div id="trust8ScaleLabel3">中立</div>
-              <div id="trust8ScaleLabel4">信任</div>
-              <div id="trust8ScaleLabel5">非常信任</div>
-            </div>
-            <div class="slidecontainer">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust8" oninput="trust8Slide()"></input><output class="sliderAmount" name="amount" id="trust8Amount"
-                  for="rangeInput">0</output></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <section class="nextButton">
-      <div id="p5nextButton"><button id="button">
-          <div id="next">下一页</div>
-        </button>
-        <script type="text/javascript">
-          document.getElementById("p5nextButton").onclick = function() {
-            return show('page6');
-          };
-        </script>
-      </div>
-    </section>
-    <div class="progress" style="height: 8px;">
-      <div class="progress-bar" role="progressbar" style="width: 70%; background-color: #979797;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </div>
-
-  <!-- page 6 -->
-  <div id="page6" style="display:none">
+  <div class="page" id="page5" style="display:none">
     <div id="survey">
       <!-- good deed willingness degree -->
       <div class="question">
@@ -674,20 +708,20 @@
         <div class="questionPrompt">假若今天您意外得到了10000元人民币。 您愿意捐给慈善事业多少？</div>
         <div class="questionAnswer">
           <div class="slidecontainer" id="donationWilling">
-            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="10000" value="0" class="slider" id="donationWillingSlider" oninput="donationWillingSlide()"></input><output class="sliderAmount" name="amount"
-                id="donationWillingAmount" for="rangeInput">0元</output></div>
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="10000" value="0" class="slider" id="donationWillingSlider2" oninput="donationWillingSlide2()"></input><output class="sliderAmount" name="amount"
+                id="donationWillingAmount2" for="rangeInput">0元</output></div>
           </div>
         </div>
       </div>
     </div>
 
     <section class="nextButton">
-      <div id="p6nextButton"><button id="button">
+      <div id="p5nextButton"><button id="button">
           <div id="next">提交</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p6nextButton").onclick = function() {
-            return show('page7');
+          document.getElementById("p5nextButton").onclick = function() {
+            return show('page6');
           };
         </script>
       </div>
@@ -698,8 +732,8 @@
     </div>
   </div>
 
-  <!-- page 7 -->
-  <div id="page7" style="display:none">
+  <!-- page 6 -->
+  <div class="page" id="page6" style="display:none">
     <div id="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们会在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
     </div>
