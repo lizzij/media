@@ -155,6 +155,30 @@ def survey1():
 def survey2():
     return render_template('survey2.html')
 
+@bp.route('/survey3')
+def survey3():
+    return render_template('survey3.html')
+
+@bp.route('/survey4')
+def survey4():
+    return render_template('survey4.html')
+
+@bp.route('/survey5')
+def survey5():
+    return render_template('survey5.html')
+
+@bp.route('/survey6')
+def survey6():
+    return render_template('survey6.html')
+
+@bp.route('/survey7')
+def survey7():
+    return render_template('survey7.html')
+
+@bp.route('/survey8')
+def survey8():
+    return render_template('survey8.html')
+
 @bp.route('/survey_test1')
 def survey_test():
     return render_template('survey1.html')

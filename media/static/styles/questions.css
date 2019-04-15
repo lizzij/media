@@ -265,7 +265,7 @@ div.trustScaleLabel > div{
   color: #979797;
   top: 204px;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #privateScaleDivider{
@@ -277,7 +277,7 @@ div.trustScaleLabel > div{
   color: #979797;
   top: 288px;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #foreignScaleDivider{
@@ -486,7 +486,8 @@ div.trustScaleLabel > div{
   position: absolute;
   width:205px;
   top: 517px;
-  left: 116px;
+  left: calc(50% - 80px);
+  /* left: 116px; */
   color: #FF3333;
   font-size: 14px;
   font-weight: bold;
@@ -507,7 +508,8 @@ div.trustScaleLabel > div{
 #clearAllButton{
   position:absolute;
   top: 517px;
-  left: 312px;
+  left: calc(50% + 125px);
+  /* left: 312px; */
   width: 19px;
   height: 19px;
   border-radius: 15px;
@@ -628,7 +630,8 @@ div.trustScaleLabel > div{
   position: absolute;
   width:205px;
   top: 517px;
-  left: 116px;
+  left: calc(50% - 80px);
+  /* left: 116px; */
   color: #FF3333;
   font-size: 14px;
   font-weight: bold;
@@ -640,7 +643,8 @@ div.trustScaleLabel > div{
 #weatherClearAllButton{
   position:absolute;
   top: 517px;
-  left: 312px;
+  left: calc(50% + 125px);
+  /* left: 312px; */
   width: 19px;
   height: 19px;
   border-radius: 15px;
@@ -670,7 +674,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale2Divider{
@@ -681,7 +685,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale3Divider{
@@ -692,7 +696,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale4Divider{
@@ -703,7 +707,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale5Divider{
@@ -714,7 +718,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale6Divider{
@@ -725,7 +729,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale7Divider{
@@ -736,7 +740,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #Scale8Divider{
@@ -747,7 +751,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 .peopleTrustOption{
@@ -764,7 +768,7 @@ div.trustScaleLabel > div{
   font-size: 50px;
   color: #979797;
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 .willingnessScaleLabel{
@@ -832,7 +836,7 @@ div.outingScaleLabel > div{
   color: #979797;
   /* top: 311px; */
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #outingScale2Divider{
@@ -844,7 +848,7 @@ div.outingScaleLabel > div{
   color: #979797;
   /* top: 391px; */
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #outingScale3Divider{
@@ -856,7 +860,7 @@ div.outingScaleLabel > div{
   color: #979797;
   /* top: 471px; */
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #outingScale4Divider{
@@ -868,7 +872,7 @@ div.outingScaleLabel > div{
   color: #979797;
   /* top: 551px; */
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #outingScale5Divider{
@@ -880,7 +884,7 @@ div.outingScaleLabel > div{
   color: #979797;
   /* top: 631px; */
   text-align: right;
-  left: 51px;
+  left: calc(50% - 136px);
 }
 
 #scaleOf4Divider1, #scaleOf4Divider2, #scaleOf4Divider3, #scaleOf4Divider4{
@@ -903,8 +907,4 @@ div.outingScaleLabel > div{
   font-size: 14px;
   border: 1px solid #CDCDCD;
   width: 97%;
-}
-
-.form-check .form-check-input {
-  margin-top: .4rem;
 }
