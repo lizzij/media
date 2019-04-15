@@ -313,14 +313,14 @@ div.trustScaleLabel > div{
 #timeLeft{
   display: flex;
   padding-bottom: 15px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #timer{
   padding-left: 5px;
   padding-right: 5px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #note{
@@ -915,4 +915,20 @@ div.outingScaleLabel > div{
 
 #walkathonDistance{
   padding-top: 10px;
+}
+
+input.btn.btn-primary {
+  background-color: #CDCDCD;
+  border-color: #CDCDCD;
+  color: #4F4F4F;
+}
+
+input.btn {
+  border-radius: 0rem;
+  padding: .1rem .2rem;
+  font-size: 14px;
+}
+
+#checkBeanNumberSource{
+  padding-top:5px;
 }
