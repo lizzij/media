@@ -895,3 +895,15 @@ div.outingScaleLabel > div{
   padding-bottom: 7px;
   color: #4F4F4F;
 }
+
+.form-group .form-control{
+  color: #4F4F4F;
+  height: calc(2rem + 2px);
+  padding: .1rem .5rem;
+  font-size: 14px;
+  border: 1px solid #979797;
+}
+
+.form-check .form-check-input {
+  margin-top: .4rem;
+}
