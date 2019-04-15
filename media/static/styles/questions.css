@@ -901,7 +901,7 @@ div.outingScaleLabel > div{
   height: calc(2rem + 2px);
   padding: .1rem .5rem;
   font-size: 14px;
-  border: 1px solid #979797;
+  border: 1px solid #CDCDCD;
   width: 97%;
 }
 
