@@ -56,7 +56,6 @@ body{
   padding-top: 5px;
   display: flex;
   flex-direction: row;
-  font-weight: bold;
 }
 
 .trustOptionText{
@@ -220,6 +219,30 @@ div.trustScaleLabel > div{
 }
 
 #donationWilling{
+  padding-top: 0px;
+}
+
+#signUpFee{
+  padding-top: 0px;
+}
+
+#domesticWebsite{
+  padding-top: 0px;
+}
+
+#foreignWebsite{
+  padding-top: 0px;
+}
+
+#domesticMedia{
+  padding-top: 0px;
+}
+
+#foreignMedia{
+  padding-top: 0px;
+}
+
+#chatWithFriends{
   padding-top: 0px;
 }
 
@@ -766,19 +789,26 @@ div.outingScaleLabel > div{
   width: 77.5px;
 }
 
-.outingOption{
-  height: 110px;
-}
-
 .outingOptionPrompt{
-  padding-top: 10px;
-  padding-bottom: 5px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
 }
 
 .outingOptionText{
-  font-size: 12px;
+  font-size: 14px;
+  color: #4F4F4F;
+}
+
+.outingOption{
+  height: 110px;
+}
+
+.visitPrompt{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
   color: #4F4F4F;
 }
 

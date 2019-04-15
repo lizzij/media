@@ -33,8 +33,8 @@
         <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
         <div class="questionAnswer">
           <div class="slidecontainer" id="signUpFee">
-            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input><output class="sliderAmount" name="amount"
-                id="signUpFeeAmount" for="rangeInput">0元</output></div>
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input><output class="sliderAmount" name="amount" id="signUpFeeAmount"
+                for="rangeInput">0元</output></div>
           </div>
         </div>
       </div>
@@ -191,50 +191,47 @@
   <!-- page 3 -->
   <div id="page3" style="display:none">
     <div id="survey">
-        <!-- source of news -->
-        <div class="mainQuestion">为使自己熟知经济、社会、国内外政策相关的话题，平均每天您会花多长时间在以下新闻来源上？</div>
-        <div class="question">
-
-          <div class="questionPrompt">国内网站（如人民日报，新京报）</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="domesticWebsite">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input><output class="sliderAmount" name="amount"
-                  id="domesticWebsiteAmount" for="rangeInput">0元</output></div>
-            </div>
-          </div>
-
-          <div class="questionPrompt">国外网站（如纽约时报，华尔街日报）</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="foreignWebsite">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input><output class="sliderAmount" name="amount"
-                  id="foreignWebsiteAmount" for="rangeInput">0元</output></div>
-            </div>
-          </div>
-
-          <div class="questionPrompt">国内社交媒体（如微博，微信）</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="domesticMedia">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input><output class="sliderAmount" name="amount"
-                  id="domesticMediaAmount" for="rangeInput">0元</output></div>
-            </div>
-          </div>
-
-          <div class="questionPrompt">国外社交媒体（如Facebook，Twitter，Instagram）</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="foreignMedia">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input><output class="sliderAmount" name="amount"
-                  id="foreignMediaAmount" for="rangeInput">0元</output></div>
-            </div>
-          </div>
-
-          <div class="questionPrompt">与朋友或同学聊天（直接的言语交谈）</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="chatWithFriends">
-              <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input><output class="sliderAmount" name="amount"
-                  id="chatWithFriendsAmount" for="rangeInput">0元</output></div>
-            </div>
-          </div>
+      <!-- source of news -->
+      <div class="mainQuestion">为使自己熟知经济、社会、国内外政策相关的话题，平均每天您会花多长时间在以下新闻来源上？</div>
+      <div class="visitPrompt">国内网站（如人民日报，新京报）</div>
+      <div class="questionAnswer">
+        <div class="slidecontainer" id="domesticWebsite">
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input><output class="sliderAmount" name="amount"
+              id="domesticWebsiteAmount" for="rangeInput">0元</output></div>
         </div>
+      </div>
+
+      <div class="visitPrompt">国外网站（如纽约时报，华尔街日报）</div>
+      <div class="questionAnswer">
+        <div class="slidecontainer" id="foreignWebsite">
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input><output class="sliderAmount" name="amount"
+              id="foreignWebsiteAmount" for="rangeInput">0元</output></div>
+        </div>
+      </div>
+
+      <div class="visitPrompt">国内社交媒体（如微博，微信）</div>
+      <div class="questionAnswer">
+        <div class="slidecontainer" id="domesticMedia">
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input><output class="sliderAmount" name="amount" id="domesticMediaAmount"
+              for="rangeInput">0元</output></div>
+        </div>
+      </div>
+
+      <div class="visitPrompt">国外社交媒体（如Facebook Twitter Instagram）</div>
+      <div class="questionAnswer">
+        <div class="slidecontainer" id="foreignMedia">
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input><output class="sliderAmount" name="amount" id="foreignMediaAmount"
+              for="rangeInput">0元</output></div>
+        </div>
+      </div>
+
+      <div class="visitPrompt">与朋友或同学聊天（直接的言语交谈）</div>
+      <div class="questionAnswer">
+        <div class="slidecontainer" id="chatWithFriends">
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input><output class="sliderAmount" name="amount"
+              id="chatWithFriendsAmount" for="rangeInput">0元</output></div>
+        </div>
+      </div>
     </div>
     <!-- next button -->
     <section class="nextButton">
