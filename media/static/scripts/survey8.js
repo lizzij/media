@@ -1,20 +1,20 @@
 function show(shown) {
-  document.getElementById("clearAllStarsButton").style.display='none';
-  var pages = ['page1', 'page2', 'page3', 'page4', 'page5'];
+
+  var pages = ['page1', 'page2', 'page3'];
   var pageIndex;
   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
     pageId = pages[pageIndex];
     if (shown == pageId) {
-      if (shown == 'page3') {
+      if (shown == 'page2') {
         var alert = document.getElementById("starAlert").innerHTML;
         var numStarLeft = document.getElementById("starLeftCount").innerHTML;
         if ((parseInt(numStarLeft)) > 0) {
           document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
           document.getElementById("clearAllStarsButton").style.display='block';
         }
         else {
-          document.getElementById('page3').style='display: flex;flex-direction: column;position: relative;';
+          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
         }
       }
       else {
@@ -28,11 +28,7 @@ function show(shown) {
   return 0;
 }
 
-function signUpFeeSlide() {
-  var value=document.getElementById("signUpFeeSlider").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
-}
+document.getElementById("clearAllStarsButton").style.display='none';
 
 function starCountGroup1(number) {
   var starLeftCount = document.getElementById("starLeftCount").innerHTML;
@@ -312,18 +308,32 @@ function walkathonSlide() {
   document.getElementById("walkathonDistance").value=`我将在 [2019年3月16日] 走${value}步（${distance}公里）—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
 }
 
-function hideNumberOfTimes() {
-  document.getElementById("otherHowManyTimes").style.display = "none";
-}
-function showNumberOfTimes() {
-  document.getElementById("otherHowManyTimes").style.display = "block";
+function checkBeanNumberSource(){
+  var AtoldMe = document.getElementById("AtoldMe").checked;
+  var BtoldMe = document.getElementById("BtoldMe").checked;
+  var CtoldMe = document.getElementById("CtoldMe").checked;
+  if (AtoldMe && (!BtoldMe) && CtoldMe) {
+    document.getElementById("beanNumberResult").innerHTML = '正确';
+    document.getElementById("beanNumberResult").style.color = "#28a745";
+  }
+  else {
+    document.getElementById("beanNumberResult").innerHTML = '您的答案错误。 请再检查一次！';
+    document.getElementById("beanNumberResult").style.color = "#FF3333";
+  }
 }
 
-function hideNumberOfWeatherTimes() {
-  document.getElementById("otherHowManyWeatherTimes").style.display = "none";
-}
-function showNumberOfWeatherTimes() {
-  document.getElementById("otherHowManyWeatherTimes").style.display = "block";
+function startTimer(timer, page, timesUp) {
+  var sec = 60;
+  setInterval(function() {
+    document.getElementById(timer).innerHTML = sec;
+    if (sec > 0) {
+      sec--;
+    }
+    else if (sec == 00) {
+      document.getElementById(timesUp).innerHTML = '时间到，请点击进入下一页';
+      document.getElementById(timesUp).style.color = "#FF3333";
+    }
+  }, 1000);
 }
 
 function dunno1() {
