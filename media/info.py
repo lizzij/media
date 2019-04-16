@@ -38,24 +38,6 @@ def get_info(user_id_hashid, day_hashid):
     :param user_hashid: hashed user_id of the user
     :param day_hashid: hashed number of day
     """
-    # user_id = decode_user_id_hashid(user_id_hashid)[0]
-    # day = decode_day_hashid(day_hashid)[0]
-    # info = get_db().execute(
-    #     'SELECT u.user_id, u.day, wechat_id, treatment'
-    #     ' FROM user u'
-    #     ' WHERE u.user_id = ? AND u.day = ?',
-    #     (user_id, day,)
-    # ).fetchone()
-    #
-    # if info is None:
-    #     abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
-    #
-    # return render_template('info.html', info=info)
-
-    # title = "漫步上海"
-    # subtitle = "边走边拍"
-    # low_temp = 29
-    # high_temp = 15
 
     user = get_db().execute(
         'SELECT user_id, day'
@@ -65,32 +47,6 @@ def get_info(user_id_hashid, day_hashid):
     ).fetchone()
     user_id = user[0]
     day = user[1]
-
-    # title = "公益之家"
-    # subtitle = "资助项目"
-    # info_date = "2019.03.30 - 2019.06.15"
-    # info_time = "每周六 10:00 am - 20:00 pm"
-    # location = "地点 徐汇区 上海体育场"
-    # head_word = "每"
-    # short_description = "周六参加公益之家成员大会, \
-    # 一起集思广益如何主动去救助更多的有需要的人群。"
-    # low_temp = 4
-    # high_temp = 5
-    # # air_quality_level = 4
-    # # suitable_for = [0, 1, 2]  # count the symbols from left to right, starting from 0
-    # event_details = "如果你有固定的精力来参与公益之家的事务,\
-    # 例如: 每周参加一次成员大会; \
-    # 一起集思广益如何主动去救助更多的有需要的人群; \
-    # 无论贫富，\
-    # 如果你愿意将自己收入的一部分，\
-    # 献出来帮助那些存在生存困难的人们，\
-    # 请加入我们"
-
-    # if (len(decode_user_id_hashid(user_id_hashid)) == 0):
-    #     abort(404, "Cannot user_id_hashid {0} and day_hashid {1}.".format(user_id_hashid, day_hashid))
-    # else:
-    #     user_id = decode_user_id_hashid(user_id_hashid)[0]
-    #     day = decode_day_hashid(day_hashid)[0]
 
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,headword,short_description,low_temp,high_temp,event_details'
@@ -218,63 +174,3 @@ def survey7():
 @bp.route('/survey8')
 def survey8():
     return render_template('survey8.html')
-
-@bp.route('/survey_test1')
-def survey_test():
-    return render_template('survey1.html')
-
-@bp.route('/questions', methods=['GET', 'POST'])
-def questions():
-    """Display all questions"""
-    return render_template('questions.html')
-
-@bp.route('/new', methods=['GET', 'POST'])
-def new():
-    """Display all questions"""
-    return render_template('new.html')
-
-@bp.route('/new1', methods=['GET', 'POST'])
-def new1():
-    """Display all questions"""
-    return render_template('new1.html')
-
-@bp.route('/new2', methods=['GET', 'POST'])
-def new2():
-    """Display all questions"""
-    return render_template('new2.html')
-
-@bp.route('/new3', methods=['GET', 'POST'])
-def new3():
-    """Display all questions"""
-    return render_template('new3.html')
-
-@bp.route('/new4', methods=['GET', 'POST'])
-def new4():
-    """Display all questions"""
-    return render_template('new4.html')
-
-@bp.route('/new5', methods=['GET', 'POST'])
-def new5():
-    """Display all questions"""
-    return render_template('new5.html')
-
-@bp.route('/new6', methods=['GET', 'POST'])
-def new6():
-    """Display all questions"""
-    return render_template('new6.html')
-
-@bp.route('/test_display', methods=['GET', 'POST'])
-def test_display():
-    """Display all questions"""
-    return render_template('test.html')
-#
-# @bp.route('/infoPage', methods=['GET', 'POST'])
-# def info_page():
-#     """Display information page
-#
-#     With given parameters
-#     """
-#     title = ("漫步老上海"
-#     low_temp = 31
-#     high_temp = 25
-#     return render_template('infoPage.html', title = title, low_temp = low_temp, high_temp = high_temp)
