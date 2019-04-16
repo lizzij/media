@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+font-size: 14px;@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 body{
   -moz-osx-font-smoothing: grayscale;
@@ -13,10 +13,9 @@ body{
   position: relative; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 1065px; /* Full height */
+  margin: -8px;
+  width: 375px; /* Full width */
+  height: 1240px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -28,19 +27,19 @@ body{
   background-color: #FFFFFF;
   margin: auto;
   padding: 10px;
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 15px;
+  padding-right: 15px;
   border: 1px solid #888;
   width: 255px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: normal;
-  line-height: 16px;
+  line-height: 23px;
 }
 
 /* The Close Button */
 .close {
   color: #aaaaaa;
-  float: right;
+  padding-right: 15px;
   font-size: 25px;
   font-weight: bold;
 }
@@ -55,14 +54,14 @@ body{
 .title{
   position: absolute;
   width: 376px;
-  height: 152px;
+  height: 160px;
   left: calc(50% - 376px/2 + 0.5px);
   top: 24px;
 }
 
 header #eventName{
   position: absolute;
-  width: 500px;
+  width: 360px;
   height: 59px;
   left: calc(50% - 160px/2 - 95px);
   top: 15px;
@@ -78,7 +77,7 @@ header #eventName{
 
 #eventDate{
   position: absolute;
-  width: 500px;
+  width: 360px;
   height: 21px;
   left: calc(50% - 253px/2 - 48.5px);
   top: 79px;
@@ -94,7 +93,7 @@ header #eventName{
 
 #eventTime{
   position: absolute;
-  width: 500px;
+  width: 360px;
   height: 13px;
   left: calc(50% - 138px/2 - 106px);
   top: 108px;
@@ -103,23 +102,23 @@ header #eventName{
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #979797;
 }
 
 header #eventLocation{
   position: absolute;
-  width: 500px;
+  width: 360px;
   height: 14px;
   left: calc(50% - 115px/2 - 117.5px);
-  top: 120px;
+  top: 127px;
 
   font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: normal;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #979797;
 }
@@ -129,7 +128,7 @@ header #eventLocation{
   width: 375px;
   height: 82px;
   left: calc(50% - 375px/2);
-  top: 450px;
+  top: 455px;
 }
 
 .paragraphShort{
@@ -150,8 +149,8 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
   font-weight: 300;
-  line-height: 18px;
-  font-size: 14px;
+  line-height: 25px;
+  font-size: 20px;
 
   color: #4F4F4F;
 }
@@ -166,8 +165,8 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
   font-weight: 300;
-  line-height: 13px;
-  font-size: 10px;
+  line-height: 20px;
+  font-size: 14px;
 
   color: #979797;
 }
@@ -177,7 +176,7 @@ header #eventLocation{
   width: 376px;
   height: 274px;
   left: calc(50% - 376px/2 + 0.5px);
-  top: 176px;
+  top: 185px;
   margin:auto;
   overflow:hidden;
 }
@@ -193,30 +192,30 @@ header #eventLocation{
 .weather{
   position: absolute;
   width: 374px;
-  height: 271px;
+  height: 370px;
   left: calc(50% - 374px/2 - 0.5px);
-  top: 532px;
+  top: 585px;
 }
 
 .temperature{
   position: absolute;
   width: 346px;
-  height: 80px;
+  height: 100px;
   left: calc(50% - 346px/2 + 1px);
-  top: 14px;
+  top: 13px;
 
   box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.4);
 }
 
 #temperatureHeader{
   position: absolute;
-  width: 58px;
-  height: 28px;
-  left: calc(50% - 58px/2 - 135px);
+  width: 120px;
+  height: 47px;
+  left: calc(50% - 87px/2 - 120px);
   top: 8px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 
   color: #4F4F4F;
 }
@@ -229,7 +228,7 @@ header #eventLocation{
   top: 10px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #4F4F4F;
 }
@@ -244,13 +243,13 @@ header #eventLocation{
 
 #temperatureSubtitle{
   position: absolute;
-  width: 87px;
+  width: 120px;
   height: 47px;
-  left: calc(50% - 87px/2 - 91.5px);
-  top: 30px;
+  left: calc(50% - 87px/2 - 120px);
+  top: 40px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 
   color: #979797;
 }
@@ -268,7 +267,7 @@ header #eventLocation{
   width: 17px;
   height: 32px;
   left: calc(50% - 17px/2 + 6px);
-  top: 17px;
+  top: 32px;
 
   font-family: Montserrat, sans-serif;
   font-size: 24px;
@@ -280,25 +279,23 @@ header #eventLocation{
   position: absolute;
   width: 16px;
   height: 19px;
-  left: calc(50% - 16px/2 + 35px);
-  top: 29px;
+  left: calc(50% - 16px/2 + 25px);
+  top: 42px;
 
   font-family: Montserrat, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #979797;
 }
 
 #low{
   position: absolute;
-  width: 61px;
+  width: 80px;
   height: 54px;
-  left: calc(50% - 61px/2);
-  top: 0px;
-
+  left: calc(50% - 90px/2);
+  top: 9px;
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
-
+  font-size: 18px;
   color: #979797;
 }
 
@@ -313,13 +310,11 @@ header #eventLocation{
 #highValue{
   position: absolute;
   width: 16px;
-  height: 25px;
-  left: calc(50% - 16px/2 + 9px);
-  top: 17px;
-
+  height: 32px;
+  left: calc(50% - 16px/2 + 20px);
+  top: 33px;
   font-family: Montserrat, sans-serif;
   font-size: 24px;
-
   color: #000000;
 }
 
@@ -327,34 +322,32 @@ header #eventLocation{
   position: absolute;
   width: 13px;
   height: 14px;
-  left: calc(50% - 13px/2 + 35px);
-  top: 27px;
+  left: calc(50% - 13px/2 + 37px);
+  top: 42px;
 
   font-family: Montserrat, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #979797;
 }
 
 #high{
   position: absolute;
-  width: 58px;
+  width: 80px;
   height: 36px;
   left: calc(50% - 58px/2);
-  top: 0px;
-
+  top: 8px;
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
-
+  font-size: 18px;
   color: #979797;
 }
 
 .airQuality{
   position: absolute;
   width: 346px;
-  height: 140px;
+  height: 220px;
   left: calc(50% - 346px/2 + 1px);
-  top: 113px;
+  top: 130px;
 
   background: #FFFFFF;
   box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.4);
@@ -362,26 +355,26 @@ header #eventLocation{
 
 #airQualityHeader{
   position: absolute;
-  width: 150px;
+  width: 200px;
   height: 13px;
   left: calc(50% - 150px/2 - 89px);
   top: 12px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 
   color: #4F4F4F;
 }
 
 #airQualitySource{
   position: absolute;
-  width: 78px;
+  width: 100px;
   height: 14px;
-  left: calc(50% - 78px/2 + 89px);
-  top: 12px;
+  left: calc(50% - 78px/2 + 60px);
+  top: 14px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
 
   color: #4F4F4F;
 }
@@ -390,8 +383,8 @@ header #eventLocation{
   position: absolute;
   width: 40px;
   height: 11.43px;
-  left: calc(50% - 40px/2 + 145px);
-  top: 7px;
+  left: calc(50% - 40px/2 + 139px);
+  top: 13px;
 }
 
 .airQualityScale{
@@ -404,7 +397,7 @@ header #eventLocation{
 
 .levels{
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 
   color: #979797;
 }
@@ -413,7 +406,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 - 134px);
 }
 
@@ -421,7 +414,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 - 79px);
 }
 
@@ -429,7 +422,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 - 24px);
 }
 
@@ -437,7 +430,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 + 31px);
 }
 
@@ -445,7 +438,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 + 86px);
 }
 
@@ -453,13 +446,13 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 9px;
-  top: 36.5px;
+  top: 54px;
   left: calc(50% - 58px/2 + 141px);
 }
 
 .levelDescription{
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 
   color: #979797;
 }
@@ -469,7 +462,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 - 134.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #level2Description{
@@ -477,7 +470,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 - 79.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #level3Description{
@@ -485,7 +478,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 - 24.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #level4Description{
@@ -493,7 +486,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 + 30.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #level5Description{
@@ -501,7 +494,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 + 85.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #level6Description{
@@ -509,7 +502,7 @@ header #eventLocation{
   width: 58px;
   height: 11px;
   left: calc(50% - 58px/2 + 140.5px);
-  top: 56.5px;
+  top: 82.5px;
 }
 
 #colorBar1{
@@ -517,7 +510,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 - 137.5px);
-  top: 51px;
+  top: 73px;
 
   /* PM2.5-1 */
   background: #00E400;
@@ -529,7 +522,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 - 82.5px);
-  top: 51px;
+  top: 73px;
 
   /* PM2.5-2 */
   background: #FFFF00;
@@ -541,7 +534,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 - 27.5px);
-  top: 51px;
+  top: 73px;
 
   /* PM2.5-3 */
   background: #FF7E00;
@@ -553,7 +546,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 + 27.5px);
-  top: 51px;
+  top: 73px;
 
   background: #FF0000;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -564,7 +557,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 + 82.5px);
-  top: 51px;
+  top: 73px;
 
   /* PM2.5-5 */
   background: #99004C;
@@ -576,7 +569,7 @@ header #eventLocation{
   width: 54px;
   height: 6px;
   left: calc(50% - 54px/2 + 137.5px);
-  top: 51px;
+  top: 73px;
 
   /* PM2.5-6 */
   background: #7E0023;
@@ -588,11 +581,11 @@ header #eventLocation{
   width: 333px;
   height: 37px;
   left: calc(50% - 333px/2 + 3.5px);
-  top: 85px;
+  top: 120px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  line-height: 13px;
-  font-size: 10px;
+  line-height: 20px;
+  font-size: 14px;
 
   color: #979797;
 }
@@ -602,7 +595,7 @@ header #eventLocation{
   width: 375px;
   height: 233px;
   left: calc(50% - 375px/2);
-  top: 940px;
+  top: 1100px;
 }
 
 .paragraph{
@@ -621,7 +614,7 @@ header #eventLocation{
   top: 0.5px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 
   color: #4F4F4F;
 }
@@ -646,8 +639,8 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
   font-weight: 100;
-  line-height: 13px;
-  font-size: 10px;
+  line-height: 20px;
+  font-size: 14px;
 
   color: #979797;
 }
@@ -657,7 +650,7 @@ header #eventLocation{
   width: 375px;
   height: 118px;
   left: calc(50% - 375px/2);
-  top: 803px;
+  top: 950px;
 }
 
 #suitableForTitle{
@@ -668,7 +661,7 @@ header #eventLocation{
   top: 15px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
+  font-size: 18px;
 
   color: #4F4F4F;
 }
@@ -746,7 +739,7 @@ header #eventLocation{
 
 .suitableIconLabels{
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   text-align: center;
 }
 
@@ -815,7 +808,7 @@ header #eventLocation{
   width: 375px;
   height: 124px;
   left: calc(50% - 375px/2);
-  top: 1192px;
+  top: 1370px;
 }
 
 #next{
@@ -823,10 +816,10 @@ header #eventLocation{
   width: 222px;
   height: 10px;
   left: calc(50% - 222px/2 + 2.5px);
-  top: 22px;
+  top: 20px;
 
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
 
   color: #FFFFFF;
@@ -848,7 +841,7 @@ header #eventLocation{
   width: 376px;
   height: 16px;
   left: calc(50% - 376px/2 - 0.5px);
-  top: 1278px;
+  top: 1460px;
 }
 
 #lizzijIcon{

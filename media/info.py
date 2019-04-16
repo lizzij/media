@@ -35,7 +35,7 @@ def get_info(user_id_hashid, day_hashid):
     day = user[1]
 
     info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,headword,short_description,low_temp,high_temp,event_details'
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,headword,short_description,low_temp,high_temp,event_details'
         ' FROM infos i'
         ' WHERE i.event_id = ?',
         (day,)
