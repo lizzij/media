@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="eventTitle" content="漫步老上海边走边拍">
+    <meta name="eventTitle" content="活动名称">
     <meta property="og:image" content="../img/ShanghaiIcon.png">
 
     <title>活动信息</title>
@@ -30,10 +30,10 @@
 
     <header>
       <div class="title">
-        <div id="eventName">{{ (title) }}<br/>{{ (subtitle) }}</div>
-        <div id="eventDate">2018.10.28 - 2019.01.20</div>
-        <div id="eventTime">每周日 14:00 pm - 17:00 pm</div>
-        <div id="eventLocation">地点 徐汇区 上海图书馆</div>
+        <div id="eventName">{{ (info['title']) }}<br/>{{ (info['subtitle']) }}</div>
+        <div id="eventDate">{{ (info['info_date']) }}</div>
+        <div id="eventTime">{{ (info['info_time']) }}</div>
+        <div id="eventLocation">{{ (info['location']) }}</div>
       </div>
     </header>
 
@@ -69,11 +69,9 @@
     <!-- description short -->
     <section class="descriptionShort">
       <div class="paragraphShort">
-        <div id="firstCharacter">在</div>
+        <div id="firstCharacter">{{ (info['headword']) }}</div>
         <div id="descriptionShortPara">
-          &nbsp;&nbsp;&nbsp;&nbsp;64 条街道中漫游，拍摄老上海。</br>
-          什么是老上海？宽适优雅的洋房是老上海，拥挤局促的弄堂是老上海，千篇</br>
-          一律的公房也是老上海。若想真正感受，唯有设身处地，细细体会。
+          &nbsp;&nbsp;&nbsp;&nbsp;{{ (info['short_description']) }}
         </div>
       </div>
     </section>
@@ -92,14 +90,14 @@
 
         <!-- temperture low -->
         <div class="temperatureLow">
-          <div id="lowValue">{{ '%d' % (low_temp) }}</div>
+          <div id="lowValue">{{ '%d' % (info['low_temp']) }}</div>
           <div id="lowUnit">°C</div>
           <div id="low">平均最低<br/>气温</div>
         </div>
 
         <!-- temperture high -->
         <div class="temperatureHigh">
-          <div id="highValue">{{ '%d' % (high_temp) }}</div>
+          <div id="highValue">{{ '%d' % (info['high_temp']) }}</div>
           <div id="highUnit">°C</div>
           <div id="high">平均最高<br/>气温</div>
         </div>
@@ -175,20 +173,7 @@
         <div id="eventDetail">活动简介</div>
         <!-- <div id="dropDownChevron"></div> -->
         <div id="detailedPointForm">
-          这里，是小说刻划的段落；</br>
-          这里，是电影移过的场景；</br>
-          这里，有岁月留下的痕迹。</br></br>
-
-          在这快速变迁的物质年代里，</br>
-          在这房价暴涨的白金城市里，</br>
-          还能拥有这样承诺永不拓宽的64条街道，实在是弥足珍贵。</br></br>
-
-          请放慢自己的脚步，跟随自己的心，</br>
-          用眼睛去重新发现这个有很多故事的上海。</br></br>
-
-          喜欢漫步找寻曾经的华美，</br>
-          喜欢细细品味当下的静谧，</br>
-          一边游走，一边记录。</br>
+          {{ (info['event_details']) }}
         </div>
       </section>
 
@@ -240,7 +225,7 @@
         <div id="next">下一页</div>
         <script type="text/javascript">
             document.getElementById("nextButton").onclick = function () {
-                location.href="{{ url_for('info.get_survey', user_id=info['user_id'], day=info['day']) }}";
+                location.href="{{ url_for('info.get_survey', user_id=user['user_id'], day=user['day']) }}";
             }
         </script>
       </div>

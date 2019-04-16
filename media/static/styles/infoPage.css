@@ -10,13 +10,13 @@ body{
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+  position: relative; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  height: 1065px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -62,7 +62,7 @@ body{
 
 header #eventName{
   position: absolute;
-  width: 160px;
+  width: 500px;
   height: 59px;
   left: calc(50% - 160px/2 - 95px);
   top: 15px;
@@ -78,7 +78,7 @@ header #eventName{
 
 #eventDate{
   position: absolute;
-  width: 253px;
+  width: 500px;
   height: 21px;
   left: calc(50% - 253px/2 - 48.5px);
   top: 79px;
@@ -94,7 +94,7 @@ header #eventName{
 
 #eventTime{
   position: absolute;
-  width: 138px;
+  width: 500px;
   height: 13px;
   left: calc(50% - 138px/2 - 106px);
   top: 108px;
@@ -110,7 +110,7 @@ header #eventName{
 
 header #eventLocation{
   position: absolute;
-  width: 115px;
+  width: 500px;
   height: 14px;
   left: calc(50% - 115px/2 - 117.5px);
   top: 120px;

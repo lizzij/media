@@ -24,10 +24,10 @@ def create_app(test_config=None):
         pass
 
     # home page
-    # @app.route('/')
+    @app.route('/')
     @app.route('/home')
     def home():
-        return render_template('home.html')
+        return "谢谢参与！"
 
     from media import db
     db.init_app(app)
@@ -36,5 +36,5 @@ def create_app(test_config=None):
     app.register_blueprint(info.bp)
 
     return app
-    
+
 app = create_app()
