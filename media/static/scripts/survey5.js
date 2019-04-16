@@ -1,4 +1,5 @@
 function show(shown) {
+  window.scroll(0,0);
   var pages = ['page1', 'page2'];
   var pageIndex;
   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
