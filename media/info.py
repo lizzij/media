@@ -3,7 +3,7 @@
 import functools
 
 from datetime import datetime
-from media.utils import create_user_id_hashid, decode_user_id_hashid, create_day_hashid, decode_day_hashid
+from media.utils import user_id_hashids, day_hashids, create_user_id_hashid, decode_user_id_hashid, create_day_hashid, decode_day_hashid
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -28,7 +28,7 @@ def hash_info(user_id, day):
     day_hashid = create_day_hashid(user_id, day)
     return '/%s/%s/info' % (user_id_hashid, day_hashid)
 
-@bp.route('/<user_id_hashid>/<day_hashid>/info', methods=['GET', 'POST'])
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
     """Contains information.
 
@@ -52,14 +52,54 @@ def get_info(user_id_hashid, day_hashid):
     #
     # return render_template('info.html', info=info)
 
-    title = "漫步上海"
-    subtitle = "边走边拍"
-    low_temp = 29
-    high_temp = 15
+    # title = "漫步上海"
+    # subtitle = "边走边拍"
+    # low_temp = 29
+    # high_temp = 15
 
-    user_id = decode_user_id_hashid(user_id_hashid)[0]
-    day = decode_day_hashid(day_hashid)[0]
+    user = get_db().execute(
+        'SELECT user_id, day'
+        ' FROM user u'
+        ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
+        (user_id_hashid, day_hashid,)
+    ).fetchone()
+    user_id = user[0]
+    day = user[1]
+
+    # title = "公益之家"
+    # subtitle = "资助项目"
+    # info_date = "2019.03.30 - 2019.06.15"
+    # info_time = "每周六 10:00 am - 20:00 pm"
+    # location = "地点 徐汇区 上海体育场"
+    # head_word = "每"
+    # short_description = "周六参加公益之家成员大会, \
+    # 一起集思广益如何主动去救助更多的有需要的人群。"
+    # low_temp = 4
+    # high_temp = 5
+    # # air_quality_level = 4
+    # # suitable_for = [0, 1, 2]  # count the symbols from left to right, starting from 0
+    # event_details = "如果你有固定的精力来参与公益之家的事务,\
+    # 例如: 每周参加一次成员大会; \
+    # 一起集思广益如何主动去救助更多的有需要的人群; \
+    # 无论贫富，\
+    # 如果你愿意将自己收入的一部分，\
+    # 献出来帮助那些存在生存困难的人们，\
+    # 请加入我们"
+
+    # if (len(decode_user_id_hashid(user_id_hashid)) == 0):
+    #     abort(404, "Cannot user_id_hashid {0} and day_hashid {1}.".format(user_id_hashid, day_hashid))
+    # else:
+    #     user_id = decode_user_id_hashid(user_id_hashid)[0]
+    #     day = decode_day_hashid(day_hashid)[0]
+
     info = get_db().execute(
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,headword,short_description,low_temp,high_temp,event_details'
+        ' FROM infos i'
+        ' WHERE i.event_id = ?',
+        (day,)
+    ).fetchone()
+
+    user = get_db().execute(
         'SELECT u.user_id, u.day, wechat_id, treatment'
         ' FROM user u'
         ' WHERE u.user_id = ? AND u.day = ?',
@@ -69,8 +109,8 @@ def get_info(user_id_hashid, day_hashid):
     if info is None:
         abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
 
-    return render_template('infoPage.html', info=info,
-    title=title, subtitle=subtitle, low_temp=low_temp, high_temp=high_temp)
+    return render_template('infoPage.html', user=user, info=info)
+
 
 @bp.route('/<int:user_id>/<int:day>/survey', methods=['GET', 'POST'])
 def get_survey(user_id, day):
@@ -234,7 +274,7 @@ def test_display():
 #
 #     With given parameters
 #     """
-#     title = ("漫步老上海", "utf-8")
+#     title = ("漫步老上海"
 #     low_temp = 31
 #     high_temp = 25
 #     return render_template('infoPage.html', title = title, low_temp = low_temp, high_temp = high_temp)
