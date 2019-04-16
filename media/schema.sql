@@ -66,6 +66,7 @@ VALUES
   (1, 5, 'b83120371', 'T1', 'WgkBxb2bv219qRDJ', 'rxn69e6N38'),
   (1, 6, 'b83120371', 'T1', '5gKLM4A7vwr3aBlm', 'K0zAVkYV8W'),
   (1, 7, 'b83120371', 'T1', 'ZdwQaPxbdk8Lne3B', '83AwJbw2RV'),
+  (1, 8, 'b83120371', 'T1', 'wMWaznOryK6prqe2', 'Ey3l4RPxZV'),
   (2, 1, 'wzx0501153533', 'T1', 'a3k47g0J60EmWOjD', 'QGngX7ZREN'),
   (3, 1, 'citizen0411', 'T1', 'klzKE7O7vabVm81B', '1ENB753m7V');
 
