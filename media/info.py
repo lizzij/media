@@ -42,7 +42,7 @@ def get_info(user_id_hashid, day_hashid):
     ).fetchone()
 
     user = get_db().execute(
-        'SELECT u.user_id, u.day, wechat_id, treatment'
+        'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid'
         ' FROM user u'
         ' WHERE u.user_id = ? AND u.day = ?',
         (user_id, day,)
@@ -54,8 +54,8 @@ def get_info(user_id_hashid, day_hashid):
     return render_template('infoPage.html', user=user, info=info)
 
 
-@bp.route('/<int:user_id>/<int:day>/survey', methods=['GET', 'POST'])
-def get_survey(user_id, day):
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
+def get_survey(user_id_hashid, day_hashid):
     """Send survey
 
     According to a user's id and treatment group.
@@ -79,6 +79,14 @@ def get_survey(user_id, day):
     #         )
     #         db.commit()
     #         return render_template('finished.html')
+    user = get_db().execute(
+        'SELECT user_id, day'
+        ' FROM user u'
+        ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
+        (user_id_hashid, day_hashid,)
+    ).fetchone()
+    user_id = user[0]
+    day = user[1]
     return render_template('survey' + str(day) + '.html')
 
 @bp.route('/')
