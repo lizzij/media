@@ -3,7 +3,6 @@
 import functools
 
 from datetime import datetime
-from media.utils import user_id_hashids, day_hashids, create_user_id_hashid, decode_user_id_hashid, create_day_hashid, decode_day_hashid
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -14,19 +13,6 @@ from werkzeug.exceptions import abort
 
 bp = Blueprint('info', __name__)
 now = datetime.now()
-
-@bp.route('/<int:user_id>/<int:day>/hash', methods=['GET', 'POST'])
-def hash_info(user_id, day):
-    """Hash information.
-
-    Hash user_id and day
-
-    :param user_id: user_id of the user
-    :param day: number of day
-    """
-    user_id_hashid = create_user_id_hashid(user_id, day)
-    day_hashid = create_day_hashid(user_id, day)
-    return '/%s/%s/info' % (user_id_hashid, day_hashid)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
@@ -75,52 +61,29 @@ def get_survey(user_id, day):
     According to a user's id and treatment group.
     Hash the user_id and day.
     """
-    if request.method == 'POST':
-        uni = request.form['uni']
-        error = None
-
-        if not uni:
-            error = 'Please fill in your university.'
-
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO survey (user_id, result, created)'
-                ' VALUES (?, ?, ?)',
-                (user_id, uni, now)
-            )
-            db.commit()
-            return render_template('finished.html')
-    return render_template('survey.html', user_id=user_id, day = day)
-
-@bp.route('/<int:user_id>/<int:day>/complete', methods=['GET', 'POST'])
-def submit(user_id, day):
-    """Submit survey result to db"""
-    if request.method == 'POST':
-        uni = request.form['uni']
-        error = None
-
-        if not uni:
-            error = 'Please fill in your university.'
-
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO survey (user_id = ?, result = ?)'
-                ' VALUES (?, ?)',
-                (user_id, uni)
-            )
-            db.commit()
-            return render_template('finished.html')
-    return render_template('survey.html', user_id=user_id, day=day)
+    # if request.method == 'POST':
+    #     uni = request.form['uni']
+    #     error = None
+    #
+    #     if not uni:
+    #         error = 'Please fill in your university.'
+    #
+    #     if error is not None:
+    #         flash(error)
+    #     else:
+    #         db = get_db()
+    #         db.execute(
+    #             'INSERT INTO survey (user_id, result, created)'
+    #             ' VALUES (?, ?, ?)',
+    #             (user_id, uni, now)
+    #         )
+    #         db.commit()
+    #         return render_template('finished.html')
+    return render_template('survey' + str(day) + '.html')
 
 @bp.route('/')
 def index():
-    return '谢谢参与'
+    return '谢谢参与！'
 
 @bp.route('/completion/detail')
 def completion():
@@ -133,43 +96,34 @@ def completion():
         ' ORDER BY created ASC'
     ).fetchall()
     return render_template('completion.html', users=users)
-    # return 'secrete'
 
-@bp.route('/survey1')
-def survey1():
-    return render_template('survey1.html')
-    # """Show all the users, and all results."""
-    # db = get_db()
-    # user = db.execute(
-    #     'SELECT u.id, u.user_id, u.day, created'
-    #     ' FROM user u JOIN survey s ON u.user_id = s.user_id'
-    #     ' ORDER BY created DESC'
-    # ).fetchall()
-    # return render_template('completion.html', user=user)
-
-@bp.route('/survey2')
-def survey2():
-    return render_template('survey2.html')
-
-@bp.route('/survey3')
-def survey3():
-    return render_template('survey3.html')
-
-@bp.route('/survey4')
-def survey4():
-    return render_template('survey4.html')
-
-@bp.route('/survey5')
-def survey5():
-    return render_template('survey5.html')
-
-@bp.route('/survey6')
-def survey6():
-    return render_template('survey6.html')
-
-@bp.route('/survey7')
-def survey7():
-    return render_template('survey7.html')
+# @bp.route('/survey1')
+# def survey1():
+#     return render_template('survey1.html')
+#
+# @bp.route('/survey2')
+# def survey2():
+#     return render_template('survey2.html')
+#
+# @bp.route('/survey3')
+# def survey3():
+#     return render_template('survey3.html')
+#
+# @bp.route('/survey4')
+# def survey4():
+#     return render_template('survey4.html')
+#
+# @bp.route('/survey5')
+# def survey5():
+#     return render_template('survey5.html')
+#
+# @bp.route('/survey6')
+# def survey6():
+#     return render_template('survey6.html')
+#
+# @bp.route('/survey7')
+# def survey7():
+#     return render_template('survey7.html')
 
 @bp.route('/survey8')
 def survey8():
