@@ -6,5 +6,5 @@ https://dailyeventinfo.com/zdRBqlnO1Mgk7vA5/0M4kEvea92/info
 https://dailyeventinfo.com/kaBxo92L02dbXL4K/B2J6joM8xb/info
 https://dailyeventinfo.com/WgkBxb2bv219qRDJ/rxn69e6N38/info
 https://dailyeventinfo.com/5gKLM4A7vwr3aBlm/K0zAVkYV8W/info
-https://dailyeventinfo.com/survey7
+https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/info
