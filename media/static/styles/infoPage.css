@@ -633,16 +633,22 @@ header #eventLocation{
   position: absolute;
   width: 333px;
   height: 180px;
-  left: calc(50% - 333px/2);
+  left: calc(50% - 328px/2);
   top: 34px;
 
-  font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
-  font-weight: 100;
+  /* font-weight: 300; */
   line-height: 20px;
   font-size: 14px;
 
   color: #979797;
+}
+
+pre{
+    display: block;
+    font-family: PingFangHK-Regular, sans-serif;
+    white-space: pre-line;
+    margin: 0.5em 0px;
 }
 
 .suitableFor{
