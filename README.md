@@ -10,11 +10,11 @@ https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/info
 
 
-http://127.0.0.1:5000/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info
-http://127.0.0.1:5000/j9Z4Jbol5rwABVxl/d7kZonDXxO/info
-http://127.0.0.1:5000/zdRBqlnO1Mgk7vA5/0M4kEvea92/info
-http://127.0.0.1:5000/kaBxo92L02dbXL4K/B2J6joM8xb/info
-http://127.0.0.1:5000/WgkBxb2bv219qRDJ/rxn69e6N38/info
-http://127.0.0.1:5000/5gKLM4A7vwr3aBlm/K0zAVkYV8W/info
-http://127.0.0.1:5000/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
-http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/infos
+http://127.0.0.1:5000/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info  
+http://127.0.0.1:5000/j9Z4Jbol5rwABVxl/d7kZonDXxO/info  
+http://127.0.0.1:5000/zdRBqlnO1Mgk7vA5/0M4kEvea92/info  
+http://127.0.0.1:5000/kaBxo92L02dbXL4K/B2J6joM8xb/info  
+http://127.0.0.1:5000/WgkBxb2bv219qRDJ/rxn69e6N38/info  
+http://127.0.0.1:5000/5gKLM4A7vwr3aBlm/K0zAVkYV8W/info  
+http://127.0.0.1:5000/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey  
+http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/infos  
