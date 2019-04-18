@@ -16,7 +16,7 @@
 <body>
 
   <!-- page 1 -->
-  <div id="page1" >
+  <div id="page1" style="display:none">
     <div id="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">让我们先来向您了解一些关于该活动的问题。</div><!-- event location question -->
@@ -509,7 +509,7 @@
 
 
   <!-- page 5 -->
-  <div id="page5" style="display:none">
+  <div id="page5" >
     <div id="survey">
 
       <!-- questions about the event -->
@@ -542,11 +542,19 @@
       <div class="question">
         <div class="questionPrompt">您的出生年份是？</div>
         <div class="questionAnswer">
-        <div id="birthday">
-          <div class="form-group">
-            <input type="text" class="form-control" id="birthdayInput" placeholder="mm/dd/yyyy">
-          </div>
-        </div>
+          <form>
+            <div class="form-group">
+              <label for="birthYear"></label>
+              <select class="form-control" id="birthYear">
+                <option>1980</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option>
+                <option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1900</option>
+                <option>1990</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option>
+                <option>1996</option><option>1997</option><option>1998</option><option>1999</option><option>2000</option>
+                <option>2001</option><option>2002</option><option>2003</option><option>2004</option><option>2005</option>
+                <option>2006</option><option>2007</option><option>2008</option><option>2009</option><option>2010</option>
+              </select>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -568,9 +576,23 @@
       <div class="question">
         <div class="questionPrompt">您现在所在的大学是？</div>
         <div class="questionAnswer">
-          <div id="whichUniversity">
+            <div class="form-group" id="whichUniversity">
+              <select class="form-control" id="university" onchange="univerisity()">
+                <option>复旦大学</option>
+                <option>交通大学</option>
+                <option>上海财经大学</option>
+                <option id="otherUni">其他</option>
+              </select>
+            </div>
+        </div>
+      </div>
+
+      <div class="question" style="display:none;"  id="otherUniFiller">
+        <div class="questionPrompt">请填写您现在所在的大学：</div>
+        <div class="questionAnswer">
+          <div>
             <div class="form-group">
-              <input type="text" class="form-control" id="university" placeholder="复旦大学">
+              <input type="text" class="form-control" id="otherUniAnswer" placeholder="大学">
             </div>
           </div>
         </div>
@@ -616,13 +638,13 @@
         <div class="questionAnswer">
           <form>
             <div class="form-group">
-              <label for="exampleFormControlSelect1"></label>
+              <label for="gradeSelect"></label>
               <select class="form-control" id="gradeSelect">
-                <options>大一</option>
-                  <option>大二</option>
-                  <option>大三</option>
-                  <option>大四</option>
-                  <option>研究生</option>
+                <option>大一</option>
+                <option>大二</option>
+                <option>大三</option>
+                <option>大四</option>
+                <option>研究生</option>
               </select>
             </div>
           </form>

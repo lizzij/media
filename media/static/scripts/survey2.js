@@ -539,3 +539,13 @@ function trust6Slide() {
   var left = 10 + 2.8 * trust;
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
+
+function univerisity(){
+  var otherUni = document.getElementById('otherUni');
+  if ( otherUni.selected === true ) {
+    document.getElementById("otherUniFiller").style.display = "block";
+  }
+  else {
+    document.getElementById("otherUniFiller").style.display = "none";
+  }
+}
