@@ -34,8 +34,17 @@ header #eventName{
 }
 
 .question{
-  top: 500px;
   position: absolute;
+  left: 10%;
+  top: 35%;
+  font-size: 18px;
+  font-family: PingFangHK-Regular, sans-serif;
+}
+
+#alert{
+  padding-top: 30px;
+  width:340px;
+  color: #FF3333;
 }
 
 .nextButton{
