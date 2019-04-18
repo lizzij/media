@@ -60,6 +60,7 @@ CREATE TABLE infos (
 
 INSERT INTO user (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)
 VALUES
+  (1, 0, 'b83120371', 'T1', 'nBEXdMJkv56ymRZx', 'vQp4l04x0q'),
   (1, 1, 'b83120371', 'T1', 'lq13ZopK7pbrkJ7X', 'BKzwNEGg9y'),
   (1, 2, 'b83120371', 'T1', 'j9Z4Jbol5rwABVxl', 'd7kZonDXxO'),
   (1, 3, 'b83120371', 'T1', 'zdRBqlnO1Mgk7vA5', '0M4kEvea92'),

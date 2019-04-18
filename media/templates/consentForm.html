@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="consentForm" content="同意书">
+  <meta property="og:image" content="../img/ShanghaiIcon.png">
+
+  <title>同意书</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/consentForm.css') }}">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+</head>
+
+<!-- Title -->
+
+<body>
+
+  <header>
+    <div class="title">
+      <div id="eventName">同意书</div>
+    </div>
+  </header>
+
+  <div class="question">
+    <div class="form-group" style="margin-bottom:0px">
+      <div class="questionPrompt">您想继续吗？</div>
+      <div class="questionAnswer">
+        <div class="form-check"><input class="form-check-input" type="radio" name="consent" value="name1" id="proceed"><label class="form-check-label" for="proceed">是</label></div>
+        <div class="form-check"><input class="form-check-input" type="radio" name="consent" value="name2" id="notProceed"><label class="form-check-label" for="notProceed">否</label></div>
+        <div id="alert"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- next button -->
+  <section class="nextButton">
+    <div id="nextButton" onclick="consent()">
+      <div id="button">
+        <img src="{{ url_for('static', filename='img/Button.png') }}">
+      </div>
+      <div id="next">下一页</div>
+    </div>
+    <script type="text/javascript">
+      document.getElementById("proceed").onclick = function() {
+        if (document.getElementById("proceed").checked) {
+          location.href = "{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}";
+        }
+      }
+
+      function consent() {
+        var yes = document.getElementById("proceed").checked;
+        var no = document.getElementById("notProceed").checked;
+        if (!yes && !no) {
+          document.getElementById("alert").innerHTML = "请选择！";
+        }
+        else if (no) {
+          document.getElementById("alert").innerHTML = "如果您不想参与此次调研，只需关闭窗口并删除联系人[zixin2]即可。如果误点“否”，请点击“是”。";
+        }
+      }
+    </script>
+  </section>
+
+  <!-- powered by -->
+  <section class="poweredBy">
+    <div id="lizzijIcon">
+      <img src="{{ url_for('static', filename='img/lizzij icon.png') }}" width="11.25" height="9">
+    </div>
+    <div id="lizzij">
+      <img src="{{ url_for('static', filename='img/lizzij.png') }}" width="15" height="9">
+    </div>
+    <section class="poweredByText">
+      <div id="dashLeft">-</div>
+      <div id="poweredBy">Powered by</div>
+      <div id="dashRight">-</div>
+    </section>
+  </section>
+  <!-- <script type=text/javascript src="{{ url_for('static', filename='scripts/consentForm.js') }}"></script> -->
+</body>
+
+</html>

@@ -31,8 +31,22 @@ def get_info(user_id_hashid, day_hashid):
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
     ).fetchone()
+    if user is None:
+        abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
+
+    next = get_db().execute(
+        'SELECT user_id_hashid, day_hashid'
+        ' FROM user u'
+        ' WHERE u.user_id = ? AND u.day = ?',
+        ((user_id+1), 1,)
+    ).fetchone()
+    next_user_id_hashid = next[0]
+    next_day_hashid = next[1]
+
+    if day == 0:
+        return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,headword,short_description,low_temp,high_temp,event_details'
