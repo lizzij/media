@@ -10,11 +10,11 @@ body{
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
-  position: relative; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
   margin: -8px;
-  width: 375px; /* Full width */
+  width: 100%; /* Full width */
   height: 1340px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
