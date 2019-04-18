@@ -549,3 +549,11 @@ function univerisity(){
     document.getElementById("otherUniFiller").style.display = "none";
   }
 }
+
+function hideOnCampusAddress(){
+  document.getElementById("onCampusAddress").style.display = "none";
+}
+
+function showOnCampusAddress(){
+  document.getElementById("onCampusAddress").style.display = "block";
+}
