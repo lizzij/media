@@ -562,12 +562,16 @@ function donationWillingSlide() {
   var value=document.getElementById("donationWillingSlider").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount").value=donationWillingAmount;
+  var left = 2 + 0.265 * value;
+  document.getElementById("donationWillingAmount").style.paddingLeft = left + "px";
 }
 
 function donationWillingSlide2() {
   var value=document.getElementById("donationWillingSlider2").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount2").value=donationWillingAmount;
+  var left = 2 + 0.0256 * value;
+  document.getElementById("donationWillingAmount2").style.paddingLeft = left + "px";
 }
 
 function starCountGroup1(number) {
@@ -907,5 +911,5 @@ function dunno8() {
 
 // Math.floor(Math.random() * (+max - +min))
 
-// var init = document.getElementById("donationWillingSlider");
-// init.setAttribute("value", "100");
+var init = document.getElementById("donationWillingSlider");
+init.setAttribute("value", "300");
