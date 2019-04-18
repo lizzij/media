@@ -909,7 +909,10 @@ function dunno8() {
   }
 }
 
-// Math.floor(Math.random() * (+max - +min))
-
-var init = document.getElementById("donationWillingSlider");
-init.setAttribute("value", "300");
+$( document ).ready(function() {
+  var random = Math.floor(Math.random() * 1000);
+  $("#donationWillingSlider").val(random);
+  $("#donationWillingAmount").val(random + "元");
+  var left = 2 + 0.265 * random;
+  document.getElementById("donationWillingAmount").style.paddingLeft = left + "px";
+});
