@@ -909,10 +909,14 @@ function dunno8() {
   }
 }
 
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+  var random = Math.floor(Math.random() * (max - min)) + min;
+  $(sliderName).val(random);
+  $(sliderAmount).val(random + "元");
+  var left = leftStart + moveStep * random;
+  $(sliderAmount).css("padding-left", left);
+}
+
 $( document ).ready(function() {
-  var random = Math.floor(Math.random() * 1000);
-  $("#donationWillingSlider").val(random);
-  $("#donationWillingAmount").val(random + "元");
-  var left = 2 + 0.265 * random;
-  document.getElementById("donationWillingAmount").style.paddingLeft = left + "px";
+  randomizeSlider(0, 1000, "#donationWillingSlider", "#donationWillingAmount", 2, 0.265)
 });
