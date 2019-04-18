@@ -96,71 +96,7 @@ div.trustScaleLabel > div{
   width: 62px;
 }
 
-#stateTrustScaleLabel1{
-  width: 62px;
-}
-
-#stateTrustScaleLabel2{
-  width: 62px;
-}
-
-#stateTrustScaleLabel3{
-  width: 62px;
-}
-
-#stateTrustScaleLabel4{
-  width: 62px;
-}
-
-#stateTrustScaleLabel5{
-  width: 62px;
-}
-
-#privateTrustScaleLabel1{
-  width: 62px;
-}
-
-#privateTrustScaleLabel2{
-  width: 62px;
-}
-
-#privateTrustScaleLabel3{
-  width: 62px;
-}
-
-#privateTrustScaleLabel4{
-  width: 62px;
-}
-
-#privateTrustScaleLabel5{
-  width: 62px;
-}
-
-#foreignTrustScaleLabel1{
-  width: 62px;
-}
-
-#foreignTrustScaleLabel2{
-  width: 62px;
-}
-
-#foreignTrustScaleLabel3{
-  width: 62px;
-}
-
-#foreignTrustScaleLabel4{
-  width: 62px;
-}
-
-#foreignTrustScaleLabel5{
-  width: 62px;
-}
-
-#Scale4Divider > div{
-  width: 62px;
-  padding-top: 23px;
-}
-#Scale3Divider > div{
+#Scale1Divider > div{
   width: 62px;
   padding-top: 23px;
 }
@@ -168,9 +104,13 @@ div.trustScaleLabel > div{
   width: 62px;
   padding-top: 23px;
 }
-#Scale1Divider > div{
+#Scale3Divider > div{
   width: 62px;
   padding-top: 23px;
+}
+#Scale4Divider > div{
+  width: 62px;
+  /* padding-top: 23px; */
 }
 #Scale5Divider > div{
   width: 62px;
@@ -944,4 +884,14 @@ input.btn {
 
 #checkBeanNumberSource{
   padding-top:5px;
+}
+
+
+pre{
+  display: block;
+  font-family: PingFangHK-Regular, sans-serif;
+  white-space: pre-line;
+  margin: 0.5em 0px;
+  color: #4F4F4F;
+  font-size: 14px;
 }

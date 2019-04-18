@@ -242,12 +242,16 @@
           <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="yesInterested">是的，我很感兴趣</label></div>
         </div>
         <div class="slidecontainer" id="walkathon" style="display:none">
+          <div id="note">
+            <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
+              <output name="amount" id="walkathonDistance" for="rangeInput">我将在2019年3月16日走5000步（4公里）
+                —— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
+            </pre>
+          </div>
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
-            <input type="range" min="4000" max="7000" value="4000" class="slider" id="walkathonSlider" oninput="walkathonSlide()"></input><output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output></div>
-
-        <div id="note">
-          <output name="amount" id="walkathonDistance" for="rangeInput">我将在 [2019年3月16日] 走5000步（4公里）—— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
-        </div>
+            <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">4000步</output>
+            <input type="range" min="4000" max="7000" value="4000" class="slider" id="walkathonSlider" oninput="walkathonSlide()"></input>
+          </div>
         </div>
       </div>
       </div>

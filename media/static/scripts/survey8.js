@@ -428,8 +428,8 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust1Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust1Amount").style.paddingLeft = left + "px";
 }
 
 function trust2Slide() {
@@ -464,8 +464,8 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust2Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust2Amount").style.paddingLeft = left + "px";
 }
 
 function trust3Slide() {
@@ -500,8 +500,8 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust3Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust3Amount").style.paddingLeft = left + "px";
 }
 
 function trust4Slide() {
@@ -536,8 +536,8 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust4Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust4Amount").style.paddingLeft = left + "px";
 }
 
 function trust5Slide() {
@@ -572,8 +572,8 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust5Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust5Amount").style.paddingLeft = left + "px";
 }
 
 function trust6Slide() {
@@ -608,6 +608,6 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust6Amount").style.left = left + "px";
+  var left = 2 + 2.9 * trust;
+  document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
