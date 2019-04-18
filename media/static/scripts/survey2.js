@@ -20,6 +20,8 @@ function signUpFeeSlide() {
   var value=document.getElementById("signUpFeeSlider").value;
   var signUpFeeAmount = `${value}元`;
   document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
 function outing1Slide() {
@@ -49,8 +51,8 @@ function outing1Slide() {
     document.getElementById("outing1ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing1ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * value;
-  document.getElementById("outing1Amount").style.left = left + "px";
+  var left = 10 + 2.8 * value;
+  document.getElementById("outing1Amount").style.paddingLeft = left + "px";
 }
 
 function outing2Slide() {
@@ -80,8 +82,8 @@ function outing2Slide() {
     document.getElementById("outing2ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing2ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * value;
-  document.getElementById("outing2Amount").style.left = left + "px";
+  var left = 10 + 2.8 * value;
+  document.getElementById("outing2Amount").style.paddingLeft = left + "px";
 }
 
 function outing3Slide() {
@@ -111,8 +113,8 @@ function outing3Slide() {
     document.getElementById("outing3ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing3ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * value;
-  document.getElementById("outing3Amount").style.left = left + "px";
+  var left = 10 + 2.8 * value;
+  document.getElementById("outing3Amount").style.paddingLeft = left + "px";
 }
 
 function outing4Slide() {
@@ -142,8 +144,8 @@ function outing4Slide() {
     document.getElementById("outing4ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing4ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * value;
-  document.getElementById("outing4Amount").style.left = left + "px";
+  var left = 10 + 2.8 * value;
+  document.getElementById("outing4Amount").style.paddingLeft = left + "px";
 }
 
 function outing5Slide() {
@@ -173,8 +175,8 @@ function outing5Slide() {
     document.getElementById("outing5ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing5ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * value;
-  document.getElementById("outing5Amount").style.left = left + "px";
+  var left = 10 + 2.8 * value;
+  document.getElementById("outing5Amount").style.paddingLeft = left + "px";
 }
 
 function domesticWebsiteSlide() {
@@ -190,6 +192,8 @@ function domesticWebsiteSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("domesticWebsiteAmount").value=time;
   }
+  var left = 5 + 1.2 * value;
+  document.getElementById("domesticWebsiteAmount").style.paddingLeft = left + "px";
 }
 
 function foreignWebsiteSlide() {
@@ -205,6 +209,8 @@ function foreignWebsiteSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("foreignWebsiteAmount").value=time;
   }
+  var left = 5 + 1.2 * value;
+  document.getElementById("foreignWebsiteAmount").style.paddingLeft = left + "px";
 }
 
 function domesticMediaSlide() {
@@ -220,6 +226,8 @@ function domesticMediaSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("domesticMediaAmount").value=time;
   }
+  var left = 5 + 1.2 * value;
+  document.getElementById("domesticMediaAmount").style.paddingLeft = left + "px";
 }
 
 function foreignMediaSlide() {
@@ -235,6 +243,8 @@ function foreignMediaSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("foreignMediaAmount").value=time;
   }
+  var left = 5 + 1.2 * value;
+  document.getElementById("foreignMediaAmount").style.paddingLeft = left + "px";
 }
 
 function chatWithFriendsSlide() {
@@ -250,6 +260,8 @@ function chatWithFriendsSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("chatWithFriendsAmount").value=time;
   }
+  var left = 5 + 1.2 * value;
+  document.getElementById("chatWithFriendsAmount").style.paddingLeft = left + "px";
 }
 
 function dunno1() {
@@ -344,8 +356,8 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust1Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust1Amount").style.paddingLeft = left + "px";
 }
 
 function trust2Slide() {
@@ -380,8 +392,8 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust2Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust2Amount").style.paddingLeft = left + "px";
 }
 
 function trust3Slide() {
@@ -416,8 +428,8 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust3Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust3Amount").style.paddingLeft = left + "px";
 }
 
 function trust4Slide() {
@@ -452,8 +464,8 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust4Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust4Amount").style.paddingLeft = left + "px";
 }
 
 function trust5Slide() {
@@ -488,8 +500,8 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust5Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust5Amount").style.paddingLeft = left + "px";
 }
 
 function trust6Slide() {
@@ -524,6 +536,6 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.97 * trust;
-  document.getElementById("trust6Amount").style.left = left + "px";
+  var left = 10 + 2.8 * trust;
+  document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }

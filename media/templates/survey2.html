@@ -16,7 +16,7 @@
 <body>
 
   <!-- page 1 -->
-  <div id="page1">
+  <div id="page1" >
     <div id="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">让我们先来向您了解一些关于该活动的问题。</div><!-- event location question -->
@@ -33,8 +33,11 @@
         <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
         <div class="questionAnswer">
           <div class="slidecontainer" id="signUpFee">
-            <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input><output class="sliderAmount" name="amount" id="signUpFeeAmount"
-                for="rangeInput">0元</output></div>
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+              <output class="sliderAmount" name="amount" id="signUpFeeAmount"
+                for="rangeInput">0元</output>
+              <input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
+              </div>
           </div>
         </div>
       </div>
@@ -81,8 +84,11 @@
               <div id="outing1ScaleLabel4">对我做决定<br />非常重要</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-top:5px; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="outing1" oninput="outing1Slide()"></input><output class="sliderAmount" name="amount" id="outing1Amount"
-                  for="rangeInput">0</output></div>
+              <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="outing1Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" class="slider" id="outing1" oninput="outing1Slide()"></input>
+              </div>
             </div>
           </div><!-- option 2 -->
           <div class="outingOption">
@@ -102,8 +108,11 @@
               <div id="outing2ScaleLabel4">对我做决定<br />非常重要</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-top:5px; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="outing2" oninput="outing2Slide()"></input><output class="sliderAmount" name="amount" id="outing2Amount"
-                  for="rangeInput">0</output></div>
+              <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="outing2Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" class="slider" id="outing2" oninput="outing2Slide()"></input>
+              </div>
             </div>
           </div><!-- option 3 -->
           <div class="outingOption">
@@ -123,8 +132,11 @@
               <div id="outing3ScaleLabel4">对我做决定<br />非常重要</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-top:5px; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="outing3" oninput="outing3Slide()"></input><output class="sliderAmount" name="amount" id="outing3Amount"
-                  for="rangeInput">0</output></div>
+              <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="outing3Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" class="slider" id="outing3" oninput="outing3Slide()"></input>
+              </div>
             </div>
           </div><!-- option 4 -->
           <div class="outingOption">
@@ -144,8 +156,11 @@
               <div id="outing4ScaleLabel4">对我做决定<br />非常重要</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-top:5px; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="outing4" oninput="outing4Slide()"></input><output class="sliderAmount" name="amount" id="outing4Amount"
-                  for="rangeInput">0</output></div>
+              <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="outing4Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" class="slider" id="outing4" oninput="outing4Slide()"></input>
+              </div>
             </div>
           </div><!-- option 5 -->
           <div class="outingOption">
@@ -165,8 +180,11 @@
               <div id="outing5ScaleLabel4">对我做决定<br />非常重要</div>
             </div>
             <div class="slidecontainer">
-              <div class="form-group" style="margin-top:5px; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="outing5" oninput="outing5Slide()"></input><output class="sliderAmount" name="amount" id="outing5Amount"
-                  for="rangeInput">0</output></div>
+              <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="outing5Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" class="slider" id="outing5" oninput="outing5Slide()"></input>
+              </div>
             </div>
           </div>
         </div>
@@ -197,39 +215,53 @@
       <div class="questionAnswer">
         <div class="slidecontainer" id="domesticWebsite">
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
-            <input type="range" min="0" max="200" value="0" class="slider" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input><output class="sliderAmount" name="amount" id="domesticWebsiteAmount" for="rangeInput">0小时 0分钟</output></div>
+            <output class="sliderAmount" name="amount" id="domesticWebsiteAmount" for="rangeInput">0小时 0分钟</output>
+            <input type="range" min="0" max="200" value="0" class="slider" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input>
+            </div>
         </div>
       </div>
 
       <div class="visitPrompt">国外网站（如纽约时报，华尔街日报）</div>
       <div class="questionAnswer">
         <div class="slidecontainer" id="foreignWebsite">
-          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="200" value="0" class="slider" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input><output class="sliderAmount" name="amount"
-              id="foreignWebsiteAmount" for="rangeInput">0小时 0分钟</output></div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount"
+              id="foreignWebsiteAmount" for="rangeInput">0小时 0分钟</output>
+            <input type="range" min="0" max="200" value="0" class="slider" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input>
+          </div>
         </div>
       </div>
 
       <div class="visitPrompt">国内社交媒体（如微博，微信）</div>
       <div class="questionAnswer">
         <div class="slidecontainer" id="domesticMedia">
-          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="200" value="0" class="slider" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input><output class="sliderAmount" name="amount" id="domesticMediaAmount"
-              for="rangeInput">0小时 0分钟</output></div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount" id="domesticMediaAmount"
+              for="rangeInput">0小时 0分钟</output>
+            <input type="range" min="0" max="200" value="0" class="slider" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input>
+          </div>
         </div>
       </div>
 
       <div class="visitPrompt">国外社交媒体（如Facebook Twitter Instagram）</div>
       <div class="questionAnswer">
         <div class="slidecontainer" id="foreignMedia">
-          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="200" value="0" class="slider" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input><output class="sliderAmount" name="amount" id="foreignMediaAmount"
-              for="rangeInput">0小时 0分钟</output></div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount" id="foreignMediaAmount"
+              for="rangeInput">0小时 0分钟</output>
+            <input type="range" min="0" max="200" value="0" class="slider" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input>
+          </div>
         </div>
       </div>
 
       <div class="visitPrompt">与朋友或同学聊天（直接的言语交谈）</div>
       <div class="questionAnswer">
         <div class="slidecontainer" id="chatWithFriends">
-          <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="200" value="0" class="slider" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input><output class="sliderAmount" name="amount"
-              id="chatWithFriendsAmount" for="rangeInput">0小时 0分钟</output></div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount"
+              id="chatWithFriendsAmount" for="rangeInput">0小时 0分钟</output>
+            <input type="range" min="0" max="200" value="0" class="slider" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input>
+          </div>
         </div>
       </div>
     </div>
@@ -262,10 +294,10 @@
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">人民日报</div>
-            </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno1" onclick="dunno1()">
-              <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno1" onclick="dunno1()">
+                <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
+              </div>
             </div>
             <div id="trustSlider1">
               <div id="Scale1Divider">
@@ -283,18 +315,21 @@
                 <div id="trust1ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust1" oninput="trust1Slide()"></input><output class="sliderAmount" name="amount" id="trust1Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust1Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust1" oninput="trust1Slide()"></input>
+                </div>
               </div>
             </div>
           </div><!-- option 2 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">新闻晨报</div>
-            </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno2" onclick="dunno2()">
-              <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno2" onclick="dunno2()">
+                <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
+              </div>
             </div>
             <div id="trustSlider2">
               <div id="Scale2Divider">
@@ -312,18 +347,21 @@
                 <div id="trust2ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust2" oninput="trust2Slide()"></input><output class="sliderAmount" name="amount" id="trust2Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust2Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust2" oninput="trust2Slide()"></input>
+                </div>
               </div>
             </div>
           </div><!-- option 3 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">新闻广播FM93.4</div>
-            </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno3" onclick="dunno3()">
-              <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno3" onclick="dunno3()">
+                <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
+              </div>
             </div>
             <div id="trustSlider3">
               <div id="Scale3Divider">
@@ -341,19 +379,23 @@
                 <div id="trust3ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust3" oninput="trust3Slide()"></input><output class="sliderAmount" name="amount" id="trust3Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust3Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust3" oninput="trust3Slide()"></input>
+                  </div>
               </div>
             </div>
           </div><!-- option 4 -->
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">上海市环境监测中心</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno4" onclick="dunno4()">
+                <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
+              </div>
             </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno4" onclick="dunno4()">
-              <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
-            </div>
+
             <div id="trustSlider4">
               <div id="Scale4Divider">
                 <div id="scaleDivider1">·</div>
@@ -370,8 +412,11 @@
                 <div id="trust4ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust4" oninput="trust4Slide()"></input><output class="sliderAmount" name="amount" id="trust4Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust4Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust4" oninput="trust4Slide()"></input>
+                  </div>
               </div>
             </div>
           </div>
@@ -379,11 +424,12 @@
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">中国国家旅游局</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno5" onclick="dunno5()">
+                <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
+              </div>
             </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno5" onclick="dunno5()">
-              <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
-            </div>
+
             <div id="trustSlider5">
               <div id="Scale5Divider">
                 <div id="scaleDivider1">·</div>
@@ -400,8 +446,11 @@
                 <div id="trust5ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust5" oninput="trust5Slide()"></input><output class="sliderAmount" name="amount" id="trust5Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust5Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust5" oninput="trust5Slide()"></input>
+                </div>
               </div>
             </div>
           </div>
@@ -409,11 +458,12 @@
           <div class="peopleTrustOption">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">纽约时报</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno6" onclick="dunno6()">
+                <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
+              </div>
             </div>
-            <div class="form-group form-check" style="margin-top:8px; margin-bottom:8px">
-              <input type="checkbox" class="form-check-input" id="dunno6" onclick="dunno6()">
-              <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
-            </div>
+
             <div id="trustSlider6">
               <div id="Scale4Divider">
                 <div id="scaleDivider1">·</div>
@@ -430,8 +480,11 @@
                 <div id="trust6ScaleLabel5">非常信任</div>
               </div>
               <div class="slidecontainer">
-                <div class="form-group" style="margin-bottom:0; margin-bottom:0px"><input type="range" min="0" max="100" value="0" class="slider" id="trust6" oninput="trust6Slide()"></input><output class="sliderAmount" name="amount" id="trust6Amount"
-                    for="rangeInput">0</output></div>
+                <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust6Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" class="slider" id="trust6" oninput="trust6Slide()"></input>
+                </div>
               </div>
             </div>
           </div>

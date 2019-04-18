@@ -18,6 +18,8 @@ function signUpFeeSlide() {
   var value=document.getElementById("signUpFeeSlider").value;
   var signUpFeeAmount = `${value}元`;
   document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
 function exerciseTimeSlide() {
@@ -33,4 +35,6 @@ function exerciseTimeSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("exerciseTimeAmount").value=time;
   }
+  var left = 5 + 0.153 * value;
+  document.getElementById("exerciseTimeAmount").style.paddingLeft = left + "px";
 }

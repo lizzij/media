@@ -828,11 +828,12 @@ div.outingScaleLabel > div{
 }
 
 .outingOption{
-  height: 110px;
+  height: 140px;
 }
 
 .visitPrompt{
-  padding-top: 20px;
+  padding-top: 33px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: row;
   font-size: 14px;
@@ -847,7 +848,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 55px;
   color: #979797;
-  /* top: 311px; */
+  padding-top: 25px;
   text-align: right;
   left: calc(50% - 136px);
 }
@@ -859,7 +860,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 55px;
   color: #979797;
-  /* top: 391px; */
+  padding-top: 25px;
   text-align: right;
   left: calc(50% - 136px);
 }
@@ -871,7 +872,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 55px;
   color: #979797;
-  /* top: 471px; */
+  padding-top: 25px;
   text-align: right;
   left: calc(50% - 136px);
 }
@@ -883,7 +884,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 55px;
   color: #979797;
-  /* top: 551px; */
+  padding-top: 25px;
   text-align: right;
   left: calc(50% - 136px);
 }
@@ -895,7 +896,7 @@ div.outingScaleLabel > div{
   flex-direction: row;
   font-size: 55px;
   color: #979797;
-  /* top: 631px; */
+  padding-top: 25px;
   text-align: right;
   left: calc(50% - 136px);
 }
@@ -916,8 +917,7 @@ div.outingScaleLabel > div{
 .form-group .form-control{
   color: #4F4F4F;
   height: calc(2rem + 2px);
-  padding: .5rem .5rem;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #CDCDCD;
   width: 97%;
 }
