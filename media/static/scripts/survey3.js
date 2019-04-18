@@ -27,7 +27,7 @@ function exerciseTimeSlide() {
   var hours;
   var minutes;
   if (value >= 1200) {
-    document.getElementById("exerciseTimeAmount").value=`大于或等于20小时`;
+    document.getElementById("exerciseTimeAmount").value=`大于等于20小时`;
   }
   else {
     hours = Math.floor(value / 60);
@@ -35,6 +35,6 @@ function exerciseTimeSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("exerciseTimeAmount").value=time;
   }
-  var left = 5 + 0.153 * value;
+  var left = 5 + 0.164 * value;
   document.getElementById("exerciseTimeAmount").style.paddingLeft = left + "px";
 }
