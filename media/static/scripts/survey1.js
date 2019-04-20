@@ -928,6 +928,6 @@ $( document ).ready(function() {
   randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9, "");
   randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
   randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
-  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "元");
+  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "");
   randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.025, "元");
 });

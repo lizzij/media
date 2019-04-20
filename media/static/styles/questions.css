@@ -175,6 +175,7 @@ div.trustScaleLabel > div{
   margin-top: 51.5px;
   border-radius: 0px;
   outline: none;
+  border-color: transparent;
   background: transparent url('../img/finger.png');
   cursor: pointer;
 }
@@ -193,6 +194,7 @@ div.trustScaleLabel > div{
   margin-top: 51.5px;
   border-radius: 0px;
   outline: none;
+  border-color: transparent;
   background: transparent url('../img/finger.png');
   cursor: pointer;
 }
