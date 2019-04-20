@@ -570,7 +570,7 @@ function donationWillingSlide2() {
   var value=document.getElementById("donationWillingSlider2").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount2").value=donationWillingAmount;
-  var left = 2 + 0.0256 * value;
+  var left = 2 + 0.025 * value;
   document.getElementById("donationWillingAmount2").style.marginLeft = left + "px";
 }
 
@@ -929,5 +929,5 @@ $( document ).ready(function() {
   randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
   randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
   randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "元");
-  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.0256, "元");
+  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.025, "元");
 });
