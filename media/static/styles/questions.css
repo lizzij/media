@@ -204,8 +204,7 @@ div.trustScaleLabel > div{
   font-size: 14px;
   font-weight: bold;
   color: white;
-  /* background-color: #7e7e7e; */
-  background-color: #dc3545;;
+  background-color: #7e7e7e;
   z-index: 10;
 }
 
