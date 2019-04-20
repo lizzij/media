@@ -88,7 +88,7 @@ body{
   flex-direction: row;
   font-size: 12px;
   color: #979797;
-  padding-top: 9px;
+  padding-top: 32px;
   text-align: center
 }
 
@@ -147,20 +147,48 @@ div.trustScaleLabel > div{
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
   border-radius: 100%;
   background: #4F4F4F;
+  cursor: pointer; */
+
+  /* -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: 0px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 30px;
+  margin-top: 35px;
+  /* margin-right: 100px; */
+  background: transparent url('../img/finger.png');
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-  width: 15px;
+  /* width: 15px;
   height: 15px;
   border-radius: 100%;
   background: #4F4F4F;
+  cursor: pointer; */
+
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 30px;
+  margin-top: 35px;
+  /* margin-right: 100px; */
+  background: transparent url('../img/finger.png');
   cursor: pointer;
 }
 
@@ -171,11 +199,11 @@ div.trustScaleLabel > div{
   font-weight: bold;
   color: white;
   background-color: #4F4F4F;
+  margin-bottom: 20px;
 }
 
 .slidecontainer{
   width: 312px;
-  padding-top: 20px;
   z-index: -1;
 }
 
@@ -710,8 +738,8 @@ div.trustScaleLabel > div{
 }
 
 .peopleTrustOption{
-  padding-bottom: 17px;
-  padding-top: 17px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   color: #4F4F4F;
 }
 
