@@ -266,7 +266,7 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust1Amount").style.paddingLeft = left + "px";
 }
 
@@ -302,7 +302,7 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust2Amount").style.paddingLeft = left + "px";
 }
 
@@ -338,7 +338,7 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust3Amount").style.paddingLeft = left + "px";
 }
 
@@ -374,7 +374,7 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust4Amount").style.paddingLeft = left + "px";
 }
 
@@ -410,7 +410,7 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust5Amount").style.paddingLeft = left + "px";
 }
 
@@ -446,7 +446,7 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
 
@@ -482,7 +482,7 @@ function trust7Slide() {
     document.getElementById("trust7ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust7ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust7Amount").style.paddingLeft = left + "px";
 }
 
@@ -518,7 +518,7 @@ function trust8Slide() {
     document.getElementById("trust8ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust8ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust8Amount").style.paddingLeft = left + "px";
 }
 
@@ -554,7 +554,7 @@ function willingnessSlide() {
     document.getElementById("willingnessLabel5").style.fontWeight = 'bold';
     document.getElementById("willingnessLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("willingnessAmount").style.paddingLeft = left + "px";
 }
 
@@ -570,7 +570,7 @@ function donationWillingSlide2() {
   var value=document.getElementById("donationWillingSlider2").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount2").value=donationWillingAmount;
-  var left = 2 + 0.025 * value;
+  var left = 2 + 0.026 * value;
   document.getElementById("donationWillingAmount2").style.paddingLeft = left + "px";
 }
 
