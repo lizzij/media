@@ -557,3 +557,26 @@ function hideOnCampusAddress(){
 function showOnCampusAddress(){
   document.getElementById("onCampusAddress").style.display = "block";
 }
+
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+  var random = Math.floor(Math.random() * (max - min)) + min;
+  $(sliderName).val(random);
+  $(sliderAmount).val(random + "元");
+  var left = leftStart + moveStep * random;
+  $(sliderAmount).css("padding-left", left);
+}
+
+$( document ).ready(function() {
+  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 0, 300);
+  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
+  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9);
+  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.0256);
+});

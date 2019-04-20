@@ -166,9 +166,11 @@ div.trustScaleLabel > div{
 
 .sliderAmount{
   padding-left: 3px;
+  padding-right: 3px;
   font-size: 14px;
   font-weight: bold;
-  color: #4F4F4F;
+  color: white;
+  background-color: #4F4F4F;
 }
 
 .slidecontainer{

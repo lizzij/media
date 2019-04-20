@@ -267,7 +267,7 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust1Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust1Amount").style.marginLeft = left + "px";
 }
 
 function trust2Slide() {
@@ -303,7 +303,7 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust2Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust2Amount").style.marginLeft = left + "px";
 }
 
 function trust3Slide() {
@@ -339,7 +339,7 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust3Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust3Amount").style.marginLeft = left + "px";
 }
 
 function trust4Slide() {
@@ -375,7 +375,7 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust4Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust4Amount").style.marginLeft = left + "px";
 }
 
 function trust5Slide() {
@@ -411,7 +411,7 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust5Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust5Amount").style.marginLeft = left + "px";
 }
 
 function trust6Slide() {
@@ -447,7 +447,7 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust6Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust6Amount").style.marginLeft = left + "px";
 }
 
 function trust7Slide() {
@@ -483,7 +483,7 @@ function trust7Slide() {
     document.getElementById("trust7ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust7Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust7Amount").style.marginLeft = left + "px";
 }
 
 function trust8Slide() {
@@ -519,7 +519,7 @@ function trust8Slide() {
     document.getElementById("trust8ScaleLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("trust8Amount").style.paddingLeft = left + "px";
+  document.getElementById("trust8Amount").style.marginLeft = left + "px";
 }
 
 function willingnessSlide() {
@@ -555,15 +555,15 @@ function willingnessSlide() {
     document.getElementById("willingnessLabel5").style.color = "#4F4F4F";
   }
   var left = 2 + 2.9 * trust;
-  document.getElementById("willingnessAmount").style.paddingLeft = left + "px";
+  document.getElementById("willingnessAmount").style.marginLeft = left + "px";
 }
 
 function donationWillingSlide() {
   var value=document.getElementById("donationWillingSlider").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount").value=donationWillingAmount;
-  var left = 2 + 0.265 * value;
-  document.getElementById("donationWillingAmount").style.paddingLeft = left + "px";
+  var left = 2 + 0.255 * value;
+  document.getElementById("donationWillingAmount").style.marginLeft = left + "px";
 }
 
 function donationWillingSlide2() {
@@ -571,7 +571,7 @@ function donationWillingSlide2() {
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount2").value=donationWillingAmount;
   var left = 2 + 0.0256 * value;
-  document.getElementById("donationWillingAmount2").style.paddingLeft = left + "px";
+  document.getElementById("donationWillingAmount2").style.marginLeft = left + "px";
 }
 
 function starCountGroup1(number) {
@@ -909,25 +909,25 @@ function dunno8() {
   }
 }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
   var random = Math.floor(Math.random() * (max - min)) + min;
   $(sliderName).val(random);
-  $(sliderAmount).val(random + "元");
+  $(sliderAmount).val(random + unit);
   var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
+  $(sliderAmount).css("margin-left", left);
 }
 
 $( document ).ready(function() {
-  randomizeSlider(0, 1000, "#donationWillingSlider", "#donationWillingAmount", 2, 0.265);
-  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9);
-  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.0256);
+  randomizeSlider(0, 1000, "#donationWillingSlider", "#donationWillingAmount", 2, 0.255, "元");
+  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
+  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "元");
+  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.0256, "元");
 });
