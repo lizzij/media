@@ -1,4 +1,4 @@
-body{
+margin-top: -37px;body{
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -48,6 +48,10 @@ body{
   color: #979797;
 }
 
+.starAnswer{
+  color: #979797;
+}
+
 .form-check-input{
   padding-top: 10px;
 }
@@ -63,7 +67,7 @@ body{
 
 .trustOptionPrompt{
   padding-top: 5px;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -88,7 +92,7 @@ body{
   flex-direction: row;
   font-size: 12px;
   color: #979797;
-  padding-top: 32px;
+  margin-top: -21px;
   text-align: center
 }
 
@@ -98,46 +102,45 @@ div.trustScaleLabel > div{
 
 #Scale1Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale2Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale3Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale4Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale5Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale6Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale7Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #Scale8Divider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 #GoodDeedDivider > div{
   width: 62px;
-  padding-top: 23px;
+  margin-top: -36px;
 }
 
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 5px;
-  border-radius: 5px;
+  height: 21px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -169,8 +172,8 @@ div.trustScaleLabel > div{
   appearance: none;
   width: 25px;
   height: 30px;
-  margin-top: 35px;
-  /* margin-right: 100px; */
+  margin-top: 51.5px;
+  border-radius: 0px;
   background: transparent url('../img/finger.png');
   cursor: pointer;
 }
@@ -186,20 +189,19 @@ div.trustScaleLabel > div{
   appearance: none;
   width: 25px;
   height: 30px;
-  margin-top: 35px;
-  /* margin-right: 100px; */
+  margin-top: 51.5px;
+  border-radius: 0px;
   background: transparent url('../img/finger.png');
   cursor: pointer;
 }
 
 .sliderAmount{
-  padding-left: 3px;
-  padding-right: 3px;
+  position: absolute;
   font-size: 14px;
   font-weight: bold;
   color: white;
-  background-color: #4F4F4F;
-  margin-bottom: 20px;
+  background-color: #7e7e7e;
+  z-index: 10;
 }
 
 #donationWillingAmount, #donationWillingAmount2{
@@ -315,14 +317,12 @@ div.trustScaleLabel > div{
   font-size: 14px;
   color: #4F4F4F;
   line-height: 1.8;
-  padding-right: 10px;
 }
 
 #subNote{
   font-size: 14px;
   color: #979797;
   line-height: 1.8;
-  padding-right: 10px;
 }
 
 #walkathon1{
@@ -352,16 +352,16 @@ div.trustScaleLabel > div{
 
 .starPrompt{
   display: flex;
-  font-size: 10px;
+  font-size: 14px;
   color: #4F4F4F;
-  width: 66px;
+  width: 92px;
   letter-spacing: -0.5px;
 }
 
 #starLeftPrompt{
-  font-size: 14px;
+  font-size: 16px;
   color: #4F4F4F;
-  width: 66px;
+  width: 92px;
 }
 
 #starLeftCount{
@@ -403,6 +403,7 @@ div.trustScaleLabel > div{
 .starContainer{
   overflow: hidden;
   color: #979797;
+  padding-top: 3px;
 }
 
 .starContainer div {
@@ -422,48 +423,54 @@ div.trustScaleLabel > div{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 .starGroup2Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 .starGroup3Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 .starGroup4Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 .starGroup5Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 .starGroup6Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
+  padding-top: 3px;
 }
 
 #starLeftContainer{
@@ -473,8 +480,8 @@ div.trustScaleLabel > div{
 #starAlert{
   position: absolute;
   width:205px;
-  top: 517px;
-  left: calc(50% - 83px);
+  top: 496px;
+  left: calc(50% - 66px);
   /* left: 116px; */
   color: #FF3333;
   font-size: 14px;
@@ -495,8 +502,8 @@ div.trustScaleLabel > div{
 
 #clearAllButton{
   position:absolute;
-  top: 517px;
-  left: calc(50% + 125px);
+  top: 496px;
+  left: calc(50% + 140px);
   /* left: 312px; */
   width: 19px;
   height: 19px;
@@ -582,7 +589,7 @@ div.trustScaleLabel > div{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
 }
 
@@ -590,7 +597,7 @@ div.trustScaleLabel > div{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
 }
 
@@ -598,7 +605,7 @@ div.trustScaleLabel > div{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
 }
 
@@ -606,19 +613,20 @@ div.trustScaleLabel > div{
   position: absolute;
   content: '\2605';
   color: #FFD700;
-  padding-left: 66px;
+  padding-left: 92px;
   white-space: nowrap;
 }
 
 #weatherStarLeftContainer{
   color: #FFD700;
+  padding-top: 4px;
 }
 
 #weatherStarAlert{
   position: absolute;
   width:205px;
-  top: 517px;
-  left: calc(50% - 83px);
+  top: 496px;
+  left: calc(50% - 66px);
   /* left: 116px; */
   color: #FF3333;
   font-size: 14px;
@@ -630,8 +638,8 @@ div.trustScaleLabel > div{
 
 #weatherClearAllButton{
   position:absolute;
-  top: 517px;
-  left: calc(50% + 125px);
+  top: 496px;
+  left: calc(50% + 140px);
   /* left: 312px; */
   width: 19px;
   height: 19px;
@@ -767,7 +775,8 @@ div.trustScaleLabel > div{
   font-size: 12px;
   color: #4F4F4F;
   padding-top: 32px;
-  text-align: center
+  text-align: center;
+  margin-top: -55px;
 }
 
 div.willingnessScaleLabel > div{
