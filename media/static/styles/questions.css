@@ -202,9 +202,14 @@ div.trustScaleLabel > div{
   margin-bottom: 20px;
 }
 
+#donationWillingAmount, #donationWillingAmount2{
+  margin-bottom: 0px;
+}
+
 .slidecontainer{
   width: 312px;
   z-index: -1;
+  padding-bottom: 15px;
 }
 
 #eventTime{
@@ -761,7 +766,7 @@ div.trustScaleLabel > div{
   flex-direction: row;
   font-size: 12px;
   color: #4F4F4F;
-  padding-top:5px;
+  padding-top: 32px;
   text-align: center
 }
 
