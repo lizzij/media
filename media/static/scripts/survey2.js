@@ -51,7 +51,7 @@ function outing1Slide() {
     document.getElementById("outing1ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing1ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * value;
+  var left = 2 + 2.88 * value;
   document.getElementById("outing1Amount").style.paddingLeft = left + "px";
 }
 
@@ -82,7 +82,7 @@ function outing2Slide() {
     document.getElementById("outing2ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing2ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * value;
+  var left = 2 + 2.88 * value;
   document.getElementById("outing2Amount").style.paddingLeft = left + "px";
 }
 
@@ -113,7 +113,7 @@ function outing3Slide() {
     document.getElementById("outing3ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing3ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * value;
+  var left = 2 + 2.88 * value;
   document.getElementById("outing3Amount").style.paddingLeft = left + "px";
 }
 
@@ -144,7 +144,7 @@ function outing4Slide() {
     document.getElementById("outing4ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing4ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * value;
+  var left = 2 + 2.88 * value;
   document.getElementById("outing4Amount").style.paddingLeft = left + "px";
 }
 
@@ -175,7 +175,7 @@ function outing5Slide() {
     document.getElementById("outing5ScaleLabel4").style.fontWeight = 'bold';
     document.getElementById("outing5ScaleLabel4").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * value;
+  var left = 2 + 2.88 * value;
   document.getElementById("outing5Amount").style.paddingLeft = left + "px";
 }
 
@@ -192,7 +192,7 @@ function domesticWebsiteSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("domesticWebsiteAmount").value=time;
   }
-  var left = 5 + 1.2 * value;
+  var left = 5 + 1.21 * value;
   document.getElementById("domesticWebsiteAmount").style.paddingLeft = left + "px";
 }
 
@@ -209,7 +209,7 @@ function foreignWebsiteSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("foreignWebsiteAmount").value=time;
   }
-  var left = 5 + 1.2 * value;
+  var left = 5 + 1.21 * value;
   document.getElementById("foreignWebsiteAmount").style.paddingLeft = left + "px";
 }
 
@@ -226,7 +226,7 @@ function domesticMediaSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("domesticMediaAmount").value=time;
   }
-  var left = 5 + 1.2 * value;
+  var left = 5 + 1.21 * value;
   document.getElementById("domesticMediaAmount").style.paddingLeft = left + "px";
 }
 
@@ -243,7 +243,7 @@ function foreignMediaSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("foreignMediaAmount").value=time;
   }
-  var left = 5 + 1.2 * value;
+  var left = 5 + 1.21 * value;
   document.getElementById("foreignMediaAmount").style.paddingLeft = left + "px";
 }
 
@@ -260,7 +260,7 @@ function chatWithFriendsSlide() {
     var time = `${hours}小时 ${minutes}分钟`;
     document.getElementById("chatWithFriendsAmount").value=time;
   }
-  var left = 5 + 1.2 * value;
+  var left = 5 + 1.21 * value;
   document.getElementById("chatWithFriendsAmount").style.paddingLeft = left + "px";
 }
 
@@ -356,7 +356,7 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust1Amount").style.paddingLeft = left + "px";
 }
 
@@ -392,7 +392,7 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust2Amount").style.paddingLeft = left + "px";
 }
 
@@ -428,7 +428,7 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust3Amount").style.paddingLeft = left + "px";
 }
 
@@ -464,7 +464,7 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust4Amount").style.paddingLeft = left + "px";
 }
 
@@ -500,7 +500,7 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust5Amount").style.paddingLeft = left + "px";
 }
 
@@ -536,7 +536,7 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 10 + 2.8 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
 
@@ -558,25 +558,32 @@ function showOnCampusAddress(){
   document.getElementById("onCampusAddress").style.display = "block";
 }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
   var random = Math.floor(Math.random() * (max - min)) + min;
   $(sliderName).val(random);
-  $(sliderAmount).val(random + "元");
+  $(sliderAmount).val(random + unit);
   var left = leftStart + moveStep * random;
   $(sliderAmount).css("padding-left", left);
 }
 
 $( document ).ready(function() {
-  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 0, 300);
-  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9);
-  randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9);
-  randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.0256);
+  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+  randomizeSlider(0, 100, "#outing1", "#outing1Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#outing2", "#outing2Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#outing3", "#outing3Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#outing4", "#outing4Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#outing5", "#outing5Amount", 2, 2.88, "");
+
+  // randomizeSlider(0, 200, "#domesticWebsite", "#domesticWebsiteAmount", 5, 1.21, "");
+  // randomizeSlider(0, 200, "#foreignWebsite", "#foreignWebsiteAmount", 5, 1.21, "");
+  // randomizeSlider(0, 200, "#domesticMedia", "#domesticMediaAmount", 5, 1.21, "");
+  // randomizeSlider(0, 200, "#foreignMedia", "#foreignMediaAmount", 5, 1.21, "");
+  // randomizeSlider(0, 200, "#chatWithFriends", "#chatWithFriendsAmount", 5, 1.21, "");
+
+  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
 });
