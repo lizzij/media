@@ -337,3 +337,15 @@ function startTimer(timer, page, timesUp) {
     }
   }, 1000);
 }
+
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+  var random = Math.floor(Math.random() * (max - min)) + min;
+  $(sliderName).val(random);
+  $(sliderAmount).val(random + unit);
+  var left = leftStart + moveStep * random;
+  $(sliderAmount).css("padding-left", left);
+}
+
+$( document ).ready(function() {
+  randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
+});
