@@ -170,11 +170,12 @@ div.trustScaleLabel > div{
 
   -webkit-appearance: none;
   appearance: none;
-  /* width: 25px; */
-  height: 30px;
+  width: 29px;
+  height: 34px;
   margin-top: 51px;
   border-radius: 0px;
   outline: none;
+  /* margin-bottom: 1px; */
   border-color: transparent;
   background-color: transparent;
   background: transparent url('../img/finger.png');
@@ -190,8 +191,8 @@ div.trustScaleLabel > div{
 
   -webkit-appearance: none;
   appearance: none;
-  /* width: 25px; */
-  height: 30px;
+  width: 29px;
+  height: 34px;
   margin-top: 51px;
   border-radius: 0px;
   outline: none;
