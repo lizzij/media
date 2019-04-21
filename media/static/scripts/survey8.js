@@ -428,7 +428,7 @@ function trust1Slide() {
     document.getElementById("trust1ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust1ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust1Amount").style.paddingLeft = left + "px";
 }
 
@@ -464,7 +464,7 @@ function trust2Slide() {
     document.getElementById("trust2ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust2ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust2Amount").style.paddingLeft = left + "px";
 }
 
@@ -500,7 +500,7 @@ function trust3Slide() {
     document.getElementById("trust3ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust3ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust3Amount").style.paddingLeft = left + "px";
 }
 
@@ -536,7 +536,7 @@ function trust4Slide() {
     document.getElementById("trust4ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust4ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust4Amount").style.paddingLeft = left + "px";
 }
 
@@ -572,7 +572,7 @@ function trust5Slide() {
     document.getElementById("trust5ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust5ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust5Amount").style.paddingLeft = left + "px";
 }
 
@@ -608,6 +608,23 @@ function trust6Slide() {
     document.getElementById("trust6ScaleLabel5").style.fontWeight = 'bold';
     document.getElementById("trust6ScaleLabel5").style.color = "#4F4F4F";
   }
-  var left = 2 + 2.9 * trust;
+  var left = 2 + 2.88 * trust;
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
+
+function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+  var random = Math.floor(Math.random() * (max - min)) + min;
+  $(sliderName).val(random);
+  $(sliderAmount).val(random + unit);
+  var left = leftStart + moveStep * random;
+  $(sliderAmount).css("padding-left", left);
+}
+
+$( document ).ready(function() {
+  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+});
