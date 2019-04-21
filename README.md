@@ -1,6 +1,7 @@
 # Flask
 
 Local  
+
 0. http://127.0.0.1:5000/nBEXdMJkv56ymRZx/vQp4l04x0q/info
 1. http://127.0.0.1:5000/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info  
 2. http://127.0.0.1:5000/j9Z4Jbol5rwABVxl/d7kZonDXxO/info  
@@ -12,6 +13,7 @@ Local
 8. http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/info
 
 HTTPS  
+
 0. https://dailyeventinfo.com/nBEXdMJkv56ymRZx/vQp4l04x0q/info
 1. https://dailyeventinfo.com/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info
 2. https://dailyeventinfo.com/j9Z4Jbol5rwABVxl/d7kZonDXxO/info
