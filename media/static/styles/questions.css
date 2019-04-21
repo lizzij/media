@@ -71,7 +71,7 @@ margin-top: -37px;body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 50px;s
 }
 
 .trustOptionText{
@@ -141,7 +141,6 @@ div.trustScaleLabel > div{
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 21px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -151,15 +150,15 @@ div.trustScaleLabel > div{
 }
 
 .slider::-webkit-slider-thumb {
-  /* -webkit-appearance: none;
+  -webkit-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
   border-radius: 100%;
   background: #4F4F4F;
-  cursor: pointer; */
+  cursor: pointer;
 
-  /* -webkit-appearance: none;
+  -webkit-appearance: none;
   border: 1px solid #000000;
   height: 36px;
   width: 16px;
@@ -167,20 +166,19 @@ div.trustScaleLabel > div{
   background: #ffffff;
   cursor: pointer;
   margin-top: 0px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 
-  -webkit-appearance: none;
+  /* -webkit-appearance: none;
   appearance: none;
   width: 29px;
   height: 34px;
   margin-top: 51px;
   border-radius: 0px;
   outline: none;
-  /* margin-bottom: 1px; */
   border-color: transparent;
   background-color: transparent;
   background: transparent url('../img/finger.png');
-  cursor: pointer;
+  cursor: pointer; */
 }
 
 .slider::-moz-range-thumb {
@@ -207,13 +205,13 @@ div.trustScaleLabel > div{
   position: absolute;
   font-size: 14px;
   font-weight: bold;
-  color: white;
-  background-color: #808080;
+  color: #4F4F4F;
   z-index: 10;
+  margin-top: -44px;
 }
 
 #donationWillingAmount, #donationWillingAmount2{
-  margin-bottom: 0px;
+  margin-top: -30px;
 }
 
 .slidecontainer{
@@ -227,7 +225,7 @@ div.trustScaleLabel > div{
 }
 
 #donationWilling{
-  padding-top: 0px;
+  padding-top: 20px;
 }
 
 #signUpFee{
