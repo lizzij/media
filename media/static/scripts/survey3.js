@@ -22,6 +22,23 @@ function signUpFeeSlide() {
   document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
+function outdoorTimeSlide() {
+  var value=document.getElementById("outdoorTimeSlider").value;
+  var hours;
+  var minutes;
+  if (value >= 1200) {
+    document.getElementById("outdoorTimeAmount").value=`大于等于20小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    var time = `${hours}小时 ${minutes}分钟`;
+    document.getElementById("outdoorTimeAmount").value=time;
+  }
+  var left = 5 + 0.165 * value;
+  document.getElementById("outdoorTimeAmount").style.paddingLeft = left + "px";
+}
+
 function exerciseTimeSlide() {
   var value=document.getElementById("exerciseTimeSlider").value;
   var hours;

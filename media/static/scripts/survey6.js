@@ -303,12 +303,7 @@ function walkathonSlide() {
   var value=document.getElementById("walkathonSlider").value;
   var walkathonAmount = `${value}步`;
   var distance = value * 0.0008;
-  if (value > 5000) {
-    var donation = (value - 5000) * 0.01 + 10;
-  }
-  else {
-    var donation = 0;
-  }
+  var donation = (value - 4000) * 0.01;
   distance = distance.toFixed(2);
   donation = donation.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;

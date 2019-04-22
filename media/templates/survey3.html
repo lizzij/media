@@ -55,9 +55,21 @@
           </div>
         </div>
       </div>
+      <!-- outdoor time -->
+      <div class="question">
+        <div class="questionPrompt">您一周平均花多少小时在<b>户外</b>活动上（包括步行和骑自行车通勤、体育活动、户外活动）？</div>
+        <div class="questionAnswer">
+          <div class="slidecontainer" id="exerciseTime" style="padding-top:0;">
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+              <output class="sliderAmount" name="amount" id="outdoorTimeAmount" for="rangeInput">0小时 0分钟</output>
+              <input type="range" min="0" max="1250" value="0" class="slider" id="outdoorTimeSlider" oninput="outdoorTimeSlide()"></input>
+              </div>
+          </div>
+        </div>
+      </div>
       <!-- exercise time -->
       <div class="question">
-        <div class="questionPrompt">您一周平均花多少小时在运动（包括室内和室外）上？</div>
+        <div class="questionPrompt">您一周平均花多少小时在运动（包括<b>室内和室外</b>）上？</div>
         <div class="questionAnswer">
           <div class="slidecontainer" id="exerciseTime" style="padding-top:0;">
             <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
@@ -98,7 +110,7 @@
   <!-- page 2 -->
   <div id="page2" style="display:none">
     <div id="survey">
-      <!-- event name question -->
+      <div class="mainQuestion">关于新闻涉猎的问题</div>
       <div class="question">
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">以下列出了一些事件。有些事件真实发生了，有些则没有。对于每一件，请说明您是否认为它曾经发生过。</div>

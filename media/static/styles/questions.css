@@ -210,7 +210,16 @@ div.trustScaleLabel > div{
   margin-top: -44px;
 }
 
-#donationWillingAmount, #donationWillingAmount2{
+#outing1Amount, #outing2Amount, #outing3Amount, #outing4Amount, #outing5Amount{
+  margin-top: -60px;
+}
+
+#domesticWebsiteAmount, #foreignWebsiteAmount,
+#domesticMediaAmount, #foreignMediaAmount, #chatWithFriendsAmount{
+  margin-top: -25px;
+}
+
+#donationWillingAmount, #donationWillingAmount2, #signUpFeeAmount{
   margin-top: -30px;
 }
 
@@ -808,7 +817,7 @@ div.outingScaleLabel > div{
 
 .outingOptionPrompt{
   padding-top: 5px;
-  margin-bottom: 46px;
+  margin-bottom: 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -826,7 +835,7 @@ div.outingScaleLabel > div{
 
 .visitPrompt{
   padding-top: 33px;
-  padding-bottom: 5px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: row;
   font-size: 14px;

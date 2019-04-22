@@ -52,6 +52,7 @@
   <!-- page 2 -->
   <div id="page2" style="display:none">
     <div id="survey">
+      <div class="mainQuestion">关于天气预测的问题</div>
       <div class="question">
         <div class="questionPrompt">
           <p>有活动预计在<b>3月的第2周</b>举行。您认为那周的空气质量等级会如何？</p>
@@ -256,9 +257,12 @@
     <div id="survey">
       <!-- walkathon distance -->
       <div class="question">
-        <div class="questionPrompt">您想承诺参加我们组织的“儿童慈善徒步活动”吗？如果您同意，我们将在活动提前几日向您发送提示以及如何参与的说明。</div>
-        <div id="note">
-          <p>实际捐款将视您现在所做的选择而定，以后不会进行调整：</br>
+        <div class="questionPrompt">
+          <p>您想承诺参加我们组织的“儿童慈善徒步活动”吗？如果您同意，我们将在活动提前几日向您发送提示以及如何参与的说明。</p>
+          <p>实际捐款将视您现在所做的选择而定，以后不会进行调整。</p>
+        </div>
+        <div id="subNote">
+          <p>注意：</br>
              - 如果您今天选择走6000步，之后走5000步，则不捐赠任何钱</br>
              - 如果您今天选择走5000步，之后走6000步，则仅捐赠10元钱
         </div>
@@ -267,7 +271,8 @@
           <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="yesInterested">是的，我很感兴趣</label></div>
         </div>
         <div class="slidecontainer" id="walkathon" style="display:none">
-          <div id="note">
+          <div id="note" style="padding-top:20px">
+            <div>请移动下面的滑块：</div>
             <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
               <output name="amount" id="walkathonDistance" for="rangeInput">我将在2019年3月16日走5000步（4公里）
                 —— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
@@ -304,7 +309,7 @@
     <div id="survey">
       <div class="mainQuestion">现在，让我们来向您了解一下关于这六天调研经历的感受。</div>
       <div class="question">
-        <div class="questionPrompt">在我们向您介绍户外活动之后，您是否通过其他网站了解别的活动？</div>
+        <div class="questionPrompt">在我们向您介绍户外活动之后，您是否通过<b>其他</b>网站了解别的活动？</div>
         <div class="questionAnswer">
           <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="noOtherSource" id="noOtherSource" onClick="hideNumberOfTimes()"><label class="form-check-label" for="noOtherSource">否</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="yesOtherSource"id="yesOtherSource" onClick="showNumberOfTimes()"><label class="form-check-label" for="yesOtherSource">是</label></div>
@@ -322,7 +327,7 @@
       </div>
 
       <div class="question">
-        <div class="questionPrompt">在过去的6天里，您是否在其他网站了解过更多关于 [3月第二周] ，即活动举办这一周的天气信息？</div>
+        <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于 [3月第二周] ，即活动举办这一周的<b>天气</b>信息？</div>
         <div class="questionAnswer">
           <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="yesOtherWeatherSource"id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()"><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
@@ -339,7 +344,7 @@
         </div>
       </div>
       <div class="question">
-        <div class="questionPrompt">您是否还记得我们为您提供的 [3月第二周] 的空气质量类别是什么？这里我们不是在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
+        <div class="questionPrompt">您是否还记得我们为您提供的 [3月第二周] 的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
         <div class="questionAnswer">
           <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
@@ -352,7 +357,7 @@
         </div>
       </div>
       <div class="question">
-        <div class="questionPrompt">请问您还记得我们引用空气质量信息的来源吗？</div>
+        <div class="questionPrompt">请问您还记得我们引用<b>空气质量</b>信息的来源吗？</div>
         <div class="questionAnswer">
           <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="no"><label class="form-check-label" for="no">不记得了</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
@@ -395,7 +400,7 @@
         </div>
       </div>
       <div class="question">
-        <div class="questionPrompt">上海金融报从中国指数研究院获得关于房价的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
+        <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
         <div class="questionAnswer">
           <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level1"><label class="form-check-label" for="level1">我不知道</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level2"><label class="form-check-label" for="level2">绝不可能</label></div>
