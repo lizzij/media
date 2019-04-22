@@ -838,9 +838,6 @@ pre{
   height: 42px;
   left: calc(50% - 248px/2 + 0.5px);
   top: 9px;
-
-  /* ShanghaiGrey */
-  background: #979797;
 }
 
 .poweredBy{
@@ -848,7 +845,7 @@ pre{
   width: 376px;
   height: 16px;
   left: calc(50% - 376px/2 - 0.5px);
-  top: 1560px;
+  top: 1590px;
 }
 
 #lizzijIcon{
@@ -898,4 +895,11 @@ pre{
   height: 7.33px;
   left: calc(50% - 5.33px/2 + 36.33px);
   top: 10.33px;
+}
+
+.nextButtonNotice{
+  text-align: center;
+  font-size:14px;
+  padding-top:60px;
+  color: #4F4F4F;
 }

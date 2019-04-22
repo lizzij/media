@@ -224,6 +224,7 @@
 
   <!-- next button -->
   <section class="nextButton">
+
     <div id="nextButton">
       <div id="button">
         <img src="{{ url_for('static', filename='img/Button.png') }}">
@@ -234,6 +235,9 @@
           location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
         }
       </script>
+    </div>
+    <div class="nextButtonNotice">
+      点击下一步后，您将无法返回此页面
     </div>
   </section>
 
