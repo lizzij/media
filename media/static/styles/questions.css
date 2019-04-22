@@ -220,7 +220,7 @@ div.trustScaleLabel > div{
 }
 
 #donationWillingAmount, #donationWillingAmount2, #signUpFeeAmount,
-#outdoorTimeAmount, #exerciseTimeAmount{
+#outdoorTimeAmount, #exerciseTimeAmount, #walkathonAmount{
   margin-top: -30px;
 }
 
@@ -931,6 +931,7 @@ div.outingScaleLabel > div{
 
 #walkathonDistance{
   padding-top: 10px;
+  padding-bottom: 28px;
 }
 
 input.btn.btn-primary {

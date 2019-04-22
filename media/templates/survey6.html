@@ -23,7 +23,7 @@
         <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
         <div class="questionAnswer">
           <div class="slidecontainer" id="signUpFee">
-            <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <div class="form-group" style="margin-top:35px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="signUpFeeAmount"
                 for="rangeInput">0元</output>
               <input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="questionAnswer" style="padding-left: 0px;">
-          <div class="starLeft">
+          <div class="starLeft" >
             <div class="starPrompt" id="starLeftPrompt">
               <div>余</div>
               <div id="starLeftCount">12</div>
@@ -89,7 +89,7 @@
               <div class="star">&starf;</div>
             </div>
           </div>
-          <div id="starAlert"></div>
+          <div id="starAlert" style="top:541px"></div>
           <div class="starGroup1">
             <div class="starPrompt">
               <div>优</div>
@@ -228,7 +228,8 @@
               <div class="star" onclick="starCountGroup6(12)">☆</div>
             </div>
           </div>
-          <div id="clearAllStarsButton" onclick="clearAllStars()"><button id="clearAllButton">
+          <div id="clearAllStarsButton" onclick="clearAllStars()">
+            <button id="clearAllButton" style="top:541px">
               <div id="clear">&times;</div>
             </button></div>
           <div id="groupDescription"></div>
@@ -267,8 +268,8 @@
              - 如果您今天选择走5000步，之后走6000步，则仅捐赠10元钱
         </div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested"id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="notInterested">不，我不感兴趣</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="yesInterested">是的，我很感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested"id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
         </div>
         <div class="slidecontainer" id="walkathon" style="display:none">
           <div id="note" style="padding-top:20px">
@@ -329,8 +330,8 @@
       <div class="question">
         <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于 [3月第二周] ，即活动举办这一周的<b>天气</b>信息？</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="yesOtherWeatherSource"id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()"><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="yesOtherWeatherSource"id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()"><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
         </div>
       </div>
       <div class="question" id="otherHowManyWeatherTimes" style="display:none">
@@ -346,71 +347,91 @@
       <div class="question">
         <div class="questionPrompt">您是否还记得我们为您提供的 [3月第二周] 的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="severelyPolluted"><label class="form-check-label" for="severelyPolluted">严重污染</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="highlyPolluted"><label class="form-check-label" for="highlyPolluted">重度污染</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="moderatelyPolluted"><label class="form-check-label" for="moderatelyPolluted">中度污染</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="lightlyPolluted"><label class="form-check-label" for="lightlyPolluted">轻度污染</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="good"><label class="form-check-label" for="good">良</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" value="excellent"><label class="form-check-label" for="excellent">优</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="cantRemember" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="varies" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="severelyPolluted" value="severelyPolluted"><label class="form-check-label" for="severelyPolluted">严重污染</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="highlyPolluted" value="highlyPolluted"><label class="form-check-label" for="highlyPolluted">重度污染</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="moderatelyPolluted" value="moderatelyPolluted"><label class="form-check-label" for="moderatelyPolluted">中度污染</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="lightlyPolluted" value="lightlyPolluted"><label class="form-check-label" for="lightlyPolluted">轻度污染</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="good" value="good"><label class="form-check-label" for="good">良</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="excellent" value="excellent"><label class="form-check-label" for="excellent">优</label></div>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">请问您还记得我们引用<b>空气质量</b>信息的来源吗？</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="no"><label class="form-check-label" for="no">不记得了</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="probably"><label class="form-check-label" for="probably">大概记得</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" value="yes"><label class="form-check-label" for="yes">记得</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="no" value="no"><label class="form-check-label" for="no">不记得了</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="maybe" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="probably" value="probably"><label class="form-check-label" for="probably">大概记得</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes"><label class="form-check-label" for="yes">记得</label></div>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">您认为在过去的6天内，我们引用过多少个空气质量信息的来源</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="1"><label class="form-check-label" for="1">1</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="2"><label class="form-check-label" for="2">2</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="3"><label class="form-check-label" for="3">3</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="4"><label class="form-check-label" for="4">4</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="5orMore"><label class="form-check-label" for="5orMore">5个或更多</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" value="dunno"><label class="form-check-label" for="dunno">我不知道</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="1" value="1"><label class="form-check-label" for="1">1</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="2" value="2"><label class="form-check-label" for="2">2</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="3" value="3"><label class="form-check-label" for="3">3</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="4" value="4"><label class="form-check-label" for="4">4</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="5orMore" value="5orMore"><label class="form-check-label" for="5orMore">5个或更多</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="dunno" value="dunno"><label class="form-check-label" for="dunno">我不知道</label></div>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">根据您的回忆，请选择我们在过去6天内引用过的所有空气质量信息的来源。（可多选）</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source3"><label class="form-check-label" for="source3">上海环境监测中心</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source4"><label class="form-check-label" for="source4">新闻晨报</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source5"><label class="form-check-label" for="source5">新闻广播FM93.4</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source6"><label class="form-check-label" for="source6">上海环境东方网微博</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" value="dunno"><label class="form-check-label" for="dunno">我不知道</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">上海环境监测中心</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">新闻晨报</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">新闻广播FM93.4</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">上海环境东方网微博</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo"><label class="form-check-label" for="sourceNo">我不知道</label></div>
         </div>
       </div>
+      </div>
+    <!-- next button -->
+    <section class="nextButton">
+      <div id="p4nextButton"><button id="button">
+          <div id="next">下一页</div>
+        </button>
+        <script type="text/javascript">
+          document.getElementById("p4nextButton").onclick = function() {
+            return show('page5');
+          };
+        </script>
+      </div>
+    </section>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+  <!-- page 5 -->
+  <div id="page5" style="display:none">
+    <div id="survey">
       <div class="question">
         <div class="questionPrompt">您认为[新闻晨报]是从哪里获得的天气信息？</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" value="dunno"><label class="form-check-label" for="dunno">我不知道</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" value="own"><label class="form-check-label" for="own">我认为他们有自己的天气监测站</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" value="government"><label class="form-check-label" for="government">我认为他们从政府机构处获得，如上海环境监测中心</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" value="ngo"><label class="form-check-label" for="ngo">我认为他们从当地非政府组织处获得</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" value="international"><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="dunnoSource" value="dunnoSource"><label class="form-check-label" for="dunnoSource">我不知道</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="own" value="own"><label class="form-check-label" for="own">我认为他们有自己的天气监测站</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="government" value="government"><label class="form-check-label" for="government">我认为他们从政府机构处获得，如上海环境监测中心</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="ngo" value="ngo"><label class="form-check-label" for="ngo">我认为他们从当地非政府组织处获得</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="international" value="international"><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level1"><label class="form-check-label" for="level1">我不知道</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level2"><label class="form-check-label" for="level2">绝不可能</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level3"><label class="form-check-label" for="level3">不可能</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level4"><label class="form-check-label" for="level4">有点可能</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level5"><label class="form-check-label" for="level5">可能</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" value="level5"><label class="form-check-label" for="level5">极有可能</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level1" value="level1"><label class="form-check-label" for="level1">我不知道</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level2" value="level2"><label class="form-check-label" for="level2">绝不可能</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level3" value="level3"><label class="form-check-label" for="level3">不可能</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level4" value="level4"><label class="form-check-label" for="level4">有点可能</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level5" value="level5"><label class="form-check-label" for="level5">可能</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level6" value="level6"><label class="form-check-label" for="level6">极有可能</label></div>
         </div>
       </div>
-
       <div class="question">
         <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
         <div class="questionAnswer">
@@ -443,7 +464,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust1Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust1" oninput="trust1Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust1" oninput="trust1Slide()"></input>
                 </div>
               </div>
             </div>
@@ -476,7 +497,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust2Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust2" oninput="trust2Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust2" oninput="trust2Slide()"></input>
                 </div>
               </div>
             </div>
@@ -509,7 +530,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust3Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust3" oninput="trust3Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust3" oninput="trust3Slide()"></input>
                 </div>
               </div>
             </div>
@@ -542,7 +563,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust4Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust4" oninput="trust4Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust4" oninput="trust4Slide()"></input>
                 </div>
               </div>
             </div>
@@ -576,7 +597,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust5Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust5" oninput="trust5Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust5" oninput="trust5Slide()"></input>
                 </div>
               </div>
             </div>
@@ -610,7 +631,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust6Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" class="slider" id="trust6" oninput="trust6Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" class="slider" step="0.01" id="trust6" oninput="trust6Slide()"></input>
                 </div>
               </div>
             </div>
@@ -620,23 +641,23 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p4nextButton"><button id="button">
+      <div id="p5nextButton"><button id="button">
           <div id="next">提交</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p4nextButton").onclick = function() {
-            return show('page5');
+          document.getElementById("p5nextButton").onclick = function() {
+            return show('page6');
           };
         </script>
       </div>
     </section>
     <div class="progress" style="height: 8px;">
-      <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar" role="progressbar" style="width: 90%; background-color: #979797;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
 
-  <!-- page 5 -->
-  <div id="page5" style="display:none">
+  <!-- page 6 -->
+  <div id="page6" style="display:none">
     <div id="survey">
       <div class="mainQuestion">感谢您完成今天的调研。此次调研还剩下两天就全部结束了，第七天的调研将在两周后进行。我们将在两周之内向您发送微信消息！</div>
     </div>
