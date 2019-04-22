@@ -518,7 +518,7 @@ header #eventLocation{
 
   /* PM2.5-1 */
   background: #00E400;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 #colorBar2{
@@ -530,7 +530,7 @@ header #eventLocation{
 
   /* PM2.5-2 */
   background: #FFFF00;
-  box-shadow: 0px 2px 4px rgba(151,151,151,1);
+  box-shadow: 0px 3px 5px rgba(151,151,151,1);
 }
 
 #colorBar3{
@@ -542,7 +542,7 @@ header #eventLocation{
 
   /* PM2.5-3 */
   background: #FF7E00;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 #colorBar4{
@@ -552,7 +552,7 @@ header #eventLocation{
   left: calc(50% - 54px/2 + 27.5px);
   top: 73px;
   background: #FF0000;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 #colorBar5{
@@ -564,7 +564,7 @@ header #eventLocation{
 
   /* PM2.5-5 */
   background: #99004C;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 #colorBar6{
@@ -576,7 +576,7 @@ header #eventLocation{
 
   /* PM2.5-6 */
   background: #7E0023;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 #airQualityDetail{
