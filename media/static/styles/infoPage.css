@@ -66,13 +66,11 @@ header #eventName{
   height: 59px;
   left: calc(50% - 160px/2 - 95px);
   top: 15px;
-
   font-family: PingFangHK-Regular, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.2;
   font-size: 24px;
-
   color: #000000;
 }
 

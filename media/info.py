@@ -65,7 +65,10 @@ def get_info(user_id_hashid, day_hashid):
     if info is None:
         abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
 
-    return render_template('infoPage.html', user=user, info=info)
+    if day <= 3:
+        return render_template('infoPageNoAQDetail.html', user=user, info=info)
+    else:
+        return render_template('infoPage.html', user=user, info=info)
 
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
