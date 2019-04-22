@@ -349,8 +349,7 @@ header #eventLocation{
   height: 220px;
   left: calc(50% - 346px/2 + 1px);
   top: 130px;
-
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.4);
 }
 
@@ -681,8 +680,7 @@ pre{
   height: 50px;
   left: calc(50% - 340px/2 + 5.5px);
   top: 46px;
-
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
 }
 
 #iconFamily{

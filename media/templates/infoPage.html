@@ -65,7 +65,8 @@
   <section class="image">
     <div id="eventImage">
       <div>
-        <img src="{{ url_for('static', filename='img/Event.jpg') }}" width="376" height="276">
+        <!-- <img src="{{ url_for('static', filename='img/Event.jpg') }}" width="376" height="276"> -->
+        <img src="{{ url_for('static', filename=info['image_file']) }}" width="376" height="276">
       </div>
     </div>
   </section>
