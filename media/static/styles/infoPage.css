@@ -16,7 +16,7 @@ body{
   padding-top: 250px; /* Location of the box */
   margin: -8px;
   width: 100%; /* Full width */
-  height: 1340px; /* Full height */
+  height: 1000px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -726,20 +726,10 @@ pre{
   height: 50px;
   left: calc(50% - 50px/2 + 87px);
   top: 0px;
-
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
-#iconPet{
-
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  left: calc(50% - 50px/2 + 145px);
-  top: 0px;
-
-  opacity: 0.3;
-}
+#iconPet{position: absolute;width: 50px;height: 50px;left: calc(50% - 50px/2 + 145px);top: 0px;opacity: 0.1;}
 
 .suitableIconLabels{
   font-family: PingFangHK-Regular, sans-serif;
@@ -783,8 +773,8 @@ pre{
   height: 11px;
   left: calc(50% - 50px/2 + 34.5px);
   top: 99px;
-
-  color: #979797;
+  color: #4F4F4F;
+  opacity: 0.1;
 }
 
 #elderly{
@@ -793,8 +783,8 @@ pre{
   height: 11px;
   left: calc(50% - 50px/2 + 92.5px);
   top: 99px;
-
-  color: #979797;
+  color: #4F4F4F;
+  opacity: 0.1;
 }
 
 #pets{
@@ -803,8 +793,8 @@ pre{
   height: 11px;
   left: calc(50% - 50px/2 + 150.5px);
   top: 99px;
-
-  color: #979797;
+  color: #4F4F4F;
+  opacity: 0.1;
 }
 
 .nextButton{
@@ -812,7 +802,7 @@ pre{
   width: 375px;
   height: 124px;
   left: calc(50% - 375px/2);
-  top: 1470px;
+  top: 780px;
 }
 
 #next{
@@ -842,7 +832,7 @@ pre{
   width: 376px;
   height: 16px;
   left: calc(50% - 376px/2 - 0.5px);
-  top: 1590px;
+  top: 900px;
 }
 
 #lizzijIcon{

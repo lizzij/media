@@ -566,6 +566,27 @@ function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep
   $(sliderAmount).css("padding-left", left);
 }
 
+function randomizeTimeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+  var value = Math.floor(Math.random() * (max - min)) + min;
+  var hours;
+  var minutes;
+  var time;
+  hours = Math.floor(value / 60);
+  minutes = value % 60;
+  if (value >= 180) {
+    time = `大于3小时`;
+  }
+  else {
+    hours = Math.floor(value / 60);
+    minutes = value % 60;
+    time = `${hours}小时 ${minutes}分钟`;
+  }
+  $(sliderName).val(value);
+  $(sliderAmount).val(time);
+  var left = leftStart + moveStep * value;
+  $(sliderAmount).css("padding-left", left);
+}
+
 $( document ).ready(function() {
   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   randomizeSlider(0, 100, "#outing1", "#outing1Amount", 2, 2.88, "");
@@ -574,16 +595,16 @@ $( document ).ready(function() {
   randomizeSlider(0, 100, "#outing4", "#outing4Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#outing5", "#outing5Amount", 2, 2.88, "");
 
-  randomizeSlider(0, 200, "#domesticWebsiteSlider", "#domesticWebsiteAmount", 5, 1.21, "");
-  randomizeSlider(0, 200, "#foreignWebsiteSlider", "#foreignWebsiteAmount", 5, 1.21, "");
-  randomizeSlider(0, 200, "#domesticMediaSlider", "#domesticMediaAmount", 5, 1.21, "");
-  randomizeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21, "");
-  randomizeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21, "");
-
   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+
+  randomizeTimeSlider(0, 200, "#domesticWebsiteSlider", "#domesticWebsiteAmount", 5, 1.21);
+  randomizeTimeSlider(0, 200, "#foreignWebsiteSlider", "#foreignWebsiteAmount", 5, 1.21);
+  randomizeTimeSlider(0, 200, "#domesticMediaSlider", "#domesticMediaAmount", 5, 1.21);
+  randomizeTimeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21);
+  randomizeTimeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21);
 });
