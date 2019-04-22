@@ -717,8 +717,7 @@ pre{
   height: 50px;
   left: calc(50% - 50px/2 + 29px);
   top: 0px;
-
-  opacity: 0.3;
+  opacity: 0.1;
 }
 
 #iconElderly{

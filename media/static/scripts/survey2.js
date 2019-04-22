@@ -574,11 +574,11 @@ $( document ).ready(function() {
   randomizeSlider(0, 100, "#outing4", "#outing4Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#outing5", "#outing5Amount", 2, 2.88, "");
 
-  // randomizeSlider(0, 200, "#domesticWebsite", "#domesticWebsiteAmount", 5, 1.21, "");
-  // randomizeSlider(0, 200, "#foreignWebsite", "#foreignWebsiteAmount", 5, 1.21, "");
-  // randomizeSlider(0, 200, "#domesticMedia", "#domesticMediaAmount", 5, 1.21, "");
-  // randomizeSlider(0, 200, "#foreignMedia", "#foreignMediaAmount", 5, 1.21, "");
-  // randomizeSlider(0, 200, "#chatWithFriends", "#chatWithFriendsAmount", 5, 1.21, "");
+  randomizeSlider(0, 200, "#domesticWebsiteSlider", "#domesticWebsiteAmount", 5, 1.21, "");
+  randomizeSlider(0, 200, "#foreignWebsiteSlider", "#foreignWebsiteAmount", 5, 1.21, "");
+  randomizeSlider(0, 200, "#domesticMediaSlider", "#domesticMediaAmount", 5, 1.21, "");
+  randomizeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21, "");
+  randomizeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21, "");
 
   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
