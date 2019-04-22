@@ -223,26 +223,28 @@
       <!-- walkathon distance -->
       <div class="question">
         <div class="questionPrompt">您或许还记得“儿童慈善徒步运动”。 如果您在一天内的步行数不同于往常，我们将以您的名义捐款给上海联合基金会，该款项将被用于0-18岁需要帮助的儿童。</div>
-        <div id="note">
-          <p>具体奖励如下：<br />
-             - 如果您今天选择走6000步，之后走5000步，则不捐赠任何钱<br />
-             - 如果您今天选择走5000步，之后走6000步，则仅捐赠10元钱<br />
-             - 步行7000步（或以上）——我们将以您的名义捐赠30元人民币。</p>
+        <div id="subNote">
+          <p>具体奖励如下：<br>
+             - 步行5000步——我们将以您的名义向上海联合基金会捐赠10元人民币；<br>
+             - 步行6000步——我们将以您的名义捐赠20元人民币；<br>
+             - 步行7000步（或以上）——我们将以您的名义捐赠30元人民币。<br>
+             [步数信息将来自于您的微信运动——一个微信中的功能。]</p>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">您之前已经做出了选择，但我们想提供给您最后一次改变决定的机会。您想承诺参加我们组织的活动“儿童慈善徒步活动”吗？如果您同意，我们将在活动前几日向您发送提示以及如何参与的说明。</div>
-        <div id="note">
+        <div id="subNote">
           <p>实际捐款将视您现在所做的选择而定，以后不会进行调整：</br>
              - 如果您今天选择走6000步，之后走5000步，则不捐赠任何钱</br>
              - 如果您今天选择走5000步，之后走6000步，则仅捐赠10元钱</p>
         </div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested"id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="notInterested">不，我不感兴趣</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="yesInterested">是的，我很感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested"id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
         </div>
         <div class="slidecontainer" id="walkathon" style="display:none">
-          <div id="note">
+          <div id="note" style="padding-top:20px">
+            <div>请移动下面的滑块：</div>
             <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
               <output name="amount" id="walkathonDistance" for="rangeInput">我将在2019年3月16日走5000步（4公里）
                 —— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
@@ -279,26 +281,28 @@
       <!-- walkathon distance -->
       <div class="question">
         <div class="questionPrompt">在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。 您将根据猜测与实际结果的相近程度获得奖励。 例如：</div>
-        <div id="note">
+        <div id="subNote">
           <p>- 如果您的猜测完全正确，您将获得5元人民币。<br />
-             - 如果您的猜测与真实值相差 [XXX] ，您将获得4元人民币。<br />
-             - 如果您的猜测与真实值相差 [XXX] ，您将获得3元人民币。<br />
-             - 如果您的猜测与真实值相差 [XXX] 或更多，您将获得0元人民币。
+             - 如果您的猜测与真实值相差2.2，您将获得4元人民币。<br />
+             - 如果您的猜测与真实值相差3.2，您将获得3元人民币。<br />
+             - 如果您的猜测与真实值相差3.9，您将获得2元人民币。<br />
+             - 如果您的猜测与真实值相差4.4，您将获得1元人民币。<br />
+             - 如果您的猜测与真实值相差5或更多，您将获得0元人民币。
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt"></div>
         <div id="note">
-          <p>但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友 [A] 和 [B]，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。 [A] 告诉你罐子里有50个豆子。</p>
-          <p>[A] 和 [B] 各自告诉 [C] 他们的估计。注意 [C] 没有看到罐子，且 [A] 和 [B] 之间也没有互相交谈过。 听完 [A] 和 [B] 的估计后，[C] 告诉你，她认为罐子里有40个豆子。</p>
+          <p>但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友<font color="red">小红</font>和<font color="blue">小蓝</font>，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。<font color="red">小红</font>告诉你罐子里有50个豆子。</p>
+          <p><font color="red">小红</font>和<font color="blue">小蓝</font>各自告诉<font color="green">小绿</font>他们的估计。注意<font color="green">小绿</font>没有看到罐子，且<font color="red">小红</font>和<font color="blue">小蓝</font>之间也没有互相交谈过。听完<font color="red">小红</font>和<font color="blue">小蓝</font>的估计后，<font color="green">小绿</font>告诉你，她认为罐子里有40个豆子。</p>
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt">为了确保您理解了此题描述，请您选择都有谁直接告诉了你他（她）对豆子数量的估计（请选择所有符合的选项）。</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="A" id="AtoldMe"><label class="form-check-label" for="A">A</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="B" id="BtoldMe"><label class="form-check-label" for="B">B</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="C" id="CtoldMe"><label class="form-check-label" for="C">C</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="A" id="AtoldMe"><label class="form-check-label" for="AtoldMe"><font color="red">小红</font></label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="B" id="BtoldMe"><label class="form-check-label" for="BtoldMe"><font color="blue">小蓝</font></label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="C" id="CtoldMe"><label class="form-check-label" for="CtoldMe"><font color="green">小绿</font></label></div>
         </div>
         <div id="beanNumberResult">
         </div>
@@ -306,16 +310,19 @@
           <input class="btn btn-primary" type="submit" value="核对答案" id="checkBeanNumberSourceButton" onClick="checkBeanNumberSource()">
         </div>
       </div>
-      <div class="question">
-        <div class="questionPrompt">您认为罐子里有多少豆子？</div>
-        <div class="questionAnswer">
-        <div id="guessBeanNumber">
-          <div class="form-group">
-            <input type="text" class="form-control" id="guessedBeanNumber" placeholder="请输入数字">
+      <div id="beanCountEstimateQuestion" style="display:none">
+        <div class="question">
+          <div class="questionPrompt">您认为罐子里有多少豆子？</div>
+          <div class="questionAnswer">
+          <div id="guessBeanNumber">
+            <div class="form-group">
+              <input type="text" class="form-control" id="guessedBeanNumber" placeholder="请输入数字">
+            </div>
+          </div>
           </div>
         </div>
-        </div>
       </div>
+
       </div>
     <!-- next button -->
     <section class="nextButton">

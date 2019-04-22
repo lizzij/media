@@ -296,12 +296,7 @@ function walkathonSlide() {
   var value=document.getElementById("walkathonSlider").value;
   var walkathonAmount = `${value}步`;
   var distance = value * 0.0008;
-  if (value > 5000) {
-    var donation = (value - 5000) * 0.01 + 10;
-  }
-  else {
-    var donation = 0;
-  }
+  var donation = (value - 4000) * 0.01;
   distance = distance.toFixed(2);
   donation = donation.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;
@@ -317,10 +312,13 @@ function checkBeanNumberSource(){
   if (AtoldMe && (!BtoldMe) && CtoldMe) {
     document.getElementById("beanNumberResult").innerHTML = '正确';
     document.getElementById("beanNumberResult").style.color = "#28a745";
+    document.getElementById("beanCountEstimateQuestion").style.display = "block";
+
   }
   else {
     document.getElementById("beanNumberResult").innerHTML = '您的答案错误。 请再检查一次！';
     document.getElementById("beanNumberResult").style.color = "#FF3333";
+    document.getElementById("beanCountEstimateQuestion").style.display = "none";
   }
 }
 

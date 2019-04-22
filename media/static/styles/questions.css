@@ -926,7 +926,8 @@ div.outingScaleLabel > div{
 }
 
 .form-check .form-check-label{
-  color: #979797;
+  /* color: #979797; */
+  color: #4F4F4F;
 }
 
 #walkathonDistance{
