@@ -9,16 +9,25 @@ body{
   position: relative;
 }
 
+#survey{
+  font-family: PingFangHK-Regular, sans-serif;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .title{
-  position: absolute;
+  position: relative;
   width: 376px;
-  height: 160px;
   left: calc(50% - 376px/2 + 0.5px);
   top: 24px;
 }
 
 header #eventName{
-  position: absolute;
+  position: relative;
   width: 360px;
   height: 59px;
   left: calc(50% - 160px/2 - 95px);
@@ -33,41 +42,56 @@ header #eventName{
   color: #000000;
 }
 
-.question{
-  position: absolute;
-  left: calc(50% - 50px);
-  top: 35%;
-  font-size: 18px;
+.mainQuestion{
   font-family: PingFangHK-Regular, sans-serif;
+  font-size: 17px;
+  padding-top: 20px;
+}
+
+.question{
+  padding-top: 20px;
+  display: center;
+}
+
+.questionPrompt{
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 16px;
+  weight: 500;
+  padding-bottom: 5px;
+  color: #4F4F4F;
+}
+
+.questionAnswer{
+  padding-left: 10px;
 }
 
 #alert{
-  text-align: center;
-  top: 50%;
   width: 300px;
   margin-left: calc(50% - 150px);
   margin-right: calc(50% - 150px);
-  position: absolute;
   padding-top: 30px;
   /* width:300px; */
   color: #FF3333;
 }
 
+pre {
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;       /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 .nextButton{
-  position: absolute;
-  width: 375px;
-  height: 124px;
-  left: calc(50% - 375px/2);
-  bottom: 40px;
+  align-self: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 #next{
-  position: absolute;
-  width: 222px;
-  height: 10px;
-  left: calc(50% - 222px/2 + 2.5px);
-  top: 20px;
-
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 14px;
   text-align: center;
@@ -76,69 +100,19 @@ header #eventName{
 }
 
 #button{
-  position: absolute;
   width: 248px;
   height: 42px;
-  left: calc(50% - 248px/2 + 0.5px);
-  top: 9px;
 
   /* ShanghaiGrey */
   background: #979797;
-}
-
-.poweredBy{
-  position: absolute;
-  width: 376px;
-  height: 16px;
-  left: calc(50% - 376px/2 - 0.5px);
-  bottom:30px;
-}
-
-#lizzijIcon{
-  position: absolute;
-  width: 11.25px;
-  height: 9px;
-  left: calc(50% - 11.25px/2 + 26.62px);
-  top: 2.7px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #lizzij{
-  position: absolute;
-  width: 15px;
-  height: 9px;
-  left: calc(50% - 15px/2 + 13.5px);
-  top: 3px;
-}
-
-.poweredByText{
-  font-family: PingFangHK-Regular, sans-serif;
-  font-weight: 300;
-  line-height: 9px;
-  font-size: 7px;
-
-  color: #979797;
-}
-
-#dashLeft{
-  position: absolute;
-  width: 5.33px;
-  height: 7.33px;
-  left: calc(50% - 5.33px/2 - 36.33px);
-  top: 10.33px;
-}
-
-#poweredBy{
-  position: absolute;
-  width: 40px;
-  height: 7px;
-  left: calc(50% - 40px/2 - 12px);
-  top: 11px;
-}
-
-#dashRight{
-  position: absolute;
-  width: 5.33px;
-  height: 7.33px;
-  left: calc(50% - 5.33px/2 + 36.33px);
-  top: 10.33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:absolute;
+  bottom: 10px;
+  left: calc(50% - 40px);
 }
