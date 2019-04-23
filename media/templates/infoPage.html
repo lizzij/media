@@ -110,7 +110,7 @@
     <!-- air quality -->
     <section class="airQuality">
       <div id="airQualityHeader">空气质量：良</div>
-      <div id="airQualitySource">* 来自{{ (info['air_quality_source']) }}</div>
+      <div id="airQualitySource">{{ (info['air_quality_source']) }}</div>
       <div id="dongFang">
         <img src="{{ url_for('static', filename=info['air_quality_source_logo']) }}" width="45">
       </div>
