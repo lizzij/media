@@ -49,7 +49,7 @@ def get_info(user_id_hashid, day_hashid):
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,headword,short_description,low_temp,high_temp,event_details'
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,headword,short_description,low_temp,high_temp,event_details'
         ' FROM infos i'
         ' WHERE i.event_id = ?',
         (day,)

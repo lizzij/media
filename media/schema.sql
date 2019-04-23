@@ -52,7 +52,7 @@ CREATE TABLE infos (
   location TEXT,
   image_file TEXT,
   air_quality_source TEXT,
-  air_quality_source_log TEXT,
+  air_quality_source_logo TEXT,
   headword TEXT,
   short_description TEXT,
   low_temp INTEGER,
@@ -76,7 +76,7 @@ VALUES
 
 INSERT INTO infos (event_id, title, subtitle,
   info_date, info_time, location,
-  image_file, air_quality_source, air_quality_source_log,
+  image_file, air_quality_source, air_quality_source_logo,
   headword, short_description,
   low_temp, high_temp,
   event_details)
@@ -128,9 +128,10 @@ VALUES
 如果你愿意将自己收入的一部分，
 献出来帮助那些存在生存困难的人们，
 请加入我们。'),
+
   (4, '漫步上海老街', '边走边聊',
 '2019.02.16 - 2019.05.11', '每周六 14:00 pm - 17:00 pm', '地点 徐汇区 地铁到门店',
-'img/event 4.jpg', '新闻晨报', '',
+'img/event 4.jpg', '新闻晨报', 'img/SourceMorningPostLogo.jpg',
 '漫', '步上海老街,
 走过那些老建筑, 仿佛置身于那时那景那人，
 在这个快节奏的生活状态下,
@@ -143,9 +144,10 @@ VALUES
 2、出发后，每3，4人，分一组，分享与交流。
 3、中间设置几个休息点，有社交小游戏。
 4、活动设置两个领队，一前一后，防止走散。'),
+
   (5, '夜徒法租界', '梧桐树下聊天交友散步',
 '2019.02.20 - 2019.05.15', '每周三 19:30 pm - 20:30 pm', '地点 徐汇区 徐家汇',
-'img/event 5.jpg', '新闻广播FM93.4', '',
+'img/event 5.jpg', '新闻广播FM93.4', 'img/SourceNewsRadioLogo.jpg',
 '衡', '山路 走过才知道，
 白天的衡山路和晚上判若两人。
 不宽的马路，干净的街道，两边风格迥异的建筑，
@@ -155,6 +157,7 @@ VALUES
 大概半个小时左右开始今晚的徒步：衡山路-淮海路，
 大家可以边走边聊，看见有趣的小店可以随便看一下，
 到达陕西南路站大家依依惜别。'),
+
   (6, '游走魔都', '',
 '2019.03.17 - 2019.06.02', '每周日 14:00 pm - 16:30 pm', '地点 徐汇区 武康大楼',
 'img/event 6.jpg', '', '',
@@ -171,9 +174,10 @@ VALUES
 庸懒的享受一整个下午的时光
 如果你也喜欢
 一起结伴同行吧? '),
+
   (8, '世纪公园踏春', '做游戏-K歌',
 '2019.02.23 - 2019.05.18', '每周六 12:00 pm - 19:00 pm', '地点 浦东新区 上海世纪公园',
-'img/event 7.jpg', '上海市环境监测中心', '',
+'img/event 7.jpg', '上海市环境监测中心', 'img/SourceSHEnvironmentLogo.jpg',
 '平', '时忙着上班，
 周末如果有空就出来过一天有趣的生活，
 春暖花开，世纪公园里已经色彩缤纷，

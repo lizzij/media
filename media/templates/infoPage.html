@@ -18,7 +18,7 @@
 <body>
 
   <!-- The Modal -->
-  <div id="myModal" class="modal">
+  <div id="myModal" class="modalLarge">
 
     <!-- Modal content -->
     <div class="modal-content">
@@ -109,10 +109,10 @@
 
     <!-- air quality -->
     <section class="airQuality">
-      <div id="airQualityHeader">空气质量：中度污染</div>
-      <div id="airQualitySource">* 来自东方日报</div>
+      <div id="airQualityHeader">空气质量：良</div>
+      <div id="airQualitySource">* 来自{{ (info['air_quality_source']) }}</div>
       <div id="dongFang">
-        <img src="{{ url_for('static', filename='img/DongFang.png') }}" width="45" height="12.86">
+        <img src="{{ url_for('static', filename=info['air_quality_source_logo']) }}" width="45">
       </div>
 
       <!-- air quality scale -->
@@ -162,9 +162,7 @@
 
         <!-- air quality detail -->
         <div id="airQualityDetail">
-          中度污染：进一步加剧易感人群症状，可能对健康人群心脏、呼吸系统有影响。
-          儿童、老年人及心脏病、呼吸系统疾病患者避免长时间、高强度的户外锻
-          炼，一般人群适量减少户外运动。
+          良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
         </div>
       </div>
     </section>
@@ -242,7 +240,7 @@
   </section>
 
   <!-- powered by -->
-  <section class="poweredBy">
+  <!-- <section class="poweredBy">
     <div id="lizzijIcon">
       <img src="{{ url_for('static', filename='img/lizzij icon.png') }}" width="11.25" height="9">
     </div>
@@ -254,7 +252,7 @@
       <div id="poweredBy">Powered by</div>
       <div id="dashRight">-</div>
     </section>
-  </section>
+  </section> -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 </body>
 
