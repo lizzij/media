@@ -378,23 +378,26 @@ header #eventLocation{
 }
 
 #airQualitySource{
-  position: absolute;
-  width: 100px;
-  height: 14px;
-  left: calc(50% - 78px/2 + 60px);
-  top: 14px;
-
+  position: relative;
+  padding-top: 40px;
+  text-align: right;
+  padding-right: 3px;
+  /* position: absolute; */
+  /* width: 100px; */
+  /* height: 14px; */
+  flex-direction: rigt;
+  /* left: calc(50% - 78px/2 + 10px); */
+  /* top: 40px; */
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 14px;
-
   color: #4F4F4F;
 }
 
 #dongFang{
   position: absolute;
-  width: 40px;
+  width: 70px;
   height: 11.43px;
-  left: calc(50% - 40px/2 + 139px);
+  right: 13px;
   top: 13px;
 }
 
@@ -403,7 +406,7 @@ header #eventLocation{
   width: 334.5px;
   height: 34px;
   left: 8.5px;
-  top: 5px;
+  top: 20px;
 }
 
 .levels{

@@ -131,7 +131,7 @@ VALUES
 
   (4, '漫步上海老街', '边走边聊',
 '2019.05.04', '每周六 14:00 pm - 17:00 pm', '地点 徐汇区 地铁到门店',
-'img/event 4.jpg', '* 来自新闻晨报', 'img/SourceMorningPostLogo.jpg',
+'img/event 4.jpg', '（来自：新闻晨报）', 'img/SourceMorningPostLogo.jpg',
 '漫', '步上海老街,
 走过那些老建筑, 仿佛置身于那时那景那人，
 在这个快节奏的生活状态下,
@@ -147,7 +147,7 @@ VALUES
 
   (5, '夜徒法租界', '梧桐树下聊天交友散步',
 '2019.05.01', '每周三 19:30 pm - 20:30 pm', '地点 徐汇区 徐家汇',
-'img/event 5.jpg', '* 来自新闻广播FM93.4', 'img/SourceNewsRadioLogo.jpg',
+'img/event 5.jpg', '（来自：新闻广播FM93.4）', 'img/SourceNewsRadioLogo.jpg',
 '衡', '山路 走过才知道，
 白天的衡山路和晚上判若两人。
 不宽的马路，干净的街道，两边风格迥异的建筑，
@@ -177,7 +177,7 @@ VALUES
 
   (8, '世纪公园踏春', '做游戏-K歌',
 '2019.05.04', '每周六 12:00 pm - 19:00 pm', '地点 浦东新区 上海世纪公园',
-'img/event 7.jpg', '* 来自上海市环境监测中心', 'img/SourceSHEnvironmentLogo.jpg',
+'img/event 7.jpg', '（来自：上海市环境监测中心）', 'img/SourceSHEnvironmentLogo.jpg',
 '平', '时忙着上班，
 周末如果有空就出来过一天有趣的生活，
 春暖花开，世纪公园里已经色彩缤纷，
