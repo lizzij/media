@@ -28,7 +28,7 @@ body{
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
   width: 100%; /* Full width */
-  height: 1300px; /* Full height */
+  height: 1600px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -167,6 +167,7 @@ header #eventLocation{
   height: 82px;
   left: calc(50% - 375px/2);
   top: 455px;
+  /* margin-bottom: 200px; */
 }
 
 .paragraphShort{
@@ -232,7 +233,7 @@ header #eventLocation{
   width: 374px;
   height: 370px;
   left: calc(50% - 374px/2 - 0.5px);
-  top: 585px;
+  top: 590px;
 }
 
 .temperature{
@@ -317,7 +318,7 @@ header #eventLocation{
   position: absolute;
   width: 16px;
   height: 19px;
-  left: calc(50% - 16px/2 + 34px);
+  left: calc(50% - 16px/2 + 38px);
   top: 42px;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
@@ -358,7 +359,7 @@ header #eventLocation{
   position: absolute;
   width: 13px;
   height: 14px;
-  left: calc(50% - 13px/2 + 50px);
+  left: calc(50% - 13px/2 + 54px);
   top: 42px;
   font-family: Montserrat, sans-serif;
   font-size: 14px;
