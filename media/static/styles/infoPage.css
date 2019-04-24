@@ -4,7 +4,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   padding:0;
-  margin:0;
+  margin:0px;
   background: white;
 }
 
@@ -14,9 +14,9 @@ body{
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
-  margin: -8px;
+  /* margin: -8px; */
   width: 100%; /* Full width */
-  height: 1000px; /* Full height */
+  height: 700px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -27,9 +27,8 @@ body{
   position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
-  margin: -8px;
   width: 100%; /* Full width */
-  height: 1600px; /* Full height */
+  height: 1300px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.90); /* Black w/ opacity */
@@ -60,6 +59,33 @@ body{
 
 .close:hover,
 .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#close1 {
+  color: #aaaaaa;
+  padding-right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#close1:hover,
+#close1:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#close2{
+  color: #aaaaaa;
+  padding-right: 15px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#close2:hover,
+#close2:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -415,7 +441,7 @@ header #eventLocation{
   color: #979797;
 }
 
-#level1{
+#infoLevel1{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -423,7 +449,7 @@ header #eventLocation{
   left: calc(50% - 58px/2 - 134px);
 }
 
-#level2{
+#infoLevel2{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -433,7 +459,7 @@ header #eventLocation{
   color: #4F4F4F;
 }
 
-#level3{
+#infoLevel3{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -441,7 +467,7 @@ header #eventLocation{
   left: calc(50% - 58px/2 - 24px);
 }
 
-#level4{
+#infoLevel4{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -449,7 +475,7 @@ header #eventLocation{
   left: calc(50% - 58px/2 + 31px);
 }
 
-#level5{
+#infoLevel5{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -457,7 +483,7 @@ header #eventLocation{
   left: calc(50% - 58px/2 + 86px);
 }
 
-#level6{
+#infoLevel6{
   position: absolute;
   width: 58px;
   height: 9px;
@@ -813,7 +839,7 @@ pre{
   opacity: 0.1;
 }
 
-.nextButton{
+.infoNextButton{
   position: absolute;
   width: 375px;
   height: 124px;
@@ -821,7 +847,7 @@ pre{
   top: 1380px;
 }
 
-#next{
+#infoNext{
   position: absolute;
   width: 222px;
   height: 10px;
@@ -843,7 +869,7 @@ pre{
   top: 800px;
 }
 
-#button{
+#infoButton{
   position: absolute;
   width: 248px;
   height: 42px;
