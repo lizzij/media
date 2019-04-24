@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh" dir="ltr">
 
 <head>
@@ -9,6 +10,7 @@
   <title>{% block title %}{% endblock %}问卷</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPage.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
@@ -51,11 +53,355 @@
 
   <!-- page 2 -->
   <div id="page2" style="display:none">
+    <div style="display: block;margin: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;">
+    <!-- The Modal -->
+    <div id="myModal1" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content" style="width:285px;">
+        <span id="close1">&times;</span>
+        <p>以下是另一项将在 [2019年3月的第二周] 举办的本地活动。
+          <br>请您仔细思考是否愿意参加该活动。
+          <br>我们从多种来源获得关于该活动的信息，这些来源对信息的准确性负责。</p>
+      </div>
+
+    </div>
+
+    <header>
+      <div class="title">
+        <div id="eventName">世纪公园踏春<br />做游戏-K歌</div>
+        <div id="eventDate">2019.05.04</div>
+        <div id="eventTime">每周六 12:00 pm - 19:00 pm</div>
+        <div id="eventLocation">地点 浦东新区 上海世纪公园</div>
+      </div>
+    </header>
+
+    <!-- Image -->
+    <section class="image">
+      <div id="eventImage">
+        <div>
+          <img src="{{ url_for('static', filename='img/event 7.jpg') }}" width="376" height="276">
+        </div>
+      </div>
+    </section>
+
+    <!-- description short -->
+    <section class="descriptionShort">
+      <div class="paragraphShort">
+        <div id="firstCharacter">平</div>
+        <div id="descriptionShortPara">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时忙着上班，
+          周末如果有空就出来过一天有趣的生活，
+          春暖花开，世纪公园里已经色彩缤纷，
+          让紧张工作一周的烦恼和压力都飞到九霄云外吧！
+        </div>
+      </div>
+    </section>
+
+    <!-- weather -->
+    <section class="weather">
+
+      <!-- temperature -->
+      <section class="temperature">
+        <div id="temperatureHeader">室外气温</div>
+        <!-- <div id="temperatureSource">* 来自中国青年报</div>
+          <div id="qingNian">
+            <img src="../img/QingNian.jpg" width="50" height="16.36">
+          </div> -->
+        <div id="temperatureSubtitle">一月份第二周<br />平均历史气温</div>
+
+        <!-- temperture low -->
+        <div class="temperatureLow">
+          <div id="lowValue">4</div>
+          <div id="lowUnit">°C</div>
+          <div id="low">平均最低<br />气温</div>
+        </div>
+
+        <!-- temperture high -->
+        <div class="temperatureHigh">
+          <div id="highValue">5</div>
+          <div id="highUnit">°C</div>
+          <div id="high">平均最高<br />气温</div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- next button -->
+    <section class="nextButtonSmall">
+
+      <div id="p2nextButton">
+        <div id="infoButton">
+          <img src="{{ url_for('static', filename='img/Button.png') }}">
+        </div>
+        <div id="infoNext">下一页</div>
+        <script type="text/javascript">
+          document.getElementById("p2nextButton").onclick = function() {
+            return show('page3');
+          };
+        </script>
+      </div>
+      <div class="nextButtonNotice">
+        点击下一步后，您将无法返回此页面
+      </div>
+    </section>
+    </div>
+  </div>
+
+  <!-- page 3 -->
+  <div id="page3" style="display:none">
+    <div id="survey">
+      <!-- sign up fee -->
+      <div class="question">
+        <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
+        <div class="questionAnswer">
+          <div class="slidecontainer" id="signUpFee2">
+            <div class="form-group" style="margin-top:35px; margin-bottom:0px">
+              <output class="sliderAmount" name="amount" id="signUpFeeAmount2"
+                for="rangeInput">0元</output>
+              <input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider2" oninput="signUpFeeSlide2()"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <!-- next button -->
+    <section class="nextButton">
+      <div id="p3nextButton"><button id="button">
+          <div id="next">下一页</div>
+        </button>
+        <script type="text/javascript">
+          document.getElementById("p3nextButton").onclick = function() {
+            return show('page4');
+          };
+        </script>
+      </div>
+    </section>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+   <!-- page 4 -->
+  <div id="page4" style="display:none">
+    <div style="display: block;">
+    <!-- The Modal -->
+    <div id="myModal2" class="modalLarge">
+
+      <!-- Modal content -->
+      <div class="modal-content" style="width:285px;">
+        <span id="close2">&times;</span>
+        <p>我们现在将为您介绍一个我们自己为慈善事业举办的活动。
+          <br>请您仔细思考是否愿意参加该活动。
+          <br>我们从多种来源获得关于该活动的信息，这些来源对信息的准确性负责。</p>
+      </div>
+
+    </div>
+
+    <header>
+      <div class="title">
+        <div id="eventName">儿童慈善徒步运动<br /></div>
+        <div id="eventDate">2019.05.04</div>
+        <div id="eventTime">每周六 12:00 pm - 19:00 pm</div>
+        <div id="eventLocation">任何户外地点</div>
+      </div>
+    </header>
+
+    <!-- Image -->
+    <section class="image">
+      <div id="eventImage">
+        <div>
+          <img src="{{ url_for('static', filename='img/walkathon.png') }}" height="276">
+        </div>
+      </div>
+    </section>
+
+    <!-- description short -->
+    <section class="descriptionShort">
+      <div class="paragraphShort">
+        <div id="firstCharacter">平</div>
+        <div id="descriptionShortPara">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上海联合基金会凝聚了来自中国各地的基层非政府组织，
+          致力于帮助0-18岁的儿童健康成长。
+        </div>
+      </div>
+    </section>
+
+    <!-- weather -->
+    <section class="weather">
+
+      <!-- temperature -->
+      <section class="temperature">
+        <div id="temperatureHeader">室外气温</div>
+        <!-- <div id="temperatureSource">* 来自中国青年报</div>
+          <div id="qingNian">
+            <img src="../img/QingNian.jpg" width="50" height="16.36">
+          </div> -->
+        <div id="temperatureSubtitle">一月份第二周<br />平均历史气温</div>
+
+        <!-- temperture low -->
+        <div class="temperatureLow">
+          <div id="lowValue">4</div>
+          <div id="lowUnit">°C</div>
+          <div id="low">平均最低<br />气温</div>
+        </div>
+
+        <!-- temperture high -->
+        <div class="temperatureHigh">
+          <div id="highValue">5</div>
+          <div id="highUnit">°C</div>
+          <div id="high">平均最高<br />气温</div>
+        </div>
+      </section>
+
+      <!-- air quality -->
+      <section class="airQuality">
+        <div id="airQualityHeader">空气质量：良</div>
+        <div id="airQualitySource">（来自：上海市环境监测中心）</div>
+        <div id="dongFang">
+          <img src="{{ url_for('static', filename='img/SourceSHEnvironmentLogo.jpg') }}" height="23">
+        </div>
+
+        <!-- air quality scale -->
+        <div class="airQualityScale">
+
+          <!-- levels -->
+          <div class="levels">
+            <div id="infoLevel1">1级</div>
+            <div id="infoLevel2">2级</div>
+            <div id="infoLevel3">3级</div>
+            <div id="infoLevel4">4级</div>
+            <div id="infoLevel5">5级</div>
+            <div id="infoLevel6">6级</div>
+          </div>
+
+          <!-- level descriptions -->
+          <div class="levelDescription">
+            <div id="level1Description">优</div>
+            <div id="level2Description">良</div>
+            <div id="level3Description">轻度污染</div>
+            <div id="level4Description">中度污染</div>
+            <div id="level5Description">重度污染</div>
+            <div id="level6Description">严重污染</div>
+          </div>
+
+          <!-- color bar -->
+          <div>
+            <svg id="colorBar1">
+              <rect />
+            </svg>
+            <svg id="colorBar2">
+              <rect />
+            </svg>
+            <svg id="colorBar3">
+              <rect />
+            </svg>
+            <svg id="colorBar4">
+              <rect />
+            </svg>
+            <svg id="colorBar5">
+              <rect />
+            </svg>
+            <svg id="colorBar6">
+              <rect />
+            </svg>
+          </div>
+
+          <!-- air quality detail -->
+          <div id="airQualityDetail">
+            良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- description -->
+    <section class="description">
+      <section class="paragraph">
+        <div id="eventDetail">活动简介</div>
+        <!-- <div id="dropDownChevron"></div> -->
+        <div id="detailedPointForm">
+          <pre>
+            步行5000步——我们将以您的名义向上海联合基金会捐赠10元人民币；
+            步行6000步——我们将以您的名义捐赠20元人民币；
+            步行7000步（或以上）——我们将以您的名义捐赠30元人民币。
+            [步数信息将来自于您的微信运动——一个微信中的功能。]
+          </pre>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- suitable for -->
+    <section class="suitableFor">
+      <div id="suitableForTitle">适合人群</div>
+
+      <!-- suitable icons -->
+      <section class="suitableIcons">
+        <div id="iconFamily">
+          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+        </div>
+        <div id="iconFriends">
+          <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+        </div>
+        <div id="iconLover">
+          <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+        </div>
+        <div id="iconBaby">
+          <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+        </div>
+        <div id="iconElderly">
+          <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+        </div>
+        <div id="iconPet">
+          <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+        </div>
+      </section>
+
+      <!-- suitable icon labels -->
+      <section class="suitableIconLabels">
+        <div id="family">家庭</div>
+        <div id="friends">朋友</div>
+        <div id="lovers">恋人</div>
+        <div id="baby">儿童</div>
+        <div id="elderly">老人</div>
+        <div id="pets">宠物</div>
+      </section>
+    </section>
+
+    <!-- next button -->
+    <section class="infoNextButton">
+
+      <div id="p4nextButton">
+        <div id="infoButton">
+          <img src="{{ url_for('static', filename='img/Button.png') }}">
+        </div>
+        <div id="infoNext">下一页</div>
+        <script type="text/javascript">
+          document.getElementById("p4nextButton").onclick = function() {
+            return show('page5');
+          };
+        </script>
+      </div>
+      <div class="nextButtonNotice">
+        点击下一步后，您将无法返回此页面
+      </div>
+    </section>
+    </div>
+  </div>
+
+  <!-- page 5 -->
+  <div id="page5" style="display:none">
     <div id="survey">
       <div class="mainQuestion">关于天气预测的问题</div>
       <div class="question">
         <div class="questionPrompt">
-          <p>有活动预计在<b>3月的第2周</b>举行。您认为那周的空气质量等级会如何？</p>
+          <p>有活动预计在<b>3月的第2周</b>举行。您认为那周的空气质量将如何？基于您自己的预测，此题没有正确及错误答案。</p>
           <div id="note">
             <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
               <p id="subNote"><b>注意：</b></br>
@@ -89,7 +435,7 @@
               <div class="star">&starf;</div>
             </div>
           </div>
-          <div id="starAlert" style="top:541px"></div>
+          <div id="starAlert" style="top:565px"></div>
           <div class="starGroup1">
             <div class="starPrompt">
               <div>优</div>
@@ -229,7 +575,7 @@
             </div>
           </div>
           <div id="clearAllStarsButton" onclick="clearAllStars()">
-            <button id="clearAllButton" style="top:541px">
+            <button id="clearAllButton" style="top:565px">
               <div id="clear">&times;</div>
             </button></div>
           <div id="groupDescription"></div>
@@ -238,12 +584,12 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p2nextButton"><button id="button">
+      <div id="p5nextButton"><button id="button">
           <div id="next">下一页</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p2nextButton").onclick = function() {
-            return show('page3');
+          document.getElementById("p5nextButton").onclick = function() {
+            return show('page6');
           };
         </script>
       </div>
@@ -253,8 +599,8 @@
     </div>
   </div>
 
-  <!-- page 3 -->
-  <div id="page3" style="display:none">
+  <!-- page 6 -->
+  <div id="page6" style="display:none">
     <div id="survey">
       <!-- walkathon distance -->
       <div class="question">
@@ -290,12 +636,12 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p3nextButton"><button id="button">
+      <div id="p6nextButton"><button id="button">
           <div id="next">下一页</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p3nextButton").onclick = function() {
-            return show('page4');
+          document.getElementById("p6nextButton").onclick = function() {
+            return show('page7');
           };
         </script>
       </div>
@@ -305,8 +651,8 @@
     </div>
   </div>
 
-  <!-- page 4 -->
-  <div id="page4" style="display:none">
+  <!-- page 7 -->
+  <div id="page7" style="display:none">
     <div id="survey">
       <div class="mainQuestion">现在，让我们来向您了解一下关于这六天调研经历的感受。</div>
       <div class="question">
@@ -393,12 +739,12 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p4nextButton"><button id="button">
+      <div id="p7nextButton"><button id="button">
           <div id="next">下一页</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p4nextButton").onclick = function() {
-            return show('page5');
+          document.getElementById("p7nextButton").onclick = function() {
+            return show('page8');
           };
         </script>
       </div>
@@ -408,8 +754,8 @@
     </div>
   </div>
 
-  <!-- page 5 -->
-  <div id="page5" style="display:none">
+  <!-- page 8 -->
+  <div id="page8" style="display:none">
     <div id="survey">
       <div class="question">
         <div class="questionPrompt">您认为[新闻晨报]是从哪里获得的天气信息？</div>
@@ -432,6 +778,27 @@
           <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level6" value="level6"><label class="form-check-label" for="level6">极有可能</label></div>
         </div>
       </div>
+
+      </div>
+    <!-- next button -->
+    <section class="nextButton">
+      <div id="p8nextButton"><button id="button">
+          <div id="next">提交</div>
+        </button>
+        <script type="text/javascript">
+          document.getElementById("p8nextButton").onclick = function() {
+            return show('page9');
+          };
+        </script>
+      </div>
+    </section>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 87%; background-color: #979797;" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+  <div id="page9" style="display:none">
+    <div id="survey">
       <div class="question">
         <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
         <div class="questionAnswer">
@@ -641,23 +1008,23 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p5nextButton"><button id="button">
+      <div id="p9nextButton"><button id="button">
           <div id="next">提交</div>
         </button>
         <script type="text/javascript">
-          document.getElementById("p5nextButton").onclick = function() {
-            return show('page6');
+          document.getElementById("p9nextButton").onclick = function() {
+            return show('page10');
           };
         </script>
       </div>
     </section>
     <div class="progress" style="height: 8px;">
-      <div class="progress-bar" role="progressbar" style="width: 90%; background-color: #979797;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress-bar" role="progressbar" style="width: 94%; background-color: #979797;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
 
-  <!-- page 6 -->
-  <div id="page6" style="display:none">
+  <!-- page 9 -->
+  <div id="page10" style="display:none">
     <div id="survey">
       <div class="mainQuestion">感谢您完成今天的调研。此次调研还剩下两天就全部结束了，第七天的调研将在两周后进行。我们将在两周之内向您发送微信消息！</div>
     </div>
