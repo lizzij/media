@@ -57,6 +57,12 @@ CREATE TABLE infos (
   short_description TEXT,
   low_temp INTEGER,
   high_temp INTEGER,
+  suitable_for_family INTEGER,
+  suitable_for_friends INTEGER,
+  suitable_for_lover INTEGER,
+  suitable_for_baby INTEGER,
+  suitable_for_elderly INTEGER,
+  suitable_for_pet INTEGER,
   event_details TEXT
 );
 
@@ -79,6 +85,7 @@ INSERT INTO infos (event_id, title, subtitle,
   image_file, air_quality_source, air_quality_source_logo,
   headword, short_description,
   low_temp, high_temp,
+  suitable_for_family, suitable_for_friends, suitable_for_lover, suitable_for_baby, suitable_for_elderly, suitable_for_pet,
   event_details)
 VALUES
   (1, '相约网红自行车公园', '骑行最美茶海小径',
@@ -91,6 +98,7 @@ VALUES
 大片大片的绿色荡漾在斜坡上,
 周末用一整天的时光，
 和互助网一起去这里吧。', 4, 5,
+1,1,1,0,0,0,
 '行程安排：
 7:40 开始在指定地点签到集合，自由交流。（记得调好闹钟，不要迟到哦，迟到将错过车和活动）
 7:50 准时出发，领队在车上介绍行程，并组织大家自我介绍相互认识，一路欢歌笑语奔赴小城宜兴。
@@ -106,6 +114,7 @@ VALUES
 自助游太操心？做攻略太麻烦？毫无方向感？一个人出行太孤单？
 不想参加传统旅行社的跟团？不想去人挤人的大众景点？
 还在为周末去哪儿而烦恼？来，和互助网一起出游吧！', 4, 5,
+1,1,1,0,0,0,
 '行程安排：
 8:50 开始在指定地点签到集合，自由交流。（记得调好闹钟，不要迟到哦，迟到将错过车和活动）
 9:00 准时出发，领队在车上介绍行程，并组织大家自我介绍相互认识，一路欢歌笑语奔赴平湖。
@@ -121,6 +130,7 @@ VALUES
 '2019.05.04', '每周六 10:00 am - 20:00 pm', '地点 徐汇区 上海体育场',
 'img/event 3.png', '', 'img/transparent.png',
 '每', '周六参加公益之家成员大会, 一起集思广益如何主动去救助更多的有需要的人群。', 4, 5,
+1,1,1,1,1,1,
 '如果你有固定的精力来参与公益之家的事务,
 例如: 每周参加一次成员大会;
 一起集思广益如何主动去救助更多的有需要的人群;
@@ -138,6 +148,7 @@ VALUES
 无疑不是一种放松心情，放慢生活的方式。
 使自己高速运转的大脑在这一时刻真正轻松下来,
 感受着历史的痕迹。', 4, 5,
+0,1,1,0,0,0,
 '活动形式：
 1、14点集合，轮流自我介绍。14：30分准时出发，
 迟到的同学，自己骑车追上。或者直接到下一个休息点。
@@ -152,6 +163,7 @@ VALUES
 白天的衡山路和晚上判若两人。
 不宽的马路，干净的街道，两边风格迥异的建筑，
 一切都在日光下简单直接，和酒吧暧昧无关。', 4, 5,
+0,1,1,0,0,0,
 '行程安排：
 19：30地铁徐家汇站14号口集合，
 大概半个小时左右开始今晚的徒步：衡山路-淮海路，
@@ -166,6 +178,7 @@ VALUES
 这里，有岁月留下的痕迹。
 请放慢自己的脚步，跟随自己的心，
 用眼睛去重新发现这个有很多故事的上海。', 4, 5,
+0,1,1,0,0,0,
 '喜欢漫步找寻曾经的华美
 喜欢细细品味当下的静谧
 一边游走
@@ -182,6 +195,7 @@ VALUES
 周末如果有空就出来过一天有趣的生活，
 春暖花开，世纪公园里已经色彩缤纷，
 让紧张工作一周的烦恼和压力都飞到九霄云外吧！', 4, 5,
+0,0,1,0,0,0,
 '行程计划：
 11:50 世纪公园门口集合
 12:00-12：30 自我介绍

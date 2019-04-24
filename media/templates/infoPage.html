@@ -190,33 +190,86 @@
     <!-- suitable icons -->
     <section class="suitableIcons">
       <div id="iconFamily">
-        <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+      {% if (info['suitable_for_family']) %}
+          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+      {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:0.1;">
+      {% endif %}
       </div>
       <div id="iconFriends">
-        <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+        {% if (info['suitable_for_friends']) %}
+            <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:0.1;">
+        {% endif %}
       </div>
       <div id="iconLover">
-        <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+        {% if (info['suitable_for_lover']) %}
+            <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:0.1;">
+        {% endif %}
       </div>
       <div id="iconBaby">
-        <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+        {% if (info['suitable_for_baby']) %}
+            <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50" style="opacity:0.1;">
+        {% endif %}
       </div>
       <div id="iconElderly">
-        <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+        {% if (info['suitable_for_elderly']) %}
+            <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50" style="opacity:0.1;">
+        {% endif %}
       </div>
       <div id="iconPet">
-        <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+        {% if (info['suitable_for_pet']) %}
+            <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:0.1;">
+        {% endif %}
       </div>
     </section>
 
     <!-- suitable icon labels -->
     <section class="suitableIconLabels">
-      <div id="family">家庭</div>
-      <div id="friends">朋友</div>
-      <div id="lovers">恋人</div>
-      <div id="baby">儿童</div>
-      <div id="elderly">老人</div>
-      <div id="pets">宠物</div>
+      {% if (info['suitable_for_family']) %}
+          <div id="family">家庭</div>
+      {% else %}
+          <div id="family" style="opacity:0.1;">家庭</div>
+      {% endif %}
+
+      {% if (info['suitable_for_friends']) %}
+          <div id="friends">朋友</div>
+      {% else %}
+          <div id="friends" style="opacity:0.1;">朋友</div>
+      {% endif %}
+
+      {% if (info['suitable_for_lover']) %}
+          <div id="lovers">恋人</div>
+      {% else %}
+          <div id="lovers" style="opacity:0.1;">恋人</div>
+      {% endif %}
+
+      {% if (info['suitable_for_baby']) %}
+          <div id="baby">儿童</div>
+      {% else %}
+          <div id="baby" style="opacity:0.1;">儿童</div>
+      {% endif %}
+
+      {% if (info['suitable_for_elderly']) %}
+          <div id="elderly">老人</div>
+      {% else %}
+          <div id="elderly" style="opacity:0.1;">老人</div>
+      {% endif %}
+
+      {% if (info['suitable_for_pet']) %}
+          <div id="pets">宠物</div>
+      {% else %}
+          <div id="pets" style="opacity:0.1;">宠物</div>
+      {% endif %}
     </section>
   </section>
 
