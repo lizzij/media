@@ -18,6 +18,10 @@ function show(shown) {
           document.getElementById('page6').style='display: flex;flex-direction: column;position: relative;';
         }
       }
+      else if (shown == 'page8'){
+        guessWeatherSource();
+        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
+      }
       else {
         document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
       }
@@ -309,6 +313,18 @@ function showWalkathonSlider() {
 
 function walkathonSlide() {
   var value=document.getElementById("walkathonSlider").value;
+  var walkathonAmount = `${value}步`;
+  var distance = value * 0.0008;
+  var donation = (value - 4000) * 0.01;
+  distance = distance.toFixed(2);
+  donation = donation.toFixed(2);
+  document.getElementById("walkathonAmount").value=walkathonAmount;
+  document.getElementById("walkathonDistance").value=`我将在2019年3月16日走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
+  var left = 0.1 * value - 435;
+  document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+}
+
+function updateWalkathonSlide(value) {
   var walkathonAmount = `${value}步`;
   var distance = value * 0.0008;
   var donation = (value - 4000) * 0.01;
@@ -619,10 +635,43 @@ function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep
   $(sliderAmount).css("padding-left", left);
 }
 
+// if sources other than SEMC is chosen randomly select one of them
+// for guessWeatherSource question
+// else do not display guessWeatherSource question
+function guessWeatherSource(){
+  var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
+  var checked = [];
+  var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
+  var isSEMCChecked = document.getElementById('source3').checked;
+  var isDunnoChecked = document.getElementById('sourceNo').checked;
+  for (i=0;i<options.length;i++) {
+    var isOptionChecked = document.getElementById(options[i]).checked;
+    if (isOptionChecked) {
+      checked.push(sources[i]);
+    }
+  }
+  var numChosen = checked.length;
+  console.log(numChosen);
+  // only SEMC is selected
+  if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
+    document.getElementById('guessWeatherSource').style.display = "none";
+  }
+  else {
+    var randomIndex = Math.floor(Math.random() * (numChosen-1));
+    console.log(randomIndex);
+    document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
+    document.getElementById('guessWeatherSource').style.display = "block";
+    console.log(checked[randomIndex]);
+  }
+
+}
+
 $( document ).ready(function() {
   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
   randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
+  var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
+  updateWalkathonSlide(walkathonRandom);
 
   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
