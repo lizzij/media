@@ -317,12 +317,10 @@ header #eventLocation{
   position: absolute;
   width: 16px;
   height: 19px;
-  left: calc(50% - 16px/2 + 25px);
+  left: calc(50% - 16px/2 + 34px);
   top: 42px;
-
   font-family: Montserrat, sans-serif;
   font-size: 14px;
-
   color: #979797;
 }
 
@@ -360,12 +358,10 @@ header #eventLocation{
   position: absolute;
   width: 13px;
   height: 14px;
-  left: calc(50% - 13px/2 + 37px);
+  left: calc(50% - 13px/2 + 50px);
   top: 42px;
-
   font-family: Montserrat, sans-serif;
   font-size: 14px;
-
   color: #979797;
 }
 
