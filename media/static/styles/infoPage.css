@@ -816,7 +816,7 @@ pre{
   left: calc(50% - 50px/2 + 34.5px);
   top: 99px;
   color: #4F4F4F;
-  opacity: 0.1;
+  /* opacity: 0.1; */
 }
 
 #elderly{
@@ -826,7 +826,7 @@ pre{
   left: calc(50% - 50px/2 + 92.5px);
   top: 99px;
   color: #4F4F4F;
-  opacity: 0.1;
+  /* opacity: 0.1; */
 }
 
 #pets{
@@ -836,7 +836,7 @@ pre{
   left: calc(50% - 50px/2 + 150.5px);
   top: 99px;
   color: #4F4F4F;
-  opacity: 0.1;
+  /* opacity: 0.1; */
 }
 
 .infoNextButton{
