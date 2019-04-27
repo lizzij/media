@@ -58,7 +58,7 @@ def get_info(user_id_hashid, day_hashid):
             else:
                 db = get_db()
                 db.execute(
-                    'INSERT INTO survey (user_id, day, result, created, `question_id`)'
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
                     ' VALUES (?, ?, ?, ?, ?)',
                     (user_id, 0, consent, now, 'consent')
                 )
@@ -108,6 +108,18 @@ def get_survey(user_id_hashid, day_hashid):
         abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
+
+    if request.method == 'POST':
+        f = request.form
+        for question in f.keys():
+            for result in f.getlist(question):
+                db = get_db()
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, day, result, now, question)
+                )
+                db.commit()
 
     return render_template('survey' + str(day) + '.html')
 

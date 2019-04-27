@@ -94,7 +94,7 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="consent" id="notProceed" value="notProceed" data-required-message="请选择" required >
+            <input class="form-check-input" type="radio" name="consent" id="notProceed" value="notProceed" required >
             <label class="form-check-label" for="notProceed">
               我不同意
             </label>
@@ -121,19 +121,6 @@
         <button id="button" type="submit" value="下一页">
           <div id="next">下一页</div>
         </button>
-        <!-- <script type="text/javascript">
-          document.getElementById('consentNextButton').onclick = function() {
-            if (document.getElementById('proceed').checked) {
-              location.href = "{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}";
-            }
-            else if (document.getElementById('notProceed').checked) {
-              document.getElementById("alert").innerHTML = "如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。";
-            }
-            else {
-              document.getElementById("alert").innerHTML = "请选择！";
-            }
-          }
-        </script> -->
       </div>
     </div>
 
