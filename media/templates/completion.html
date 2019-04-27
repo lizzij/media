@@ -8,18 +8,19 @@
   <body>
     <!-- content -->
     {% block content %}
-      {% for user in users %}
-        <article class="user">
+      {% for survey in surveys %}
+        <article class="survey">
           <header>
             <div>
               <div class="about">
-                id: {{ user['id'] }};
-                user_id: {{ user['user_id'] }};
-                day: {{ user['day'] }};
-                created: {{ user['created'].strftime('%d/%m/%Y %H:%M') }}.</div>
+                user_id: {{ survey['user_id'] }};
+                day: {{ survey['day'] }};
+                question_id: {{ survey['question_id'] }};
+                result: {{ survey['result'] }};
+                created: {{ survey['created'].strftime('%d/%m/%Y %H:%M:%S') }}.</div>
             </div>
           </header>
-          <p class="body">{{ user['body'] }}</p>
+          <p class="body">{{ survey['body'] }}</p>
       {% endfor %}
     {% endblock %}
   </body>
