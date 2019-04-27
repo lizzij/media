@@ -10,6 +10,7 @@
 6. http://127.0.0.1:5000/5gKLM4A7vwr3aBlm/K0zAVkYV8W/info  
 7. http://127.0.0.1:5000/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey  
 8. http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/survey  
+
 http://127.0.0.1:5000/completion/detail
 
 ## HTTPS  
@@ -22,4 +23,5 @@ http://127.0.0.1:5000/completion/detail
 6. https://dailyeventinfo.com/5gKLM4A7vwr3aBlm/K0zAVkYV8W/info
 7. https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
+
 https://dailyeventinfo.com/completion/detail
