@@ -46,6 +46,23 @@ def get_info(user_id_hashid, day_hashid):
     next_day_hashid = next[1]
 
     if day == 0:
+        if request.method == 'POST':
+            consent = request.form['consent']
+            error = None
+
+            if not consent:
+                error = 'Please choose consent.'
+
+            if error is not None:
+                abort(404, "Consent error")
+            else:
+                db = get_db()
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, `question_id`)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, 0, consent, now, 'consent')
+                )
+                db.commit()
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     info = get_db().execute(
@@ -77,50 +94,26 @@ def get_survey(user_id_hashid, day_hashid):
     According to a user's id and treatment group.
     Hash the user_id and day.
     """
-    # if request.method == 'POST':
-    #     uni = request.form['uni']
-    #     error = None
-    #
-    #     if not uni:
-    #         error = 'Please fill in your university.'
-    #
-    #     if error is not None:
-    #         flash(error)
-    #     else:
-    #         db = get_db()
-    #         db.execute(
-    #             'INSERT INTO survey (user_id, result, created)'
-    #             ' VALUES (?, ?, ?)',
-    #             (user_id, uni, now)
-    #         )
-    #         db.commit()
-    #         return render_template('finished.html')
     user = get_db().execute(
         'SELECT user_id, day'
         ' FROM user u'
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
     ).fetchone()
+    if user is None:
+        abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
-    return render_template('survey' + str(day) + '.html')
 
-@bp.route('/')
-def index():
-    return '谢谢参与！'
+    return render_template('survey' + str(day) + '.html')
 
 @bp.route('/completion/detail')
 def completion():
-    """Show all the users, and all results."""
+    """Show all the surveys, and all results."""
     db = get_db()
-    users = db.execute(
-        'SELECT u.id, u.user_id, u.day, created'
-        ' FROM user u JOIN survey s ON u.user_id = s.user_id'
-        # TODO change to curr_time in activity
+    surveys = db.execute(
+        'SELECT user_id, day, question_id, result, created'
+        ' FROM survey s'
         ' ORDER BY created ASC'
     ).fetchall()
-    return render_template('completion.html', users=users)
-
-@bp.route('/survey7')
-def survey7():
-    return render_template('survey7.html')
+    return render_template('completion.html', surveys=surveys)
