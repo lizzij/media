@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" dir="ltr">
+<html lang="zh-Hans" dir="ltr">
 
 <head>
   <meta charset="utf-8">
@@ -84,7 +84,7 @@
 如果您不想参与本调研，请点击 “我不同意” 按钮，或点击关闭此浏览界面。
       </pre>
     </div>
-    <form action="" method="post">
+    <form lang="zh" action="" method="post">
       <div class="form-group" style="margin-top: 10px; margin-bottom:0px">
         <div class="questionAnswer">
           <div class="form-check">
@@ -94,7 +94,7 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="consent" id="notProceed" value="notProceed" required>
+            <input class="form-check-input" type="radio" name="consent" id="notProceed" value="notProceed" data-required-message="请选择" required >
             <label class="form-check-label" for="notProceed">
               我不同意
             </label>
@@ -102,7 +102,17 @@
         </div>
 
       </div>
-      <div id="alert"></div>
+      <div id="alert">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
     </div>
 
     <!-- next button -->
@@ -112,20 +122,16 @@
           <div id="next">下一页</div>
         </button>
         <!-- <script type="text/javascript">
-          document.getElementById("button").onclick = function() {
-            if (document.getElementById("proceed").checked) {
+          document.getElementById('consentNextButton').onclick = function() {
+            if (document.getElementById('proceed').checked) {
               location.href = "{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}";
             }
-            else if (document.getElementById("notProceed").checked) {
+            else if (document.getElementById('notProceed').checked) {
               document.getElementById("alert").innerHTML = "如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。";
             }
             else {
               document.getElementById("alert").innerHTML = "请选择！";
             }
-          }
-
-          document.getElementById("proceed").onchecked = function() {
-            document.getElementById("alert").innerHTML = "";
           }
         </script> -->
       </div>
