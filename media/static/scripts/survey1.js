@@ -562,12 +562,12 @@ function willingnessSlide() {
   document.getElementById("willingnessAmount").style.marginLeft = left + "px";
 }
 
-function donationWillingSlide() {
-  var value=document.getElementById("donationWillingSlider").value;
-  var donationWillingAmount = `${value}元`;
-  document.getElementById("donationWillingAmount").value=donationWillingAmount;
-  var left = 2 + 0.266 * value;
-  document.getElementById("donationWillingAmount").style.marginLeft = left + "px";
+function signUpFeeSlide() {
+  var value=document.getElementById("signUpFeeSlider").value;
+  var signUpFeeAmount = `${value}元`;
+  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
 function donationWillingSlide2() {
@@ -943,7 +943,7 @@ function updateStarInput1() {
   document.getElementById("starCountGroup1Input").value = document.getElementById("starCountGroup1").innerHTML;
 }
 function updateStarInput2() {
-  document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup2").innerHTML;
+  document.getElementById("starCountGroup2Input").value = document.getElementById("starCountGroup2").innerHTML;
 }
 function updateStarInput3() {
   document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup3").innerHTML;
