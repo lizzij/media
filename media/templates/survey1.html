@@ -197,9 +197,9 @@
               <div class="star" onclick="weatherStarCountGroup4(12)">☆</div>
             </div>
           </div>
-          <div id="weatherClearAllStarsButton" onclick="weatherClearAllStars()"><button id="weatherClearAllButton">
+          <div id="weatherClearAllStarsButton" onclick="weatherClearAllStars()"><div id="weatherClearAllButton">
               <div id="weatherClear">&times;</div>
-            </button></div>
+            </div></div>
         </div>
       </div>
     </div><!-- next button -->
@@ -397,9 +397,9 @@
               <div class="star" onclick="starCountGroup6(12)">☆</div>
             </div>
           </div>
-          <div id="clearAllStarsButton" onclick="clearAllStars()"><button id="clearAllButton">
+          <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
               <div id="clear">&times;</div>
-            </button></div>
+            </div></div>
           <div id="groupDescription"></div>
         </div>
       </div>
@@ -751,8 +751,7 @@
 
     <section class="nextButton">
       <div id="p5nextButton">
-        <input id="button" type="submit">
-          <div id="next">提交</div>
+        <input id="button" type="submit" value="提交" style="color: white; font-size: 14px;">
         </input>
         <script type="text/javascript">
           document.getElementById("p5nextButton").onclick = function() {
