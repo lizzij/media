@@ -40,7 +40,7 @@ def get_info(user_id_hashid, day_hashid):
         'SELECT user_id_hashid, day_hashid'
         ' FROM user u'
         ' WHERE u.user_id = ? AND u.day = ?',
-        ((user_id+1), 1,)
+        (user_id, 1,)
     ).fetchone()
     next_user_id_hashid = next[0]
     next_day_hashid = next[1]
