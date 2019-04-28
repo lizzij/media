@@ -14,23 +14,13 @@
 </head>
 
 <body>
-
+  <form lang="zh" action="" method="post">
   <!-- page 1 -->
   <div id="page1">
     <div id="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">关于该活动的问题</div><!-- event location question -->
-      <div class="question">
-        <div class="form-group" style="margin-bottom:0px">
-          <div class="questionPrompt">该活动的名字是？</div>
-          <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name1" value="option1" required><label class="form-check-label" for="name1">公益之家资助项目</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name2" value="option2" required><label class="form-check-label" for="name2">云端之上高山木梨硔，赏云海日出，船游新安江</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name3" value="option3" required><label class="form-check-label" for="name3">周末一起晨跑！</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name4" value="option4" required><label class="form-check-label" for="name4">登鸬鸟山，赏山顶杜鹃花开成海，看漫山红遍</label></div>
-          </div>
-        </div>
-      </div><!-- time on event -->
+      <!-- event donation -->
       <div class="question">
         <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
         <div class="questionAnswer">
@@ -38,7 +28,7 @@
             <div class="form-group" style="margin-top:35px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="signUpFeeAmount"
                 for="rangeInput">0元</output>
-              <input type="range" min="0" max="300" value="0" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
+              <input type="range" min="0" max="300" value="0" class="slider" name="signUpFee" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
             </div>
           </div>
         </div>
@@ -48,9 +38,9 @@
         <div class="questionAnswer">
           <div id="listActivities">
             <div class="form-group">
-              <input type="text" class="form-control" id="listSchoolActivities1" placeholder="活动一">
-              <input type="text" class="form-control" id="listSchoolActivities2" placeholder="活动二（选填）">
-              <input type="text" class="form-control" id="listSchoolActivities3" placeholder="活动三（选填）">
+              <input type="text" class="form-control" id="listSchoolActivities1" name="activity1" placeholder="活动一">
+              <input type="text" class="form-control" id="listSchoolActivities2" name="activity2" placeholder="活动二（选填）">
+              <input type="text" class="form-control" id="listSchoolActivities3" name="activity3" placeholder="活动三（选填）">
             </div>
           </div>
         </div>
@@ -62,7 +52,7 @@
           <div class="slidecontainer" id="exerciseTime" style="padding-top:0;">
             <div class="form-group" style="margin-top:35px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="outdoorTimeAmount" for="rangeInput">0小时 0分钟</output>
-              <input type="range" min="0" max="1250" value="0" class="slider" id="outdoorTimeSlider" oninput="outdoorTimeSlide()"></input>
+              <input type="range" min="0" max="1250" value="0" class="slider" id="outdoorTimeSlider" name="outdoorTime" oninput="outdoorTimeSlide()"></input>
               </div>
           </div>
         </div>
@@ -74,7 +64,7 @@
           <div class="slidecontainer" id="exerciseTime" style="padding-top:0;">
             <div class="form-group" style="margin-top:35px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="exerciseTimeAmount" for="rangeInput">0小时 0分钟</output>
-              <input type="range" min="0" max="1250" value="0" class="slider" id="exerciseTimeSlider" oninput="exerciseTimeSlide()"></input>
+              <input type="range" min="0" max="1250" value="0" class="slider" id="exerciseTimeSlider" name="exerciseTime" oninput="exerciseTimeSlide()"></input>
               </div>
           </div>
         </div>
@@ -84,8 +74,8 @@
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">过去3年中，您是否去过香港，澳门或台湾？</div>
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="beenToSomeCountries" id="beenToCountries" value="beenToCountries"><label class="form-check-label" for="beenToCountries">是</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="beenToSomeCountries" id="notBeenToCountries" value="notBeenToCountries"><label class="form-check-label" for="notBeenToCountries">否</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="beenToHKTWMO" id="beenToCountries" value="beenToHKTWMO"><label class="form-check-label" for="beenToCountries">是</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="beenToHKTWMO" id="notBeenToCountries" value="notBeenToHKTWMO"><label class="form-check-label" for="notBeenToCountries">否</label></div>
           </div>
         </div>
       </div>
@@ -94,16 +84,16 @@
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">过去3年中，您是否去过香港，澳门和台湾以外的任何国家？</div>
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="beenToCountries" id="beenTo" value="beenTo"><label class="form-check-label" for="beenTo">是</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="beenToCountries" id="notBeenTo" value="notBeenTo"><label class="form-check-label" for="notBeenTo">否</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="beenToCountries" id="beenTo" value="beenToCountries"><label class="form-check-label" for="beenTo">是</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="beenToCountries" id="notBeenTo" value="notBeenToCountries"><label class="form-check-label" for="notBeenTo">否</label></div>
           </div>
         </div>
       </div>
     </div><!-- next button -->
     <section class="nextButton">
-      <div id="p1nextButton"><button id="button">
+      <div id="p1nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p1nextButton").onclick = function() {
             return show('page2');
@@ -129,11 +119,11 @@
             <div class="trueFalsePromp">2018年底，中美双方在阿根廷会晤，却未能够达成对停止加赠新关税的共识。</div>
             <div class="questionAnswer">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="1hasHappened" value="hasHappened">
+                <input class="form-check-input" type="radio" name="event1HasHappened" id="1hasHappened" value="hasHappened">
                 <label class="form-check-label" for="1hasHappened">发生过</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="1notHappened" value="notHappened">
+                <input class="form-check-input" type="radio" name="event1HasHappened" id="1notHappened" value="notHappened">
                 <label class="form-check-label" for="1notHappened">没有发生过</label>
               </div>
             </div>
@@ -143,11 +133,11 @@
             <div class="trueFalsePromp">中国电信携手中兴通讯，在福州率先实现基于5G试验网络商用终端的首次通话。</div>
             <div class="questionAnswer">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="2hasHappened" value="hasHappened">
+                <input class="form-check-input" type="radio" name="event2HasHappened" id="2hasHappened" value="hasHappened">
                 <label class="form-check-label" for="2hasHappened">发生过</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="2notHappened" value="notHappened">
+                <input class="form-check-input" type="radio" name="event2HasHappened" id="2notHappened" value="notHappened">
                 <label class="form-check-label" for="2notHappened">没有发生过</label>
               </div>
             </div>
@@ -157,11 +147,11 @@
             <div class="trueFalsePromp">2019年第一季度，人民银行采取大幅贬值人民币兑美元的措施以刺激出口。</div>
             <div class="questionAnswer">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="3hasHappened" value="hasHappened">
+                <input class="form-check-input" type="radio" name="event3HasHappened" id="3hasHappened" value="hasHappened">
                 <label class="form-check-label" for="3hasHappened">发生过</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="3notHappened" value="notHappened">
+                <input class="form-check-input" type="radio" name="event3HasHappened" id="3notHappened" value="notHappened">
                 <label class="form-check-label" for="3notHappened">没有发生过</label>
               </div>
             </div>
@@ -171,11 +161,11 @@
             <div class="trueFalsePromp">2019年3月，埃塞俄比亚航空公司一架波音737型飞机起飞不久后坠毁，机上人员无一生还。</div>
             <div class="questionAnswer">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="4hasHappened" value="hasHappened">
+                <input class="form-check-input" type="radio" name="event4HasHappened" id="4hasHappened" value="hasHappened">
                 <label class="form-check-label" for="4hasHappened">发生过</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="4notHappened" value="notHappened">
+                <input class="form-check-input" type="radio" name="event4HasHappened" id="4notHappened" value="notHappened">
                 <label class="form-check-label" for="4notHappened">没有发生过</label>
               </div>
             </div>
@@ -185,11 +175,11 @@
             <div class="trueFalsePromp">2018年12月—2019年1月，由于预算不足，美国联邦政府一些部门关闭长达35天，成为美国历史上最长的政府停摆事件。</div>
             <div class="questionAnswer">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="5hasHappened" value="hasHappened">
+                <input class="form-check-input" type="radio" name="event5HasHappened" id="5hasHappened" value="hasHappened">
                 <label class="form-check-label" for="5hasHappened">发生过</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions5" id="5notHappened" value="notHappened">
+                <input class="form-check-input" type="radio" name="event5HasHappened" id="5notHappened" value="notHappened">
                 <label class="form-check-label" for="5notHappened">没有发生过</label>
               </div>
             </div>
@@ -199,8 +189,8 @@
       </div>
     </div><!-- next button -->
     <section class="nextButton">
-      <div id="p2nextButton"><button id="button">
-          <div id="next">提交</div>
+      <div id="p2nextButton"><button id="button" type="submit">
+          <div id="next">下一页</div>
         </button>
         <script type="text/javascript">
           document.getElementById("p2nextButton").onclick = function() {
@@ -213,6 +203,7 @@
       <div class="progress-bar" role="progressbar" style="width: 66%; background-color: #979797;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
+  <form lang="zh" action="" method="post">
 
   <!-- page 3 -->
   <div id="page3" style="display:none">
@@ -269,6 +260,11 @@
     };
 
     })(window);
+    {% if lastpage %}
+        document.getElementById("page1").style = 'display: none;';
+        document.getElementById("page3").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+    {% else %}
+    {% endif %}
   </script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jweixin-1.2.0.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
