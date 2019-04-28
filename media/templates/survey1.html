@@ -38,16 +38,16 @@
           <div class="slidecontainer" id="donationWilling">
             <div class="form-group" style="margin-top:16px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="donationWillingAmount" for="rangeInput">0元</output></div>
-              <input type="range" min="0" max="1000" class="slider" name="donationWilling" id="donationWillingSlider" oninput="donationWillingSlide()" required>
+              <input type="range" min="0" max="1000" value="0" class="slider" name="donationWilling" id="donationWillingSlider" oninput="donationWillingSlide()" required>
           </div>
         </div>
       </div>
     </div><!-- next button -->
     <div class="nextButton">
       <div id="p1nextButton" >
-        <button  >
+        <div id="button" >
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p1nextButton").onclick = function() {
             return show('page2');
@@ -201,9 +201,9 @@
       </div>
     </div><!-- next button -->
     <section class="nextButton">
-      <div id="p2nextButton"><button >
+      <div id="p2nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p2nextButton").onclick = function() {
             return show('page3');
@@ -402,9 +402,9 @@
       </div>
     </div><!-- next button -->
     <section class="nextButton">
-      <div id="p3nextButton"><button >
+      <div id="p3nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p3nextButton").onclick = function() {
             return show('page4');
@@ -684,9 +684,9 @@
     </div>
     <section class="nextButton">
       <div id="p4nextButton">
-        <button >
+        <div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p4nextButton").onclick = function() {
             return show('page5');
@@ -748,7 +748,7 @@
 
     <section class="nextButton">
       <div id="p5nextButton">
-        <input type="submit">
+        <input id="button" type="submit">
           <div id="next">提交</div>
         </input>
         <script type="text/javascript">

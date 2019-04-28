@@ -120,7 +120,7 @@ def get_survey(user_id_hashid, day_hashid):
                     (user_id, day, result, now, question)
                 )
                 db.commit()
-
+                
     return render_template('survey' + str(day) + '.html')
 
 @bp.route('/completion/detail')
