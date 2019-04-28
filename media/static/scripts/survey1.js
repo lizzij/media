@@ -59,7 +59,7 @@ function eventTimeSlide() {
 
 weatherShowClearAllStarsButton()
 
-function weatherStarCountGroup1(number) {
+function weatherStarCountGroup1OnClick(number) {
   var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
   var count = document.getElementById("weatherStarCountGroup1").innerHTML;
   if (weatherStarLeftCount == 0 && number > count) {
@@ -70,7 +70,7 @@ function weatherStarCountGroup1(number) {
   }
   else if (number == 1 && count == 0) {
     document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup1Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1(1)">&starf;</div>';
+    document.getElementById("weatherStarGroup1Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1OnClick(1)">&starf;</div>';
     document.getElementById("weatherStarCountGroup1").innerHTML = '1';
   }
   else if (number == 1 && count == 1) {
@@ -83,7 +83,7 @@ function weatherStarCountGroup1(number) {
     var star = '';
     var i;
     for (i = 0; i < number; i++) {
-      star = star + '<div class="star" onclick="weatherStarCountGroup1(' + (i+1) + ')">&starf;</div>';
+      star = star + '<div class="star" onclick="weatherStarCountGroup1OnClick(' + (i+1) + ')">&starf;</div>';
     }
     document.getElementById("weatherStarGroup1Cover").innerHTML = star;
     document.getElementById("weatherStarCountGroup1").innerHTML = number;
@@ -93,7 +93,7 @@ function weatherStarCountGroup1(number) {
   return false;
 }
 
-function weatherStarCountGroup2(number) {
+function weatherStarCountGroup2OnClick(number) {
   var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
   var count = document.getElementById("weatherStarCountGroup2").innerHTML;
   if (weatherStarLeftCount == 0 && number > count) {
@@ -104,7 +104,7 @@ function weatherStarCountGroup2(number) {
   }
   else if (number == 1 && count == 0) {
     document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup2Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1(1)">&starf;</div>';
+    document.getElementById("weatherStarGroup2Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1OnClick(1)">&starf;</div>';
     document.getElementById("weatherStarCountGroup2").innerHTML = '1';
   }
   else if (number == 1 && count == 1) {
@@ -117,7 +117,7 @@ function weatherStarCountGroup2(number) {
     var star = '';
     var i;
     for (i = 0; i < number; i++) {
-      star = star + '<div class="star" onclick="weatherStarCountGroup2(' + (i+1) + ')">&starf;</div>';
+      star = star + '<div class="star" onclick="weatherStarCountGroup2OnClick(' + (i+1) + ')">&starf;</div>';
     }
     document.getElementById("weatherStarGroup2Cover").innerHTML = star;
     document.getElementById("weatherStarCountGroup2").innerHTML = number;
@@ -127,7 +127,7 @@ function weatherStarCountGroup2(number) {
   return false;
 }
 
-function weatherStarCountGroup3(number) {
+function weatherStarCountGroup3OnClick(number) {
   var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
   var count = document.getElementById("weatherStarCountGroup3").innerHTML;
   if (weatherStarLeftCount == 0 && number > count) {
@@ -138,7 +138,7 @@ function weatherStarCountGroup3(number) {
   }
   else if (number == 1 && count == 0) {
     document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup3Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1(1)">&starf;</div>';
+    document.getElementById("weatherStarGroup3Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1OnClick(1)">&starf;</div>';
     document.getElementById("weatherStarCountGroup3").innerHTML = '1';
   }
   else if (number == 1 && count == 1) {
@@ -151,7 +151,7 @@ function weatherStarCountGroup3(number) {
     var star = '';
     var i;
     for (i = 0; i < number; i++) {
-      star = star + '<div class="star" onclick="weatherStarCountGroup3(' + (i+1) + ')">&starf;</div>';
+      star = star + '<div class="star" onclick="weatherStarCountGroup3OnClick(' + (i+1) + ')">&starf;</div>';
     }
     document.getElementById("weatherStarGroup3Cover").innerHTML = star;
     document.getElementById("weatherStarCountGroup3").innerHTML = number;
@@ -161,7 +161,7 @@ function weatherStarCountGroup3(number) {
   return false;
 }
 
-function weatherStarCountGroup4(number) {
+function weatherStarCountGroup4OnClick(number) {
   var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
   var count = document.getElementById("weatherStarCountGroup4").innerHTML;
   if (weatherStarLeftCount == 0 && number > count) {
@@ -172,7 +172,7 @@ function weatherStarCountGroup4(number) {
   }
   else if (number == 1 && count == 0) {
     document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup4Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1(1)">&starf;</div>';
+    document.getElementById("weatherStarGroup4Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup1OnClick(1)">&starf;</div>';
     document.getElementById("weatherStarCountGroup4").innerHTML = '1';
   }
   else if (number == 1 && count == 1) {
