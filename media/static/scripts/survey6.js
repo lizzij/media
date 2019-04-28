@@ -626,14 +626,14 @@ function trust6Slide() {
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
 
-
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-  var random = Math.floor(Math.random() * (max - min)) + min;
-  $(sliderName).val(random);
-  $(sliderAmount).val(random + unit);
-  var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
-}
+// 
+// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+//   var random = Math.floor(Math.random() * (max - min)) + min;
+//   $(sliderName).val(random);
+//   $(sliderAmount).val(random + unit);
+//   var left = leftStart + moveStep * random;
+//   $(sliderAmount).css("padding-left", left);
+// }
 
 // if sources other than SEMC is chosen randomly select one of them
 // for guessWeatherSource question
@@ -666,20 +666,20 @@ function guessWeatherSource(){
 
 }
 
-$( document ).ready(function() {
-  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-  randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
-  randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
-  var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
-  updateWalkathonSlide(walkathonRandom);
-
-  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-});
+// $( document ).ready(function() {
+//   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+//   randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
+//   randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
+//   var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
+//   updateWalkathonSlide(walkathonRandom);
+//
+//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+// });
 
 // Get the modal
 var modal = document.getElementById('myModal1');

@@ -612,19 +612,19 @@ function trust6Slide() {
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-  var random = Math.floor(Math.random() * (max - min)) + min;
-  $(sliderName).val(random);
-  $(sliderAmount).val(random + unit);
-  var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
-}
-
-$( document ).ready(function() {
-  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-});
+// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+//   var random = Math.floor(Math.random() * (max - min)) + min;
+//   $(sliderName).val(random);
+//   $(sliderAmount).val(random + unit);
+//   var left = leftStart + moveStep * random;
+//   $(sliderAmount).css("padding-left", left);
+// }
+//
+// $( document ).ready(function() {
+//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+// });
