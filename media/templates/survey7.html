@@ -312,7 +312,7 @@
         <div id="beanNumberResult">
         </div>
         <div id="checkBeanNumberSource">
-          <input class="btn btn-primary" type="submit" value="核对答案" id="checkBeanNumberSourceButton" onClick="checkBeanNumberSource()">
+          <div class="btn btn-primary" type="submit" name="checkBeanNumberSourceButton" value="核对答案" id="checkBeanNumberSourceButton" onClick="checkBeanNumberSource()">核对答案</div>
         </div>
       </div>
       <div id="beanCountEstimateQuestion" style="display:none">
@@ -544,9 +544,9 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p9nextButton"><button id="button" type="submit">
-          <div id="next">提交</div>
-        </button>
+      <div id="p9nextButton">
+        <input id="button" type="submit" value="提交" style="color: white; font-size: 14px;">
+        </input>
         <script type="text/javascript">
           document.getElementById("p9nextButton").onclick = function() {
             return show('page10');
