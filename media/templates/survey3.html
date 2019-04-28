@@ -22,17 +22,16 @@
       <div class="mainQuestion">关于该活动的问题</div><!-- event location question -->
       <!-- event donation -->
       <div class="question">
-        <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
+        <div class="questionPrompt">如果愿意的话，请问您想为这个活动捐款多少元？</div>
         <div class="questionAnswer">
-          <div class="slidecontainer" id="signUpFee">
-            <div class="form-group" style="margin-top:35px; margin-bottom:0px">
-              <output class="sliderAmount" name="amount" id="signUpFeeAmount"
-                for="rangeInput">0元</output>
-              <input type="range" min="0" max="300" value="0" class="slider" name="signUpFee" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
-            </div>
+          <div class="slidecontainer" id="donationWilling">
+            <div class="form-group" style="margin-top:16px; margin-bottom:0px">
+              <output class="sliderAmount" name="amount" id="donationWillingAmount" for="rangeInput">0元</output></div>
+              <input type="range" min="0" max="1000" value="0" class="slider" name="donationWilling" id="donationWillingSlider" oninput="donationWillingSlide()" required>
           </div>
         </div>
-      </div><!-- list school activities -->
+      </div>
+      <!-- list school activities -->
       <div class="question">
         <div class="questionPrompt">您在学校参加了哪些课外活动小组？（请列举不超过三个）</div>
         <div class="questionAnswer">
