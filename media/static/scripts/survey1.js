@@ -89,6 +89,7 @@ function weatherStarCountGroup1(number) {
     document.getElementById("weatherStarCountGroup1").innerHTML = number;
   }
   weatherStarLeft();
+  updateInput1();
   return false;
 }
 
@@ -915,6 +916,10 @@ function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep
   $(sliderAmount).val(random + unit);
   var left = leftStart + moveStep * random;
   $(sliderAmount).css("margin-left", left);
+}
+
+function updateInput1() {
+  document.getElementById("weatherStarCountGroup1Input").value = document.getElementById("weatherStarCountGroup1").innerHTML;
 }
 
 $( document ).ready(function() {

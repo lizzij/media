@@ -25,3 +25,16 @@ http://127.0.0.1:5000/completion/detail
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
 https://dailyeventinfo.com/completion/detail
+
+- How to run: navigate to media dir
+```
+. venv/bin/activate
+export FLASK_APP=media
+export FLASK_ENV=development
+flask run
+```
+
+- Initialize database
+```
+flask init-db
+```
