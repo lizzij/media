@@ -30,268 +30,285 @@
 
   </div>
 
-  <header>
-    <div class="title">
-      <div id="eventName">{{ (info['title']) }}<br />{{ (info['subtitle']) }}</div>
-      <div id="eventDate">{{ (info['info_date']) }}</div>
-      <div id="eventTime">{{ (info['info_time']) }}</div>
-      <div id="eventLocation">{{ (info['location']) }}</div>
-    </div>
-  </header>
+  <div id="page1">
+    <header>
+      <div class="title">
+        <div id="eventName">{{ (info['title']) }}<br />{{ (info['subtitle']) }}</div>
+        <div id="eventDate">{{ (info['info_date']) }}</div>
+        <div id="eventTime">{{ (info['info_time']) }}</div>
+        <div id="eventLocation">{{ (info['location']) }}</div>
+      </div>
+    </header>
 
-  <script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
+    <script>
+      // Get the modal
+      var modal = document.getElementById('myModal');
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
 
-    modal.style.display = "block";
+      modal.style.display = "block";
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
         modal.style.display = "none";
       }
-    }
-  </script>
 
-  <!-- Image -->
-  <section class="image">
-    <div id="eventImage">
-      <div>
-        <img src="{{ url_for('static', filename=info['image_file']) }}" width="376" height="276">
-      </div>
-    </div>
-  </section>
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
 
-  <!-- description short -->
-  <section class="descriptionShort">
-    <div class="paragraphShort">
-      <!-- <div id="firstCharacter">{{ (info['headword']) }}</div> -->
-      <div id="descriptionShortPara">
-        {{ (info['short_description']) }}
-      </div>
-    </div>
-  </section>
-
-  <!-- weather -->
-  <section class="weather">
-
-    <!-- temperature -->
-    <section class="temperature">
-      <div id="temperatureHeader">室外气温</div>
-      <!-- <div id="temperatureSource">* 来自中国青年报</div>
-        <div id="qingNian">
-          <img src="../img/QingNian.jpg" width="50" height="16.36">
-        </div> -->
-      <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
-
-      <!-- temperture low -->
-      <div class="temperatureLow">
-        <div id="lowValue">{{ '%d' % (info['low_temp']) }}</div>
-        <div id="lowUnit">°C</div>
-        <div id="low">平均最低<br />气温</div>
-      </div>
-
-      <!-- temperture high -->
-      <div class="temperatureHigh">
-        <div id="highValue">{{ '%d' % (info['high_temp']) }}</div>
-        <div id="highUnit">°C</div>
-        <div id="high">平均最高<br />气温</div>
-      </div>
-    </section>
-
-    <!-- air quality -->
-    <section class="airQuality">
-      <div id="airQualityHeader">空气质量：良</div>
-      <div id="airQualitySource">{{ (info['air_quality_source']) }}</div>
-      <div id="dongFang">
-        <img src="{{ url_for('static', filename=info['air_quality_source_logo']) }}" height="23">
-      </div>
-
-      <!-- air quality scale -->
-      <div class="airQualityScale">
-
-        <!-- levels -->
-        <div class="levels">
-          <div id="infoLevel1">1级</div>
-          <div id="infoLevel2">2级</div>
-          <div id="infoLevel3">3级</div>
-          <div id="infoLevel4">4级</div>
-          <div id="infoLevel5">5级</div>
-          <div id="infoLevel6">6级</div>
-        </div>
-
-        <!-- level descriptions -->
-        <div class="levelDescription">
-          <div id="level1Description">优</div>
-          <div id="level2Description">良</div>
-          <div id="level3Description">轻度污染</div>
-          <div id="level4Description">中度污染</div>
-          <div id="level5Description">重度污染</div>
-          <div id="level6Description">严重污染</div>
-        </div>
-
-        <!-- color bar -->
+    <!-- Image -->
+    <section class="image">
+      <div id="eventImage">
         <div>
-          <svg id="colorBar1">
-            <rect />
-          </svg>
-          <svg id="colorBar2">
-            <rect />
-          </svg>
-          <svg id="colorBar3">
-            <rect />
-          </svg>
-          <svg id="colorBar4">
-            <rect />
-          </svg>
-          <svg id="colorBar5">
-            <rect />
-          </svg>
-          <svg id="colorBar6">
-            <rect />
-          </svg>
-        </div>
-
-        <!-- air quality detail -->
-        <div id="airQualityDetail">
-          良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+          <img src="{{ url_for('static', filename=info['image_file']) }}" width="376" height="276">
         </div>
       </div>
     </section>
 
-  </section>
-
-  <!-- description -->
-  <section class="description">
-    <section class="paragraph">
-      <div id="eventDetail">活动简介</div>
-      <!-- <div id="dropDownChevron"></div> -->
-      <div id="detailedPointForm">
-        <pre>
-          {{ (info['event_details']) }}
-        </pre>
+    <!-- description short -->
+    <section class="descriptionShort">
+      <div class="paragraphShort">
+        <!-- <div id="firstCharacter">{{ (info['headword']) }}</div> -->
+        <div id="descriptionShortPara">
+          {{ (info['short_description']) }}
+        </div>
       </div>
     </section>
 
-  </section>
-
-  <!-- suitable for -->
-  <section class="suitableFor">
-    <div id="suitableForTitle">适合人群</div>
-
-    <!-- suitable icons -->
-    <section class="suitableIcons">
-      <div id="iconFamily">
-      {% if (info['suitable_for_family']) %}
-          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
-      {% else %}
-          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:0.1;">
-      {% endif %}
-      </div>
-      <div id="iconFriends">
-        {% if (info['suitable_for_friends']) %}
-            <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:0.1;">
-        {% endif %}
-      </div>
-      <div id="iconLover">
-        {% if (info['suitable_for_lover']) %}
-            <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:0.1;">
-        {% endif %}
-      </div>
-      <div id="iconBaby">
-        {% if (info['suitable_for_baby']) %}
-            <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50" style="opacity:0.1;">
-        {% endif %}
-      </div>
-      <div id="iconElderly">
-        {% if (info['suitable_for_elderly']) %}
-            <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50" style="opacity:0.1;">
-        {% endif %}
-      </div>
-      <div id="iconPet">
-        {% if (info['suitable_for_pet']) %}
-            <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
-        {% else %}
-            <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:0.1;">
-        {% endif %}
-      </div>
-    </section>
-
-    <!-- suitable icon labels -->
-    <section class="suitableIconLabels">
-      {% if (info['suitable_for_family']) %}
-          <div id="family">家庭</div>
-      {% else %}
-          <div id="family" style="opacity:0.1;">家庭</div>
-      {% endif %}
-
-      {% if (info['suitable_for_friends']) %}
-          <div id="friends">朋友</div>
-      {% else %}
-          <div id="friends" style="opacity:0.1;">朋友</div>
-      {% endif %}
-
-      {% if (info['suitable_for_lover']) %}
-          <div id="lovers">恋人</div>
-      {% else %}
-          <div id="lovers" style="opacity:0.1;">恋人</div>
-      {% endif %}
-
-      {% if (info['suitable_for_baby']) %}
-          <div id="baby">儿童</div>
-      {% else %}
-          <div id="baby" style="opacity:0.1;">儿童</div>
-      {% endif %}
-
-      {% if (info['suitable_for_elderly']) %}
-          <div id="elderly">老人</div>
-      {% else %}
-          <div id="elderly" style="opacity:0.1;">老人</div>
-      {% endif %}
-
-      {% if (info['suitable_for_pet']) %}
-          <div id="pets">宠物</div>
-      {% else %}
-          <div id="pets" style="opacity:0.1;">宠物</div>
-      {% endif %}
-    </section>
-  </section>
-
-  <!-- next button -->
-  <section class="infoNextButton">
-
-    <div id="nextButton">
-      <div id="infoButton">
+    <div id="moreInfoButton">
+      <div>
         <img src="{{ url_for('static', filename='img/Button.png') }}">
       </div>
-      <div id="infoNext">下一页</div>
+      <div id="moreInfoButtonNext">下一页</div>
       <script type="text/javascript">
-        document.getElementById("nextButton").onclick = function() {
-          location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+        document.getElementById("moreInfoButton").onclick = function() {
+          document.getElementById("moreInfoButton").style.display = 'none';
+          document.getElementById("page2").style.display = 'block';
+          window.scrollTo(0, 588);
         }
       </script>
     </div>
-    <div class="nextButtonNotice">
-      点击下一步后，您将无法返回此页面
-    </div>
-  </section>
+  </div>
 
+  <div id="page2" style="display:none;">
+    <!-- weather -->
+    <section class="weather">
+
+      <!-- temperature -->
+      <section class="temperature">
+        <div id="temperatureHeader">室外气温</div>
+        <!-- <div id="temperatureSource">* 来自中国青年报</div>
+          <div id="qingNian">
+            <img src="../img/QingNian.jpg" width="50" height="16.36">
+          </div> -->
+        <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
+
+        <!-- temperture low -->
+        <div class="temperatureLow">
+          <div id="lowValue">{{ '%d' % (info['low_temp']) }}</div>
+          <div id="lowUnit">°C</div>
+          <div id="low">平均最低<br />气温</div>
+        </div>
+
+        <!-- temperture high -->
+        <div class="temperatureHigh">
+          <div id="highValue">{{ '%d' % (info['high_temp']) }}</div>
+          <div id="highUnit">°C</div>
+          <div id="high">平均最高<br />气温</div>
+        </div>
+      </section>
+
+      <!-- air quality -->
+      <section class="airQuality">
+        <div id="airQualityHeader">空气质量：良</div>
+        <div id="airQualitySource">{{ (info['air_quality_source']) }}</div>
+        <div id="dongFang">
+          <img src="{{ url_for('static', filename=info['air_quality_source_logo']) }}" height="23">
+        </div>
+
+        <!-- air quality scale -->
+        <div class="airQualityScale">
+
+          <!-- levels -->
+          <div class="levels">
+            <div id="infoLevel1">1级</div>
+            <div id="infoLevel2">2级</div>
+            <div id="infoLevel3">3级</div>
+            <div id="infoLevel4">4级</div>
+            <div id="infoLevel5">5级</div>
+            <div id="infoLevel6">6级</div>
+          </div>
+
+          <!-- level descriptions -->
+          <div class="levelDescription">
+            <div id="level1Description">优</div>
+            <div id="level2Description">良</div>
+            <div id="level3Description">轻度污染</div>
+            <div id="level4Description">中度污染</div>
+            <div id="level5Description">重度污染</div>
+            <div id="level6Description">严重污染</div>
+          </div>
+
+          <!-- color bar -->
+          <div>
+            <svg id="colorBar1">
+              <rect />
+            </svg>
+            <svg id="colorBar2">
+              <rect />
+            </svg>
+            <svg id="colorBar3">
+              <rect />
+            </svg>
+            <svg id="colorBar4">
+              <rect />
+            </svg>
+            <svg id="colorBar5">
+              <rect />
+            </svg>
+            <svg id="colorBar6">
+              <rect />
+            </svg>
+          </div>
+
+          <!-- air quality detail -->
+          <div id="airQualityDetail">
+            良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- description -->
+    <section class="description">
+      <section class="paragraph">
+        <div id="eventDetail">活动简介</div>
+        <!-- <div id="dropDownChevron"></div> -->
+        <div id="detailedPointForm">
+          <pre>
+            {{ (info['event_details']) }}
+          </pre>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- suitable for -->
+    <section class="suitableFor">
+      <div id="suitableForTitle">适合人群</div>
+
+      <!-- suitable icons -->
+      <section class="suitableIcons">
+        <div id="iconFamily">
+          {% if (info['suitable_for_family']) %}
+          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+        <div id="iconFriends">
+          {% if (info['suitable_for_friends']) %}
+          <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+        <div id="iconLover">
+          {% if (info['suitable_for_lover']) %}
+          <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+        <div id="iconBaby">
+          {% if (info['suitable_for_baby']) %}
+          <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+        <div id="iconElderly">
+          {% if (info['suitable_for_elderly']) %}
+          <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+        <div id="iconPet">
+          {% if (info['suitable_for_pet']) %}
+          <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+          {% else %}
+          <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:0.1;">
+          {% endif %}
+        </div>
+      </section>
+
+      <!-- suitable icon labels -->
+      <section class="suitableIconLabels">
+        {% if (info['suitable_for_family']) %}
+        <div id="family">家庭</div>
+        {% else %}
+        <div id="family" style="opacity:0.1;">家庭</div>
+        {% endif %}
+
+        {% if (info['suitable_for_friends']) %}
+        <div id="friends">朋友</div>
+        {% else %}
+        <div id="friends" style="opacity:0.1;">朋友</div>
+        {% endif %}
+
+        {% if (info['suitable_for_lover']) %}
+        <div id="lovers">恋人</div>
+        {% else %}
+        <div id="lovers" style="opacity:0.1;">恋人</div>
+        {% endif %}
+
+        {% if (info['suitable_for_baby']) %}
+        <div id="baby">儿童</div>
+        {% else %}
+        <div id="baby" style="opacity:0.1;">儿童</div>
+        {% endif %}
+
+        {% if (info['suitable_for_elderly']) %}
+        <div id="elderly">老人</div>
+        {% else %}
+        <div id="elderly" style="opacity:0.1;">老人</div>
+        {% endif %}
+
+        {% if (info['suitable_for_pet']) %}
+        <div id="pets">宠物</div>
+        {% else %}
+        <div id="pets" style="opacity:0.1;">宠物</div>
+        {% endif %}
+      </section>
+    </section>
+
+    <!-- next button -->
+    <section class="infoNextButton">
+
+      <div id="nextButton">
+        <div id="infoButton">
+          <img src="{{ url_for('static', filename='img/Button.png') }}">
+        </div>
+        <div id="infoNext">下一页</div>
+        <script type="text/javascript">
+          document.getElementById("nextButton").onclick = function() {
+            location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+          }
+        </script>
+      </div>
+      <div class="nextButtonNotice">
+        点击下一步后，您将无法返回此页面
+      </div>
+    </section>
+  </div>
   <!-- powered by -->
   <!-- <section class="poweredBy">
     <div id="lizzijIcon">

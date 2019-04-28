@@ -939,3 +939,23 @@ pre{
   padding-top:60px;
   color: #4F4F4F;
 }
+
+#moreInfoButtonNext{
+  position: absolute;
+  width: 222px;
+  height: 10px;
+  left: calc(50% - 222px/2 + 2.5px);
+  top: 12px;
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+#moreInfoButton{
+  position: absolute;
+  width: 248px;
+  height: 42px;
+  left: calc(50% - 248px/2 + 0.5px);
+  top: 600px;
+}
