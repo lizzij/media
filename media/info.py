@@ -51,18 +51,22 @@ def get_info(user_id_hashid, day_hashid):
             error = None
 
             if not consent:
-                error = 'Please choose consent.'
+                error = '请选择.'
 
             if error is not None:
                 abort(404, "Consent error")
             else:
                 db = get_db()
                 db.execute(
-                    'INSERT INTO survey (user_id, day, result, created, `question_id`)'
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
                     ' VALUES (?, ?, ?, ?, ?)',
                     (user_id, 0, consent, now, 'consent')
                 )
                 db.commit()
+            if consent == 'proceed':
+                return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
+            elif consent == 'notProceed':
+                flash('如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     info = get_db().execute(
@@ -105,7 +109,20 @@ def get_survey(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
-    return render_template('survey' + str(day) + '.html')
+    lastpage=0
+    if request.method == 'POST':
+        f = request.form
+        for question in f.keys():
+            for result in f.getlist(question):
+                db = get_db()
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, day, result, now, question)
+                )
+                db.commit()
+                lastpage = 1
+    return render_template('survey' + str(day) + '.html', lastpage=lastpage)
 
 @bp.route('/completion/detail')
 def completion():
