@@ -973,3 +973,16 @@ function updateStarInput6() {
 //   randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "");
 //   randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.025, "元");
 // });
+
+function validateRadioButton(name) {
+  return ($('input[name=' + name + ']:checked').length > 0);
+}
+
+function goto(nextPage) {
+  if (validateRadioButton('eventName')) {
+    show(nextPage);
+  }
+  else {
+    document.getElementById("p1alert").innerHTML = '请选择该活动的名字！';
+  }
+}
