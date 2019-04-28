@@ -36,33 +36,32 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
-    next = get_db().execute(
-        'SELECT user_id_hashid, day_hashid'
-        ' FROM user u'
-        ' WHERE u.user_id = ? AND u.day = ?',
-        (user_id, 1,)
-    ).fetchone()
-    next_user_id_hashid = next[0]
-    next_day_hashid = next[1]
+    if day > 6:
+        return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
+    if day < 8: #TODO remove next day, change to day 0
+        next = get_db().execute(
+            'SELECT user_id_hashid, day_hashid'
+            ' FROM user u'
+            ' WHERE u.user_id = ? AND u.day = ?',
+            (user_id, (day+1),)
+        ).fetchone()
+        next_user_id_hashid = next[0]
+        next_day_hashid = next[1]
+    else:
+        next_user_id_hashid = None
+        next_day_hashid = None
 
     if day == 0:
         if request.method == 'POST':
             consent = request.form['consent']
-            error = None
-
-            if not consent:
-                error = '请选择.'
-
-            if error is not None:
-                abort(404, "Consent error")
-            else:
-                db = get_db()
-                db.execute(
-                    'INSERT INTO survey (user_id, day, result, created, question_id)'
-                    ' VALUES (?, ?, ?, ?, ?)',
-                    (user_id, 0, consent, now, 'consent')
-                )
-                db.commit()
+            db = get_db()
+            db.execute(
+                'INSERT INTO survey (user_id, day, result, created, question_id)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (user_id, 0, consent, now, 'consent')
+            )
+            db.commit()
             if consent == 'proceed':
                 return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
             elif consent == 'notProceed':
@@ -109,6 +108,19 @@ def get_survey(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
+    if day < 8: #TODO remove next day, change to day 0
+        next = get_db().execute(
+            'SELECT user_id_hashid, day_hashid'
+            ' FROM user u'
+            ' WHERE u.user_id = ? AND u.day = ?',
+            (user_id, (day+1),)
+        ).fetchone()
+        next_user_id_hashid = next[0]
+        next_day_hashid = next[1]
+    else:
+        next_user_id_hashid = None
+        next_day_hashid = None
+
     lastpage=0
     if request.method == 'POST':
         f = request.form
@@ -122,7 +134,7 @@ def get_survey(user_id_hashid, day_hashid):
                 )
                 db.commit()
                 lastpage = 1
-    return render_template('survey' + str(day) + '.html', lastpage=lastpage)
+    return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/completion/detail')
 def completion():
