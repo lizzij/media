@@ -52,12 +52,12 @@
     </div>
 
     <!-- page 2 -->
-    <div id="page2" style="display:none">
+    <div id="page2" style="display:none;">
       <div style="display: block;margin: 8px;
     margin-top: 8px;
     margin-right: 8px;
     margin-bottom: 8px;
-    margin-left: 8px;">
+    margin-left: 8px;height:3000px;">
         <!-- The Modal -->
         <div id="myModal1" class="modal">
 
@@ -94,61 +94,76 @@
           <div class="paragraphShort">
             <!-- <div id="firstCharacter">平</div> -->
             <div id="descriptionShortPara">
-              平时忙着上班，
-              周末如果有空就出来过一天有趣的生活，
-              春暖花开，世纪公园里已经色彩缤纷，
-              让紧张工作一周的烦恼和压力都飞到九霄云外吧！
+              世纪公园里已经色彩缤纷，到处散发着安静祥和的气息。
             </div>
           </div>
         </section>
 
-        <!-- weather -->
-        <section class="weather">
+        <div id="moreInfoButton1">
+          <div>
+            <img src="{{ url_for('static', filename='img/Button.png') }}">
+          </div>
+          <div id="moreInfoButtonNext">下一页</div>
+          <script type="text/javascript">
+            document.getElementById("moreInfoButton1").onclick = function() {
+              document.getElementById("moreInfoButton1").style.display = 'none';
+              document.getElementById("moreInfo1").style.display = 'block';
+              window.scrollTo(0, 588);
+            }
+          </script>
+        </div>
+        </div>
 
-          <!-- temperature -->
-          <section class="temperature">
-            <div id="temperatureHeader">室外气温</div>
-            <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
-            <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
+        <div id="moreInfo1" style="display:none;">
 
-            <!-- temperture low -->
-            <div class="temperatureLow">
-              <div id="lowValue">18</div>
-              <div id="lowUnit">°C</div>
-              <div id="low">平均最低<br />气温</div>
-            </div>
+          <!-- weather -->
+          <section class="weather">
 
-            <!-- temperture high -->
-            <div class="temperatureHigh">
-              <div id="highValue">25</div>
-              <div id="highUnit">°C</div>
-              <div id="high">平均最高<br />气温</div>
-            </div>
+            <!-- temperature -->
+            <section class="temperature">
+              <div id="temperatureHeader">室外气温</div>
+              <!-- <div id="temperatureSource">* 来自中国青年报</div>
+            <div id="qingNian">
+              <img src="../img/QingNian.jpg" width="50" height="16.36">
+            </div> -->
+              <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
+
+              <!-- temperture low -->
+              <div class="temperatureLow">
+                <div id="lowValue">18</div>
+                <div id="lowUnit">°C</div>
+                <div id="low">平均最低<br />气温</div>
+              </div>
+
+              <!-- temperture high -->
+              <div class="temperatureHigh">
+                <div id="highValue">25</div>
+                <div id="highUnit">°C</div>
+                <div id="high">平均最高<br />气温</div>
+              </div>
+            </section>
+
           </section>
 
-        </section>
+          <!-- next button -->
+          <section class="nextButtonSmall">
 
-        <!-- next button -->
-        <section class="nextButtonSmall">
-
-          <div id="p2nextButton">
-            <div id="infoButton">
-              <img src="{{ url_for('static', filename='img/Button.png') }}">
+            <div id="p2nextButton">
+              <div id="infoButton">
+                <img src="{{ url_for('static', filename='img/Button.png') }}">
+              </div>
+              <div id="infoNext">下一页</div>
+              <script type="text/javascript">
+                document.getElementById("p2nextButton").onclick = function() {
+                  return show('page3');
+                };
+              </script>
             </div>
-            <div id="infoNext">下一页</div>
-            <script type="text/javascript">
-              document.getElementById("p2nextButton").onclick = function() {
-                return show('page3');
-              };
-            </script>
-          </div>
-          <div class="nextButtonNotice">
-            点击下一步后，您将无法返回此页面
-          </div>
-        </section>
+            <div class="nextButtonNotice">
+              点击下一步后，您将无法返回此页面
+            </div>
+          </section>
+        </div>
       </div>
     </div>
 
@@ -231,24 +246,24 @@
             </div>
           </section>
 
-          <div id="moreInfoButton">
+          <div id="moreInfoButton2">
             <div>
               <img src="{{ url_for('static', filename='img/Button.png') }}">
             </div>
             <div id="moreInfoButtonNext">下一页</div>
             <script type="text/javascript">
-              document.getElementById("moreInfoButton").onclick = function() {
-                document.getElementById("moreInfoButton").style.display = 'none';
-                document.getElementById("moreInfo").style.display = 'block';
+              document.getElementById("moreInfoButton2").onclick = function() {
+                document.getElementById("moreInfoButton2").style.display = 'none';
+                document.getElementById("moreInfo2").style.display = 'block';
                 window.scrollTo(0, 588);
               }
             </script>
           </div>
         </div>
 
-        <div id="moreInfo" style="display:none;">
+        <div id="moreInfo2" style="display:none;">
           <!-- weather -->
-          <section class="weather" style="top:700px;">
+          <section class="weather">
 
             <!-- temperature -->
             <section class="temperature">
@@ -337,7 +352,7 @@
           </section>
 
           <!-- description -->
-          <section class="description" style="top:1200px;">
+          <section class="description">
             <section class="paragraph">
               <div id="eventDetail">活动简介</div>
               <!-- <div id="dropDownChevron"></div> -->
@@ -351,7 +366,7 @@
           </section>
 
           <!-- suitable for -->
-          <section class="suitableFor" style="top:1060px;">
+          <section class="suitableFor">
             <div id="suitableForTitle">适合人群</div>
 
             <!-- suitable icons -->
@@ -388,7 +403,7 @@
           </section>
 
           <!-- next button -->
-          <section class="infoNextButton" style="top:1480px;">
+          <section class="infoNextButton" style="top:1390px;">
 
             <div id="p4nextButton">
               <div id="infoButton">

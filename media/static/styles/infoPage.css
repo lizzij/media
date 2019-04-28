@@ -952,7 +952,7 @@ pre{
   color: #FFFFFF;
 }
 
-#moreInfoButton{
+#moreInfoButton, #moreInfoButton1, #moreInfoButton2{
   position: absolute;
   width: 248px;
   height: 42px;
