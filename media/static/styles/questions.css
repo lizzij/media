@@ -535,8 +535,8 @@ div.trustScaleLabel > div{
 
 #clear{
   position:absolute;
-  top: -8px;
-  left: 3px;
+  top: -7px;
+  left: 4px;
   width: 10px;
   height: 19px;
   font-size: 20px;
@@ -687,8 +687,8 @@ div.trustScaleLabel > div{
 
 #weatherClear{
   position:absolute;
-  top: -8px;
-  left: -1px;
+  top: -7px;
+  left: 4px;
   width: 19px;
   height: 19px;
   font-size: 20px;
