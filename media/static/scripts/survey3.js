@@ -56,37 +56,37 @@ function exerciseTimeSlide() {
   document.getElementById("exerciseTimeAmount").style.paddingLeft = left + "px";
 }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-  var random = Math.floor(Math.random() * (max - min)) + min;
-  $(sliderName).val(random);
-  $(sliderAmount).val(random + unit);
-  var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
-}
-
-function randomizeTimeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
-  var value = Math.floor(Math.random() * (max - min)) + min;
-  var hours;
-  var minutes;
-  var time;
-  hours = Math.floor(value / 60);
-  minutes = value % 60;
-  if (value >= 1200) {
-    time = `大于等于20小时`;
-  }
-  else {
-    hours = Math.floor(value / 60);
-    minutes = value % 60;
-    time = `${hours}小时 ${minutes}分钟`;
-  }
-  $(sliderName).val(value);
-  $(sliderAmount).val(time);
-  var left = leftStart + moveStep * value;
-  $(sliderAmount).css("padding-left", left);
-}
-
-$( document ).ready(function() {
-  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-  randomizeTimeSlider(0, 300, "#exerciseTimeSlider", "#exerciseTimeAmount", 0, 0.17);
-  randomizeTimeSlider(0, 300, "#outdoorTimeSlider", "#outdoorTimeAmount", 0, 0.17);
-});
+// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+//   var random = Math.floor(Math.random() * (max - min)) + min;
+//   $(sliderName).val(random);
+//   $(sliderAmount).val(random + unit);
+//   var left = leftStart + moveStep * random;
+//   $(sliderAmount).css("padding-left", left);
+// }
+//
+// function randomizeTimeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+//   var value = Math.floor(Math.random() * (max - min)) + min;
+//   var hours;
+//   var minutes;
+//   var time;
+//   hours = Math.floor(value / 60);
+//   minutes = value % 60;
+//   if (value >= 1200) {
+//     time = `大于等于20小时`;
+//   }
+//   else {
+//     hours = Math.floor(value / 60);
+//     minutes = value % 60;
+//     time = `${hours}小时 ${minutes}分钟`;
+//   }
+//   $(sliderName).val(value);
+//   $(sliderAmount).val(time);
+//   var left = leftStart + moveStep * value;
+//   $(sliderAmount).css("padding-left", left);
+// }
+//
+// $( document ).ready(function() {
+//   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+//   randomizeTimeSlider(0, 300, "#exerciseTimeSlider", "#exerciseTimeAmount", 0, 0.17);
+//   randomizeTimeSlider(0, 300, "#outdoorTimeSlider", "#outdoorTimeAmount", 0, 0.17);
+// });

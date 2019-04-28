@@ -940,10 +940,10 @@ function updateInput4() {
   document.getElementById("weatherStarCountGroup4Input").value = document.getElementById("weatherStarCountGroup4").innerHTML;
 }
 function updateStarInput1() {
-  document.getElementById("starCountGroup1Input").value = document.getElementById("starCountGroup3").innerHTML;
+  document.getElementById("starCountGroup1Input").value = document.getElementById("starCountGroup1").innerHTML;
 }
 function updateStarInput2() {
-  document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup3").innerHTML;
+  document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup2").innerHTML;
 }
 function updateStarInput3() {
   document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup3").innerHTML;

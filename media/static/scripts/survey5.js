@@ -22,14 +22,14 @@ function signUpFeeSlide() {
   document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-  var random = Math.floor(Math.random() * (max - min)) + min;
-  $(sliderName).val(random);
-  $(sliderAmount).val(random + unit);
-  var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
-}
-
-$( document ).ready(function() {
-  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-});
+// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+//   var random = Math.floor(Math.random() * (max - min)) + min;
+//   $(sliderName).val(random);
+//   $(sliderAmount).val(random + unit);
+//   var left = leftStart + moveStep * random;
+//   $(sliderAmount).css("padding-left", left);
+// }
+//
+// $( document ).ready(function() {
+//   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+// });
