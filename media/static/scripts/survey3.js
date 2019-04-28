@@ -14,12 +14,12 @@ function show(shown) {
   return 0;
 }
 
-function signUpFeeSlide() {
-  var value=document.getElementById("signUpFeeSlider").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
-  var left = 2 + 0.9 * value;
-  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
+function donationWillingSlide() {
+  var value=document.getElementById("donationWillingSlider").value;
+  var donationWillingAmount = `${value}元`;
+  document.getElementById("donationWillingAmount").value=donationWillingAmount;
+  var left = 2 + 0.266 * value;
+  document.getElementById("donationWillingAmount").style.marginLeft = left + "px";
 }
 
 function outdoorTimeSlide() {
