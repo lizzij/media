@@ -15,7 +15,7 @@
 
 <!-- Title -->
 
-<body style="margin:0px;">
+<body style="margin:0px; height:3000px;">
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
@@ -80,54 +80,73 @@
     </div>
   </section>
 
-  <!-- weather -->
-  <section class="weather">
+  <div id="moreInfoButton">
+    <div>
+      <img src="{{ url_for('static', filename='img/Button.png') }}">
+    </div>
+    <div id="moreInfoButtonNext">下一页</div>
+    <script type="text/javascript">
+      document.getElementById("moreInfoButton").onclick = function() {
+        document.getElementById("moreInfoButton").style.display = 'none';
+        document.getElementById("moreInfo").style.display = 'block';
+        window.scrollTo(0, 588);
+      }
+    </script>
+  </div>
+  </div>
 
-    <!-- temperature -->
-    <section class="temperature">
-      <div id="temperatureHeader">室外气温</div>
-      <!-- <div id="temperatureSource">* 来自中国青年报</div>
+  <div id="moreInfo" style="display:none;">
+
+
+
+    <!-- weather -->
+    <section class="weather">
+
+      <!-- temperature -->
+      <section class="temperature">
+        <div id="temperatureHeader">室外气温</div>
+        <!-- <div id="temperatureSource">* 来自中国青年报</div>
         <div id="qingNian">
           <img src="../img/QingNian.jpg" width="50" height="16.36">
         </div> -->
-      <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
+        <div id="temperatureSubtitle">五月6至12日<br />平均历史气温</div>
 
-      <!-- temperture low -->
-      <div class="temperatureLow">
-        <div id="lowValue">{{ '%d' % (info['low_temp']) }}</div>
-        <div id="lowUnit">°C</div>
-        <div id="low">平均最低<br />气温</div>
-      </div>
+        <!-- temperture low -->
+        <div class="temperatureLow">
+          <div id="lowValue">{{ '%d' % (info['low_temp']) }}</div>
+          <div id="lowUnit">°C</div>
+          <div id="low">平均最低<br />气温</div>
+        </div>
 
-      <!-- temperture high -->
-      <div class="temperatureHigh">
-        <div id="highValue">{{ '%d' % (info['high_temp']) }}</div>
-        <div id="highUnit">°C</div>
-        <div id="high">平均最高<br />气温</div>
-      </div>
+        <!-- temperture high -->
+        <div class="temperatureHigh">
+          <div id="highValue">{{ '%d' % (info['high_temp']) }}</div>
+          <div id="highUnit">°C</div>
+          <div id="high">平均最高<br />气温</div>
+        </div>
+      </section>
+
     </section>
 
-  </section>
+    <!-- next button -->
+    <section class="nextButtonSmall">
 
-  <!-- next button -->
-  <section class="nextButtonSmall">
-
-    <div id="nextButton">
-      <div id="infoButton">
-        <img src="{{ url_for('static', filename='img/Button.png') }}">
+      <div id="nextButton">
+        <div id="infoButton">
+          <img src="{{ url_for('static', filename='img/Button.png') }}">
+        </div>
+        <div id="infoNext">下一页</div>
+        <script type="text/javascript">
+          document.getElementById("nextButton").onclick = function() {
+            location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+          }
+        </script>
       </div>
-      <div id="infoNext">下一页</div>
-      <script type="text/javascript">
-        document.getElementById("nextButton").onclick = function() {
-          location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
-        }
-      </script>
-    </div>
-    <div class="nextButtonNotice">
-      点击下一步后，您将无法返回此页面
-    </div>
-  </section>
-
+      <div class="nextButtonNotice">
+        点击下一步后，您将无法返回此页面
+      </div>
+    </section>
+  </div>
   <!-- powered by -->
   <!-- <section class="poweredBySmall">
     <div id="lizzijIcon">

@@ -30,7 +30,7 @@
 
   </div>
 
-  <div id="page1">
+  <div>
     <header>
       <div class="title">
         <div id="eventName">{{ (info['title']) }}<br />{{ (info['subtitle']) }}</div>
@@ -89,14 +89,14 @@
       <script type="text/javascript">
         document.getElementById("moreInfoButton").onclick = function() {
           document.getElementById("moreInfoButton").style.display = 'none';
-          document.getElementById("page2").style.display = 'block';
+          document.getElementById("moreInfo").style.display = 'block';
           window.scrollTo(0, 588);
         }
       </script>
     </div>
   </div>
 
-  <div id="page2" style="display:none;">
+  <div id="moreInfo" style="display:none;">
     <!-- weather -->
     <section class="weather">
 
