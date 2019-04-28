@@ -178,7 +178,7 @@ header #eventLocation{
   top: 24px;
 }
 
-#firstCharacter{
+/* #firstCharacter{
   position: absolute;
   width: 15px;
   height: 15px;
@@ -192,7 +192,7 @@ header #eventLocation{
   font-size: 20px;
 
   color: #4F4F4F;
-}
+} */
 
 #descriptionShortPara{
   position: absolute;
