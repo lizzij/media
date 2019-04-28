@@ -109,6 +109,7 @@ def get_survey(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
+    lastpage=0
     if request.method == 'POST':
         f = request.form
         for question in f.keys():
@@ -120,8 +121,8 @@ def get_survey(user_id_hashid, day_hashid):
                     (user_id, day, result, now, question)
                 )
                 db.commit()
-                
-    return render_template('survey' + str(day) + '.html')
+                lastpage = 1
+    return render_template('survey' + str(day) + '.html', lastpage=lastpage)
 
 @bp.route('/completion/detail')
 def completion():
