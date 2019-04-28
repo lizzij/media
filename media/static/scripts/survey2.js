@@ -265,7 +265,7 @@ function chatWithFriendsSlide() {
 }
 
 function dunno1() {
-  var isDunno1Checked = document.getElementById("dunno1").checked
+  var isDunno1Checked = document.getElementById("dunno1checkbox").checked
   if (isDunno1Checked) {
     document.getElementById("trustSlider1").style.display = "none";
   }
@@ -275,7 +275,7 @@ function dunno1() {
 }
 
 function dunno2() {
-  var isDunno2Checked = document.getElementById("dunno2").checked
+  var isDunno2Checked = document.getElementById("dunno2checkbox").checked
   if (isDunno2Checked) {
     document.getElementById("trustSlider2").style.display = "none";
   }
@@ -285,7 +285,7 @@ function dunno2() {
 }
 
 function dunno3() {
-  var isDunno3Checked = document.getElementById("dunno3").checked
+  var isDunno3Checked = document.getElementById("dunno3checkbox").checked
   if (isDunno3Checked) {
     document.getElementById("trustSlider3").style.display = "none";
   }
@@ -295,7 +295,7 @@ function dunno3() {
 }
 
 function dunno4() {
-  var isDunno4Checked = document.getElementById("dunno4").checked
+  var isDunno4Checked = document.getElementById("dunno4checkbox").checked
   if (isDunno4Checked) {
     document.getElementById("trustSlider4").style.display = "none";
   }
@@ -305,7 +305,7 @@ function dunno4() {
 }
 
 function dunno5() {
-  var isDunno5Checked = document.getElementById("dunno5").checked
+  var isDunno5Checked = document.getElementById("dunno5checkbox").checked
   if (isDunno5Checked) {
     document.getElementById("trustSlider5").style.display = "none";
   }
@@ -315,7 +315,7 @@ function dunno5() {
 }
 
 function dunno6() {
-  var isDunno6Checked = document.getElementById("dunno6").checked
+  var isDunno6Checked = document.getElementById("dunno6checkbox").checked
   if (isDunno6Checked) {
     document.getElementById("trustSlider6").style.display = "none";
   }
@@ -557,54 +557,54 @@ function hideOnCampusAddress(){
 function showOnCampusAddress(){
   document.getElementById("onCampusAddress").style.display = "block";
 }
+//
+// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
+//   var random = Math.floor(Math.random() * (max - min)) + min;
+//   $(sliderName).val(random);
+//   $(sliderAmount).val(random + unit);
+//   var left = leftStart + moveStep * random;
+//   $(sliderAmount).css("padding-left", left);
+// }
 
-function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-  var random = Math.floor(Math.random() * (max - min)) + min;
-  $(sliderName).val(random);
-  $(sliderAmount).val(random + unit);
-  var left = leftStart + moveStep * random;
-  $(sliderAmount).css("padding-left", left);
-}
-
-function randomizeTimeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
-  var value = Math.floor(Math.random() * (max - min)) + min;
-  var hours;
-  var minutes;
-  var time;
-  hours = Math.floor(value / 60);
-  minutes = value % 60;
-  if (value >= 180) {
-    time = `大于3小时`;
-  }
-  else {
-    hours = Math.floor(value / 60);
-    minutes = value % 60;
-    time = `${hours}小时 ${minutes}分钟`;
-  }
-  $(sliderName).val(value);
-  $(sliderAmount).val(time);
-  var left = leftStart + moveStep * value;
-  $(sliderAmount).css("padding-left", left);
-}
-
-$( document ).ready(function() {
-  randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-  randomizeSlider(0, 100, "#outing1", "#outing1Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#outing2", "#outing2Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#outing3", "#outing3Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#outing4", "#outing4Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#outing5", "#outing5Amount", 2, 2.88, "");
-
-  randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-  randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-
-  randomizeTimeSlider(0, 200, "#domesticWebsiteSlider", "#domesticWebsiteAmount", 5, 1.21);
-  randomizeTimeSlider(0, 200, "#foreignWebsiteSlider", "#foreignWebsiteAmount", 5, 1.21);
-  randomizeTimeSlider(0, 200, "#domesticMediaSlider", "#domesticMediaAmount", 5, 1.21);
-  randomizeTimeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21);
-  randomizeTimeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21);
-});
+// function randomizeTimeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep) {
+//   var value = Math.floor(Math.random() * (max - min)) + min;
+//   var hours;
+//   var minutes;
+//   var time;
+//   hours = Math.floor(value / 60);
+//   minutes = value % 60;
+//   if (value >= 180) {
+//     time = `大于3小时`;
+//   }
+//   else {
+//     hours = Math.floor(value / 60);
+//     minutes = value % 60;
+//     time = `${hours}小时 ${minutes}分钟`;
+//   }
+//   $(sliderName).val(value);
+//   $(sliderAmount).val(time);
+//   var left = leftStart + moveStep * value;
+//   $(sliderAmount).css("padding-left", left);
+// }
+//
+// $( document ).ready(function() {
+//   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+//   randomizeSlider(0, 100, "#outing1", "#outing1Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#outing2", "#outing2Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#outing3", "#outing3Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#outing4", "#outing4Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#outing5", "#outing5Amount", 2, 2.88, "");
+//
+//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+//
+//   randomizeTimeSlider(0, 200, "#domesticWebsiteSlider", "#domesticWebsiteAmount", 5, 1.21);
+//   randomizeTimeSlider(0, 200, "#foreignWebsiteSlider", "#foreignWebsiteAmount", 5, 1.21);
+//   randomizeTimeSlider(0, 200, "#domesticMediaSlider", "#domesticMediaAmount", 5, 1.21);
+//   randomizeTimeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21);
+//   randomizeTimeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21);
+// });

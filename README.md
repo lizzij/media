@@ -26,9 +26,17 @@ http://127.0.0.1:5000/completion/detail
 
 https://dailyeventinfo.com/completion/detail
 
-- How to run: navigate to media dir
+- How to run:
+
+- clone repo locally
 ```
-. venv/bin/activate
+git clone https://github.com/lizzij/media.git
+cd media
+```
+
+- navigate to root dir
+```
+source venv/bin/activate
 export FLASK_APP=media
 export FLASK_ENV=development
 flask run
