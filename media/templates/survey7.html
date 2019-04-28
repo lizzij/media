@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+  <form lang="zh" action="" method="post">
   <!-- page 1 -->
   <div id="page1" >
     <div id="survey">
@@ -59,8 +59,8 @@
             <div class="starPrompt">
               <div>优</div>
               <div>&nbsp</div>
-              <div id="starCountGroup1">0</div>
-
+              <div id="starCountGroup1" onchange="updateStarInput1()">0</div>
+              <input name="starCountGroup1" id="starCountGroup1Input" type="hidden" value="0">
             </div>
             <div class="starGroup1Cover" id="starGroup1Cover"></div>
             <div class="starContainer">
@@ -82,8 +82,8 @@
             <div class="starPrompt">
               <div>良</div>
               <div>&nbsp</div>
-              <div id="starCountGroup2">0</div>
-
+              <div id="starCountGroup2" onchange="updateStarInput2()">0</div>
+              <input name="starCountGroup2" id="starCountGroup2Input" type="hidden" value="0">
             </div>
             <div class="starGroup2Cover" id="starGroup2Cover"></div>
             <div class="starContainer">
@@ -105,8 +105,8 @@
             <div class="starPrompt">
               <div>轻度污染</div>
               <div>&nbsp</div>
-              <div id="starCountGroup3">0</div>
-
+              <div id="starCountGroup3" onchange="updateStarInput3()">0</div>
+              <input name="starCountGroup3" id="starCountGroup3Input" type="hidden" value="0">
             </div>
             <div class="starGroup3Cover" id="starGroup3Cover"></div>
             <div class="starContainer">
@@ -128,8 +128,8 @@
             <div class="starPrompt">
               <div>中度污染</div>
               <div>&nbsp</div>
-              <div id="starCountGroup4">0</div>
-
+              <div id="starCountGroup4" onchange="updateStarInput4()">0</div>
+              <input name="starCountGroup4" id="starCountGroup4Input" type="hidden" value="0">
             </div>
             <div class="starGroup4Cover" id="starGroup4Cover"></div>
             <div class="starContainer">
@@ -151,8 +151,8 @@
             <div class="starPrompt">
               <div>重度污染</div>
               <div>&nbsp</div>
-              <div id="starCountGroup5">0</div>
-
+              <div id="starCountGroup5" onchange="updateStarInput5()">0</div>
+              <input name="starCountGroup5" id="starCountGroup5Input" type="hidden" value="0">
             </div>
             <div class="starGroup5Cover" id="starGroup5Cover"></div>
             <div class="starContainer">
@@ -174,8 +174,8 @@
             <div class="starPrompt">
               <div>严重污染</div>
               <div>&nbsp</div>
-              <div id="starCountGroup6">0</div>
-
+              <div id="starCountGroup6" onchange="updateStarInput6()">0</div>
+              <input name="starCountGroup6" id="starCountGroup6Input" type="hidden" value="0">
             </div>
             <div class="starGroup6Cover" id="starGroup6Cover"></div>
             <div class="starContainer">
@@ -202,9 +202,9 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p1nextButton"><button id="button">
+      <div id="p1nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p1nextButton").onclick = function() {
             return show('page2');
@@ -257,16 +257,16 @@
           </div>
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">4000步</output>
-            <input type="range" min="4000" max="7000" value="4000" class="slider" id="walkathonSlider" oninput="walkathonSlide()"></input>
+            <input type="range" min="4000" max="7000" value="4000" class="slider" name="walkathonSteps" id="walkathonSlider" oninput="walkathonSlide()"></input>
           </div>
         </div>
       </div>
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p2nextButton"><button id="button">
+      <div id="p2nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p2nextButton").onclick = function() {
             return show('page3');
@@ -321,7 +321,7 @@
           <div class="questionAnswer">
           <div id="guessBeanNumber">
             <div class="form-group">
-              <input type="text" class="form-control" id="guessedBeanNumber" placeholder="请输入数字">
+              <input type="text" class="form-control" id="guessedBeanNumber" name="guessedBeanNumber" placeholder="请输入数字">
             </div>
           </div>
           </div>
@@ -331,9 +331,9 @@
       </div>
     <!-- next button -->
     <section class="nextButton">
-      <div id="p3nextButton"><button id="button">
+      <div id="p3nextButton"><div id="button">
           <div id="next">下一页</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p3nextButton").onclick = function() {
             return show('page4');
@@ -354,9 +354,9 @@
 
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p4nextButton"><button id="button">
+      <div id="p4nextButton"><div id="button">
           <div id="next">开始</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p4nextButton").onclick = function() {
             startTimer("timer1", "page6", "timesUp1");
@@ -383,7 +383,7 @@
         <div class="questionAnswer">
         <div id="math1">
           <div class="form-group">
-            <input type="text" class="form-control" id="math1Answer" placeholder="请输入答案">
+            <input type="text" class="form-control" id="math1Answer" name="math1Answer" placeholder="请输入答案">
           </div>
         </div>
         </div>
@@ -392,9 +392,9 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p5nextButton"><button id="button">
+      <div id="p5nextButton"><div id="button">
           <div id="next">下一题</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p5nextButton").onclick = function() {
             startTimer("timer2", "page7", "timesUp2");
@@ -421,7 +421,7 @@
         <div class="questionAnswer">
         <div id="math2">
           <div class="form-group">
-            <input type="text" class="form-control" id="math2Answer" placeholder="请输入答案">
+            <input type="text" class="form-control" id="math2Answer" name="math2Answer" placeholder="请输入答案">
           </div>
         </div>
         </div>
@@ -430,9 +430,9 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p6nextButton"><button id="button">
+      <div id="p6nextButton"><div id="button">
           <div id="next">下一题</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p6nextButton").onclick = function() {
             startTimer("timer3", "page8", "timesUp3");
@@ -459,7 +459,7 @@
         <div class="questionAnswer">
         <div id="math3">
           <div class="form-group">
-            <input type="text" class="form-control" id="math3Answer" placeholder="请输入答案">
+            <input type="text" class="form-control" id="math3Answer" name="math3Answer"  placeholder="请输入答案">
           </div>
         </div>
         </div>
@@ -468,9 +468,9 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p7nextButton"><button id="button">
+      <div id="p7nextButton"><div id="button">
           <div id="next">下一题</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p7nextButton").onclick = function() {
             startTimer("timer4", "page9", "timesUp4");
@@ -497,7 +497,7 @@
         <div class="questionAnswer">
         <div id="math4">
           <div class="form-group">
-            <input type="text" class="form-control" id="math4Answer" placeholder="请输入答案">
+            <input type="text" class="form-control" id="math4Answer" name="math4Answer"  placeholder="请输入答案">
           </div>
         </div>
         </div>
@@ -506,9 +506,9 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p8nextButton"><button id="button">
+      <div id="p8nextButton"><div id="button">
           <div id="next">下一题</div>
-        </button>
+        </div>
         <script type="text/javascript">
           document.getElementById("p8nextButton").onclick = function() {
             startTimer("timer5", "page10", "timesUp5");
@@ -535,7 +535,7 @@
         <div class="questionAnswer">
         <div id="math5">
           <div class="form-group">
-            <input type="text" class="form-control" id="math5Answer" placeholder="请输入答案">
+            <input type="text" class="form-control" id="math5Answer" name="math5Answer"  placeholder="请输入答案">
           </div>
         </div>
         </div>
@@ -544,7 +544,7 @@
     </div>
     <!-- next button -->
     <section class="nextButton" >
-      <div id="p9nextButton"><button id="button">
+      <div id="p9nextButton"><button id="button" type="submit">
           <div id="next">提交</div>
         </button>
         <script type="text/javascript">
@@ -558,6 +558,7 @@
       <div class="progress-bar" role="progressbar" style="width: 90%; background-color: #999999;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
+</form>
 
   <!-- page 10 -->
   <div id="page10" style="display:none">
@@ -614,6 +615,12 @@
     };
 
     })(window);
+
+    {% if lastpage %}
+        document.getElementById("page1").style = 'display: none;';
+        document.getElementById("page10").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+    {% else %}
+    {% endif %}
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/survey7.js') }}"></script>
