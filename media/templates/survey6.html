@@ -74,8 +74,8 @@
         <header>
           <div class="title">
             <div id="eventName">世纪公园踏春<br />做游戏-K歌</div>
-            <div id="eventDate">2019.05.04</div>
-            <div id="eventTime">每周六 12:00 pm - 19:00 pm</div>
+            <div id="eventDate">2019.05.04 周六</div>
+            <div id="eventTime">12:00 pm - 19:00 pm</div>
             <div id="eventLocation">地点 浦东新区 上海世纪公园</div>
           </div>
         </header>
@@ -206,8 +206,8 @@
           <header>
             <div class="title">
               <div id="eventName">儿童慈善徒步运动<br /></div>
-              <div id="eventDate">2019.05.11</div>
-              <div id="eventTime">每周六 12:00 pm - 19:00 pm</div>
+              <div id="eventDate">2019.05.11 周六</div>
+              <div id="eventTime">12:00 pm - 19:00 pm</div>
               <div id="eventLocation">任何户外地点</div>
             </div>
           </header>
@@ -1089,14 +1089,11 @@
 
     })(window);
 
-    { %
-      if lastpage %
-    }
-    document.getElementById("page1").style = 'display: none;';
-    document.getElementById("page10").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;'; { %
-      else %
-    } { % endif %
-    }
+    {% if lastpage %}
+        document.getElementById("page1").style = 'display: none;';
+        document.getElementById("page10").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+    {% else %}
+    {% endif %}
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/survey6.js') }}"></script>
