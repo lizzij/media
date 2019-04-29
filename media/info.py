@@ -166,3 +166,14 @@ def completion():
         ' ORDER BY created ASC'
     ).fetchall()
     return render_template('completion.html', surveys=surveys)
+
+@bp.route('/activity')
+def activity():
+    """Show all the activity"""
+    db = get_db()
+    activitys = db.execute(
+        'SELECT user_id, day, status, survey_page, curr_time'
+        ' FROM activity a'
+        ' ORDER BY curr_time ASC'
+    ).fetchall()
+    return render_template('activity.html', activitys=activitys)
