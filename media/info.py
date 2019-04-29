@@ -134,6 +134,7 @@ def get_survey(user_id_hashid, day_hashid):
                 )
                 db.commit()
                 lastpage = 1
+
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/completion/detail')
