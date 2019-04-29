@@ -39,7 +39,7 @@ def get_info(user_id_hashid, day_hashid):
     if day > 6:
         return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
-    if day < 8: #TODO remove next day, change to day 0
+    if day < 8:
         next = get_db().execute(
             'SELECT user_id_hashid, day_hashid'
             ' FROM user u'
@@ -121,19 +121,39 @@ def get_survey(user_id_hashid, day_hashid):
         next_user_id_hashid = None
         next_day_hashid = None
 
-    lastpage=0
+    last_survey_page = get_db().execute(
+        'SELECT survey_page'
+        ' FROM activity a'
+        ' WHERE a.user_id = ? AND a.day = ?',
+        (user_id, day,)
+    ).fetchone()
+    if last_survey_page is None:
+        lastpage = 0
+    else:
+        lastpage = last_survey_page[0]
+
     if request.method == 'POST':
         f = request.form
+        db = get_db()
+
+        # save answer
         for question in f.keys():
             for result in f.getlist(question):
-                db = get_db()
                 db.execute(
                     'INSERT INTO survey (user_id, day, result, created, question_id)'
                     ' VALUES (?, ?, ?, ?, ?)',
                     (user_id, day, result, now, question)
                 )
-                db.commit()
-                lastpage = 1
+
+        # update last page
+        lastpage += 1
+        db.execute(
+            'REPLACE INTO activity (user_id, day, status, survey_page, curr_time)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (user_id, day, "submitted", lastpage, now)
+        )
+        db.commit()
+
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/completion/detail')
@@ -146,3 +166,14 @@ def completion():
         ' ORDER BY created ASC'
     ).fetchall()
     return render_template('completion.html', surveys=surveys)
+
+@bp.route('/activity')
+def activity():
+    """Show all the activity"""
+    db = get_db()
+    activitys = db.execute(
+        'SELECT user_id, day, status, survey_page, curr_time'
+        ' FROM activity a'
+        ' ORDER BY curr_time ASC'
+    ).fetchall()
+    return render_template('activity.html', activitys=activitys)

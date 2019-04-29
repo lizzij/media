@@ -25,7 +25,7 @@ function signUpFeeSlide() {
 }
 
 function outing1Slide() {
-  document.getElementById("outing1Amount").value=document.getElementById("outing1").value
+  document.getElementById("outing1Amount").value=Math.floor(document.getElementById("outing1").value);
   var value=document.getElementById("outing1Amount").value;
   var factorIds = ['outing1ScaleLabel1', 'outing1ScaleLabel2', 'outing1ScaleLabel3',
   'outing1ScaleLabel4'];
@@ -56,7 +56,7 @@ function outing1Slide() {
 }
 
 function outing2Slide() {
-  document.getElementById("outing2Amount").value=document.getElementById("outing2").value
+  document.getElementById("outing2Amount").value=Math.floor(document.getElementById("outing2").value);
   var value=document.getElementById("outing2Amount").value;
   var factorIds = ['outing2ScaleLabel1', 'outing2ScaleLabel2', 'outing2ScaleLabel3',
   'outing2ScaleLabel4'];
@@ -87,7 +87,7 @@ function outing2Slide() {
 }
 
 function outing3Slide() {
-  document.getElementById("outing3Amount").value=document.getElementById("outing3").value
+  document.getElementById("outing3Amount").value=Math.floor(document.getElementById("outing3").value);
   var value=document.getElementById("outing3Amount").value;
   var factorIds = ['outing3ScaleLabel1', 'outing3ScaleLabel2', 'outing3ScaleLabel3',
   'outing3ScaleLabel4'];
@@ -118,7 +118,7 @@ function outing3Slide() {
 }
 
 function outing4Slide() {
-  document.getElementById("outing4Amount").value=document.getElementById("outing4").value
+  document.getElementById("outing4Amount").value=Math.floor(document.getElementById("outing4").value);
   var value=document.getElementById("outing4Amount").value;
   var factorIds = ['outing4ScaleLabel1', 'outing4ScaleLabel2', 'outing4ScaleLabel3',
   'outing4ScaleLabel4'];
@@ -149,7 +149,7 @@ function outing4Slide() {
 }
 
 function outing5Slide() {
-  document.getElementById("outing5Amount").value=document.getElementById("outing5").value
+  document.getElementById("outing5Amount").value=Math.floor(document.getElementById("outing5").value);
   var value=document.getElementById("outing5Amount").value;
   var factorIds = ['outing5ScaleLabel1', 'outing5ScaleLabel2', 'outing5ScaleLabel3',
   'outing5ScaleLabel4'];
@@ -325,7 +325,7 @@ function dunno6() {
 }
 
 function trust1Slide() {
-  document.getElementById("trust1Amount").value=document.getElementById("trust1").value
+  document.getElementById("trust1Amount").value=Math.floor(document.getElementById("trust1").value);
   var trust=document.getElementById("trust1Amount").value;
   var trustIds = ['trust1ScaleLabel1', 'trust1ScaleLabel2', 'trust1ScaleLabel3',
   'trust1ScaleLabel4', 'trust1ScaleLabel5'];
@@ -361,7 +361,7 @@ function trust1Slide() {
 }
 
 function trust2Slide() {
-  document.getElementById("trust2Amount").value=document.getElementById("trust2").value
+  document.getElementById("trust2Amount").value=Math.floor(document.getElementById("trust2").value);
   var trust=document.getElementById("trust2Amount").value;
   var trustIds = ['trust2ScaleLabel1', 'trust2ScaleLabel2', 'trust2ScaleLabel3',
   'trust2ScaleLabel4', 'trust2ScaleLabel5'];
@@ -397,7 +397,7 @@ function trust2Slide() {
 }
 
 function trust3Slide() {
-  document.getElementById("trust3Amount").value=document.getElementById("trust3").value
+  document.getElementById("trust3Amount").value=Math.floor(document.getElementById("trust3").value);
   var trust=document.getElementById("trust3Amount").value;
   var trustIds = ['trust3ScaleLabel1', 'trust3ScaleLabel2', 'trust3ScaleLabel3',
   'trust3ScaleLabel4', 'trust3ScaleLabel5'];
@@ -433,7 +433,7 @@ function trust3Slide() {
 }
 
 function trust4Slide() {
-  document.getElementById("trust4Amount").value=document.getElementById("trust4").value
+  document.getElementById("trust4Amount").value=Math.floor(document.getElementById("trust4").value);
   var trust=document.getElementById("trust4Amount").value;
   var trustIds = ['trust4ScaleLabel1', 'trust4ScaleLabel2', 'trust4ScaleLabel3',
   'trust4ScaleLabel4', 'trust4ScaleLabel5'];
@@ -469,7 +469,7 @@ function trust4Slide() {
 }
 
 function trust5Slide() {
-  document.getElementById("trust5Amount").value=document.getElementById("trust5").value
+  document.getElementById("trust5Amount").value=Math.floor(document.getElementById("trust5").value);
   var trust=document.getElementById("trust5Amount").value;
   var trustIds = ['trust5ScaleLabel1', 'trust5ScaleLabel2', 'trust5ScaleLabel3',
   'trust5ScaleLabel4', 'trust5ScaleLabel5'];
@@ -505,7 +505,7 @@ function trust5Slide() {
 }
 
 function trust6Slide() {
-  document.getElementById("trust6Amount").value=document.getElementById("trust6").value
+  document.getElementById("trust6Amount").value=Math.floor(document.getElementById("trust6").value);
   var trust=document.getElementById("trust6Amount").value;
   var trustIds = ['trust6ScaleLabel1', 'trust6ScaleLabel2', 'trust6ScaleLabel3',
   'trust6ScaleLabel4', 'trust6ScaleLabel5'];
@@ -608,3 +608,33 @@ function showOnCampusAddress(){
 //   randomizeTimeSlider(0, 200, "#foreignMediaSlider", "#foreignMediaAmount", 5, 1.21);
 //   randomizeTimeSlider(0, 200, "#chatWithFriendsSlider", "#chatWithFriendsAmount", 5, 1.21);
 // });
+
+function validateRadioButton(name) {
+  return ($('input[name=' + name + ']:checked').length > 0);
+}
+
+function validateText(id) {
+  return (document.getElementById(id).value === '');
+}
+
+function gotoPage2() {
+  if (validateRadioButton('eventLocation')) {
+    show('page2');
+  }
+  else {
+    document.getElementById("p1alert").innerHTML = '请选择该活动的举办地点！';
+  }
+}
+
+function validate() {
+
+  var valid = true;
+  valid = valid && validateText('province');
+
+  if (valid) {
+    show('page6');
+  }
+  else {
+    document.getElementById("p5alert").innerHTML = '请输入地址！';
+  }
+}
