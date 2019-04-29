@@ -24,10 +24,10 @@
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">该活动的举办地点是哪里？</div>
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name1" value="option1" required><label class="form-check-label" for="name1">枫泾古镇</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name1" value="option1" ><label class="form-check-label" for="name1">枫泾古镇</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name2" value="option2" ><label class="form-check-label" for="name2">鸬鸟山</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name3" value="option3" ><label class="form-check-label" for="name3">法租界</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name4" value="option4" ><label class="form-check-label" for="name4">世纪公园</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name4" value="option4" required><label class="form-check-label" for="name4">世纪公园</label></div>
             </div>
         </div>
       </div><!-- sign up fee -->
@@ -548,13 +548,13 @@
           <div class="questionPrompt">您的性别是？</div>
           <div class="questionAnswer">
             <div class="form-check">
-              <input class="form-check-input" type="radio" id="female" name="gender" value="female" required>
+              <input class="form-check-input" type="radio" id="female" name="gender" value="female" >
               <label class="form-check-label" for="female">
                 女性
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" id="male" name="gender" value="male">
+              <input class="form-check-input" type="radio" id="male" name="gender" value="male" required>
               <label class="form-check-label" for="male">
                 男性
               </label>
@@ -629,13 +629,13 @@
           <div class="questionPrompt">您现在是否住校？</div>
           <div class="questionAnswer">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="liveOnCampus" id="livesOnCampus" value="livesOnCampus" onclick="showOnCampusAddress()" required>
+              <input class="form-check-input" type="radio" name="liveOnCampus" id="livesOnCampus" value="livesOnCampus" onclick="showOnCampusAddress()" >
               <label class="form-check-label" for="livesOnCampus">
                 是
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="liveOnCampus" id="liveOffCampus" value="liveOffCampus" onclick="hideOnCampusAddress()">
+              <input class="form-check-input" type="radio" name="liveOnCampus" id="liveOffCampus" value="liveOffCampus" onclick="hideOnCampusAddress()" required>
               <label class="form-check-label" for="liveOffCampus"  >
                 否
               </label>
