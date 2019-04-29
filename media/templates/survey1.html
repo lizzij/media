@@ -47,10 +47,10 @@
     </div><!-- next button -->
     <div class="nextButton">
       <!-- <div id="p1alert" class="fillAllAlert"></div> -->
-      <input id="button" type="submit" value="提交" style="color: white; font-size: 14px;">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
       <!-- <div id="p1nextButton">
-        <div id="button" >
+        <div class="button" >
           <div id="next">下一页</div>
         </div>
         <script type="text/javascript">
@@ -208,22 +208,11 @@
       </div>
     </div><!-- next button -->
     <div class="nextButton">
-      <!-- <div id="p1alert" class="fillAllAlert"></div> -->
-      <input id="button2" type="submit" value="提交2" style="color: white; font-size: 14px;">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-      <!-- <div id="p1nextButton">
-        <div id="button" >
-          <div id="next">下一页</div>
-        </div>
-        <script type="text/javascript">
-          document.getElementById("p1nextButton").onclick = function() {
-            return goto('page2');
-          };
-        </script>
-      </div> -->
     </div>
     <!-- <section class="nextButton">
-      <div id="p2nextButton"><div id="button">
+      <div id="p2nextButton"><div class="button">
           <div id="next">下一页</div>
         </div>
         <script type="text/javascript">
@@ -239,6 +228,7 @@
   </div>
   </form>
 
+  <form lang="zh" action="" method="post">
   <!-- page 3 -->
   <div class="page" id="page3" style="display:none">
     <div id="survey">
@@ -424,8 +414,12 @@
         </div>
       </div>
     </div><!-- next button -->
-    <section class="nextButton">
-      <div id="p3nextButton"><div id="button">
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <!-- <section class="nextButton">
+      <div id="p3nextButton"><div class="button">
           <div id="next">下一页</div>
         </div>
         <script type="text/javascript">
@@ -434,12 +428,14 @@
           };
         </script>
       </div>
-    </section>
+    </section> -->
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
   <!-- page 4 -->
   <div class="page" id="page4" style="display:none">
     <div id="survey">
@@ -705,9 +701,13 @@
         </div>
       </div>
     </div>
-    <section class="nextButton">
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <!-- <section class="nextButton">
       <div id="p4nextButton">
-        <div id="button">
+        <div class="button">
           <div id="next">下一页</div>
         </div>
         <script type="text/javascript">
@@ -716,13 +716,14 @@
           };
         </script>
       </div>
-    </section>
+    </section> -->
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 64%; background-color: #979797;" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
+  </form>
 
-
+  <form lang="zh" action="" method="post">
   <!-- page 5 -->
   <div class="page" id="page5" style="display:none">
     <div id="survey">
@@ -769,9 +770,13 @@
       </div>
     </div>
 
-    <section class="nextButton">
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <!-- <section class="nextButton">
       <div id="p5nextButton">
-        <input id="button" type="submit" value="提交" style="color: white; font-size: 14px;">
+        <input id="button2" type="submit" value="p1submit" style="color: white; font-size: 14px;">
         </input>
         <script type="text/javascript">
           document.getElementById("p5nextButton").onclick = function() {
@@ -779,13 +784,13 @@
           };
         </script>
       </div>
-    </section>
+    </section> -->
 
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-
+  </form>
 
   <!-- page 6 -->
   <div class="page" id="page6" style="display:none">
@@ -844,8 +849,10 @@
 
     })(window);
     {% if lastpage %}
+        console.log({{lastpage}});
         document.getElementById("page1").style = 'display: none;';
-        document.getElementById("page3").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+        console.log("page" + ({{lastpage}}+1));
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
   </script>
