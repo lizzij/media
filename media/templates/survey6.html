@@ -34,7 +34,11 @@
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p1nextButton">
           <div class="button">
             <div id="next">下一页</div>
@@ -45,12 +49,14 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+</form>
 
+<form lang="zh" action="" method="post">
     <!-- page 2 -->
     <div id="page2" style="display:none;">
       <div style="display: block;margin: 8px;
@@ -146,7 +152,16 @@
           </section>
 
           <!-- next button -->
-          <section class="nextButtonSmall">
+          <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 800px;">
+            <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+            </input>
+          </div>
+          <!-- <section class="nextButtonSmall">
 
             <div id="p2nextButton">
               <div id="infoButton">
@@ -162,11 +177,13 @@
             <div class="nextButtonNotice">
               点击下一步后，您将无法返回此页面
             </div>
-          </section>
+          </section> -->
         </div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 3 -->
     <div id="page3" style="display:none">
       <div id="survey">
@@ -184,7 +201,11 @@
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p3nextButton">
           <div class="button">
             <div id="next">下一页</div>
@@ -195,12 +216,14 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 4 -->
     <div id="page4" style="display:none">
       <div style="display: block;">
@@ -403,7 +426,16 @@
           </section>
 
           <!-- next button -->
-          <section class="infoNextButton" style="top:1390px;">
+          <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 1390px;">
+            <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+            </input>
+          </div>
+          <!-- <section class="infoNextButton" style="top:1390px;">
 
             <div id="p4nextButton">
               <div id="infoButton">
@@ -419,11 +451,13 @@
             <div class="nextButtonNotice">
               点击下一步后，您将无法返回此页面
             </div>
-          </section>
+          </section> -->
         </div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 5 -->
     <div id="page5" style="display:none">
       <div id="survey">
@@ -613,7 +647,11 @@
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p5nextButton">
           <div class="button">
             <div id="next">下一页</div>
@@ -624,12 +662,14 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 40%; background-color: #979797;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 6 -->
     <div id="page6" style="display:none">
       <div id="survey">
@@ -646,7 +686,7 @@
           </div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()"><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()" required><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
           </div>
           <div class="slidecontainer" id="walkathon" style="display:none">
             <div id="note" style="padding-top:20px">
@@ -666,7 +706,11 @@
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p6nextButton">
           <div class="button">
             <div id="next">下一页</div>
@@ -677,12 +721,14 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 60%; background-color: #979797;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 7 -->
     <div id="page7" style="display:none">
       <div id="survey">
@@ -691,7 +737,7 @@
           <div class="questionPrompt">在我们向您介绍户外活动之后，您是否通过<b>其他</b>网站了解别的活动？</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="noOtherSource" id="noOtherSource" onClick="hideNumberOfTimes()"><label class="form-check-label" for="noOtherSource">否</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="yesOtherSource" id="yesOtherSource" onClick="showNumberOfTimes()"><label class="form-check-label" for="yesOtherSource">是</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="otherSource" value="yesOtherSource" id="yesOtherSource" onClick="showNumberOfTimes()" required><label class="form-check-label" for="yesOtherSource">是</label></div>
           </div>
         </div>
         <div class="question" id="otherHowManyTimes" style="display:none">
@@ -709,7 +755,7 @@
           <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于5月第一周，即活动举办这一周的<b>天气</b>信息？</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="yesOtherWeatherSource" id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()"><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="yesOtherWeatherSource" id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()" required><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
           </div>
         </div>
         <div class="question" id="otherHowManyWeatherTimes" style="display:none">
@@ -732,7 +778,7 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="moderatelyPolluted" value="moderatelyPolluted"><label class="form-check-label" for="moderatelyPolluted">中度污染</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="lightlyPolluted" value="lightlyPolluted"><label class="form-check-label" for="lightlyPolluted">轻度污染</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="good" value="good"><label class="form-check-label" for="good">良</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="excellent" value="excellent"><label class="form-check-label" for="excellent">优</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="excellent" value="excellent" required><label class="form-check-label" for="excellent">优</label></div>
           </div>
         </div>
         <div class="question">
@@ -741,7 +787,7 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="no" value="no"><label class="form-check-label" for="no">不记得了</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="maybe" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="probably" value="probably"><label class="form-check-label" for="probably">大概记得</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes"><label class="form-check-label" for="yes">记得</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes" required><label class="form-check-label" for="yes">记得</label></div>
           </div>
         </div>
         <div class="question">
@@ -752,7 +798,7 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="3" value="3"><label class="form-check-label" for="3">3</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="4" value="4"><label class="form-check-label" for="4">4</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="5orMore" value="5orMore"><label class="form-check-label" for="5orMore">5个或更多</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="dunno" value="dunno"><label class="form-check-label" for="dunno">我不知道</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="dunno" value="dunno" required><label class="form-check-label" for="dunno">我不知道</label></div>
           </div>
         </div>
         <div class="question">
@@ -765,12 +811,16 @@
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">新闻广播FM93.4</label></div>
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">上海环境东方网微博</label></div>
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo"><label class="form-check-label" for="sourceNo">我不知道</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo" required><label class="form-check-label" for="sourceNo">我不知道</label></div>
           </div>
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p7nextButton">
           <div class="button">
             <div id="next">下一页</div>
@@ -781,12 +831,14 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <!-- page 8 -->
     <div id="page8" style="display:none">
       <div id="survey">
@@ -797,7 +849,7 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="own" value="own"><label class="form-check-label" for="own">我认为他们有自己的天气监测站</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="government" value="government"><label class="form-check-label" for="government">我认为他们从政府机构处获得，如上海环境监测中心</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="ngo" value="ngo"><label class="form-check-label" for="ngo">我认为他们从当地非政府组织处获得</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="international" value="international"><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="international" value="international" required><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
           </div>
         </div>
         <div class="question">
@@ -808,7 +860,7 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level3" value="level3"><label class="form-check-label" for="level3">不可能</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level4" value="level4"><label class="form-check-label" for="level4">有点可能</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level5" value="level5"><label class="form-check-label" for="level5">可能</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level6" value="level6"><label class="form-check-label" for="level6">极有可能</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level6" value="level6" required><label class="form-check-label" for="level6">极有可能</label></div>
           </div>
         </div>
 
@@ -830,7 +882,9 @@
         <div class="progress-bar" role="progressbar" style="width: 87%; background-color: #979797;" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
+  </form>
 
+  <form lang="zh" action="" method="post">
     <div id="page9" style="display:none">
       <div id="survey">
         <div class="question">
@@ -1032,7 +1086,11 @@
         </div>
       </div>
       <!-- next button -->
-      <section class="nextButton">
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <!-- <section class="nextButton">
         <div id="p9nextButton">
           <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
           </input>
@@ -1042,7 +1100,7 @@
             };
           </script>
         </div>
-      </section>
+      </section> -->
       <div class="progress" style="height: 8px;">
         <div class="progress-bar" role="progressbar" style="width: 94%; background-color: #979797;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
@@ -1106,7 +1164,7 @@
 
     {% if lastpage %}
         document.getElementById("page1").style = 'display: none;';
-        document.getElementById("page10").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
   </script>

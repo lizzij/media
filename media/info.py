@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import functools
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -228,6 +228,18 @@ def activity_insert(user_id):
         'INSERT INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
         ' VALUES (?, ?, ?, ?, ?, ?)',
         (user_id, 1, False, 0, now, now)
+    )
+    db.commit()
+    return 'complete'
+
+## We need this at the end of info.py
+@bp.route('/activityUpdate/<user_id>/<day>/<day_complete>/<survey_page>/<h1>/<h2>', methods=['POST'])
+def activity_update(user_id,day, day_complete, survey_page, h1, h2):
+    db = get_db()
+    db.execute(
+        'REPLACE INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
+        ' VALUES (?, ?, ?, ?, ?, ?)',
+        (user_id, day, day_complete, survey_page, now - timedelta(hours = int(h1)), now - timedelta(hours = int(h2)))
     )
     db.commit()
     return 'complete'
