@@ -46,7 +46,7 @@ flask run
 flask init-db
 ```
 
-## How to run locally:
+## How to run remotely:
 - Login (with password)
 ```
 ssh donghee@202.182.126.239
