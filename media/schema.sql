@@ -27,10 +27,11 @@ CREATE TABLE survey (
 CREATE TABLE activity (
   activity_id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER UNIQUE NOT NULL,
-  day INTEGER UNIQUE NOT NULL,
-  status TEXT NOT NULL,
+  day INTEGER NOT NULL,
   survey_page INTEGER,
   curr_time TIMESTAMP,
+  day_complete BOOLEAN NOT NULL,
+  day_started TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES user (user_id)
 );
 

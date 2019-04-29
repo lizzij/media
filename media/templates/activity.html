@@ -15,9 +15,9 @@
               <div class="about">
                 user_id: {{ activity['user_id'] }};
                 day: {{ activity['day'] }};
-                status: {{ activity['status'] }};
                 survey_page: {{ activity['survey_page'] }};
-                curr_time: {{ activity['curr_time'].strftime('%d/%m/%Y %H:%M:%S') }}.</div>
+                curr_time: {{ activity['curr_time'].strftime('%d/%m/%Y %H:%M:%S') }};
+                day_complete: {{ activity['day_complete'] }}.</div>
             </div>
           </header>
           <p class="body">{{ activity['body'] }}</p>

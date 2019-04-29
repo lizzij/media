@@ -26,8 +26,7 @@ http://127.0.0.1:5000/completion/detail
 
 https://dailyeventinfo.com/completion/detail
 
-- How to run:
-
+## How to run locally:
 - clone repo locally
 ```
 git clone https://github.com/lizzij/media.git
@@ -40,6 +39,21 @@ source venv/bin/activate
 export FLASK_APP=media
 export FLASK_ENV=development
 flask run
+```
+
+- Initialize database
+```
+flask init-db
+```
+
+## How to run remotely:
+- Login (with password)
+```
+ssh donghee@202.182.126.239
+```
+- navigate to folder
+```
+cd ~/media
 ```
 
 - Initialize database
