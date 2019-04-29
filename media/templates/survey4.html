@@ -33,7 +33,11 @@
       </div>
       </div>
     <!-- next button -->
-    <section class="nextButton">
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <!-- <section class="nextButton">
       <div id="p1nextButton">
         <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
         </input>
@@ -43,7 +47,7 @@
           };
         </script>
       </div>
-    </section>
+    </section> -->
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 50%; background-color: #979797;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -107,7 +111,7 @@
 
     {% if lastpage %}
         document.getElementById("page1").style = 'display: none;';
-        document.getElementById("page2").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
   </script>

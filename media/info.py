@@ -149,7 +149,8 @@ def get_survey(user_id_hashid, day_hashid):
         lastpage += 1
         lastpages = [5, 5, 2, 1, 1, 9, 9, 2] # second last page of survey 1-8
         day_complete = 0
-        if lastpage == lastpages[day-1]:
+        if lastpage >= lastpages[day-1]:
+            lastpage = lastpages[day-1]
             day_complete = 1
 
         db.execute(
