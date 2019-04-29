@@ -147,10 +147,15 @@ def get_survey(user_id_hashid, day_hashid):
 
         # update last page
         lastpage += 1
+        lastpages = [5, 5, 2, 1, 1, 9, 9, 2] # second last page of survey 1-8
+        day_complete = 0
+        if lastpage == lastpages[day-1]:
+            day_complete = 1
+
         db.execute(
-            'REPLACE INTO activity (user_id, day, status, survey_page, curr_time)'
+            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
             ' VALUES (?, ?, ?, ?, ?)',
-            (user_id, day, "submitted", lastpage, now)
+            (user_id, day, lastpage, now, day_complete)
         )
         db.commit()
 
@@ -172,7 +177,7 @@ def activity():
     """Show all the activity"""
     db = get_db()
     activitys = db.execute(
-        'SELECT user_id, day, status, survey_page, curr_time'
+        'SELECT user_id, day, survey_page, curr_time, day_complete'
         ' FROM activity a'
         ' ORDER BY curr_time ASC'
     ).fetchall()
