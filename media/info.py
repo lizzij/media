@@ -182,3 +182,51 @@ def activity():
         ' ORDER BY curr_time ASC'
     ).fetchall()
     return render_template('activity.html', activitys=activitys)
+
+## We need this at the end of info.py (also need userList.html)
+@bp.route('/allUsers')
+def users():
+    """Show all the surveys, and all results."""
+    db = get_db()
+    users = db.execute(
+        'SELECT user_id, day, wechat_id, treatment, user_id_hashid, day_hashid'
+        ' FROM user s'
+        ' ORDER BY user_id ASC'
+    ).fetchall()
+    return render_template('userList.html', users=users)
+
+## We need this at the end of info.py (also need userList.html)
+@bp.route('/allActivities')
+def user_activities():
+    """Show all the surveys, and all results."""
+    db = get_db()
+    users = db.execute(
+        'SELECT user_id, day, day_complete, survey_page, day_started, curr_time'
+        ' FROM activity s'
+        ' ORDER BY user_id ASC'
+    ).fetchall()
+    return render_template('activityList.html', users=users)
+
+## We need this at the end of info.py
+@bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
+def user_insert(user_id, day, wechat_id, treatment, user_id_hashid, day_hashid):
+    db = get_db()
+    db.execute(
+        'INSERT INTO user (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)'
+        ' VALUES (?, ?, ?, ?, ?, ?)',
+        (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)
+    )
+    db.commit()
+    return 'complete'
+
+## We need this at the end of info.py
+@bp.route('/activityInsert/<user_id>', methods=['POST'])
+def activity_insert(user_id):
+    db = get_db()
+    db.execute(
+        'INSERT INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
+        ' VALUES (?, ?, ?, ?, ?, ?)',
+        (user_id, 1, False, 0, now, now)
+    )
+    db.commit()
+    return 'complete'

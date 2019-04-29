@@ -24,7 +24,7 @@
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">该活动的举办地点是哪里？</div>
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name1" value="option1" ><label class="form-check-label" for="name1">枫泾古镇</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name1" value="option1" required><label class="form-check-label" for="name1">枫泾古镇</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name2" value="option2" ><label class="form-check-label" for="name2">鸬鸟山</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name3" value="option3" ><label class="form-check-label" for="name3">法租界</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="eventLocation" id="name4" value="option4" ><label class="form-check-label" for="name4">世纪公园</label></div>
@@ -44,7 +44,11 @@
         </div>
       </div>
     </div><!-- next button -->
-    <section class="nextButton">
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <!-- <section class="nextButton">
       <div id="p1alert" class="fillAllAlert"></div>
       <div id="p1nextButton"><div class="button">
           <div id="next">下一页</div>
@@ -55,7 +59,7 @@
           };
         </script>
       </div>
-    </section>
+    </section> -->
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 16%; background-color: #979797;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
@@ -566,6 +570,7 @@
           <div class="form-group">
             <label for="birthYear"></label>
             <select class="form-control" id="birthYear" required>
+              <option></option>
               <option>1980</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option>
               <option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1900</option>
               <option>1990</option><option>1992</option><option>1993</option><option>1994</option><option>1995</option>
@@ -597,6 +602,7 @@
         <div class="questionAnswer">
             <div class="form-group" id="whichUniversity">
               <select class="form-control" id="university" name="university" onchange="univerisity()" required>
+                <option></option>
                 <option>复旦大学</option>
                 <option>交通大学</option>
                 <option>上海财经大学</option>
@@ -611,7 +617,7 @@
         <div class="questionAnswer">
           <div>
             <div class="form-group">
-              <input type="text" class="form-control" id="otherUniAnswer" name="otherUniAnswer" placeholder="大学">
+              <input type="text" class="form-control" id="otherUniAnswer" name="otherUniAnswer" placeholder="大学" >
             </div>
           </div>
         </div>
@@ -623,7 +629,7 @@
           <div class="questionPrompt">您现在是否住校？</div>
           <div class="questionAnswer">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="liveOnCampus" id="livesOnCampus" value="livesOnCampus" onclick="showOnCampusAddress()">
+              <input class="form-check-input" type="radio" name="liveOnCampus" id="livesOnCampus" value="livesOnCampus" onclick="showOnCampusAddress()" required>
               <label class="form-check-label" for="livesOnCampus">
                 是
               </label>
@@ -644,7 +650,7 @@
         <div class="questionAnswer">
           <div id="address">
             <div class="form-group">
-              <input type="text" class="form-control" id="address" name="address" placeholder="地址">
+              <input type="text" class="form-control" id="address" name="address" placeholder="地址" required>
               <div id="onCampusAddress">
                 <input type="text" class="form-control" id="dormName" name="dormName" placeholder="宿舍名称">
                 <input type="text" class="form-control" id="roomNum" name="roomNum" placeholder="房间号">
@@ -661,7 +667,7 @@
         <div class="questionAnswer">
           <div>
             <div class="form-group">
-              <input type="text" class="form-control" id="major" name="major" placeholder="专业/院系">
+              <input type="text" class="form-control" id="major" name="major" placeholder="专业/院系" required>
             </div>
           </div>
         </div>
@@ -673,7 +679,8 @@
         <div class="questionAnswer">
           <div class="form-group">
             <label for="gradeSelect"></label>
-            <select class="form-control" name="grade" id="gradeSelect">
+            <select class="form-control" name="grade" id="gradeSelect" required>
+              <option></option>
               <option>大一</option>
               <option>大二</option>
               <option>大三</option>
@@ -760,7 +767,7 @@
     })(window);
     {% if lastpage %}
         document.getElementById("page1").style = 'display: none;';
-        document.getElementById("page6").style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
   </script>

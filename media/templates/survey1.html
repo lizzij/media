@@ -849,9 +849,7 @@
 
     })(window);
     {% if lastpage %}
-        console.log({{lastpage}});
         document.getElementById("page1").style = 'display: none;';
-        console.log("page" + ({{lastpage}}+1));
         document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
