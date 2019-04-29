@@ -12,7 +12,6 @@ from media.db import get_db
 from werkzeug.exceptions import abort
 
 bp = Blueprint('info', __name__)
-now = datetime.now()
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
@@ -24,7 +23,6 @@ def get_info(user_id_hashid, day_hashid):
     :param user_hashid: hashed user_id of the user
     :param day_hashid: hashed number of day
     """
-
     user = get_db().execute(
         'SELECT user_id, day'
         ' FROM user u'
@@ -35,9 +33,6 @@ def get_info(user_id_hashid, day_hashid):
         abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
-
-    if day > 6:
-        return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
     if day < 8:
         next = get_db().execute(
@@ -52,8 +47,24 @@ def get_info(user_id_hashid, day_hashid):
         next_user_id_hashid = None
         next_day_hashid = None
 
+    last_survey_page = get_db().execute(
+        'SELECT survey_page'
+        ' FROM activity a'
+        ' WHERE a.user_id = ? AND a.day = ?',
+        (user_id, day,)
+    ).fetchone()
+    if last_survey_page is None:
+        lastpage = 0
+    else:
+        lastpage = last_survey_page[0]
+        return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
+    if day > 6:
+        return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
     if day == 0:
         if request.method == 'POST':
+            now = datetime.now()
             consent = request.form['consent']
             db = get_db()
             db.execute(
@@ -133,6 +144,7 @@ def get_survey(user_id_hashid, day_hashid):
         lastpage = last_survey_page[0]
 
     if request.method == 'POST':
+        now = datetime.now()
         f = request.form
         db = get_db()
 
@@ -223,6 +235,7 @@ def user_insert(user_id, day, wechat_id, treatment, user_id_hashid, day_hashid):
 ## We need this at the end of info.py
 @bp.route('/activityInsert/<user_id>', methods=['POST'])
 def activity_insert(user_id):
+    now = datetime.now()
     db = get_db()
     db.execute(
         'INSERT INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
@@ -235,6 +248,7 @@ def activity_insert(user_id):
 ## We need this at the end of info.py
 @bp.route('/activityUpdate/<user_id>/<day>/<day_complete>/<survey_page>/<h1>/<h2>', methods=['POST'])
 def activity_update(user_id,day, day_complete, survey_page, h1, h2):
+    now = datetime.now()
     db = get_db()
     db.execute(
         'REPLACE INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
