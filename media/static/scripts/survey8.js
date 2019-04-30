@@ -30,6 +30,22 @@ function show(shown) {
 
 document.getElementById("clearAllStarsButton").style.display='none';
 
+// validate star question on page 1 => page 2
+function validateStar() {
+  var alert = document.getElementById("starAlert").innerHTML;
+  var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
+    document.getElementById("clearAllStarsButton").style.display='block';
+    return true;
+  }
+  else {
+    // document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
+    return false;
+  }
+}
+
 function starCountGroup1(number) {
   var starLeftCount = document.getElementById("starLeftCount").innerHTML;
   var count = document.getElementById("starCountGroup1").innerHTML;

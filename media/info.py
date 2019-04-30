@@ -23,6 +23,8 @@ def get_info(user_id_hashid, day_hashid):
     :param user_hashid: hashed user_id of the user
     :param day_hashid: hashed number of day
     """
+
+    # unhash user_id and day
     user = get_db().execute(
         'SELECT user_id, day'
         ' FROM user u'
@@ -34,6 +36,8 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
+    # TODO change to 0
+    # get day 1 hashid on day 0
     if day < 8:
         next = get_db().execute(
             'SELECT user_id_hashid, day_hashid'
@@ -53,15 +57,17 @@ def get_info(user_id_hashid, day_hashid):
         ' WHERE a.user_id = ? AND a.day = ?',
         (user_id, day,)
     ).fetchone()
-    if last_survey_page is None:
+    if last_survey_page is None or last_survey_page == 0:
         lastpage = 0
     else:
         lastpage = last_survey_page[0]
         return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
+    # direct to survey for day 7, 8
     if day > 6:
         return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
+    # consent collect, redirect to day 1
     if day == 0:
         if request.method == 'POST':
             now = datetime.now()
@@ -79,13 +85,21 @@ def get_info(user_id_hashid, day_hashid):
                 flash('如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
+    # retrieve info by info_id
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
         ' FROM infos i'
         ' WHERE i.event_id = ?',
         (day,)
-    ).fetchone()
+    ).fetchone()  # TODO dynamically retrieve event id from treatment
+    # TODO unlink source here
+    # TODO use select * instead
 
+    # TODO append source to info tuple and use as a variable in info.html and intoPageNoAQDetails.html
+    # TODO day 6 event 1 and 2 dynamic
+
+    # retrieve user info from user table
+    # TODO merge with the first retrieve in user
     user = get_db().execute(
         'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid'
         ' FROM user u'
@@ -96,6 +110,7 @@ def get_info(user_id_hashid, day_hashid):
     if info is None:
         abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
 
+    # TODO dyniamically from treatment
     if day <= 3 or day == 6:
         return render_template('infoPageNoAQDetail.html', user=user, info=info)
     else:
@@ -166,7 +181,7 @@ def get_survey(user_id_hashid, day_hashid):
             day_complete = 1
 
         db.execute(
-            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
+            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)' #TODO check tihs line for None replacement
             ' VALUES (?, ?, ?, ?, ?)',
             (user_id, day, lastpage, now, day_complete)
         )

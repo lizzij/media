@@ -33,6 +33,27 @@ function show(shown) {
   return 0;
 }
 
+// validate star question on page 5 => page 6
+function validateStar() {
+  var alert = document.getElementById("starAlert").innerHTML;
+  var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
+    document.getElementById("clearAllStarsButton").style.display='block';
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+// validate guess weather source question on page 7 => page 8
+function validateWeatherSource() {
+  // TODO check at least one option selected
+  guessWeatherSource();
+}
+
 function signUpFeeSlide() {
   var value=document.getElementById("signUpFeeSlider").value;
   var signUpFeeAmount = `${value}元`;
@@ -657,35 +678,33 @@ function guessWeatherSource(){
     }
   }
   var numChosen = checked.length;
-  console.log(numChosen);
   // only SEMC is selected
   if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
     document.getElementById('guessWeatherSource').style.display = "none";
   }
   else {
     var randomIndex = Math.floor(Math.random() * (numChosen-1));
-    console.log(randomIndex);
     document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
     document.getElementById('guessWeatherSource').style.display = "block";
-    console.log(checked[randomIndex]);
   }
-
 }
 
-// $( document ).ready(function() {
-//   randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-//   randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
-//   randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
-//   var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
-//   updateWalkathonSlide(walkathonRandom);
-//
-//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-// });
+$( document ).ready(function() {
+  document.getElementById("clearAllStarsButton").style.display='none';
+
+  // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
+  // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
+  // randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
+  // var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
+  // updateWalkathonSlide(walkathonRandom);
+  //
+  // randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
+  // randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
+  // randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
+  // randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
+  // randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
+  // randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+});
 
 // Get the modal
 var modal = document.getElementById('myModal1');
