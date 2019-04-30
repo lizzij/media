@@ -59,6 +59,8 @@ def get_info(user_id_hashid, day_hashid):
     ).fetchone()
     if last_survey_page is None or last_survey_page < 0:
         lastpage = 0
+    elif last_survey_page[0] < 0:
+        lastpage = 0
     else:
         lastpage = last_survey_page[0]
         return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
