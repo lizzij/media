@@ -57,7 +57,7 @@ def get_info(user_id_hashid, day_hashid):
         ' WHERE a.user_id = ? AND a.day = ?',
         (user_id, day,)
     ).fetchone()
-    if last_survey_page is None or last_survey_page == 0:
+    if last_survey_page is None or last_survey_page < 0:
         lastpage = 0
     else:
         lastpage = last_survey_page[0]
