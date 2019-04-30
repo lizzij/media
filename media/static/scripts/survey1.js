@@ -42,6 +42,38 @@ function show(shown) {
   return 0;
 }
 
+// validate weather star question on page 2 => page3
+function validateWeatherStar() {
+  var alert = document.getElementById("weatherStarAlert").innerHTML;
+  var numStarLeft = document.getElementById("weatherStarLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("weatherStarAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page2').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("weatherClearAllStarsButton").style.display='block';
+    return false;
+  }
+  else {
+    // document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    return true;
+  }
+}
+
+// validate star question on page 3 => page 4
+function validateStar() {
+  var alert = document.getElementById("starAlert").innerHTML;
+  var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("clearAllStarsButton").style.display='block';
+    return true;
+  }
+  else {
+    // document.getElementById('page4').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    return false;
+  }
+}
+
 function eventTimeSlide() {
   var value=document.getElementById("eventTimeSlider").value;
   var hours;
