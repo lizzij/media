@@ -182,9 +182,14 @@ def get_survey(user_id_hashid, day_hashid):
             lastpage = lastpages[day-1]
             day_complete = 1
 
+        # db.execute(
+        #     'UPDATE activity SET day=(?), survey_page=(?), curr_time=(?), day_complete=(?) WHERE user_id=(?)',
+        #     (day, lastpage, now, day_complete, user_id)
+        # )
         db.execute(
-            'UPDATE activity SET day=(?), survey_page=(?), curr_time=(?), day_complete=(?) WHERE user_id=(?)',
-            (day, lastpage, now, day_complete, user_id)
+            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (user_id, day, lastpage, now, day_complete)
         )
         db.commit()
 
