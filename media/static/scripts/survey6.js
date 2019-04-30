@@ -1,36 +1,59 @@
-function show(shown) {
-  window.scroll(0,0);
+// function show(shown) {
+//   window.scroll(0,0);
+//   document.getElementById("clearAllStarsButton").style.display='none';
+//   var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page7part2', 'page8', 'page9'];
+//   var pageIndex;
+//   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
+//     pageId = pages[pageIndex];
+//     if (shown == pageId) {
+//       if (shown == 'page6') {
+//         var alert = document.getElementById("starAlert").innerHTML;
+//         var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+//         if ((parseInt(numStarLeft)) > 0) {
+//           document.getElementById("starAlert").innerHTML = '请用完所有星星！';
+//           document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
+//           document.getElementById("clearAllStarsButton").style.display='block';
+//         }
+//         else {
+//           document.getElementById('page6').style='display: flex;flex-direction: column;position: relative;';
+//         }
+//       }
+//       else if (shown == 'page7part2'){
+//         guessWeatherSource();
+//         document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
+//       }
+//       else {
+//         document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
+//       }
+//     }
+//     else {
+//       document.getElementById(pageId).style.display='none';
+//     }
+//   }
+//   return 0;
+// }
+
+function validateOneChecked(name) {
+  return ($('input[name='+name+']:checked').length == 1);
+}
+
+function show(nextPart) {
   document.getElementById("clearAllStarsButton").style.display='none';
-  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10'];
-  var pageIndex;
-  for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-    pageId = pages[pageIndex];
-    if (shown == pageId) {
-      if (shown == 'page6') {
-        var alert = document.getElementById("starAlert").innerHTML;
-        var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-        if ((parseInt(numStarLeft)) > 0) {
-          document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
-          document.getElementById("clearAllStarsButton").style.display='block';
-        }
-        else {
-          document.getElementById('page6').style='display: flex;flex-direction: column;position: relative;';
-        }
-      }
-      else if (shown == 'page8'){
+  if (nextPart == 'page7part2'){
+    console.log(validateOneChecked("otherWeatherSource"));
+    if (validateOneChecked("otherSource") && validateOneChecked("otherWeatherSource") && validateOneChecked("recallAirQuality")
+    && validateOneChecked("recallAirQualitySource") && validateOneChecked("recallNumberOfAirQualitySource")) {
+      if (validateWeatherSource()) {
         guessWeatherSource();
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-      }
-      else {
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
+        document.getElementById('page7').style='display:none;';
+        window.scroll(0,0);
+        document.getElementById(nextPart).style='display: flex;flex-direction: column;position: relative;';
       }
     }
     else {
-      document.getElementById(pageId).style.display='none';
+      document.getElementById("sourceTokenAlert").innerHTML = '请回答所有问题！';
     }
   }
-  return 0;
 }
 
 // validate star question on page 5 => page 6
@@ -41,17 +64,29 @@ function validateStar() {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
     document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
     document.getElementById("clearAllStarsButton").style.display='block';
-    return true;
-  }
-  else {
     return false;
   }
+  guessWeatherSource();
+  return true;
 }
 
 // validate guess weather source question on page 7 => page 8
 function validateWeatherSource() {
-  // TODO check at least one option selected
-  guessWeatherSource();
+  var checkboxs=document.getElementsByName("recallWhichAirQualitySource");
+  var valid=false;
+  for(var i=0,l=checkboxs.length;i<l;i++) {
+    if(checkboxs[i].checked) {
+      valid=true;
+      break;
+    }
+  }
+  if (!valid) {
+    document.getElementById("sourceTokenAlert").innerHTML = '请选择空气质量信息的来源！';
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 function signUpFeeSlide() {
@@ -665,6 +700,7 @@ function trust6Slide() {
 // if sources other than SEMC is chosen randomly select one of them
 // for guessWeatherSource question
 // else do not display guessWeatherSource question
+
 function guessWeatherSource(){
   var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
   var checked = [];
@@ -691,7 +727,6 @@ function guessWeatherSource(){
 
 $( document ).ready(function() {
   document.getElementById("clearAllStarsButton").style.display='none';
-
   // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
   // randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
