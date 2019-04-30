@@ -52,10 +52,7 @@ function validateWeatherStar() {
     document.getElementById("weatherClearAllStarsButton").style.display='block';
     return false;
   }
-  else {
-    // document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
-    return true;
-  }
+  return true;
 }
 
 // validate star question on page 3 => page 4
