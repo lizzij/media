@@ -57,9 +57,9 @@ def get_info(user_id_hashid, day_hashid):
         ' WHERE a.user_id = ? AND a.day = ?',
         (user_id, day,)
     ).fetchone()
-    if last_survey_page is None or last_survey_page < 0:
+    if last_survey_page is None:
         lastpage = 0
-    elif last_survey_page[0] < 0:
+    elif last_survey_page[0] <= 0:
         lastpage = 0
     else:
         lastpage = last_survey_page[0]
@@ -183,9 +183,8 @@ def get_survey(user_id_hashid, day_hashid):
             day_complete = 1
 
         db.execute(
-            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)' #TODO check tihs line for None replacement
-            ' VALUES (?, ?, ?, ?, ?)',
-            (user_id, day, lastpage, now, day_complete)
+            'UPDATE activity SET day=(?), survey_page=(?), curr_time=(?), day_complete=(?) WHERE user_id=(?)',
+            (day, lastpage, now, day_complete, user_id)
         )
         db.commit()
 
