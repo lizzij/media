@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <form lang="zh" action="" method="post">
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
   <!-- page 1 -->
   <div id="page1" >
     <div id="survey">
@@ -290,7 +290,7 @@
   </div>
 </form>
 
-<form lang="zh" action="" method="post">
+<form lang="zh" action="" onsubmit="return validateBeanQn()" method="post">
   <!-- page 3 -->
   <div id="page3" style="display:none">
     <div id="survey">
@@ -321,8 +321,7 @@
           <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="B" id="BtoldMe"><label class="form-check-label" for="BtoldMe"><font color="blue">小蓝</font></label></div>
           <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="C" id="CtoldMe"><label class="form-check-label" for="CtoldMe"><font color="green">小绿</font></label></div>
         </div>
-        <div id="beanNumberResult">
-        </div>
+        <div id="beanNumberResult" class="fillAllAlert"></div>
         <div id="checkBeanNumberSource">
           <div class="btn btn-primary" type="submit" name="checkBeanNumberSourceButton" value="核对答案" id="checkBeanNumberSourceButton" onClick="checkBeanNumberSource()">核对答案</div>
         </div>
@@ -342,6 +341,7 @@
 
       </div>
     <!-- next button -->
+    <div id="beanNumberInputAlert" class="fillAllAlert"></div>
     <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
@@ -363,7 +363,7 @@
   </div>
 </form>
 
-<form lang="zh" action="" method="post">
+<form lang="zh" action="" onsubmit="return validateMathQn();" method="post">
   <!-- page 4 -->
   <div id="page4" style="display:none">
     <div id="survey">
@@ -371,31 +371,28 @@
     </div>
 
     <!-- next button -->
-    <div class="nextButton">
+    <!-- <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-    </div>
-    <!-- <section class="nextButton" >
+    </div> -->
+    <section class="nextButton" >
       <div id="p4nextButton"><div class="button">
           <div id="next">开始</div>
         </div>
         <script type="text/javascript">
           document.getElementById("p4nextButton").onclick = function() {
-            startTimer("timer1", "page6", "timesUp1");
-            return show('page5');
+            return show(1);
           };
         </script>
       </div>
-    </section> -->
+    </section>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 40%; background-color: #979797;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-</form>
 
-<form lang="zh" action="" method="post">
   <!-- page 5 -->
-  <div id="page5" style="display:none">
+  <div id="question1" style="display:none">
     <div id="survey">
       <div class="question">
         <div id="timeLeft">
@@ -407,39 +404,36 @@
         <div class="questionAnswer">
         <div id="math1">
           <div class="form-group">
-            <input type="text" class="form-control" id="math1Answer" name="math1Answer" placeholder="请输入答案" required>
+            <input type="text" class="form-control" id="math1Answer" name="math1Answer" placeholder="请输入答案" >
           </div>
         </div>
         </div>
       </div>
-      <div id="timesUp1"></div>
+      <div id="timesUp1" class="fillAllAlert"></div>
     </div>
     <!-- next button -->
-    <div class="nextButton">
+    <!-- <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-    </div>
-    <!-- <section class="nextButton" >
+    </div> -->
+    <section class="nextButton" >
       <div id="p5nextButton"><div class="button">
           <div id="next">下一题</div>
         </div>
         <script type="text/javascript">
           document.getElementById("p5nextButton").onclick = function() {
-            startTimer("timer2", "page7", "timesUp2");
-            return show('page6');
+            return show(2);
           };
         </script>
       </div>
-    </section> -->
+    </section>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 50%; background-color: #979797;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-</form>
 
-<form lang="zh" action="" method="post">
   <!-- page 6 -->
-  <div id="page6" style="display:none">
+  <div id="question2" style="display:none">
     <div id="survey">
       <div class="question">
         <div id="timeLeft">
@@ -451,39 +445,36 @@
         <div class="questionAnswer">
         <div id="math2">
           <div class="form-group">
-            <input type="text" class="form-control" id="math2Answer" name="math2Answer" placeholder="请输入答案" required>
+            <input type="text" class="form-control" id="math2Answer" name="math2Answer" placeholder="请输入答案" >
           </div>
         </div>
         </div>
       </div>
-      <div id="timesUp2"></div>
+      <div id="timesUp2" class="fillAllAlert"></div>
     </div>
     <!-- next button -->
-    <div class="nextButton">
+    <!-- <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-    </div>
-    <!-- <section class="nextButton" >
+    </div> -->
+    <section class="nextButton" >
       <div id="p6nextButton"><div class="button">
           <div id="next">下一题</div>
         </div>
         <script type="text/javascript">
           document.getElementById("p6nextButton").onclick = function() {
-            startTimer("timer3", "page8", "timesUp3");
-            return show('page7');
+            return show(3);
           };
         </script>
       </div>
-    </section> -->
+    </section>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 60%; background-color: #979797;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-</form>
 
-<form lang="zh" action="" method="post">
   <!-- page 7 -->
-  <div id="page7" style="display:none">
+  <div id="question3" style="display:none">
     <div id="survey">
       <div class="question">
         <div id="timeLeft">
@@ -495,39 +486,36 @@
         <div class="questionAnswer">
         <div id="math3">
           <div class="form-group">
-            <input type="text" class="form-control" id="math3Answer" name="math3Answer"  placeholder="请输入答案" required>
+            <input type="text" class="form-control" id="math3Answer" name="math3Answer"  placeholder="请输入答案" >
           </div>
         </div>
         </div>
       </div>
-      <div id="timesUp3"></div>
+      <div id="timesUp3" class="fillAllAlert"></div>
     </div>
     <!-- next button -->
-    <div class="nextButton">
+    <!-- <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-    </div>
-    <!-- <section class="nextButton" >
+    </div> -->
+    <section class="nextButton" >
       <div id="p7nextButton"><div class="button">
           <div id="next">下一题</div>
         </div>
         <script type="text/javascript">
           document.getElementById("p7nextButton").onclick = function() {
-            startTimer("timer4", "page9", "timesUp4");
-            return show('page8');
+            return show(4);
           };
         </script>
       </div>
-    </section> -->
+    </section>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 70%; background-color: #979797;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-</form>
 
-<form lang="zh" action="" method="post">
   <!-- page 8 -->
-  <div id="page8" style="display:none">
+  <div id="question4" style="display:none">
     <div id="survey">
       <div class="question">
         <div id="timeLeft">
@@ -539,39 +527,36 @@
         <div class="questionAnswer">
         <div id="math4">
           <div class="form-group">
-            <input type="text" class="form-control" id="math4Answer" name="math4Answer"  placeholder="请输入答案" required>
+            <input type="text" class="form-control" id="math4Answer" name="math4Answer"  placeholder="请输入答案" >
           </div>
         </div>
         </div>
       </div>
-      <div id="timesUp4"></div>
+      <div id="timesUp4" class="fillAllAlert"></div>
     </div>
     <!-- next button -->
-    <div class="nextButton">
+    <!-- <div class="nextButton">
       <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
       </input>
-    </div>
-    <!-- <section class="nextButton" >
+    </div> -->
+    <section class="nextButton" >
       <div id="p8nextButton"><div class="button">
           <div id="next">下一题</div>
         </div>
         <script type="text/javascript">
           document.getElementById("p8nextButton").onclick = function() {
-            startTimer("timer5", "page10", "timesUp5");
-            return show('page9');
+            return show(5);
           };
         </script>
       </div>
-    </section> -->
+    </section>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #989898;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
-</form>
 
-<form lang="zh" action="" method="post">
   <!-- page 9 -->
-  <div id="page9" style="display:none">
+  <div id="question5" style="display:none">
     <div id="survey">
       <div class="question">
         <div id="timeLeft">
@@ -583,12 +568,12 @@
         <div class="questionAnswer">
         <div id="math5">
           <div class="form-group">
-            <input type="text" class="form-control" id="math5Answer" name="math5Answer"  placeholder="请输入答案" required>
+            <input type="text" class="form-control" id="math5Answer" name="math5Answer"  placeholder="请输入答案" >
           </div>
         </div>
         </div>
       </div>
-      <div id="timesUp5"></div>
+      <div id="timesUp5" class="fillAllAlert"></div>
     </div>
     <!-- next button -->
     <div class="nextButton">
@@ -613,7 +598,7 @@
 </form>
 
   <!-- page 10 -->
-  <div id="page10" style="display:none">
+  <div id="page5" style="display:none">
     <div id="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在两周之内向您发送微信消息。</div>
       <!-- <div class="mainQuestion">感谢您完成第七天的调研。假设距离上一个调研已经过去了 2 周，第7天结束。如果您想继续第8天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）
@@ -675,11 +660,10 @@
     {% else %}
     {% endif %}
   </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/survey7.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

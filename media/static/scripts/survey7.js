@@ -1,31 +1,44 @@
-function show(shown) {
+function show(toShowIndex) {
   window.scroll(0,0);
-  var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10'];
-  var pageIndex;
-  for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-    pageId = pages[pageIndex];
-    if (shown == pageId) {
-      if (shown == 'page2') {
-        var alert = document.getElementById("starAlert").innerHTML;
-        var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-        if ((parseInt(numStarLeft)) > 0) {
-          document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
-          document.getElementById("clearAllStarsButton").style.display='block';
-        }
-        else {
-          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
-        }
-      }
-      else {
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-      }
+  var questions = ['question1', 'question2', 'question3', 'question4', 'question5'];
+  var questionIds = ['math1Answer', 'math2Answer', 'math3Answer', 'math4Answer', 'math5Answer'];
+  var timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5']
+  var alerts = ['timesUp1', 'timesUp2', 'timesUp3', 'timesUp4', 'timesUp5']
+
+  if (toShowIndex == 1) {
+    document.getElementById('page4').style.display='none';
+    document.getElementById('question1').style='display: flex;flex-direction: column;position: relative;';
+    startTimer(1);
+  }
+  else {
+    var next = toShowIndex - 1;
+    var current = next - 1;
+
+    var input = document.getElementById(questionIds[current]).value;
+    var alert = document.getElementById(alerts[current]);
+
+    // no input upon clicking next
+    if (input == null || input == "" && alert.innerHTML != '时间到，请点击进入下一页') {
+      alert.innerHTML = '请填写答案！'
     }
+    // hide current, show next, start next timer
     else {
-      document.getElementById(pageId).style.display='none';
+      document.getElementById(questions[current]).style.display='none';
+      document.getElementById(questions[next]).style='display: flex;flex-direction: column;position: relative;';
+      startTimer(toShowIndex);
     }
   }
-  return 0;
+}
+
+// validate question5 (none empty or not over 60 sec) from page 4 => page 5
+function validateMathQn() {
+  var input = document.getElementById('math5Answer').value;
+  var alert = document.getElementById('timesUp5');
+  if (input == null || input == "" && alert.innerHTML != '时间到，请点击进入下一页') {
+    alert.innerHTML = '请填写答案！'
+    return false;
+  }
+  return true;
 }
 
 document.getElementById("clearAllStarsButton").style.display='none';
@@ -38,12 +51,24 @@ function validateStar() {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
     document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
     document.getElementById("clearAllStarsButton").style.display='block';
-    return true;
-  }
-  else {
-    // document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
     return false;
   }
+  return true;
+}
+
+// validate bean quesion is answered correctly from page 3 => page 4
+function validateBeanQn() {
+
+  console.log(document.getElementById("guessedBeanNumber").value === '');
+  if (document.getElementById("beanCountEstimateQuestion").style.display == "none") {
+    checkBeanNumberSource();
+    return false;
+  }
+  else if (document.getElementById("guessedBeanNumber").value === ''){
+    document.getElementById("beanNumberInputAlert").innerHTML = "请填写豆子数量！"
+    return false;
+  }
+  return true;
 }
 
 function starCountGroup1(number) {
@@ -344,16 +369,21 @@ function checkBeanNumberSource(){
   }
 }
 
-function startTimer(timer, page, timesUp) {
-  var sec = 60;
+function startTimer(index) {
+  var input = document.getElementById('math' + index + 'Answer');
+  var timer = document.getElementById('timer' + index);
+  var alert = document.getElementById('timesUp' + index);
+  var page = document.getElementById('question' + index);
+  var sec = 59;
   setInterval(function() {
-    document.getElementById(timer).innerHTML = sec;
+    timer.innerHTML = sec;
     if (sec > 0) {
       sec--;
     }
-    else if (sec == 00) {
-      document.getElementById(timesUp).innerHTML = '时间到，请点击进入下一页';
-      document.getElementById(timesUp).style.color = "#FF3333";
+    else if (sec == 00 && page.style.display != 'none') {
+      alert.innerHTML = '时间到，请点击进入下一页';
+      alert.style.color = "#FF3333";
+      input.disabled = true;
     }
   }, 1000);
 }
