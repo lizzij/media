@@ -373,13 +373,14 @@ function startTimer(index) {
   var input = document.getElementById('math' + index + 'Answer');
   var timer = document.getElementById('timer' + index);
   var alert = document.getElementById('timesUp' + index);
-  var sec = 9;
+  var page = document.getElementById('question' + index);
+  var sec = 59;
   setInterval(function() {
     timer.innerHTML = sec;
     if (sec > 0) {
       sec--;
     }
-    else if (sec == 00) {
+    else if (sec == 00 && page.style.display != 'none') {
       alert.innerHTML = '时间到，请点击进入下一页';
       alert.style.color = "#FF3333";
       input.disabled = true;
