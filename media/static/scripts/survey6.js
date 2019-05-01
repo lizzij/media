@@ -40,7 +40,6 @@ function validateOneChecked(name) {
 function show(nextPart) {
   document.getElementById("clearAllStarsButton").style.display='none';
   if (nextPart == 'page7part2'){
-    console.log(validateOneChecked("otherWeatherSource"));
     if (validateOneChecked("otherSource") && validateOneChecked("otherWeatherSource") && validateOneChecked("recallAirQuality")
     && validateOneChecked("recallAirQualitySource") && validateOneChecked("recallNumberOfAirQualitySource")) {
       if (validateWeatherSource()) {
@@ -717,6 +716,7 @@ function guessWeatherSource(){
   // only SEMC is selected
   if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
     document.getElementById('guessWeatherSource').style.display = "none";
+    document.forms["surveyExperience"].submit();
   }
   else {
     var randomIndex = Math.floor(Math.random() * (numChosen-1));
