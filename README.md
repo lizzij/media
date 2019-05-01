@@ -12,6 +12,9 @@
 8. http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/survey  
 
 http://127.0.0.1:5000/completion/detail
+http://127.0.0.1:5000/activity
+http://127.0.0.1:5000/allActivities
+http://127.0.0.1:5000/allUsers
 
 ## HTTPS  
 0. https://dailyeventinfo.com/nBEXdMJkv56ymRZx/vQp4l04x0q/info
@@ -25,6 +28,9 @@ http://127.0.0.1:5000/completion/detail
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
 https://dailyeventinfo.com/completion/detail
+https://dailyeventinfo.com/activity
+https://dailyeventinfo.com/allActivities
+https://dailyeventinfo.com/allUsers
 
 ## How to run locally:
 - Clone repo locally

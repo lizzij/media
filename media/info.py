@@ -36,7 +36,6 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
 
-    # TODO change to 0
     # get day 1 hashid on day 0
     if day < 8:
         next = get_db().execute(
@@ -51,6 +50,7 @@ def get_info(user_id_hashid, day_hashid):
         next_user_id_hashid = None
         next_day_hashid = None
 
+    # direct to last saved survey page (skip info)
     last_survey_page = get_db().execute(
         'SELECT survey_page'
         ' FROM activity a'
