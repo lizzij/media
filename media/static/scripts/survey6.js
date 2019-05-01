@@ -37,11 +37,22 @@ function validateOneChecked(name) {
   return ($('input[name='+name+']:checked').length == 1);
 }
 
+function validateShownAndFilled(formName, name) {
+  var display = document.getElementById(formName).style.display;
+  var value = document.getElementById(name).value;
+  if (display != "none") {
+    return value === '';
+  }
+  return true;
+}
+
 function show(nextPart) {
   document.getElementById("clearAllStarsButton").style.display='none';
   if (nextPart == 'page7part2'){
     if (validateOneChecked("otherSource") && validateOneChecked("otherWeatherSource") && validateOneChecked("recallAirQuality")
-    && validateOneChecked("recallAirQualitySource") && validateOneChecked("recallNumberOfAirQualitySource")) {
+    && validateOneChecked("recallAirQualitySource") && validateOneChecked("recallNumberOfAirQualitySource")
+    && validateShownAndFilled("otherHowManyTimes", "numberOfTimes")
+    && validateShownAndFilled("otherHowManyWeatherTimes", "numberOfWeatherTimes")) {
       if (validateWeatherSource()) {
         guessWeatherSource();
         document.getElementById('page7').style='display:none;';
@@ -722,6 +733,7 @@ function guessWeatherSource(){
     var randomIndex = Math.floor(Math.random() * (numChosen-1));
     document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
     document.getElementById('guessWeatherSource').style.display = "block";
+    document.getElementById("international").required = true;
   }
 }
 
