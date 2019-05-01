@@ -38,10 +38,12 @@ function validateOneChecked(name) {
 }
 
 function validateShownAndFilled(formName, name) {
+
   var display = document.getElementById(formName).style.display;
   var value = document.getElementById(name).value;
+
   if (display != "none") {
-    return value === '';
+    return (value != null && value != '');
   }
   return true;
 }
@@ -726,6 +728,7 @@ function guessWeatherSource(){
   var numChosen = checked.length;
   // only SEMC is selected
   if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
+    document.getElementById('page7part2').style.display = "none";
     document.getElementById('guessWeatherSource').style.display = "none";
     document.forms["surveyExperience"].submit();
   }

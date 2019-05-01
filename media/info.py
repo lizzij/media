@@ -64,7 +64,6 @@ def get_info(user_id_hashid, day_hashid):
     else:
         lastpage = last_survey_page[0]
         return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
-        # return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
     # direct to survey for day 7, 8
     if day > 6:
