@@ -38,12 +38,9 @@ function validateStar() {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
     document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
     document.getElementById("clearAllStarsButton").style.display='block';
-    return true;
-  }
-  else {
-    // document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
     return false;
   }
+  return true;
 }
 
 function starCountGroup1(number) {

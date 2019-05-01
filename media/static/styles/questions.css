@@ -977,10 +977,4 @@ pre{
   font-size: 14px;
 }
 
-.fillAllAlert{
-
-  color: #FF3333;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-}
+.fillAllAlert{color: #FF3333;font-size: 14px;font-weight: bold;text-align: center;z-index: 3;}
