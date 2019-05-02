@@ -50,20 +50,26 @@ def get_info(user_id_hashid, day_hashid):
         next_user_id_hashid = None
         next_day_hashid = None
 
-    # direct to last saved survey page (skip info)
+    # if competed direct to last saved survey page (skip info)
     last_survey_page = get_db().execute(
-        'SELECT survey_page'
+        'SELECT survey_page, day'
         ' FROM activity a'
-        ' WHERE a.user_id = ? AND a.day = ?',
-        (user_id, day,)
+        ' WHERE a.user_id = ?',
+        (user_id,)
     ).fetchone()
-    if last_survey_page is None:
-        lastpage = 0
-    elif last_survey_page[0] <= 0:
+    if last_survey_page is None: # not added
         lastpage = 0
     else:
+        lastday = last_survey_page[1]
         lastpage = last_survey_page[0]
-        return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        if lastpage <= 0: # sent consent, not submitted
+            lastpage = 0
+        elif day == 0 and lastday >= 0: # completed consent, not survey => redirect to survey 1
+            return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
+        elif day <= lastday: # completed or partially completed
+            return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+        else:
+            pass
 
     # direct to survey for day 7, 8
     if day > 6:
@@ -79,6 +85,11 @@ def get_info(user_id_hashid, day_hashid):
                 'INSERT INTO survey (user_id, day, result, created, question_id)'
                 ' VALUES (?, ?, ?, ?, ?)',
                 (user_id, 0, consent, now, 'consent')
+            )
+            db.execute(
+                'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (user_id, 0, 1, now, 1)
             )
             db.commit()
             if consent == 'proceed':
@@ -154,15 +165,22 @@ def get_survey(user_id_hashid, day_hashid):
 
     # start on where use left off
     last_survey_page = get_db().execute(
-        'SELECT survey_page'
+        'SELECT survey_page, day'
         ' FROM activity a'
-        ' WHERE a.user_id = ? AND a.day = ?',
-        (user_id, day,)
+        ' WHERE a.user_id = ?',
+        (user_id,)
     ).fetchone()
     if last_survey_page is None:
         lastpage = 0
     else:
-        lastpage = last_survey_page[0]
+        lastday = last_survey_page[1]
+        if day < lastday: # completed
+            lastpages = [5, 5, 2, 1, 1, 9, 4, 2] # second last page of survey 1-8
+            lastpage = lastpages[day-1]
+        elif day == lastday: # partially completed
+            lastpage = last_survey_page[0]
+        elif day > lastday: # not started
+            lastpage = 0
 
     # collect survey reponse
     if request.method == 'POST':
