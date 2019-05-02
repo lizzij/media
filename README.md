@@ -1,5 +1,16 @@
 # Flask
 
+## Results
+### Get allActivites.csv
+```bash
+wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allActivites.csv
+```
+
+### Get allUsers.csv
+```bash
+wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
+```
+
 ## Local  
 0. http://127.0.0.1:5000/nBEXdMJkv56ymRZx/vQp4l04x0q/info
 1. http://127.0.0.1:5000/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info  
