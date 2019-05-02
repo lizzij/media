@@ -11,7 +11,10 @@
 7. http://127.0.0.1:5000/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey  
 8. http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/survey  
 
-http://127.0.0.1:5000/completion/detail
+- http://127.0.0.1:5000/completion/detail
+- http://127.0.0.1:5000/activity
+- http://127.0.0.1:5000/allActivities
+- http://127.0.0.1:5000/allUsers
 
 ## HTTPS  
 0. https://dailyeventinfo.com/nBEXdMJkv56ymRZx/vQp4l04x0q/info
@@ -24,16 +27,19 @@ http://127.0.0.1:5000/completion/detail
 7. https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
-https://dailyeventinfo.com/completion/detail
+- https://dailyeventinfo.com/completion/detail
+- https://dailyeventinfo.com/activity
+- https://dailyeventinfo.com/allActivities
+- https://dailyeventinfo.com/allUsers
 
 ## How to run locally:
-- clone repo locally
+- Clone repo locally
 ```
 git clone https://github.com/lizzij/media.git
 cd media
 ```
 
-- navigate to root dir
+- Navigate to root dir
 ```
 source venv/bin/activate
 export FLASK_APP=media
@@ -51,12 +57,13 @@ flask init-db
 ```
 ssh donghee@202.182.126.239
 ```
-- navigate to folder
+- Navigate to folder
 ```
 cd ~/media
 ```
 
-- Initialize database
+- Make changes
 ```
-flask init-db
+git pull
+sudo systemctl restart media
 ```
