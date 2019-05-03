@@ -2,13 +2,21 @@
 
 ## Results
 ### Get allActivites.csv
+eaders: user_id, day, day_complete, survey_page, day_started, curr_time
 ```bash
 wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allActivites.csv
 ```
 
 ### Get allUsers.csv
+eaders: user_id, day, wechat_id, treatment, user_id_hashid, day_hashid
 ```bash
 wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
+```
+
+### Get allResults.csv
+headers: user_id, day, question_id, result, created
+```bash
+wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allResults.csv
 ```
 
 ## Local  
@@ -75,7 +83,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 8. http://127.0.0.1:5000/6XmQ08RlOMkjg2zn/NGm9R0ebZM/survey
 
 **check**
-- http://127.0.0.1:5000/completion/detail
+- http://127.0.0.1:5000/allResults
 - http://127.0.0.1:5000/activity
 - http://127.0.0.1:5000/allActivities
 - http://127.0.0.1:5000/allUsers
@@ -94,7 +102,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
 **check**
-- https://dailyeventinfo.com/completion/detail
+- https://dailyeventinfo.com/allResults
 - https://dailyeventinfo.com/activity
 - https://dailyeventinfo.com/allActivities
 - https://dailyeventinfo.com/allUsers

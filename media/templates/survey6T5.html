@@ -79,10 +79,10 @@
 
         <header>
           <div class="title">
-            <div id="eventName">世纪公园踏春<br />做游戏-K歌</div>
-            <div id="eventDate">2019.05.18 周六</div>
-            <div id="eventTime">12:00 pm - 19:00 pm</div>
-            <div id="eventLocation">地点 浦东新区 上海世纪公园</div>
+            <div id="eventName">{{ (second_event['title']) }}<br />{{ (second_event['subtitle']) }}</div>
+            <div id="eventDate">{{ (second_event['info_date']) }}</div>
+            <div id="eventTime">{{ (second_event['info_time']) }}</div>
+            <div id="eventLocation">{{ (second_event['location']) }}</div>
           </div>
         </header>
 
@@ -90,7 +90,7 @@
         <section class="image">
           <div id="eventImage">
             <div>
-              <img src="{{ url_for('static', filename='img/event 7.jpg') }}" width="376" height="276">
+              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="276">
             </div>
           </div>
         </section>
@@ -100,7 +100,7 @@
           <div class="paragraphShort">
             <!-- <div id="firstCharacter">平</div> -->
             <div id="descriptionShortPara">
-              世纪公园里已经色彩缤纷，到处散发着安静祥和的气息。
+              {{ (second_event['short_description']) }}
             </div>
           </div>
         </section>
@@ -136,14 +136,14 @@
 
             <!-- temperture low -->
             <div class="temperatureLow">
-              <div id="lowValue">18</div>
+              <div id="lowValue">{{ '%d' % (second_event['low_temp']) }}</div>
               <div id="lowUnit">°C</div>
               <div id="low">平均最低<br />气温</div>
             </div>
 
             <!-- temperture high -->
             <div class="temperatureHigh">
-              <div id="highValue">25</div>
+              <div id="highValue">{{ '%d' % (second_event['high_temp']) }}</div>
               <div id="highUnit">°C</div>
               <div id="high">平均最高<br />气温</div>
             </div>
@@ -243,10 +243,10 @@
         <div>
           <header>
             <div class="title">
-              <div id="eventName">儿童慈善徒步运动<br /></div>
-              <div id="eventDate">2019.05.18 周六</div>
-              <div id="eventTime">12:00 pm - 19:00 pm</div>
-              <div id="eventLocation">任何户外地点</div>
+              <div id="eventName">{{ (third_event['title']) }}<br />{{ (third_event['subtitle']) }}</div>
+              <div id="eventDate">{{ (third_event['info_date']) }}</div>
+              <div id="eventTime">{{ (third_event['info_time']) }}</div>
+              <div id="eventLocation">{{ (third_event['location']) }}</div>
             </div>
           </header>
 
@@ -254,7 +254,7 @@
           <section class="image">
             <div id="eventImage">
               <div>
-                <img src="{{ url_for('static', filename='img/walkathon.png') }}" height="276">
+                <img src="{{ url_for('static', filename=third_event['image_file']) }}" height="276">
               </div>
             </div>
           </section>
@@ -264,7 +264,7 @@
             <div class="paragraphShort">
               <!-- <div id="firstCharacter">步</div> -->
               <div id="descriptionShortPara">
-                步行4000-7000步。 我们将代表您向上海联合基金会捐款！独自行走或与您的朋友和家人一起散步，并使用微信步数记录您步数！
+                {{ (third_event['short_description']) }}
               </div>
             </div>
           </section>
@@ -299,14 +299,14 @@
 
               <!-- temperture low -->
               <div class="temperatureLow">
-                <div id="lowValue">18</div>
+                <div id="lowValue">{{ '%d' % (third_event['low_temp']) }}</div>
                 <div id="lowUnit">°C</div>
                 <div id="low">平均最低<br />气温</div>
               </div>
 
               <!-- temperture high -->
               <div class="temperatureHigh">
-                <div id="highValue">25</div>
+                <div id="highValue">{{ '%d' % (third_event['high_temp']) }}</div>
                 <div id="highUnit">°C</div>
                 <div id="high">平均最高<br />气温</div>
               </div>
@@ -315,9 +315,9 @@
             <!-- air quality -->
             <section class="airQuality">
               <div id="airQualityHeader">空气质量：良</div>
-              <div id="airQualitySource">（来自：上海市环境监测中心）</div>
+              <div id="airQualitySource">{{ (third_event['air_quality_source']) }}</div>
               <div id="dongFang">
-                <img src="{{ url_for('static', filename='img/SourceSHEnvironmentLogo.jpg') }}" height="23">
+                <img src="{{ url_for('static', filename=third_event['air_quality_source_logo']) }}" height="23">
               </div>
 
               <!-- air quality scale -->
@@ -381,8 +381,8 @@
               <!-- <div id="dropDownChevron"></div> -->
               <div id="detailedPointForm">
                 <pre>
-            我们将捐钱给上海联劝公益基金会，它的使命是：授权捐助者支持中国的基层非政府组织目前，大多数基层非政府组织缺乏有效的专业筹款方法，大多数中国官方基金会提供的补助机会非常有限。 由此产生的资金缺口迫使他们将不成比例的时间集中在维持其组织的运作上。 因此，他们通常既没有精力也没有资金进行大规模筹款活动，或者专注于改善其计划的影响。 上海联劝公益基金会（SUF）专注于为基层非政府组织筹集资金，以减轻限制有前途组织增长和影响的大部分财政负担。
-          </pre>
+                  {{ (third_event['event_details']) }}
+                </pre>
               </div>
             </section>
 
@@ -395,33 +395,86 @@
             <!-- suitable icons -->
             <section class="suitableIcons">
               <div id="iconFamily">
-                <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:1;">
+                {% if (third_event['suitable_for_family']) %}
+                <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
               <div id="iconFriends">
-                <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:1;">
+                {% if (third_event['suitable_for_friends']) %}
+                <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
               <div id="iconLover">
-                <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:1;">
+                {% if (third_event['suitable_for_lover']) %}
+                <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
               <div id="iconBaby">
+                {% if (third_event['suitable_for_baby']) %}
+                <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+                {% else %}
                 <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
               <div id="iconElderly">
+                {% if (third_event['suitable_for_elderly']) %}
+                <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+                {% else %}
                 <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
               <div id="iconPet">
-                <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:1;">
+                {% if (third_event['suitable_for_pet']) %}
+                <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
               </div>
             </section>
 
             <!-- suitable icon labels -->
             <section class="suitableIconLabels">
-              <div id="family" style="opacity:1;">家庭</div>
-              <div id="friends" style="opacity:1;">朋友</div>
-              <div id="lovers" style="opacity:1;">恋人</div>
+              {% if (third_event['suitable_for_family']) %}
+              <div id="family">家庭</div>
+              {% else %}
+              <div id="family" style="opacity:0.1;">家庭</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_friends']) %}
+              <div id="friends">朋友</div>
+              {% else %}
+              <div id="friends" style="opacity:0.1;">朋友</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_lover']) %}
+              <div id="lovers">恋人</div>
+              {% else %}
+              <div id="lovers" style="opacity:0.1;">恋人</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_baby']) %}
+              <div id="baby">儿童</div>
+              {% else %}
               <div id="baby" style="opacity:0.1;">儿童</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_elderly']) %}
+              <div id="elderly">老人</div>
+              {% else %}
               <div id="elderly" style="opacity:0.1;">老人</div>
-              <div id="pets" style="opacity:1;">宠物</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_pet']) %}
+              <div id="pets">宠物</div>
+              {% else %}
+              <div id="pets" style="opacity:0.1;">宠物</div>
+              {% endif %}
             </section>
           </section>
 

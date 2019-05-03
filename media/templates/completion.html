@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
-    <title>完成题目内容</title>
+    <title>完成情况</title>
   </head>
   <body>
     <!-- content -->
@@ -13,11 +13,7 @@
           <header>
             <div>
               <div class="about">
-                user_id: {{ survey['user_id'] }};
-                day: {{ survey['day'] }};
-                question_id: {{ survey['question_id'] }};
-                result: {{ survey['result'] }};
-                created: {{ survey['created'].strftime('%d/%m/%Y %H:%M:%S') }}.</div>
+                {{ survey['user_id'] }},{{ survey['day'] }},{{ survey['question_id'] }},{{ survey['result'] }},{{ survey['created'].strftime('%d/%m/%Y %H:%M:%S') }}.</div>
             </div>
           </header>
           <p class="body">{{ survey['body'] }}</p>

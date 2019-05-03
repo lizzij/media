@@ -63,7 +63,7 @@
     margin-top: 8px;
     margin-right: 8px;
     margin-bottom: 8px;
-    margin-left: 8px;height:3000px;">
+    margin-left: 8px;height:1140px;">
         <!-- The Modal -->
         <div id="myModal1" class="modal">
 
@@ -79,10 +79,10 @@
 
         <header>
           <div class="title">
-            <div id="eventName">世纪公园踏春<br />做游戏-K歌</div>
-            <div id="eventDate">2019.05.18 周六</div>
-            <div id="eventTime">12:00 pm - 19:00 pm</div>
-            <div id="eventLocation">地点 浦东新区 上海世纪公园</div>
+            <div id="eventName">{{ (second_event['title']) }}<br />{{ (second_event['subtitle']) }}</div>
+            <div id="eventDate">{{ (second_event['info_date']) }}</div>
+            <div id="eventTime">{{ (second_event['info_time']) }}</div>
+            <div id="eventLocation">{{ (second_event['location']) }}</div>
           </div>
         </header>
 
@@ -90,7 +90,7 @@
         <section class="image">
           <div id="eventImage">
             <div>
-              <img src="{{ url_for('static', filename='img/event 7.jpg') }}" width="376" height="276">
+              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="276">
             </div>
           </div>
         </section>
@@ -100,7 +100,7 @@
           <div class="paragraphShort">
             <!-- <div id="firstCharacter">平</div> -->
             <div id="descriptionShortPara">
-              世纪公园里已经色彩缤纷，到处散发着安静祥和的气息。
+              {{ (second_event['short_description']) }}
             </div>
           </div>
         </section>
@@ -136,14 +136,14 @@
 
             <!-- temperture low -->
             <div class="temperatureLow">
-              <div id="lowValue">18</div>
+              <div id="lowValue">{{ '%d' % (second_event['low_temp']) }}</div>
               <div id="lowUnit">°C</div>
               <div id="low">平均最低<br />气温</div>
             </div>
 
             <!-- temperture high -->
             <div class="temperatureHigh">
-              <div id="highValue">25</div>
+              <div id="highValue">{{ '%d' % (second_event['high_temp']) }}</div>
               <div id="highUnit">°C</div>
               <div id="high">平均最高<br />气温</div>
             </div>
@@ -243,10 +243,10 @@
         <div>
           <header>
             <div class="title">
-              <div id="eventName">儿童慈善徒步运动<br /></div>
-              <div id="eventDate">2019.05.18 周六</div>
-              <div id="eventTime">12:00 pm - 19:00 pm</div>
-              <div id="eventLocation">任何户外地点</div>
+              <div id="eventName">{{ (third_event['title']) }}<br />{{ (third_event['subtitle']) }}</div>
+              <div id="eventDate">{{ (third_event['info_date']) }}</div>
+              <div id="eventTime">{{ (third_event['info_time']) }}</div>
+              <div id="eventLocation">{{ (third_event['location']) }}</div>
             </div>
           </header>
 
@@ -254,7 +254,7 @@
           <section class="image">
             <div id="eventImage">
               <div>
-                <img src="{{ url_for('static', filename='img/walkathon.png') }}" height="276">
+                <img src="{{ url_for('static', filename=third_event['image_file']) }}" height="276">
               </div>
             </div>
           </section>
@@ -264,7 +264,7 @@
             <div class="paragraphShort">
               <!-- <div id="firstCharacter">步</div> -->
               <div id="descriptionShortPara">
-                步行4000-7000步。 我们将代表您向上海联合基金会捐款！独自行走或与您的朋友和家人一起散步，并使用微信步数记录您步数！
+                {{ (third_event['short_description']) }}
               </div>
             </div>
           </section>
@@ -299,14 +299,14 @@
 
               <!-- temperture low -->
               <div class="temperatureLow">
-                <div id="lowValue">18</div>
+                <div id="lowValue">{{ '%d' % (third_event['low_temp']) }}</div>
                 <div id="lowUnit">°C</div>
                 <div id="low">平均最低<br />气温</div>
               </div>
 
               <!-- temperture high -->
               <div class="temperatureHigh">
-                <div id="highValue">25</div>
+                <div id="highValue">{{ '%d' % (third_event['high_temp']) }}</div>
                 <div id="highUnit">°C</div>
                 <div id="high">平均最高<br />气温</div>
               </div>
@@ -315,7 +315,7 @@
             <!-- air quality -->
             <section class="airQuality">
               <div id="airQualityHeader">空气质量：良</div>
-              <div id="airQualitySource">（来自：上海市环境监测中心）</div>
+              <div id="airQualitySource">{{ (third_event['air_quality_source']) }}</div>
               <div id="dongFang">
                 <img src="{{ url_for('static', filename='img/SourceSHEnvironmentLogo.jpg') }}" height="23">
               </div>

@@ -241,16 +241,34 @@ def get_survey(user_id_hashid, day_hashid):
         )
         db.commit()
 
-    # set day 6 event 2, event 3 based on treatment
+    # set day 6 second_event, third_event based on treatment
     if day == 6:
         if treatment == 'T3':
-            return render_template('survey6T3.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            second_event_id = 5
+        else:
+            second_event_id = 7
+        second_event = get_db().execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+            ' FROM infos i'
+            ' WHERE i.event_id = ?',
+            (second_event_id,)
+        ).fetchone()
+        third_event = get_db().execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+            ' FROM infos i'
+            ' WHERE i.event_id = ?',
+            (8,)
+        ).fetchone()
+        if treatment == 'T3':
+            return render_template('survey6T3.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         elif treatment == 'T5':
-            return render_template('survey6T5.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6T5.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        else:
+            return render_template('survey6.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
-@bp.route('/completion/detail')
+@bp.route('/allResults')
 def completion():
     """Show all the surveys, and all results."""
     db = get_db()
