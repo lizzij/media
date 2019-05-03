@@ -169,7 +169,7 @@ VALUES
 
   (4, '漫步上海老街', '边走边聊',
 '2019.05.18 周六', '14:00 pm - 17:00 pm', '地点 徐汇区 地铁到门店',
-'img/event 4.jpg', '（来自：新闻晨报）', 'img/SourceMorningPostLogo.jpg',
+'img/event 4.jpg', '', 'img/transparent.png',
 '漫步上海老街, 走过那些老建筑, 仿佛置身于那时那景那人。', 23, 31,
 0,1,1,0,1,1,
 '活动形式：
@@ -181,7 +181,7 @@ VALUES
 
   (5, '夜徒法租界', '梧桐树下聊天交友散步',
 '2019.05.15 周三', '19:30 pm - 20:30 pm', '地点 徐汇区 徐家汇',
-'img/event 5.jpg', '（来自：新闻广播FM93.4）', 'img/SourceNewsRadioLogo.jpg',
+'img/event 5.jpg', '', 'img/transparent.png',
 '徒步路线：徐家汇——衡山路——淮海路 。扩大自己的视野，认识一些有趣的人。', 23, 31,
 0,1,1,0,0,0,
 '行程安排：
@@ -206,7 +206,7 @@ VALUES
 
   (7, '世纪公园踏春', '做游戏-K歌',
 '2019.05.18 周六', '12:00 pm - 19:00 pm', '地点 浦东新区 上海世纪公园',
-'img/event 7.jpg', '（来自：上海市环境监测中心）', 'img/SourceSHEnvironmentLogo.jpg',
+'img/event 7.jpg', '', 'img/transparent.png',
 '世纪公园里已经色彩缤纷，到处散发着安静祥和的气息。', 23, 31,
 0,0,1,0,0,0,
 '行程计划：

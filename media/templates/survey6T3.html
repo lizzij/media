@@ -79,10 +79,10 @@
 
         <header>
           <div class="title">
-            <div id="eventName">世纪公园踏春<br />做游戏-K歌</div>
-            <div id="eventDate">2019.05.18 周六</div>
-            <div id="eventTime">12:00 pm - 19:00 pm</div>
-            <div id="eventLocation">地点 浦东新区 上海世纪公园</div>
+            <div id="eventName">夜徒法租界<br />梧桐树下聊天交友散步</div>
+            <div id="eventDate">2019.05.15 周三</div>
+            <div id="eventTime">19:30 pm - 20:30 pm</div>
+            <div id="eventLocation">地点 徐汇区 徐家汇</div>
           </div>
         </header>
 
@@ -90,7 +90,7 @@
         <section class="image">
           <div id="eventImage">
             <div>
-              <img src="{{ url_for('static', filename='img/event 7.jpg') }}" width="376" height="276">
+              <img src="{{ url_for('static', filename='img/event 5.jpg') }}" width="376" height="276">
             </div>
           </div>
         </section>
@@ -100,7 +100,7 @@
           <div class="paragraphShort">
             <!-- <div id="firstCharacter">平</div> -->
             <div id="descriptionShortPara">
-              世纪公园里已经色彩缤纷，到处散发着安静祥和的气息。
+              徒步路线：徐家汇——衡山路——淮海路 。扩大自己的视野，认识一些有趣的人。
             </div>
           </div>
         </section>
@@ -149,7 +149,69 @@
             </div>
           </section>
 
+          <section class="airQuality">
+            <div id="airQualityHeader">空气质量：良</div>
+            <div id="airQualitySource">（来自：新闻广播FM93.4）</div>
+            <div id="dongFang">
+              <img src="{{ url_for('static', filename='img/SourceNewsRadioLogo.jpg') }}" height="23">
+            </div>
+
+            <!-- air quality scale -->
+            <div class="airQualityScale">
+
+              <!-- levels -->
+              <div class="levels">
+                <div id="infoLevel1">1级</div>
+                <div id="infoLevel2">2级</div>
+                <div id="infoLevel3">3级</div>
+                <div id="infoLevel4">4级</div>
+                <div id="infoLevel5">5级</div>
+                <div id="infoLevel6">6级</div>
+              </div>
+
+              <!-- level descriptions -->
+              <div class="levelDescription">
+                <div id="level1Description">优</div>
+                <div id="level2Description">良</div>
+                <div id="level3Description">轻度污染</div>
+                <div id="level4Description">中度污染</div>
+                <div id="level5Description">重度污染</div>
+                <div id="level6Description">严重污染</div>
+              </div>
+
+              <!-- color bar -->
+              <div>
+                <svg id="colorBar1">
+                  <rect />
+                </svg>
+                <svg id="colorBar2">
+                  <rect />
+                </svg>
+                <svg id="colorBar3">
+                  <rect />
+                </svg>
+                <svg id="colorBar4">
+                  <rect />
+                </svg>
+                <svg id="colorBar5">
+                  <rect />
+                </svg>
+                <svg id="colorBar6">
+                  <rect />
+                </svg>
+              </div>
+
+              <!-- air quality detail -->
+              <div id="airQualityDetail">
+                良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+              </div>
+            </div>
+          </section>
+
         </section>
+
+        <!-- air quality -->
+
 
         <!-- next button -->
         <div class="nextButton" style="
@@ -157,7 +219,8 @@
             width: 375px;
             height: 124px;
             left: calc(50% - 375px/2 + 64px);
-            top: 800px;">
+            top: 1050px;
+            padding-bottom:100px;">
           <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
           </input>
         </div>
