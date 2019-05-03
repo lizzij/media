@@ -125,7 +125,7 @@ def get_info(user_id_hashid, day_hashid):
         db.execute('UPDATE infos SET air_quality_source_logo = ? WHERE event_id = ?',(curr_air_quality_source_logo, event_id))
 
     info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
         ' WHERE i.event_id = ?',
         (event_id,)
@@ -248,13 +248,13 @@ def get_survey(user_id_hashid, day_hashid):
         else:
             second_event_id = 7
         second_event = get_db().execute(
-            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
             ' WHERE i.event_id = ?',
             (second_event_id,)
         ).fetchone()
         third_event = get_db().execute(
-            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
             ' WHERE i.event_id = ?',
             (8,)
@@ -265,6 +265,11 @@ def get_survey(user_id_hashid, day_hashid):
             return render_template('survey6T5.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         else:
             return render_template('survey6.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+
+    # get walkathon day for survey 7
+    if day == 7:
+        walkathon_date = get_db().execute('SELECT phrase_for_day FROM infos WHERE event_id = 8').fetchone()
+        return render_template('survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
