@@ -15,6 +15,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
  [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing)
 
 **user_id: 1 (T1)**  
+
 0. http://127.0.0.1:5000/nBEXdMJkv56ymRZx/vQp4l04x0q/info
 1. http://127.0.0.1:5000/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info  
 2. http://127.0.0.1:5000/j9Z4Jbol5rwABVxl/d7kZonDXxO/info  
@@ -26,6 +27,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 8. http://127.0.0.1:5000/wMWaznOryK6prqe2/Ey3l4RPxZV/survey  
 
 **user_id: 2 (T2 - T2.S.M)**  
+
 0. https://dailyeventinfo.com/Pd1aWzXvArJqBAkv/RlgLN2LVAy/info
 1. https://dailyeventinfo.com/a3k47g0J60EmWOjD/QGngX7ZREN/info
 2. https://dailyeventinfo.com/KLjpVX7zr7gy80wv/waA5xNgGBo/info
@@ -37,6 +39,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 8. https://dailyeventinfo.com/qQ3rMl6O07OgbXDa/pqNAOm9MEz/survey
 
 **user_id: 3 (T3 - T2.M.S)**  
+
 0. https://dailyeventinfo.com/NWLgZQrw3rPXRjd3/ay3KxzDe2A/info
 1. https://dailyeventinfo.com/klzKE7O7vabVm81B/1ENB753m7V/info
 2. https://dailyeventinfo.com/n5aWdxrKLjYLZGEM/2DeEQvl48G/info
@@ -48,6 +51,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 8. https://dailyeventinfo.com/5K4OgV8pd8bWo6nM/DOW7EvRxb6/survey
 
 **user_id: 4 (T4 - T2.M.M.N)**  
+
 0. https://dailyeventinfo.com/XVvqpgPkEOdbW8jY/A1080l8kYl/info
 1. https://dailyeventinfo.com/K7JpVY69VlQEAM8b/RA0EvZEYaZ/info
 2. https://dailyeventinfo.com/OKe24R078PAwzkEX/DnPq7bxv78/info
@@ -58,7 +62,8 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 7. https://dailyeventinfo.com/qQ9nL6R5QRB75AX1/Ee8rRgbLA5/survey
 8. https://dailyeventinfo.com/ve5oEQLZa8j63K49/kmjgdnrvD8/survey
 
-**user_id: 5 (T5 - T2.M.M.C)**    
+**user_id: 5 (T5 - T2.M.M.C)**   
+
 0. https://dailyeventinfo.com/yR1b89ly6jQ4e5kM/Ge94yz6xPz/info
 1. https://dailyeventinfo.com/4w08DXWoV2aNb6Oo/4apzLw9drO/info
 2. https://dailyeventinfo.com/VQ6Lj5W5DBZDP2mr/zB5nNYlZW7/info
@@ -77,6 +82,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 
 ## HTTPS  
 **user_id: 1 (T1)**  
+
 0. https://dailyeventinfo.com/nBEXdMJkv56ymRZx/vQp4l04x0q/info
 1. https://dailyeventinfo.com/lq13ZopK7pbrkJ7X/BKzwNEGg9y/info
 2. https://dailyeventinfo.com/j9Z4Jbol5rwABVxl/d7kZonDXxO/info
