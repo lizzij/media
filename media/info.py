@@ -300,7 +300,7 @@ def users():
     """Show all the surveys, and all results."""
     db = get_db()
     users = db.execute(
-        'SELECT user_id, day, wechat_id, treatment, user_id_hashid, day_hashid'
+        'SELECT user_id, day, wechat_id, treatment, cohort, user_id_hashid, day_hashid'
         ' FROM user s'
         ' ORDER BY user_id ASC'
     ).fetchall()
@@ -319,13 +319,13 @@ def user_activities():
     return render_template('activityList.html', users=users)
 
 ## We need this at the end of info.py
-@bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
+@bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, treatment, user_id_hashid, day_hashid):
     db = get_db()
     db.execute(
-        'INSERT INTO user (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)'
+        'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
         ' VALUES (?, ?, ?, ?, ?, ?)',
-        (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)
+        (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)
     )
     db.commit()
     return 'complete'
