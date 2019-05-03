@@ -2,26 +2,26 @@
 
 ## Results
 ### Get allActivites.csv
-eaders: user_id, day, day_complete, survey_page, day_started, curr_time
+Headers: user_id, day, day_complete, survey_page, day_started, curr_time
 ```bash
 wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allActivites.csv
 ```
 
 ### Get allUsers.csv
-eaders: user_id, day, wechat_id, treatment, user_id_hashid, day_hashid
+Headers: user_id, day, wechat_id, treatment, user_id_hashid, day_hashid
 ```bash
 wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
 ```
 
 ### Get allResults.csv
-headers: user_id, day, question_id, result, created
+Headers: user_id, day, question_id, result, created
 ```bash
 wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allResults.csv
 ```
 
 ## Local  
- [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing)
- - Event 6 (cohort 1: user 1-4; cohort 3: user 5)
+ [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
+ - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
 
 **user_id: 1 (T1)**  
 
