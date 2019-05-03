@@ -21,6 +21,7 @@ wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s
 
 ## Local  
  [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing)
+ - Event 6 (cohort 1: user 1-4; cohort 3: user 5)
 
 **user_id: 1 (T1)**  
 

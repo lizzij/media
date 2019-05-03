@@ -26,7 +26,7 @@ def get_info(user_id_hashid, day_hashid):
 
     # unhash user_id, day and treatment
     user = get_db().execute(
-        'SELECT user_id, day, treatment'
+        'SELECT user_id, day, treatment, cohort'
         ' FROM user u'
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
@@ -36,6 +36,7 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
     treatment = user[2]
+    cohort = user[3]
 
     # get day 1 hashid on day 0
     if day < 8:
@@ -121,26 +122,23 @@ def get_info(user_id_hashid, day_hashid):
                                      'T5' : {4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', }}
         curr_air_quality_source = air_quality_sources[treatment][day]
         curr_air_quality_source_logo = air_quality_source_logos[treatment][day]
-        db.execute('UPDATE infos SET air_quality_source = ? WHERE event_id = ?',(curr_air_quality_source, event_id))
-        db.execute('UPDATE infos SET air_quality_source_logo = ? WHERE event_id = ?',(curr_air_quality_source_logo, event_id))
+        db.execute('UPDATE infos SET air_quality_source = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source, event_id, cohort))
+        db.execute('UPDATE infos SET air_quality_source_logo = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source_logo, event_id, cohort))
 
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
-        ' WHERE i.event_id = ?',
-        (event_id,)
+        ' WHERE i.event_id = ? AND cohort = ?',
+        (event_id, cohort,)
     ).fetchone()
 
     # retrieve user info from user table, for printing to check pages
     user = get_db().execute(
-        'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid'
+        'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid, cohort'
         ' FROM user u'
-        ' WHERE u.user_id = ? AND u.day = ?',
-        (user_id, day,)
+        ' WHERE u.user_id = ? AND u.day = ? AND cohort = ?',
+        (user_id, day, cohort,)
     ).fetchone()
-
-    if info is None:
-        abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
 
     # depending on treatment: infoPage (only temperature), infoPageAQ (air quality), infoPageCO (crowdout)
     template = { 'T1' : {4:'infoPage.html', 5:'infoPage.html', 6:'infoPage.html', },
@@ -164,7 +162,7 @@ def get_survey(user_id_hashid, day_hashid):
 
     # unhash user_id and day
     user = get_db().execute(
-        'SELECT user_id, day, treatment'
+        'SELECT user_id, day, treatment, cohort'
         ' FROM user u'
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
@@ -174,6 +172,7 @@ def get_survey(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
     treatment = user[2]
+    cohort = user[3]
 
     # get next page for connected link (for testing)
     if day < 8:
@@ -250,14 +249,14 @@ def get_survey(user_id_hashid, day_hashid):
         second_event = get_db().execute(
             'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
-            ' WHERE i.event_id = ?',
-            (second_event_id,)
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (second_event_id, cohort,)
         ).fetchone()
         third_event = get_db().execute(
             'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
-            ' WHERE i.event_id = ?',
-            (8,)
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (8, cohort,)
         ).fetchone()
         if treatment == 'T3':
             return render_template('survey6T3.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
@@ -268,7 +267,7 @@ def get_survey(user_id_hashid, day_hashid):
 
     # get walkathon day for survey 7
     if day == 7:
-        walkathon_date = get_db().execute('SELECT phrase_for_day FROM infos WHERE event_id = 8').fetchone()
+        walkathon_date = get_db().execute('SELECT phrase_for_day FROM infos WHERE event_id = ? AND cohort = ?', (8, cohort)).fetchone()
         return render_template('survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
