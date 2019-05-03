@@ -74,7 +74,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 7. https://dailyeventinfo.com/vB6yXbw2vw1oEZep/51OArlkDlY/survey
 8. https://dailyeventinfo.com/6XmQ08RlOMkjg2zn/NGm9R0ebZM/survey
 
-
+**check**
 - http://127.0.0.1:5000/completion/detail
 - http://127.0.0.1:5000/activity
 - http://127.0.0.1:5000/allActivities
@@ -93,7 +93,7 @@ wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^
 7. https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
-
+**check**
 - https://dailyeventinfo.com/completion/detail
 - https://dailyeventinfo.com/activity
 - https://dailyeventinfo.com/allActivities
