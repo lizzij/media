@@ -318,6 +318,13 @@ def all_events():
 @bp.route('/eventUpdate', methods=['GET', 'POST'])
 def update_events():
     if request.method == 'POST':
+        if request.form['search'] == 'Search':
+            pass # do something
+        elif request.form['submit'] == 'Submit':
+            pass # do something else
+        else:
+            pass
+
         f = request.form
         db = get_db()
         event_id = request.form['event_id']
