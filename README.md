@@ -89,11 +89,12 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 7. http://127.0.0.1:5000/vB6yXbw2vw1oEZep/51OArlkDlY/survey
 8. http://127.0.0.1:5000/6XmQ08RlOMkjg2zn/NGm9R0ebZM/survey
 
-**check**
+**Get Post**
 - http://127.0.0.1:5000/allResults
 - http://127.0.0.1:5000/allActivities
 - http://127.0.0.1:5000/allUsers
 - http://127.0.0.1:5000/allEvents
+- http://127.0.0.1:5000/eventUpdate
 
 ## HTTPS  
 **user_id: 1 (T1)**  
@@ -108,11 +109,12 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 7. https://dailyeventinfo.com/ZdwQaPxbdk8Lne3B/83AwJbw2RV/survey
 8. https://dailyeventinfo.com/wMWaznOryK6prqe2/Ey3l4RPxZV/survey
 
-**check**
+**Get Post**
 - https://dailyeventinfo.com/allResults
 - https://dailyeventinfo.com/allActivities
 - https://dailyeventinfo.com/allUsers
 - https://dailyeventinfo.com/allEvents
+- https://dailyeventinfo.com/eventUpdate
 
 ## How to run locally:
 - Clone repo locally

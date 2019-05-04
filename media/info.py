@@ -315,6 +315,22 @@ def all_events():
     ).fetchall()
     return render_template('infoList.html', events=events)
 
+@bp.route('/eventUpdate', methods=['GET', 'POST'])
+def update_events():
+    if request.method == 'POST':
+        f = request.form
+        db = get_db()
+        event_id = request.form['event_id']
+        cohort = request.form['cohort']
+        for field in f.keys():
+            for value in f.getlist(field):
+                db.execute(
+                    'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
+                    (value, event_id, cohort)
+                )
+        db.commit()
+    return render_template('updateEvent.html')
+
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
