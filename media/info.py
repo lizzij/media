@@ -88,13 +88,15 @@ def get_info(user_id_hashid, day_hashid):
                 ' VALUES (?, ?, ?, ?, ?)',
                 (user_id, 0, consent, now, 'consent')
             )
-            db.execute(
-                'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
-                ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, 0, 1, now, 1)
-            )
             db.commit()
             if consent == 'proceed':
+                db = get_db()
+                db.execute(
+                    'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, 0, 1, now, 1)
+                )
+                db.commit()
                 return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
             elif consent == 'notProceed':
                 flash('如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
@@ -273,7 +275,7 @@ def get_survey(user_id_hashid, day_hashid):
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/allResults')
-def completion():
+def user_results():
     """Show all the surveys, and all results."""
     db = get_db()
     surveys = db.execute(
@@ -281,20 +283,8 @@ def completion():
         ' FROM survey s'
         ' ORDER BY created ASC'
     ).fetchall()
-    return render_template('completion.html', surveys=surveys)
+    return render_template('surveyList.html', surveys=surveys)
 
-@bp.route('/activity')
-def activity():
-    """Show all the activity"""
-    db = get_db()
-    activitys = db.execute(
-        'SELECT user_id, day, survey_page, curr_time, day_complete'
-        ' FROM activity a'
-        ' ORDER BY curr_time ASC'
-    ).fetchall()
-    return render_template('activity.html', activitys=activitys)
-
-## We need this at the end of info.py (also need userList.html)
 @bp.route('/allUsers')
 def users():
     """Show all the surveys, and all results."""
@@ -306,7 +296,6 @@ def users():
     ).fetchall()
     return render_template('userList.html', users=users)
 
-## We need this at the end of info.py (also need userList.html)
 @bp.route('/allActivities')
 def user_activities():
     """Show all the surveys, and all results."""
@@ -318,7 +307,15 @@ def user_activities():
     ).fetchall()
     return render_template('activityList.html', users=users)
 
-## We need this at the end of info.py
+@bp.route('/allEvents')
+def all_events():
+    """Show all the events."""
+    db = get_db()
+    events = db.execute(
+        'SELECT * FROM infos ORDER BY info_id ASC'
+    ).fetchall()
+    return render_template('infoList.html', events=events)
+
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
@@ -330,7 +327,6 @@ def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_
     db.commit()
     return 'complete'
 
-## We need this at the end of info.py
 @bp.route('/activityInsert/<user_id>', methods=['POST'])
 def activity_insert(user_id):
     now = datetime.now()
@@ -343,7 +339,6 @@ def activity_insert(user_id):
     db.commit()
     return 'complete'
 
-## We need this at the end of info.py
 @bp.route('/activityUpdate/<user_id>/<day>/<day_complete>/<survey_page>/<h1>/<h2>', methods=['POST'])
 def activity_update(user_id,day, day_complete, survey_page, h1, h2):
     now = datetime.now()

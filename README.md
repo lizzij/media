@@ -19,6 +19,9 @@ Headers: user_id, day, question_id, result, created
 wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allResults.csv
 ```
 
+### Get allEvents.csv
+- https://dailyeventinfo.com/allEvents
+
 ## Local  
  [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
  - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
@@ -85,9 +88,9 @@ wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s
 
 **check**
 - http://127.0.0.1:5000/allResults
-- http://127.0.0.1:5000/activity
 - http://127.0.0.1:5000/allActivities
 - http://127.0.0.1:5000/allUsers
+- http://127.0.0.1:5000/allEvents
 
 ## HTTPS  
 **user_id: 1 (T1)**  
@@ -104,9 +107,9 @@ wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s
 
 **check**
 - https://dailyeventinfo.com/allResults
-- https://dailyeventinfo.com/activity
 - https://dailyeventinfo.com/allActivities
 - https://dailyeventinfo.com/allUsers
+- https://dailyeventinfo.com/allEvents
 
 ## How to run locally:
 - Clone repo locally
