@@ -92,9 +92,8 @@ def get_info(user_id_hashid, day_hashid):
             if consent == 'proceed':
                 db = get_db()
                 db.execute(
-                    'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
-                    ' VALUES (?, ?, ?, ?, ?)',
-                    (user_id, 0, 1, now, 1)
+                    'UPDATE activity SET day_complete = ?, curr_time = ? WHERE user_id = ?',
+                    (1, now, user_id)
                 )
                 db.commit()
                 return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
@@ -231,14 +230,9 @@ def get_survey(user_id_hashid, day_hashid):
             lastpage = lastpages[day-1]
             day_complete = 1
 
-        # db.execute(
-        #     'UPDATE activity SET day=(?), survey_page=(?), curr_time=(?), day_complete=(?) WHERE user_id=(?)',
-        #     (day, lastpage, now, day_complete, user_id)
-        # )
         db.execute(
-            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
-            ' VALUES (?, ?, ?, ?, ?)',
-            (user_id, day, lastpage, now, day_complete)
+            'UPDATE activity SET survey_page = ?, curr_time = ?, day_complete = ? WHERE user_id = ? AND day = ?',
+            (lastpage, now, day_complete, user_id, day)
         )
         db.commit()
 
