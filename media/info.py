@@ -269,8 +269,13 @@ def get_survey(user_id_hashid, day_hashid):
 
     # get walkathon day for survey 7
     if day == 7:
-        walkathon_date = get_db().execute('SELECT phrase_for_day FROM infos WHERE event_id = ? AND cohort = ?', (8, cohort)).fetchone()
+        walkathon_date = get_db().execute('SELECT phrase_for_day, phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (8, cohort)).fetchone()
         return render_template('survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+
+    # get walkathon day for survey 7
+    if day == 1:
+        week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
+        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
