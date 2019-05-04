@@ -320,11 +320,11 @@ def user_activities():
 
 ## We need this at the end of info.py
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
-def user_insert(user_id, day, wechat_id, cohort， treatment, user_id_hashid, day_hashid):
+def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
     db.execute(
         'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
-        ' VALUES (?, ?, ?, ?, ?, ?， ？)',
+        ' VALUES (?, ?, ?, ?, ?, ?，?)',
         (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)
     )
     db.commit()
