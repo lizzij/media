@@ -28,16 +28,26 @@
           <small id="cohort" class="form-text text-muted">* required</small>
         </div>
 
-        <div class="nextButton">
-          <input class="button" type="submit" name="submit" value="Submit" style="color: white; font-size: 14px;">
+        <!-- <div class="nextButton" style="padding-top: 10px;padding-bottom: 50px;">
+          <input class="button" type="submit" name="search" value="Search" style="color: white; font-size: 14px;">
           </input>
-        </div>
+        </div> -->
       </div>
+
+      <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %} -->
 
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="title">title</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="相约网红自行车公园">
+          <input type="text" class="form-control" id="title" name="title" placeholder="相约网红自行车公园" required>
         </div>
         <div class="form-group col-md-6">
           <label for="subtitle">Password</label>
@@ -48,7 +58,7 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="info_date">info_date</label>
-          <input type="text" class="form-control" id="info_date" name="info_date" placeholder="2019.05.13 - 05.18">
+          <input type="text" class="form-control" id="info_date" name="info_date" placeholder="2019.05.13 - 05.18" required>
         </div>
         <div class="form-group col-md-4">
           <label for="info_time">info_time</label>
@@ -145,8 +155,8 @@
         </div>
       </div>
 
-      <div class="nextButton">
-        <input class="button" type="submit" name="submit" value="Submit" style="color: white; font-size: 14px;">
+      <div class="nextButton" style="padding-top: 40px;">
+        <input class="button" type="submit" value="Submit" style="color: white; font-size: 14px;">
         </input>
       </div>
     </form>
