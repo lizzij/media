@@ -92,13 +92,13 @@ def get_info(user_id_hashid, day_hashid):
             if consent == 'proceed':
                 db = get_db()
                 db.execute(
-                    'UPDATE activity SET day_complete = ?, curr_time = ? WHERE user_id = ?',
-                    (1, now, user_id)
+                    'UPDATE activity SET day=?, day_complete = ?, curr_time = ? WHERE user_id = ?',
+                    (1, 0, now, user_id)
                 )
                 db.commit()
                 return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
             elif consent == 'notProceed':
-                flash('如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
+                flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # retrieve info by event_id
