@@ -393,22 +393,22 @@ function walkathonSlide() {
   distance = distance.toFixed(2);
   donation = donation.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`我将在2019年5月18日走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
+  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
   var left = 0.1 * value - 435;
   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
 }
 
-function updateWalkathonSlide(value) {
-  var walkathonAmount = `${value}步`;
-  var distance = value * 0.0008;
-  var donation = (value - 4000) * 0.01;
-  distance = distance.toFixed(2);
-  donation = donation.toFixed(2);
-  document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`我将在2019年5月18日走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-  var left = 0.1 * value - 435;
-  document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
-}
+// function updateWalkathonSlide(value) {
+//   var walkathonAmount = `${value}步`;
+//   var distance = value * 0.0008;
+//   var donation = (value - 4000) * 0.01;
+//   distance = distance.toFixed(2);
+//   donation = donation.toFixed(2);
+//   document.getElementById("walkathonAmount").value=walkathonAmount;
+//   document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
+//   var left = 0.1 * value - 435;
+//   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+// }
 
 function hideNumberOfTimes() {
   document.getElementById("otherHowManyTimes").style.display = "none";

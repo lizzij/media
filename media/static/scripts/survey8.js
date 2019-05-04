@@ -304,29 +304,6 @@ function clearAllStars() {
   starLeft();
 }
 
-function hideWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "none";
-}
-function showWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "block";
-}
-
-function walkathonSlide() {
-  var value=document.getElementById("walkathonSlider").value;
-  var walkathonAmount = `${value}步`;
-  var distance = value * 0.0008;
-  if (value > 5000) {
-    var donation = (value - 5000) * 0.01 + 10;
-  }
-  else {
-    var donation = 0;
-  }
-  distance = distance.toFixed(2);
-  donation = donation.toFixed(2);
-  document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`我将在2019年5月18日走${value}步（${distance}公里）—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-}
-
 function checkBeanNumberSource(){
   var AtoldMe = document.getElementById("AtoldMe").checked;
   var BtoldMe = document.getElementById("BtoldMe").checked;

@@ -63,7 +63,7 @@
     margin-top: 8px;
     margin-right: 8px;
     margin-bottom: 8px;
-    margin-left: 8px;height:1140px;">
+    margin-left: 8px;height:3000px;">
         <!-- The Modal -->
         <div id="myModal1" class="modal">
 
@@ -317,7 +317,7 @@
               <div id="airQualityHeader">空气质量：良</div>
               <div id="airQualitySource">{{ (third_event['air_quality_source']) }}</div>
               <div id="dongFang">
-                <img src="{{ url_for('static', filename='img/SourceSHEnvironmentLogo.jpg') }}" height="23">
+                <img src="{{ url_for('static', filename=third_event['air_quality_source_logo']) }}" height="23">
               </div>
 
               <!-- air quality scale -->
@@ -374,14 +374,117 @@
 
           </section>
 
+          <!-- description -->
+          <section class="description">
+            <section class="paragraph">
+              <div id="eventDetail">活动简介</div>
+              <!-- <div id="dropDownChevron"></div> -->
+              <div id="detailedPointForm">
+                <pre>
+                  {{ (third_event['event_details']) }}
+                </pre>
+              </div>
+            </section>
+
+          </section>
+
+          <!-- suitable for -->
+          <section class="suitableFor">
+            <div id="suitableForTitle">适合人群</div>
+
+            <!-- suitable icons -->
+            <section class="suitableIcons">
+              <div id="iconFamily">
+                {% if (third_event['suitable_for_family']) %}
+                <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Family.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+              <div id="iconFriends">
+                {% if (third_event['suitable_for_friends']) %}
+                <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Friends.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+              <div id="iconLover">
+                {% if (third_event['suitable_for_lover']) %}
+                <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Lover.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+              <div id="iconBaby">
+                {% if (third_event['suitable_for_baby']) %}
+                <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Baby.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+              <div id="iconElderly">
+                {% if (third_event['suitable_for_elderly']) %}
+                <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Elderly.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+              <div id="iconPet">
+                {% if (third_event['suitable_for_pet']) %}
+                <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50">
+                {% else %}
+                <img src="{{ url_for('static', filename='img/Icon Pet.png') }}" width="50" height="50" style="opacity:0.1;">
+                {% endif %}
+              </div>
+            </section>
+
+            <!-- suitable icon labels -->
+            <section class="suitableIconLabels">
+              {% if (third_event['suitable_for_family']) %}
+              <div id="family">家庭</div>
+              {% else %}
+              <div id="family" style="opacity:0.1;">家庭</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_friends']) %}
+              <div id="friends">朋友</div>
+              {% else %}
+              <div id="friends" style="opacity:0.1;">朋友</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_lover']) %}
+              <div id="lovers">恋人</div>
+              {% else %}
+              <div id="lovers" style="opacity:0.1;">恋人</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_baby']) %}
+              <div id="baby">儿童</div>
+              {% else %}
+              <div id="baby" style="opacity:0.1;">儿童</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_elderly']) %}
+              <div id="elderly">老人</div>
+              {% else %}
+              <div id="elderly" style="opacity:0.1;">老人</div>
+              {% endif %}
+
+              {% if (third_event['suitable_for_pet']) %}
+              <div id="pets">宠物</div>
+              {% else %}
+              <div id="pets" style="opacity:0.1;">宠物</div>
+              {% endif %}
+            </section>
+          </section>
+
           <!-- next button -->
           <div class="nextButton" style="
             position: absolute;
             width: 375px;
             height: 124px;
             left: calc(50% - 375px/2 + 64px);
-            top: 1050px;
-            padding-bottom:100px;">
+            top: 1390px;">
             <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
             </input>
           </div>

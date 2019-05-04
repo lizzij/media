@@ -24,9 +24,9 @@ def get_info(user_id_hashid, day_hashid):
     :param day_hashid: hashed number of day
     """
 
-    # unhash user_id and day
+    # unhash user_id, day and treatment
     user = get_db().execute(
-        'SELECT user_id, day'
+        'SELECT user_id, day, treatment, cohort'
         ' FROM user u'
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
@@ -35,6 +35,8 @@ def get_info(user_id_hashid, day_hashid):
         abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
+    treatment = user[2]
+    cohort = user[3]
 
     # get day 1 hashid on day 0
     if day < 8:
@@ -86,48 +88,70 @@ def get_info(user_id_hashid, day_hashid):
                 ' VALUES (?, ?, ?, ?, ?)',
                 (user_id, 0, consent, now, 'consent')
             )
-            db.execute(
-                'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
-                ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, 0, 1, now, 1)
-            )
             db.commit()
             if consent == 'proceed':
+                db = get_db()
+                db.execute(
+                    'UPDATE activity SET day_complete = ?, curr_time = ? WHERE user_id = ?',
+                    (1, now, user_id)
+                )
+                db.commit()
                 return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
             elif consent == 'notProceed':
                 flash('如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
-    # retrieve info by info_id
+    # retrieve info by event_id
+    if treatment == "T3":
+        T3_day_event_id_dict = {1:1, 2:2, 3:3, 4:6, 5:7, 6:4}
+        event_id = T3_day_event_id_dict[day]
+    else:
+        event_id = day
+
+    # modify source of air quality (text and logo) depending on event_id
+    if day >= 4:
+        db = get_db()
+        air_quality_sources = { 'T1' : {4:'', 5:'', 6:'', },
+                                'T2' : {4:'（来自：上海市环境监测中心）', 5:'（来自：上海市环境监测中心）', 6:'', },
+                                'T3' : {4:'', 5:'', 6:'（来自：新闻晨报）', },
+                                'T4' : {4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', },
+                                'T5' : {4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', }}
+        air_quality_source_logos = { 'T1' : {4:'img/transparent.png', 5:'img/transparent.png', 6:'img/transparent.png', },
+                                     'T2' : {4:'img/SourceSHEnvironmentLogo.jpg', 5:'img/SourceSHEnvironmentLogo.jpg', 6:'img/transparent.png', },
+                                     'T3' : {4:'img/transparent.png', 5:'img/transparent.png', 6:'img/SourceMorningPostLogo.jpg', },
+                                     'T4' : {4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', },
+                                     'T5' : {4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', }}
+        curr_air_quality_source = air_quality_sources[treatment][day]
+        curr_air_quality_source_logo = air_quality_source_logos[treatment][day]
+        db.execute('UPDATE infos SET air_quality_source = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source, event_id, cohort))
+        db.execute('UPDATE infos SET air_quality_source_logo = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source_logo, event_id, cohort))
+
     info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details'
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
-        ' WHERE i.event_id = ?',
-        (day,)
-    ).fetchone()  # TODO dynamically retrieve event id from treatment
-    # TODO unlink source here
-    # TODO use select * instead
-
-    # TODO append source to info tuple and use as a variable in info.html and intoPageNoAQDetails.html
-    # TODO day 6 event 1 and 2 dynamic
-
-    # retrieve user info from user table
-    # TODO merge with the first retrieve in user
-    user = get_db().execute(
-        'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid'
-        ' FROM user u'
-        ' WHERE u.user_id = ? AND u.day = ?',
-        (user_id, day,)
+        ' WHERE i.event_id = ? AND cohort = ?',
+        (event_id, cohort,)
     ).fetchone()
 
-    if info is None:
-        abort(404, "Info for user_id {0} on day {1} doesn't exist.".format(user_id, day))
+    # retrieve user info from user table, for printing to check pages
+    user = get_db().execute(
+        'SELECT u.user_id, u.day, wechat_id, treatment, user_id_hashid, day_hashid, cohort'
+        ' FROM user u'
+        ' WHERE u.user_id = ? AND u.day = ? AND cohort = ?',
+        (user_id, day, cohort,)
+    ).fetchone()
 
-    # TODO dyniamically from treatment
-    if day <= 3 or day == 6:
-        return render_template('infoPageNoAQDetail.html', user=user, info=info)
-    else:
+    # depending on treatment: infoPage (only temperature), infoPageAQ (air quality), infoPageCO (crowdout)
+    template = { 'T1' : {4:'infoPage.html', 5:'infoPage.html', 6:'infoPage.html', },
+                 'T2' : {4:'infoPageAQ.html', 5:'infoPageAQ.html', 6:'infoPage.html', },
+                 'T3' : {4:'infoPage.html', 5:'infoPage.html', 6:'infoPageAQ.html', },
+                 'T4' : {4:'infoPageAQ.html', 5:'infoPageAQ.html', 6:'infoPage.html', },
+                 'T5' : {4:'infoPageCO.html', 5:'infoPageCO.html', 6:'infoPage.html', }}
+    if day <= 3:
         return render_template('infoPage.html', user=user, info=info)
+    else:
+        curr_template = template[treatment][day]
+        return render_template(curr_template, user=user, info=info)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
@@ -139,7 +163,7 @@ def get_survey(user_id_hashid, day_hashid):
 
     # unhash user_id and day
     user = get_db().execute(
-        'SELECT user_id, day'
+        'SELECT user_id, day, treatment, cohort'
         ' FROM user u'
         ' WHERE u.user_id_hashid = ? AND u.day_hashid = ?',
         (user_id_hashid, day_hashid,)
@@ -148,6 +172,8 @@ def get_survey(user_id_hashid, day_hashid):
         abort(404, "User {0}/{1} doesn't exist.".format(user_id_hashid, day_hashid))
     user_id = user[0]
     day = user[1]
+    treatment = user[2]
+    cohort = user[3]
 
     # get next page for connected link (for testing)
     if day < 8:
@@ -170,12 +196,12 @@ def get_survey(user_id_hashid, day_hashid):
         ' WHERE a.user_id = ?',
         (user_id,)
     ).fetchone()
+    lastpages = [5, 5, 2, 1, 1, 9, 4, 2] # second last page of survey 1-8
     if last_survey_page is None:
         lastpage = 0
     else:
         lastday = last_survey_page[1]
         if day < lastday: # completed
-            lastpages = [5, 5, 2, 1, 1, 9, 4, 2] # second last page of survey 1-8
             lastpage = lastpages[day-1]
         elif day == lastday: # partially completed
             lastpage = last_survey_page[0]
@@ -199,27 +225,56 @@ def get_survey(user_id_hashid, day_hashid):
 
         # update last page, activity (for day completion)
         lastpage += 1
-        lastpages = [5, 5, 2, 1, 1, 9, 4, 2] # second last page of survey 1-8
         day_complete = 0
         if lastpage >= lastpages[day-1]:
             lastpage = lastpages[day-1]
             day_complete = 1
 
-        # db.execute(
-        #     'UPDATE activity SET day=(?), survey_page=(?), curr_time=(?), day_complete=(?) WHERE user_id=(?)',
-        #     (day, lastpage, now, day_complete, user_id)
-        # )
         db.execute(
-            'REPLACE INTO activity (user_id, day, survey_page, curr_time, day_complete)'
-            ' VALUES (?, ?, ?, ?, ?)',
-            (user_id, day, lastpage, now, day_complete)
+            'UPDATE activity SET survey_page = ?, curr_time = ?, day_complete = ? WHERE user_id = ? AND day = ?',
+            (lastpage, now, day_complete, user_id, day)
         )
         db.commit()
 
+    # set day 6 second_event, third_event based on treatment
+    if day == 6:
+        if treatment == 'T3':
+            second_event_id = 5
+        else:
+            second_event_id = 7
+        second_event = get_db().execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
+            ' FROM infos i'
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (second_event_id, cohort,)
+        ).fetchone()
+        third_event = get_db().execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details, phrase_for_week, phrase_for_day, phrase_for_header'
+            ' FROM infos i'
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (8, cohort,)
+        ).fetchone()
+        if treatment == 'T3':
+            return render_template('survey6T3.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        elif treatment == 'T5':
+            return render_template('survey6T5.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        else:
+            return render_template('survey6.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+
+    # get walkathon day for survey 7
+    if day == 7:
+        walkathon_date = get_db().execute('SELECT phrase_for_day, phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (8, cohort)).fetchone()
+        return render_template('survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+
+    # get walkathon day for survey 7
+    if day == 1:
+        week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
+        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
-@bp.route('/completion/detail')
-def completion():
+@bp.route('/allResults')
+def user_results():
     """Show all the surveys, and all results."""
     db = get_db()
     surveys = db.execute(
@@ -227,32 +282,19 @@ def completion():
         ' FROM survey s'
         ' ORDER BY created ASC'
     ).fetchall()
-    return render_template('completion.html', surveys=surveys)
+    return render_template('surveyList.html', surveys=surveys)
 
-@bp.route('/activity')
-def activity():
-    """Show all the activity"""
-    db = get_db()
-    activitys = db.execute(
-        'SELECT user_id, day, survey_page, curr_time, day_complete'
-        ' FROM activity a'
-        ' ORDER BY curr_time ASC'
-    ).fetchall()
-    return render_template('activity.html', activitys=activitys)
-
-## We need this at the end of info.py (also need userList.html)
 @bp.route('/allUsers')
 def users():
     """Show all the surveys, and all results."""
     db = get_db()
     users = db.execute(
-        'SELECT user_id, day, wechat_id, treatment, user_id_hashid, day_hashid'
+        'SELECT user_id, day, wechat_id, treatment, cohort, user_id_hashid, day_hashid'
         ' FROM user s'
         ' ORDER BY user_id ASC'
     ).fetchall()
     return render_template('userList.html', users=users)
 
-## We need this at the end of info.py (also need userList.html)
 @bp.route('/allActivities')
 def user_activities():
     """Show all the surveys, and all results."""
@@ -264,19 +306,87 @@ def user_activities():
     ).fetchall()
     return render_template('activityList.html', users=users)
 
-## We need this at the end of info.py
-@bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
-def user_insert(user_id, day, wechat_id, treatment, user_id_hashid, day_hashid):
+@bp.route('/allEvents')
+def all_events():
+    """Show all the events."""
+    db = get_db()
+    events = db.execute(
+        'SELECT * FROM infos ORDER BY info_id ASC'
+    ).fetchall()
+    return render_template('infoList.html', events=events)
+
+@bp.route('/eventUpdate', methods=['GET', 'POST'])
+def update_events():
+    if request.method == 'POST':
+        event_id = request.form['event_id']
+        cohort = request.form['cohort']
+        f = request.form
+        db = get_db()
+        for field in f.keys():
+            for value in f.getlist(field):
+                    db.execute(
+                        'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
+                        (value, event_id, cohort)
+                    )
+        db.commit()
+
+    # info = None
+    # if request.method == 'POST':
+    #     # required values (unique combine key for infos table)
+    #     event_id = request.form['event_id']
+    #     cohort = request.form['cohort']
+    #     # search for event_id and cohort
+    #     if request.form['search'] == 'Search':
+    #         info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
+    #         # not in db
+    #         if info is None:
+    #             db.execute('INSERT INTO infos (event_id, cohort) VALUES (?, ?)',(event_id, cohort))
+    #             info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
+    #             flash('event_id %s and cohort %s combination not found, fill-in the rest to insert into db.', (event_id, cohort))
+    #
+    #     # skipped search
+    #     elif request.form['submit'] == 'Submit':
+    #         f = request.form
+    #         db = get_db()
+    #         info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
+    #         # not in db, insert
+    #         if info is None:
+    #             db.execute('INSERT INTO infos (event_id, cohort) VALUES (?, ?)',(event_id, cohort))
+    #         for field in f.keys():
+    #             if field == 'search':
+    #                 pass
+    #             else:
+    #                 for value in f.getlist(field):
+    #
+    #         db.commit()
+    #         # in db, update
+    #         else:
+    #             for field in f.keys():
+    #                 if field == 'search':
+    #                     pass
+    #                 else:
+    #                     for value in f.getlist(field):
+    #                         db.execute(
+    #                             'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
+    #                             (value, event_id, cohort)
+    #                         )
+    #             db.commit()
+    #     else:
+    #         pass
+    # return render_template('updateEvent.html', info=info)
+    return render_template('updateEvent.html')
+
+@bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
+def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
     db.execute(
-        'INSERT INTO user (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)'
-        ' VALUES (?, ?, ?, ?, ?, ?)',
-        (user_id, day, wechat_id, treatment, user_id_hashid, day_hashid)
+        'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
+        ' VALUES (?, ?, ?, ?, ?, ?, ?)',
+        (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)
     )
     db.commit()
     return 'complete'
 
-## We need this at the end of info.py
 @bp.route('/activityInsert/<user_id>', methods=['POST'])
 def activity_insert(user_id):
     now = datetime.now()
@@ -289,7 +399,6 @@ def activity_insert(user_id):
     db.commit()
     return 'complete'
 
-## We need this at the end of info.py
 @bp.route('/activityUpdate/<user_id>/<day>/<day_complete>/<survey_page>/<h1>/<h2>', methods=['POST'])
 def activity_update(user_id,day, day_complete, survey_page, h1, h2):
     now = datetime.now()

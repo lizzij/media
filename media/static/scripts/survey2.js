@@ -552,10 +552,14 @@ function univerisity(){
 
 function hideOnCampusAddress(){
   document.getElementById("onCampusAddress").style.display = "none";
+  document.getElementById("dormName").required = false;
+  document.getElementById("roomNum").required = false;
 }
 
 function showOnCampusAddress(){
   document.getElementById("onCampusAddress").style.display = "block";
+  document.getElementById("dormName").required = true;
+  document.getElementById("roomNum").required = true;
 }
 //
 // function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
