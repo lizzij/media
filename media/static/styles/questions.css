@@ -947,8 +947,9 @@ div.outingScaleLabel > div{
 }
 
 #walkathonDistance{
-  padding-top: 10px;
+  /* padding-top: 10px; */
   padding-bottom: 28px;
+  display: inline;
 }
 
 input.btn.btn-primary {
