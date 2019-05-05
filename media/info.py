@@ -110,16 +110,16 @@ def get_info(user_id_hashid, day_hashid):
 
     # modify source of air quality (text and logo) depending on event_id
     air_quality_sources = { 'T1' : {1:'', 2:'', 3:'', 4:'', 5:'', 6:'', },
-                            'T2' : {1:'', 2:'', 3:'', 4:'（来自：上海市环境监测中心）', 5:'（来自：上海市环境监测中心）', 6:'', },
-                            'T3' : {1:'', 2:'', 3:'', 4:'', 5:'', 6:'（来自：新闻晨报）', },
-                            'T4' : {1:'', 2:'', 3:'', 4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', },
-                            'T5' : {1:'', 2:'', 3:'', 4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', }}
+                            'T2' : {1:'', 2:'', 3:'', 4:u'（来自：上海市环境监测中心）', 5:u'（来自：上海市环境监测中心）', 6:'', },
+                            'T3' : {1:'', 2:'', 3:'', 4:'', 5:'', 6:u'（来自：新闻晨报）', },
+                            'T4' : {1:'', 2:'', 3:'', 4:u'（来自：新闻晨报）', 5:u'（来自：新闻广播FM93.4）', 6:'', },
+                            'T5' : {1:'', 2:'', 3:'', 4:u'（来自：新闻晨报）', 5:u'（来自：新闻广播FM93.4）', 6:'', }}
     air_quality_source_logos = { 'T1' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/transparent.png', 5:'img/transparent.png', 6:'img/transparent.png', },
                                  'T2' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceSHEnvironmentLogo.jpg', 5:'img/SourceSHEnvironmentLogo.jpg', 6:'img/transparent.png', },
                                  'T3' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/transparent.png', 5:'img/transparent.png', 6:'img/SourceMorningPostLogo.jpg', },
                                  'T4' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', },
                                  'T5' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', }}
-    curr_air_quality_source = air_quality_sources[treatment][day].decode('utf8', 'ignore')
+    curr_air_quality_source = air_quality_sources[treatment][day]
     curr_air_quality_source_logo = air_quality_source_logos[treatment][day]
 
     info = get_db().execute(
