@@ -704,7 +704,7 @@
         </div>
 
         <div class="question">
-          <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于5月第一周，即活动举办这一周的<b>天气</b>信息？</div>
+          <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于{{ third_event['phrase_for_header'] }}，即活动举办这一周的<b>天气</b>信息？</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="yesOtherWeatherSource" id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()" ><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
@@ -721,7 +721,7 @@
           </div>
         </div>
         <div class="question">
-          <div class="questionPrompt">您是否还记得我们为您提供的5月第一周的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
+          <div class="questionPrompt">您是否还记得我们为您提供的{{ third_event['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="cantRemember" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="varies" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
