@@ -1,4 +1,4 @@
-# Flask
+# Flask Web App
 
 ## Results
 ### Get allActivites.csv
@@ -8,7 +8,7 @@ wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //
 ```
 
 ### Get allUsers.csv
-Headers: user_id, day, wechat_id, treatment, user_id_hashid, day_hashid
+Headers: user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid
 ```bash
 wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
 ```
