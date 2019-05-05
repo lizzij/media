@@ -317,64 +317,31 @@ def all_events():
 
 @bp.route('/eventUpdate', methods=['GET', 'POST'])
 def update_events():
+    info = None
+
     if request.method == 'POST':
+        # search for event_id and cohort
         event_id = request.form['event_id']
         cohort = request.form['cohort']
+        db = get_db()
+        info = db.execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
+        # not in db
+        if info is None:
+            db.execute('INSERT INTO infos (event_id, cohort) VALUES (?, ?)',(event_id, cohort))
+            info = db.execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
+            db.commit()
+            flash('event_id %s and cohort %s combination not found, fill-in the rest to insert into db.' % (event_id, cohort))
+
         f = request.form
         db = get_db()
         for field in f.keys():
             for value in f.getlist(field):
-                    db.execute(
-                        'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
-                        (value, event_id, cohort)
-                    )
+                db.execute(
+                    'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
+                    (value, event_id, cohort))
         db.commit()
-
-    # info = None
-    # if request.method == 'POST':
-    #     # required values (unique combine key for infos table)
-    #     event_id = request.form['event_id']
-    #     cohort = request.form['cohort']
-    #     # search for event_id and cohort
-    #     if request.form['search'] == 'Search':
-    #         info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
-    #         # not in db
-    #         if info is None:
-    #             db.execute('INSERT INTO infos (event_id, cohort) VALUES (?, ?)',(event_id, cohort))
-    #             info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
-    #             flash('event_id %s and cohort %s combination not found, fill-in the rest to insert into db.', (event_id, cohort))
-    #
-    #     # skipped search
-    #     elif request.form['submit'] == 'Submit':
-    #         f = request.form
-    #         db = get_db()
-    #         info = get_db().execute('SELECT * FROM infos i WHERE i.event_id = ? AND cohort = ?',(event_id, cohort,)).fetchone()
-    #         # not in db, insert
-    #         if info is None:
-    #             db.execute('INSERT INTO infos (event_id, cohort) VALUES (?, ?)',(event_id, cohort))
-    #         for field in f.keys():
-    #             if field == 'search':
-    #                 pass
-    #             else:
-    #                 for value in f.getlist(field):
-    #
-    #         db.commit()
-    #         # in db, update
-    #         else:
-    #             for field in f.keys():
-    #                 if field == 'search':
-    #                     pass
-    #                 else:
-    #                     for value in f.getlist(field):
-    #                         db.execute(
-    #                             'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
-    #                             (value, event_id, cohort)
-    #                         )
-    #             db.commit()
-    #     else:
-    #         pass
-    # return render_template('updateEvent.html', info=info)
-    return render_template('updateEvent.html')
+        
+    return render_template('updateEvent.html', info=info)
 
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
