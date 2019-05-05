@@ -38,7 +38,7 @@
             <div class="form-group" style="margin-top:35px; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="signUpFeeAmount"
                 for="rangeInput">0元</output>
-              <input type="range" min="0" max="300" value="0" name="signUpFeeAmount" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
+              <input type="range" min="0" max="300" value="0" step="10" name="signUpFeeAmount" class="slider" id="signUpFeeSlider" oninput="signUpFeeSlide()"></input>
               </div>
           </div>
         </div>
@@ -653,7 +653,7 @@
               <input type="text" class="form-control" id="address" name="address" placeholder="地址" required>
               <div id="onCampusAddress">
                 <input type="text" class="form-control" id="dormName" name="dormName" placeholder="宿舍名称">
-                <input type="text" class="form-control" id="roomNum" name="roomNum" placeholder="房间号">
+                <input type="text" class="form-control" id="roomNum" name="roomNum" placeholder="邮递所需的任何其他信息">
               </div>
 
             </div>

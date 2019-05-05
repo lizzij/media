@@ -25,8 +25,8 @@ function signUpFeeSlide() {
 }
 
 function outing1Slide() {
-  document.getElementById("outing1Amount").value=Math.floor(document.getElementById("outing1").value);
-  var value=document.getElementById("outing1Amount").value;
+  document.getElementById("outing1Amount").value=Math.floor(document.getElementById("outing1").value/2)*2;
+  var value=document.getElementById("outing1").value;
   var factorIds = ['outing1ScaleLabel1', 'outing1ScaleLabel2', 'outing1ScaleLabel3',
   'outing1ScaleLabel4'];
   var selected;
@@ -56,8 +56,8 @@ function outing1Slide() {
 }
 
 function outing2Slide() {
-  document.getElementById("outing2Amount").value=Math.floor(document.getElementById("outing2").value);
-  var value=document.getElementById("outing2Amount").value;
+  document.getElementById("outing2Amount").value=Math.floor(document.getElementById("outing2").value/2)*2;
+  var value=document.getElementById("outing2").value;
   var factorIds = ['outing2ScaleLabel1', 'outing2ScaleLabel2', 'outing2ScaleLabel3',
   'outing2ScaleLabel4'];
   var selected;
@@ -87,8 +87,8 @@ function outing2Slide() {
 }
 
 function outing3Slide() {
-  document.getElementById("outing3Amount").value=Math.floor(document.getElementById("outing3").value);
-  var value=document.getElementById("outing3Amount").value;
+  document.getElementById("outing3Amount").value=Math.floor(document.getElementById("outing3").value/2)*2;
+  var value=document.getElementById("outing3").value;
   var factorIds = ['outing3ScaleLabel1', 'outing3ScaleLabel2', 'outing3ScaleLabel3',
   'outing3ScaleLabel4'];
   var selected;
@@ -118,8 +118,8 @@ function outing3Slide() {
 }
 
 function outing4Slide() {
-  document.getElementById("outing4Amount").value=Math.floor(document.getElementById("outing4").value);
-  var value=document.getElementById("outing4Amount").value;
+  document.getElementById("outing4Amount").value=Math.floor(document.getElementById("outing4").value/2)*2;
+  var value=document.getElementById("outing4").value;
   var factorIds = ['outing4ScaleLabel1', 'outing4ScaleLabel2', 'outing4ScaleLabel3',
   'outing4ScaleLabel4'];
   var selected;
@@ -149,8 +149,8 @@ function outing4Slide() {
 }
 
 function outing5Slide() {
-  document.getElementById("outing5Amount").value=Math.floor(document.getElementById("outing5").value);
-  var value=document.getElementById("outing5Amount").value;
+  document.getElementById("outing5Amount").value=Math.floor(document.getElementById("outing5").value/2)*2;
+  var value=document.getElementById("outing5").value;
   var factorIds = ['outing5ScaleLabel1', 'outing5ScaleLabel2', 'outing5ScaleLabel3',
   'outing5ScaleLabel4'];
   var selected;
@@ -325,8 +325,8 @@ function dunno6() {
 }
 
 function trust1Slide() {
-  document.getElementById("trust1Amount").value=Math.floor(document.getElementById("trust1").value);
-  var trust=document.getElementById("trust1Amount").value;
+  document.getElementById("trust1Amount").value=Math.floor(document.getElementById("trust1").value/2)*2;
+  var trust=document.getElementById("trust1").value;
   var trustIds = ['trust1ScaleLabel1', 'trust1ScaleLabel2', 'trust1ScaleLabel3',
   'trust1ScaleLabel4', 'trust1ScaleLabel5'];
   var selected;
@@ -361,8 +361,8 @@ function trust1Slide() {
 }
 
 function trust2Slide() {
-  document.getElementById("trust2Amount").value=Math.floor(document.getElementById("trust2").value);
-  var trust=document.getElementById("trust2Amount").value;
+  document.getElementById("trust2Amount").value=Math.floor(document.getElementById("trust2").value/2)*2;
+  var trust=document.getElementById("trust2").value;
   var trustIds = ['trust2ScaleLabel1', 'trust2ScaleLabel2', 'trust2ScaleLabel3',
   'trust2ScaleLabel4', 'trust2ScaleLabel5'];
   var selected;
@@ -397,8 +397,8 @@ function trust2Slide() {
 }
 
 function trust3Slide() {
-  document.getElementById("trust3Amount").value=Math.floor(document.getElementById("trust3").value);
-  var trust=document.getElementById("trust3Amount").value;
+  document.getElementById("trust3Amount").value=Math.floor(document.getElementById("trust3").value/2)*2;
+  var trust=document.getElementById("trust3").value;
   var trustIds = ['trust3ScaleLabel1', 'trust3ScaleLabel2', 'trust3ScaleLabel3',
   'trust3ScaleLabel4', 'trust3ScaleLabel5'];
   var selected;
@@ -433,8 +433,8 @@ function trust3Slide() {
 }
 
 function trust4Slide() {
-  document.getElementById("trust4Amount").value=Math.floor(document.getElementById("trust4").value);
-  var trust=document.getElementById("trust4Amount").value;
+  document.getElementById("trust4Amount").value=Math.floor(document.getElementById("trust4").value/2)*2;
+  var trust=document.getElementById("trust4").value;
   var trustIds = ['trust4ScaleLabel1', 'trust4ScaleLabel2', 'trust4ScaleLabel3',
   'trust4ScaleLabel4', 'trust4ScaleLabel5'];
   var selected;
@@ -469,8 +469,8 @@ function trust4Slide() {
 }
 
 function trust5Slide() {
-  document.getElementById("trust5Amount").value=Math.floor(document.getElementById("trust5").value);
-  var trust=document.getElementById("trust5Amount").value;
+  document.getElementById("trust5Amount").value=Math.floor(document.getElementById("trust5").value/2)*2;
+  var trust=document.getElementById("trust5").value;
   var trustIds = ['trust5ScaleLabel1', 'trust5ScaleLabel2', 'trust5ScaleLabel3',
   'trust5ScaleLabel4', 'trust5ScaleLabel5'];
   var selected;
@@ -505,8 +505,8 @@ function trust5Slide() {
 }
 
 function trust6Slide() {
-  document.getElementById("trust6Amount").value=Math.floor(document.getElementById("trust6").value);
-  var trust=document.getElementById("trust6Amount").value;
+  document.getElementById("trust6Amount").value=Math.floor(document.getElementById("trust6").value/2)*2;
+  var trust=document.getElementById("trust6").value;
   var trustIds = ['trust6ScaleLabel1', 'trust6ScaleLabel2', 'trust6ScaleLabel3',
   'trust6ScaleLabel4', 'trust6ScaleLabel5'];
   var selected;
