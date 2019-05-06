@@ -1,6 +1,7 @@
 # Flask Web App
 
 ## Results
+Paste into terminal, and hit Return key.
 ### Get allActivites.csv
 Headers: user_id, day, day_complete, survey_page, day_started, curr_time
 ```bash
