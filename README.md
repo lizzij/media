@@ -24,11 +24,14 @@ wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s
 ```bash
 wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
 ```
+## Set up
+[Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
+- Event 6 (cohort 1: user 1-4; cohort 2: user 5)
+
+[Q&A Code](https://docs.google.com/spreadsheets/d/13eTESZNvaWt9HJT508376lfapPdtOMc5z4Z9fiaU_P4/edit?usp=sharing)
+- Question (from google doc), QuestionCode, Option/Subqn (from google doc), OptionCode, Relevant (note and related questions)
 
 ## Local  
- [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
- - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
-
 **user_id: 1 (T1)**  
 
 0. http://127.0.0.1:5000/nBEXdMJkv56ymRZx/vQp4l04x0q/info
