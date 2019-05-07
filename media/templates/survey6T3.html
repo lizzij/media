@@ -63,7 +63,7 @@
     margin-top: 8px;
     margin-right: 8px;
     margin-bottom: 8px;
-    margin-left: 8px;height:3000px;">
+    margin-left: 8px;height:1300px;">
         <!-- The Modal -->
         <div id="myModal1" class="modal">
 
@@ -114,7 +114,7 @@
             document.getElementById("moreInfoButton1").onclick = function() {
               document.getElementById("moreInfoButton1").style.display = 'none';
               document.getElementById("moreInfo1").style.display = 'block';
-              window.scrollTo(0, 588);
+              window.scrollTo(0, 517);
             }
           </script>
         </div>
@@ -219,7 +219,7 @@
             width: 375px;
             height: 124px;
             left: calc(50% - 375px/2 + 64px);
-            top: 1050px;
+            top: 950px;
             padding-bottom:100px;">
           <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
           </input>
@@ -289,7 +289,7 @@
   <form lang="zh" action="" method="post">
     <!-- page 4 -->
     <div id="page4" style="display:none">
-      <div style="display: block;">
+      <div style="display: block;height:1350px;">
         <!-- The Modal -->
         <div id="myModal2" class="modalLarge">
 
@@ -341,7 +341,7 @@
               document.getElementById("moreInfoButton2").onclick = function() {
                 document.getElementById("moreInfoButton2").style.display = 'none';
                 document.getElementById("moreInfo2").style.display = 'block';
-                window.scrollTo(0, 588);
+                window.scrollTo(0, 540);
               }
             </script>
           </div>
@@ -362,14 +362,14 @@
 
               <!-- temperture low -->
               <div class="temperatureLow">
-                <div id="lowValue">{{ '%d' % (third_event['low_temp']) }}</div>
+                <div id="lowValue">{{ (third_event['low_temp']) }}</div>
                 <div id="lowUnit">°C</div>
                 <div id="low">平均最低<br />气温</div>
               </div>
 
               <!-- temperture high -->
               <div class="temperatureHigh">
-                <div id="highValue">{{ '%d' % (third_event['high_temp']) }}</div>
+                <div id="highValue">{{ (third_event['high_temp']) }}</div>
                 <div id="highUnit">°C</div>
                 <div id="high">平均最高<br />气温</div>
               </div>
@@ -443,7 +443,7 @@
             width: 375px;
             height: 124px;
             left: calc(50% - 375px/2 + 64px);
-            top: 1050px;
+            top: 950px;
             padding-bottom:100px;">
             <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
             </input>
@@ -713,7 +713,7 @@
             </div>
             <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
               <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">4000步</output>
-              <input type="range" min="4000" max="7000" value="4000" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
+              <input type="range" min="4000" max="7000" value="4000" step="100" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
             </div>
 
 
@@ -767,7 +767,7 @@
         </div>
 
         <div class="question">
-          <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于5月第一周，即活动举办这一周的<b>天气</b>信息？</div>
+          <div class="questionPrompt">在过去的6天里，您是否在<b>其他</b>网站了解过更多关于{{ third_event['phrase_for_header'] }}，即活动举办这一周的<b>天气</b>信息？</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="noOtherWeatherSource" id="noOtherWeatherSource" onClick="hideNumberOfWeatherTimes()"><label class="form-check-label" for="noOtherWeatherSource">否</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="otherWeatherSource" value="yesOtherWeatherSource" id="yesOtherWeatherSource" onClick="showNumberOfWeatherTimes()" ><label class="form-check-label" for="yesOtherWeatherSource">是</label></div>
@@ -784,7 +784,7 @@
           </div>
         </div>
         <div class="question">
-          <div class="questionPrompt">您是否还记得我们为您提供的5月第一周的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
+          <div class="questionPrompt">您是否还记得我们为您提供的{{ third_event['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="cantRemember" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="varies" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>

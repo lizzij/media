@@ -231,7 +231,7 @@
         <div class="slidecontainer" id="domesticWebsite">
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount" id="domesticWebsiteAmount" for="rangeInput">0小时 0分钟</output>
-            <input type="range" min="0" max="200" value="0" class="slider" name="newsSourceDomesticWebsite" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input>
+            <input type="range" min="0" max="200" value="0" step="5" class="slider" name="newsSourceDomesticWebsite" id="domesticWebsiteSlider" oninput="domesticWebsiteSlide()"></input>
             </div>
         </div>
       </div>
@@ -242,7 +242,7 @@
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount"
               id="foreignWebsiteAmount" for="rangeInput">0小时 0分钟</output>
-            <input type="range" min="0" max="200" value="0" class="slider" name="newsSourceForeignWebsite" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input>
+            <input type="range" min="0" max="200" value="0" step="5" class="slider" name="newsSourceForeignWebsite" id="foreignWebsiteSlider" oninput="foreignWebsiteSlide()"></input>
           </div>
         </div>
       </div>
@@ -253,7 +253,7 @@
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount" id="domesticMediaAmount"
               for="rangeInput">0小时 0分钟</output>
-            <input type="range" min="0" max="200" value="0" class="slider" name="newsSourceDomesticMedia" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input>
+            <input type="range" min="0" max="200" value="0" step="5" class="slider" name="newsSourceDomesticMedia" id="domesticMediaSlider" oninput="domesticMediaSlide()"></input>
           </div>
         </div>
       </div>
@@ -264,7 +264,7 @@
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount" id="foreignMediaAmount"
               for="rangeInput">0小时 0分钟</output>
-            <input type="range" min="0" max="200" value="0" class="slider" name="newsSourceForeignMedia" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input>
+            <input type="range" min="0" max="200" value="0" step="5" class="slider" name="newsSourceForeignMedia" id="foreignMediaSlider" oninput="foreignMediaSlide()"></input>
           </div>
         </div>
       </div>
@@ -275,7 +275,7 @@
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount"
               id="chatWithFriendsAmount" for="rangeInput">0小时 0分钟</output>
-            <input type="range" min="0" max="200" value="0" class="slider" name="newsSourceChatWithFriends" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input>
+            <input type="range" min="0" max="200" value="0" step="5" class="slider" name="newsSourceChatWithFriends" id="chatWithFriendsSlider" oninput="chatWithFriendsSlide()"></input>
           </div>
         </div>
       </div>
@@ -569,7 +569,7 @@
         <div class="questionAnswer">
           <div class="form-group">
             <label for="birthYear"></label>
-            <select class="form-control" id="birthYear" required>
+            <select class="form-control" name="birthYear" id="birthYear" required>
               <option></option>
               <option>1980</option><option>1982</option><option>1983</option><option>1984</option><option>1985</option>
               <option>1986</option><option>1987</option><option>1988</option><option>1989</option><option>1900</option>
@@ -653,9 +653,8 @@
               <input type="text" class="form-control" id="address" name="address" placeholder="地址" required>
               <div id="onCampusAddress">
                 <input type="text" class="form-control" id="dormName" name="dormName" placeholder="宿舍名称">
-                <input type="text" class="form-control" id="roomNum" name="roomNum" placeholder="邮递所需的任何其他信息">
               </div>
-
+              <input type="text" class="form-control" id="otherMailInfo" name="otherMailInfo" placeholder="邮递所需的任何其他信息" >
             </div>
           </div>
         </div>

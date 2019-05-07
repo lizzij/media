@@ -109,25 +109,21 @@ def get_info(user_id_hashid, day_hashid):
         event_id = day
 
     # modify source of air quality (text and logo) depending on event_id
-    if day >= 4:
-        db = get_db()
-        air_quality_sources = { 'T1' : {4:'', 5:'', 6:'', },
-                                'T2' : {4:'（来自：上海市环境监测中心）', 5:'（来自：上海市环境监测中心）', 6:'', },
-                                'T3' : {4:'', 5:'', 6:'（来自：新闻晨报）', },
-                                'T4' : {4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', },
-                                'T5' : {4:'（来自：新闻晨报）', 5:'（来自：新闻广播FM93.4）', 6:'', }}
-        air_quality_source_logos = { 'T1' : {4:'img/transparent.png', 5:'img/transparent.png', 6:'img/transparent.png', },
-                                     'T2' : {4:'img/SourceSHEnvironmentLogo.jpg', 5:'img/SourceSHEnvironmentLogo.jpg', 6:'img/transparent.png', },
-                                     'T3' : {4:'img/transparent.png', 5:'img/transparent.png', 6:'img/SourceMorningPostLogo.jpg', },
-                                     'T4' : {4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', },
-                                     'T5' : {4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', }}
-        curr_air_quality_source = air_quality_sources[treatment][day]
-        curr_air_quality_source_logo = air_quality_source_logos[treatment][day]
-        db.execute('UPDATE infos SET air_quality_source = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source, event_id, cohort))
-        db.execute('UPDATE infos SET air_quality_source_logo = ? WHERE event_id = ? AND cohort = ?',(curr_air_quality_source_logo, event_id, cohort))
+    air_quality_sources = { 'T1' : {1:'', 2:'', 3:'', 4:'', 5:'', 6:'', },
+                            'T2' : {1:'', 2:'', 3:'', 4:u'（来自：上海市环境监测中心）', 5:u'（来自：上海市环境监测中心）', 6:'', },
+                            'T3' : {1:'', 2:'', 3:'', 4:'', 5:'', 6:u'（来自：新闻晨报）', },
+                            'T4' : {1:'', 2:'', 3:'', 4:u'（来自：新闻晨报）', 5:u'（来自：新闻广播FM93.4）', 6:'', },
+                            'T5' : {1:'', 2:'', 3:'', 4:u'（来自：新闻晨报）', 5:u'（来自：新闻广播FM93.4）', 6:'', }}
+    air_quality_source_logos = { 'T1' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/transparent.png', 5:'img/transparent.png', 6:'img/transparent.png', },
+                                 'T2' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceSHEnvironmentLogo.jpg', 5:'img/SourceSHEnvironmentLogo.jpg', 6:'img/transparent.png', },
+                                 'T3' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/transparent.png', 5:'img/transparent.png', 6:'img/SourceMorningPostLogo.jpg', },
+                                 'T4' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', },
+                                 'T5' : {1:'img/transparent.png', 2:'img/transparent.png', 3:'img/transparent.png', 4:'img/SourceMorningPostLogo.jpg', 5:'img/SourceNewsRadioLogo.jpg', 6:'img/transparent.png', }}
+    curr_air_quality_source = air_quality_sources[treatment][day]
+    curr_air_quality_source_logo = air_quality_source_logos[treatment][day]
 
     info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,air_quality_source,air_quality_source_logo,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
+        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
         ' WHERE i.event_id = ? AND cohort = ?',
         (event_id, cohort,)
@@ -148,10 +144,10 @@ def get_info(user_id_hashid, day_hashid):
                  'T4' : {4:'infoPageAQ.html', 5:'infoPageAQ.html', 6:'infoPage.html', },
                  'T5' : {4:'infoPageCO.html', 5:'infoPageCO.html', 6:'infoPage.html', }}
     if day <= 3:
-        return render_template('infoPage.html', user=user, info=info)
+        return render_template('infoPage.html', user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
     else:
         curr_template = template[treatment][day]
-        return render_template(curr_template, user=user, info=info)
+        return render_template(curr_template, user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
@@ -340,7 +336,7 @@ def update_events():
                     'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
                     (value, event_id, cohort))
         db.commit()
-        
+
     return render_template('updateEvent.html', info=info)
 
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
