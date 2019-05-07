@@ -299,14 +299,14 @@
 
               <!-- temperture low -->
               <div class="temperatureLow">
-                <div id="lowValue">{{ '%d' % (third_event['low_temp']) }}</div>
+                <div id="lowValue">{{ third_event['low_temp'] }}</div>
                 <div id="lowUnit">°C</div>
                 <div id="low">平均最低<br />气温</div>
               </div>
 
               <!-- temperture high -->
               <div class="temperatureHigh">
-                <div id="highValue">{{ '%d' % (third_event['high_temp']) }}</div>
+                <div id="highValue">{{ (third_event['high_temp']) }}</div>
                 <div id="highUnit">°C</div>
                 <div id="high">平均最高<br />气温</div>
               </div>
