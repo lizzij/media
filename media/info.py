@@ -211,26 +211,44 @@ def get_survey(user_id_hashid, day_hashid):
         db = get_db()
 
         # save answer
+        to_next_page = False
+        def go_to_next_page():
+            to_next_page = False
         for question in f.keys():
             for result in f.getlist(question):
-                db.execute(
-                    'INSERT INTO survey (user_id, day, result, created, question_id)'
-                    ' VALUES (?, ?, ?, ?, ?)',
-                    (user_id, day, result, now, question)
-                )
+                # check if answer already exists (prevent duplication)
+                previous_result = db.execute(
+                    'SELECT result'
+                    ' FROM survey s'
+                    ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+                    (user_id, day, question)
+                ).fetchone()
+
+                # save result if not duplicated
+                if previous_result is None:
+                    def go_to_next_page():
+                        nonlocal to_next_page
+                        to_next_page = True
+                    db.execute(
+                        'INSERT INTO survey (user_id, day, result, created, question_id)'
+                        ' VALUES (?, ?, ?, ?, ?)',
+                        (user_id, day, result, now, question)
+                    )
 
         # update last page, activity (for day completion)
-        lastpage += 1
-        day_complete = 0
-        if lastpage >= lastpages[day-1]:
-            lastpage = lastpages[day-1]
-            day_complete = 1
+        go_to_next_page()
+        if to_next_page:
+            lastpage += 1
+            day_complete = 0
+            if lastpage >= lastpages[day-1]:
+                lastpage = lastpages[day-1]
+                day_complete = 1
 
-        db.execute(
-            'UPDATE activity SET survey_page = ?, curr_time = ?, day_complete = ? WHERE user_id = ? AND day = ?',
-            (lastpage, now, day_complete, user_id, day)
-        )
-        db.commit()
+            db.execute(
+                'UPDATE activity SET survey_page = ?, curr_time = ?, day_complete = ? WHERE user_id = ? AND day = ?',
+                (lastpage, now, day_complete, user_id, day)
+            )
+            db.commit()
 
     # set day 6 second_event, third_event based on treatment
     if day == 6:
