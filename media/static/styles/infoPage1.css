@@ -386,11 +386,24 @@ header #eventLocation{
   height: 13px;
   left: calc(50% - 150px/2 - 89px);
   top: 12px;
+  white-space: nowrap;
+}
 
+#airQualityTitle{
+  display: inline-block;
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
 
   color: #4F4F4F;
+}
+
+#airQualityCurr{
+  display: inline-block;
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+
+  color: #000000;
 }
 
 #airQualitySource{
@@ -414,7 +427,7 @@ header #eventLocation{
   width: 70px;
   height: 11.43px;
   right: 48px;
-  top: 34px;
+  top: 44px;
 }
 
 .airQualityScale{
@@ -422,7 +435,7 @@ header #eventLocation{
   width: 334.5px;
   height: 34px;
   left: 8.5px;
-  top: 35px;
+  top: 40px;
 }
 
 .levels{
