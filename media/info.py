@@ -287,8 +287,8 @@ def get_survey(user_id_hashid, day_hashid):
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
-@bp.route('/infoPage1')
-def new_design():
+@bp.route('/<string:user_id>/<string:group>/info')
+def next_button_ab_test(user_id, group):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
@@ -297,7 +297,10 @@ def new_design():
     ).fetchone()
     curr_air_quality_source = u'（来自：上海市环境监测中心）'
     curr_air_quality_source_logo = 'img/SourceSHEnvironmentLogo.jpg'
-    return render_template('infoPageCO1.html', info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+    if group == "a":
+        return render_template('infoPageCONext.html', info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+    elif group == "b":
+        return render_template('infoPageCONoNext.html', info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
 
 @bp.route('/allResults')
 def user_results():
