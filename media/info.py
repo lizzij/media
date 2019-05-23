@@ -287,7 +287,7 @@ def get_survey(user_id_hashid, day_hashid):
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
-@bp.route('/<string:user_id>/<string:group>/info')
+@bp.route('/ab/<string:user_id>/<string:group>/info')
 def next_button_ab_test(user_id, group):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
