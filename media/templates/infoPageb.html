@@ -302,6 +302,11 @@
           <img src="{{ url_for('static', filename='img/Button.png') }}">
         </div>
         <div id="infoNext">下一页</div>
+        <script type="text/javascript">
+          document.getElementById("nextButton").onclick = function() {
+            location.href = "{{ url_for('info.info_test_survey', user_id=user_id, group=group) }}";
+          }
+        </script>
       </div>
       <div class="nextButtonNotice">
         点击下一步后，您将无法返回此页面

@@ -288,7 +288,7 @@ def get_survey(user_id_hashid, day_hashid):
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/test/<string:user_id>/<string:group>/info')
-def next_button_ab_test(user_id, group):
+def info_test(user_id, group):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
@@ -297,7 +297,25 @@ def next_button_ab_test(user_id, group):
     ).fetchone()
     curr_air_quality_source = u'（来自：上海市环境监测中心）'
     curr_air_quality_source_logo = 'img/SourceSHEnvironmentLogo.jpg'
-    return render_template('infoPage' + group + '.html', info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+    return render_template('infoPage' + group + '.html', user_id=user_id, group=group, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+
+@bp.route('/test/<string:user_id>/<string:group>/survey', methods=['GET', 'POST'])
+def info_test_survey(user_id, group):
+
+    if request.method == 'POST':
+        questions = ['eventName', 'airQuality', 'source']
+        now = datetime.now()
+        db = get_db()
+        for question in questions:
+            answer = request.form[question]
+            db.execute(
+                'INSERT INTO survey (user_id, day, result, created, question_id)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (user_id, 10, answer, now, question)
+            )
+        db.commit()
+        return render_template('completionPage.html')
+    return render_template('surveyInfo.html')
 
 @bp.route('/allResults')
 def user_results():
@@ -366,7 +384,6 @@ def update_events():
                     'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
                     (value, event_id, cohort))
         db.commit()
-
     return render_template('updateEvent.html', info=info)
 
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
