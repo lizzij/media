@@ -311,7 +311,7 @@ def info_test_survey(user_id, group):
             db.execute(
                 'INSERT INTO survey (user_id, day, result, created, question_id)'
                 ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, 10, answer, now, question)
+                (user_id, 10, answer, now, group + "," + question)
             )
         db.commit()
         return render_template('completionPage.html')
