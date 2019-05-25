@@ -210,10 +210,11 @@ def get_survey(user_id_hashid, day_hashid):
         f = request.form
         db = get_db()
 
-        # save answer
+        # default do not go to next page on refresh or submit
+        global to_next_page
         to_next_page = False
-        def go_to_next_page():
-            to_next_page = False
+
+        # save answer
         for question in f.keys():
             for result in f.getlist(question):
                 # check if answer already exists (prevent duplication)
@@ -226,9 +227,8 @@ def get_survey(user_id_hashid, day_hashid):
 
                 # save result if not duplicated
                 if previous_result is None:
-                    def go_to_next_page():
-                        nonlocal to_next_page
-                        to_next_page = True
+                    # and go to next page
+                    to_next_page = True
                     db.execute(
                         'INSERT INTO survey (user_id, day, result, created, question_id)'
                         ' VALUES (?, ?, ?, ?, ?)',
@@ -236,7 +236,6 @@ def get_survey(user_id_hashid, day_hashid):
                     )
 
         # update last page, activity (for day completion)
-        go_to_next_page()
         if to_next_page:
             lastpage += 1
             day_complete = 0
