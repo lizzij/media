@@ -8,7 +8,7 @@
   <meta property="og:image" content="../img/ShanghaiIcon.png">
 
   <title>活动信息</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPage1.css') }}">
   <!-- favicon -->
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
 </head>
@@ -81,7 +81,7 @@
       </div>
     </section>
 
-    <div id="moreInfoButton">
+    <!-- <div id="moreInfoButton">
       <div>
         <img src="{{ url_for('static', filename='img/Button.png') }}">
       </div>
@@ -93,10 +93,10 @@
           window.scrollTo(0, 517);
         }
       </script>
-    </div>
+    </div> -->
   </div>
 
-  <div id="moreInfo" style="display:none;">
+  <div id="moreInfo">
     <!-- weather -->
     <section class="weather">
 
@@ -126,10 +126,15 @@
 
       <!-- air quality -->
       <section class="airQuality">
-        <div id="airQualityHeader">空气质量：良</div>
+        <div id="airQualityHeader">
+          <div id="airQualityTitle">
+            去年{{ info['phrase_for_header'] }}空气质量：
+          </div>
+            <div id="airQualityCurr">良</div>
+          </div>
         <div id="airQualitySource">{{ air_quality_source }}</div>
         <div id="dongFang">
-          <img src={{url_for('static', filename=air_quality_source_logo) }} height="23">
+          <img src={{url_for('static', filename=air_quality_source_logo) }} height="35">
         </div>
 
         <!-- air quality scale -->
@@ -292,7 +297,6 @@
 
     <!-- next button -->
     <section class="infoNextButton">
-
       <div id="nextButton">
         <div id="infoButton">
           <img src="{{ url_for('static', filename='img/Button.png') }}">
@@ -300,7 +304,7 @@
         <div id="infoNext">下一页</div>
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
-            location.href = "{{ url_for('info.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+            location.href = "{{ url_for('info.info_test_survey', user_id=user_id, group=group) }}";
           }
         </script>
       </div>
