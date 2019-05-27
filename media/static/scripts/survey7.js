@@ -337,7 +337,6 @@ function hideWalkathonSlider() {
 }
 function showWalkathonSlider() {
   document.getElementById("walkathon").style.display = "block";
-  document.getElementById("walkathonAmount").style.paddingLeft = 5000 * 0.0172 + "px";
 }
 
 function walkathonSlide() {
