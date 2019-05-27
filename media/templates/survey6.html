@@ -632,7 +632,7 @@
           <div id="subNote">
             <p>注意：</br>
               - 如果您今天选择走6000步，之后未能走满6000步，我们则无法为您捐赠任何钱</br>
-              - 如果您今天选择走6000步，之后走了多过6000步，我们依将为您捐赠20元钱（对应6000步的捐款数额）
+              - 如果您今天选择走6000步，之后走了多过6000步，我们依将为您捐赠12元钱（对应6000步的捐款数额）
           </div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
@@ -643,14 +643,14 @@
               <div>请移动下面的滑块：</div>
               <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
                 <div >
-                   我将在{{ third_event['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走4000步（3.2公里）
-                     —— 研究人员将代表您向上海联合基金会捐赠0元人民币。</output>
+                   我将在{{ third_event['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走5000步（4公里）
+                     —— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
                 </div>
             </pre>
             </div>
             <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
-              <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">4000步</output>
-              <input type="range" min="4000" max="7000" value="4000" step="100" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
+              <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">5000步</output>
+              <input type="range" min="0" max="15000" value="5000" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
             </div>
 
 
@@ -693,7 +693,7 @@
           </div>
         </div>
         <div class="question" id="otherHowManyTimes" style="display:none">
-          <div class="questionPrompt">如果有，请问有多少次</div>
+          <div class="questionPrompt">如果有，请问有多少次（请填写数字）</div>
           <div class="questionAnswer">
             <div id="otherSourceNumberOfTimes">
               <div class="form-group">
