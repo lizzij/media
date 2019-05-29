@@ -268,11 +268,11 @@ def get_survey(user_id_hashid, day_hashid):
             (8, cohort,)
         ).fetchone()
         if treatment == 'T3':
-            return render_template('survey6T3.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6T3.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         elif treatment == 'T5':
-            return render_template('survey6T5.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6T5.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         else:
-            return render_template('survey6.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # get walkathon day for survey 7
     if day == 7:
@@ -282,7 +282,7 @@ def get_survey(user_id_hashid, day_hashid):
     # get walkathon day for survey 7
     if day == 1:
         week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
-        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid, user_id=user_id)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 

@@ -17,7 +17,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 1 -->
   <div id="page1" >
-    <div id="survey">
+    <div class="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">关于该活动的问题</div><!-- event location question -->
       <div class="question">
@@ -69,7 +69,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 2 -->
   <div id="page2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- outing factors -->
       <div class="question">
         <div class="questionPrompt">在决定是否参加类似的户外活动时，以下因素对您做出决定的影响程度如何（请在0-100中选择）？</div>
@@ -222,7 +222,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 3 -->
   <div id="page3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- source of news -->
       <div class="mainQuestion" style="padding-bottom:20px;">关于日常新闻来源的问题</div>
       <div class="questionPrompt">为使自己熟知经济、社会、国内外政策相关的话题，平均每天您会花多长时间在以下新闻来源上？</div>
@@ -305,7 +305,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 4 -->
   <div id="page4" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- people trust degree -->
       <div class="question">
         <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
@@ -536,7 +536,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 5 -->
   <div id="page5" style="display:none">
-    <div id="survey">
+    <div class="survey">
 
       <!-- questions about the event -->
       <div class="mainQuestion">
@@ -712,7 +712,7 @@
 
   <!-- page 6 -->
   <div id="page6" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
       <!-- <div class="mainQuestion">感谢您完成第二天的调研。第2天结束。如果您想继续第3天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）</div>
       <a href="{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->

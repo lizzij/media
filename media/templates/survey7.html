@@ -17,7 +17,7 @@
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
   <!-- page 1 -->
   <div id="page1" >
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div class="questionPrompt">
           <p>有活动预计在<b>{{ (walkathon_date['phrase_for_week']) }}</b>举行。您认为那周的空气质量等级会如何？基于您自己的预测，此题没有正确或错误的答案。</p>
@@ -225,7 +225,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 2 -->
   <div id="page2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- walkathon distance -->
       <div class="question" style="
           border: 5px solid #979797;
@@ -294,7 +294,7 @@
 <form lang="zh" action="" onsubmit="return validateBeanQn()" method="post">
   <!-- page 3 -->
   <div id="page3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">关于猜测豆子数量的问题</div>
       <!-- walkathon distance -->
       <div class="question">
@@ -367,7 +367,7 @@
 <form lang="zh" action="" onsubmit="return validateMathQn();" method="post">
   <!-- page 4 -->
   <div id="page4" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion"><b>一些计算问题。 </b>对以下每个问题您都有一分钟的回答时间。</div>
     </div>
 
@@ -394,7 +394,7 @@
 
   <!-- page 5 -->
   <div id="question1" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div id="timeLeft">
           <span>您还有</span>
@@ -435,7 +435,7 @@
 
   <!-- page 6 -->
   <div id="question2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div id="timeLeft">
           <span>您还有</span>
@@ -476,7 +476,7 @@
 
   <!-- page 7 -->
   <div id="question3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div id="timeLeft">
           <span>您还有</span>
@@ -517,7 +517,7 @@
 
   <!-- page 8 -->
   <div id="question4" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div id="timeLeft">
           <span>您还有</span>
@@ -558,7 +558,7 @@
 
   <!-- page 9 -->
   <div id="question5" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div id="timeLeft">
           <span>您还有</span>
@@ -600,7 +600,7 @@
 
   <!-- page 10 -->
   <div id="page5" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在两周之内向您发送微信消息。</div>
       <!-- <div class="mainQuestion">感谢您完成第七天的调研。假设距离上一个调研已经过去了 2 周，第7天结束。如果您想继续第8天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）
         <a href="{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->

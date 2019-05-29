@@ -1,33 +1,3 @@
-function show(shown) {
-  window.scroll(0,0);
-  var pages = ['page1', 'page2', 'page3'];
-  var pageIndex;
-  for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-    pageId = pages[pageIndex];
-    if (shown == pageId) {
-      if (shown == 'page2') {
-        var alert = document.getElementById("starAlert").innerHTML;
-        var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-        if ((parseInt(numStarLeft)) > 0) {
-          document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
-          document.getElementById("clearAllStarsButton").style.display='block';
-        }
-        else {
-          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
-        }
-      }
-      else {
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-      }
-    }
-    else {
-      document.getElementById(pageId).style.display='none';
-    }
-  }
-  return 0;
-}
-
 document.getElementById("clearAllStarsButton").style.display='none';
 
 // validate star question on page 1 => page 2
@@ -658,20 +628,3 @@ function randomize() {
 $( document ).ready(function() {
   randomize();
 });
-
-// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-//   var random = Math.floor(Math.random() * (max - min)) + min;
-//   $(sliderName).val(random);
-//   $(sliderAmount).val(random + unit);
-//   var left = leftStart + moveStep * random;
-//   $(sliderAmount).css("padding-left", left);
-// }
-//
-// $( document ).ready(function() {
-//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-// });

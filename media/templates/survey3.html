@@ -17,7 +17,7 @@
   <form lang="zh" action="" method="post">
   <!-- page 1 -->
   <div id="page1">
-    <div id="survey">
+    <div class="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">关于该活动的问题</div><!-- event location question -->
       <!-- event donation -->
@@ -113,7 +113,7 @@
 <form lang="zh" action="" method="post">
   <!-- page 2 -->
   <div id="page2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">关于新闻涉猎的问题</div>
       <input name="newsQuestionsOrder" id="newsOrder" type="hidden" value="12345">
       <div class="question">
@@ -216,7 +216,7 @@
 
   <!-- page 3 -->
   <div id="page3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
       <!-- <div class="mainQuestion">感谢您完成第三天的调研。第3天结束。如果您想继续第4天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）</div>
       <a href="{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->

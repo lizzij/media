@@ -19,7 +19,7 @@
   <form lang="zh" action="" method="post">
     <!-- page 1 -->
     <div id="page1">
-      <div id="survey">
+      <div class="survey">
         <!-- sign up fee -->
         <div class="question">
           <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
@@ -186,7 +186,7 @@
   <form lang="zh" action="" method="post">
     <!-- page 3 -->
     <div id="page3" style="display:none">
-      <div id="survey">
+      <div class="survey">
         <!-- sign up fee -->
         <div class="question">
           <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
@@ -410,7 +410,7 @@
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
     <!-- page 5 -->
     <div id="page5" style="display:none">
-      <div id="survey">
+      <div class="survey">
         <div class="mainQuestion">关于天气预测的问题</div>
         <div class="question">
           <div class="questionPrompt">
@@ -622,7 +622,7 @@
   <form lang="zh" action="" method="post">
     <!-- page 6 -->
     <div id="page6" style="display:none">
-      <div id="survey">
+      <div class="survey">
         <!-- walkathon distance -->
         <div class="question">
           <div class="questionPrompt">
@@ -683,7 +683,7 @@
   <form lang="zh" action="" id="surveyExperience" onsubmit="return validateWeatherSource();" method="post">
     <!-- page 7 -->
     <div id="page7" style="display:none">
-      <div id="survey">
+      <div class="survey">
         <div class="mainQuestion">现在，让我们来向您了解一下关于这六天调研经历的感受。</div>
         <div class="question">
           <div class="questionPrompt">在我们向您介绍户外活动之后，您是否通过<b>其他</b>网站了解别的活动？</div>
@@ -792,7 +792,7 @@
 
     <!-- page page7 part2 -->
     <div id="page7part2" style="display:none">
-      <div id="survey">
+      <div class="survey">
         <div class="question" id="guessWeatherSource">
           <div class="questionPrompt">您认为<text id="specificWeatherSource"></text>是从哪里获得的天气信息？</div>
           <div class="questionAnswer">
@@ -829,8 +829,9 @@
   </form>
 
   <form lang="zh" action="" method="post">
+    <input name="questionOrder" id="sourceTrustOrder" type="hidden" value="{{ user_id }}">
     <div id="page8" style="display:none">
-      <div id="survey">
+      <div class="survey" id="survey1">
         <div class="question">
           <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
           <div class="questionAnswer">
@@ -867,7 +868,7 @@
 
   <form lang="zh" action="" method="post">
     <div id="page9" style="display:none">
-      <div id="survey">
+      <div class="survey" id="survey2">
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
           <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="123456">
@@ -1091,7 +1092,7 @@
 
   <!-- page 10 -->
   <div id="page10" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。此次调研还剩下两天就全部结束了，第七天的调研将在两周后进行。我们将在两周之内向您发送微信消息！</div>
       <!-- <div class="mainQuestion">感谢您完成第六天的调研。第6天结束。假设距离上一个调研已经过去了 2 周，如果您想继续第7天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）</div>
       <a href="{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->

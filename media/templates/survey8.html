@@ -14,10 +14,10 @@
 </head>
 
 <body>
-  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post" id="airQualityQn">
   <!-- page 1 -->
   <div id="page1" >
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div class="questionPrompt">
           <p>基于您的经历，您认为<b>过去一周</b>的空气质量如何？</p>
@@ -222,10 +222,10 @@
   </div>
 </form>
 
-<form lang="zh" action="" method="post">
+<form lang="zh" action="" method="post" id="TrustQn">
   <!-- page 2 -->
   <div id="page2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- people trust degree -->
       <div class="question">
         <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
@@ -456,7 +456,7 @@
 
   <!-- page 3 -->
   <div id="page3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">非常感谢您参与调研。 我们将在一个月内将抽奖结果通过微信发送给您。调研参与证明也将在一个月内寄送到您的地址。</div>
     </div>
     <div class="progress" style="height: 8px;">

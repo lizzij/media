@@ -769,9 +769,31 @@ function randomize() {
   }
 }
 
+function randomizeQuestion() {
+  var user_id;
+  user_id = document.getElementById("sourceTrustOrder").value;
+  // user_id odd, swap questions; even do nothing
+  if (user_id % 2) {
+    document.getElementById("sourceTrustOrder").value = "21";
+    $( "#page8" ).prepend( $( "#survey2" ) );
+    $( "#page9" ).prepend( $( "#survey1" ) );
+
+    // var survey1 = document.getElementById("survey1");
+    // var survey2 = document.getElementById("survey2");
+    // var page8 = document.getElementById("page8");
+    // var page9 = document.getElementById("page9");
+    // page8.innerHTML = survey2;
+    // page9.innerHTML = survey1;
+  }
+  else {
+    document.getElementById("sourceTrustOrder").value = "12";
+  }
+}
+
 $( document ).ready(function() {
   document.getElementById("clearAllStarsButton").style.display='none';
   randomize();
+  randomizeQuestion();
   // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
   // randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
