@@ -740,7 +740,14 @@ function guessWeatherSource(){
   }
 }
 
+function randomizePage() {
+  document.getElementById("page8").id = 'placeholder';
+  document.getElementById("page9").id ="page8";
+  document.getElementById("placeholder").id = 'page9';
+}
+
 $( document ).ready(function() {
+  randomizePage();
   document.getElementById("clearAllStarsButton").style.display='none';
   // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
