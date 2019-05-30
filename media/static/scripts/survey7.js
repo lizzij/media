@@ -19,7 +19,7 @@ function show(toShowIndex) {
 
     // no input upon clicking next
     if (input == null || input == "" && alert.innerHTML != '时间到，请点击进入下一页') {
-      alert.innerHTML = '请填写答案！'
+      alert.innerHTML = '请填写数字答案！'
     }
     // hide current, show next, start next timer
     else {
@@ -35,7 +35,7 @@ function validateMathQn() {
   var input = document.getElementById('math5Answer').value;
   var alert = document.getElementById('timesUp5');
   if (input == null || input == "" && alert.innerHTML != '时间到，请点击进入下一页') {
-    alert.innerHTML = '请填写答案！'
+    alert.innerHTML = '请填写数字答案！'
     return false;
   }
   return true;
@@ -65,7 +65,7 @@ function validateBeanQn() {
     return false;
   }
   else if (document.getElementById("guessedBeanNumber").value === ''){
-    document.getElementById("beanNumberInputAlert").innerHTML = "请填写豆子数量！"
+    document.getElementById("beanNumberInputAlert").innerHTML = "请填写豆子数量数字！"
     return false;
   }
   return true;
@@ -343,12 +343,12 @@ function walkathonSlide() {
   var value=document.getElementById("walkathonSlider").value;
   var walkathonAmount = `${value}步`;
   var distance = value * 0.0008;
-  var donation = (value - 4000) * 0.01;
+  var donation = value * 0.002;
   distance = distance.toFixed(2);
   donation = donation.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;
   document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-  var left = 0.1 * value - 435;
+  var left = value * 0.0172;
   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
 }
 

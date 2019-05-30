@@ -18,7 +18,7 @@
   <!-- page 1 -->
   <div class="page" id="page1">
 
-    <div id="survey">
+    <div class="survey">
       <!-- questions about the event -->
       <div class="mainQuestion">关于该活动的问题:</div><!-- event name question -->
       <div class="question">
@@ -70,7 +70,7 @@
   <!-- page 2 -->
   <form lang="zh" action="" onsubmit="return validateWeatherStar();" method="post">
   <div class="page" id="page2" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- weather prediction -->
       <div class="question">
         <div class="questionPrompt">
@@ -231,7 +231,7 @@
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
   <!-- page 3 -->
   <div class="page" id="page3" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="question">
         <div class="questionPrompt">
           <p>有活动预计在<b>{{ week['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
@@ -438,13 +438,14 @@
   <form lang="zh" action="" method="post">
   <!-- page 4 -->
   <div class="page" id="page4" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- people trust degree -->
       <div class="question">
         <div class="questionPrompt">您对下面这些群体的信任程度如何？</div>
+        <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="12345678">
         <div class="questionAnswer">
           <!-- option 1 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question1">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">家人和朋友</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -477,7 +478,7 @@
             </div>
 
           </div><!-- option 2 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question2">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">初次见面的陌生人</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -509,7 +510,7 @@
             </div>
 
           </div><!-- option 3 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question3">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">外国人</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -540,7 +541,7 @@
               </div>
             </div>
           </div><!-- option 4 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question4">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">媒体</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -572,7 +573,7 @@
             </div>
           </div>
           <!-- option 5 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question5">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">政府</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -603,7 +604,7 @@
               </div>
             </div>
           </div><!-- option 6 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question6">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">高校</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -634,7 +635,7 @@
             </div>
             </div>
           </div><!-- option 7 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question7">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">慈善团体</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -666,7 +667,7 @@
             </div>
             </div>
           </div><!-- option 8 -->
-          <div class="peopleTrustOption">
+          <div class="peopleTrustOption" id="question8">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">公司企业</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
@@ -726,7 +727,7 @@
   <form lang="zh" action="" method="post">
   <!-- page 5 -->
   <div class="page" id="page5" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <!-- good deed willingness degree -->
       <div class="question">
         <div class="questionPrompt">您是否愿意在不期任何回报的情况下做好事？</div>
@@ -794,7 +795,7 @@
 
   <!-- page 6 -->
   <div class="page" id="page6" style="display:none">
-    <div id="survey">
+    <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们会在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
       <!-- <div class="mainQuestion">感谢您完成第一天的调研。第1天结束。如果您想继续第2天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）</div> -->
       <!-- <a href="{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->

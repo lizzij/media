@@ -90,3 +90,35 @@ function exerciseTimeSlide() {
 //   randomizeTimeSlider(0, 300, "#exerciseTimeSlider", "#exerciseTimeAmount", 0, 0.17);
 //   randomizeTimeSlider(0, 300, "#outdoorTimeSlider", "#outdoorTimeAmount", 0, 0.17);
 // });
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function randomize() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("newsOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#news"+order[i] ).after( $( "#news"+order[i+1] ) );
+  }
+}
+
+$( document ).ready(function() {
+  randomize();
+});

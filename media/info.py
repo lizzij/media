@@ -268,11 +268,11 @@ def get_survey(user_id_hashid, day_hashid):
             (8, cohort,)
         ).fetchone()
         if treatment == 'T3':
-            return render_template('survey6T3.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6T3.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         elif treatment == 'T5':
-            return render_template('survey6T5.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6T5.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         else:
-            return render_template('survey6.html', second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('survey6.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # get walkathon day for survey 7
     if day == 7:
@@ -282,7 +282,7 @@ def get_survey(user_id_hashid, day_hashid):
     # get walkathon day for survey 7
     if day == 1:
         week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
-        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid, user_id=user_id)
 
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
@@ -292,10 +292,10 @@ def info_test(user_id, group):
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
         ' WHERE i.event_id = ? AND cohort = ?',
-        (5, 1,)
+        (9, 1,)
     ).fetchone()
-    curr_air_quality_source = u'（来自：上海市环境监测中心）'
-    curr_air_quality_source_logo = 'img/SourceSHEnvironmentLogo.jpg'
+    curr_air_quality_source = u'（来自：北京晚报）'
+    curr_air_quality_source_logo = 'img/SourceBJEN.png'
     return render_template('infoPage' + group + '.html', user_id=user_id, group=group, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
 
 @bp.route('/test/<string:user_id>/<string:group>/survey', methods=['GET', 'POST'])

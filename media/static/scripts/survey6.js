@@ -386,16 +386,16 @@ function showWalkathonSlider() {
 }
 
 function walkathonSlide() {
-  var value=document.getElementById("walkathonSlider").value;
-  var walkathonAmount = `${value}步`;
-  var distance = value * 0.0008;
-  var donation = (value - 4000) * 0.01;
-  distance = distance.toFixed(2);
-  donation = donation.toFixed(2);
-  document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-  var left = 0.1 * value - 435;
-  document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+var value=document.getElementById("walkathonSlider").value;
+var walkathonAmount = `${value}步`;
+var distance = value * 0.0008;
+var donation = value * 0.002;
+distance = distance.toFixed(2);
+donation = donation.toFixed(2);
+document.getElementById("walkathonAmount").value=walkathonAmount;
+document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
+var left = value * 0.0172;
+document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
 }
 
 // function updateWalkathonSlide(value) {
@@ -740,8 +740,60 @@ function guessWeatherSource(){
   }
 }
 
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function randomize() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5, 6];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("trustOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#question"+order[i] ).after( $( "#question"+order[i+1] ) );
+  }
+}
+
+function randomizeQuestion() {
+  var user_id;
+  user_id = document.getElementById("sourceTrustOrder").value;
+  // user_id odd, swap questions; even do nothing
+  if (user_id % 2) {
+    document.getElementById("sourceTrustOrder").value = "21";
+    $( "#page8" ).prepend( $( "#survey2" ) );
+    $( "#page9" ).prepend( $( "#survey1" ) );
+
+    // var survey1 = document.getElementById("survey1");
+    // var survey2 = document.getElementById("survey2");
+    // var page8 = document.getElementById("page8");
+    // var page9 = document.getElementById("page9");
+    // page8.innerHTML = survey2;
+    // page9.innerHTML = survey1;
+  }
+  else {
+    document.getElementById("sourceTrustOrder").value = "12";
+  }
+}
+
 $( document ).ready(function() {
   document.getElementById("clearAllStarsButton").style.display='none';
+  randomize();
+  randomizeQuestion();
   // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
   // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
   // randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");

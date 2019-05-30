@@ -1,33 +1,3 @@
-function show(shown) {
-  window.scroll(0,0);
-  var pages = ['page1', 'page2', 'page3'];
-  var pageIndex;
-  for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-    pageId = pages[pageIndex];
-    if (shown == pageId) {
-      if (shown == 'page2') {
-        var alert = document.getElementById("starAlert").innerHTML;
-        var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-        if ((parseInt(numStarLeft)) > 0) {
-          document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-          document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
-          document.getElementById("clearAllStarsButton").style.display='block';
-        }
-        else {
-          document.getElementById('page2').style='display: flex;flex-direction: column;position: relative;';
-        }
-      }
-      else {
-        document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-      }
-    }
-    else {
-      document.getElementById(pageId).style.display='none';
-    }
-  }
-  return 0;
-}
-
 document.getElementById("clearAllStarsButton").style.display='none';
 
 // validate star question on page 1 => page 2
@@ -627,19 +597,34 @@ function updateStarInput6() {
   document.getElementById("starCountGroup6Input").value = document.getElementById("starCountGroup6").innerHTML;
 }
 
-// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-//   var random = Math.floor(Math.random() * (max - min)) + min;
-//   $(sliderName).val(random);
-//   $(sliderAmount).val(random + unit);
-//   var left = leftStart + moveStep * random;
-//   $(sliderAmount).css("padding-left", left);
-// }
-//
-// $( document ).ready(function() {
-//   randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-//   randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
-// });
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function randomize() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5, 6];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("trustOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#question"+order[i] ).after( $( "#question"+order[i+1] ) );
+  }
+}
+
+$( document ).ready(function() {
+  randomize();
+});
