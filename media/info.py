@@ -284,6 +284,8 @@ def get_survey(user_id_hashid, day_hashid):
         week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
         return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid, user_id=user_id)
 
+    if day == 8:
+        return render_template('survey' + str(day) + '.html', lastpage=lastpage, user_id=user_id)
     return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
 @bp.route('/test/<string:hashed_user_id>/<string:hashed_treatment>/info')

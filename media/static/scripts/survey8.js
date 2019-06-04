@@ -4,9 +4,16 @@ document.getElementById("clearAllStarsButton").style.display='none';
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+  var user_id = document.getElementById("questionRandomOrder").value;
+  var displayPage2 = document.getElementById("page2").style.display;
+  if (user_id == '21' && displayPage2 == 'none') {
+    return true;
+  }
+  else if (user_id == '12' && displayPage2 != 'none') {
+    return true;
+  }
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page1').style='display: flex;flex-direction: column;position: relative;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
@@ -625,6 +632,21 @@ function randomize() {
   }
 }
 
+function randomizeQuestion() {
+  var user_id;
+  user_id = document.getElementById("questionRandomOrder").value;
+  // user_id odd, swap questions; even do nothing
+  if (user_id % 2) {
+    document.getElementById("questionRandomOrder").value = "21";
+    $( "#page1" ).prepend( $( "#survey2" ) );
+    $( "#page2" ).prepend( $( "#survey1" ) );
+  }
+  else {
+    document.getElementById("questionRandomOrder").value = "12";
+  }
+}
+
 $( document ).ready(function() {
+  randomizeQuestion();
   randomize();
 });
