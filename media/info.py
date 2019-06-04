@@ -290,15 +290,41 @@ def get_survey(user_id_hashid, day_hashid):
 def info_test(hashed_user_id, hashed_treatment):
     user_id = '10' + hashed_user_id[12] + hashed_user_id[3]
     treatment = hashed_treatment[7]
-    info = get_db().execute(
-        'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
-        ' FROM infos i'
-        ' WHERE i.event_id = ? AND cohort = ?',
-        (9, 1,)
+
+    # check if user already read the info page
+    read = get_db().execute(
+        'SELECT result'
+        ' FROM survey s'
+        ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+        (user_id, 10, "infoPage")
     ).fetchone()
-    curr_air_quality_source = u'（来自：北京晚报）'
-    curr_air_quality_source_logo = 'img/SourceBJEN.png'
-    return render_template('infoPage' + treatment + '.html', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+
+    # not read yet
+    if read is None:
+        db = get_db()
+        info = db.execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
+            ' FROM infos i'
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (9, 1,)
+        ).fetchone()
+
+        curr_air_quality_source = u'（来自：北京晚报）'
+        curr_air_quality_source_logo = 'img/SourceBJEN.png'
+
+        # record info page as read by user
+        now = datetime.now()
+        db.execute(
+            'INSERT INTO survey (user_id, day, result, created, question_id)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (user_id, 10, "read", now, "infoPage")
+        )
+        db.commit()
+
+        return render_template('infoPage' + treatment + '.html', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+
+    else:
+        return redirect(url_for('info.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment))
 
 @bp.route('/test/<string:hashed_user_id>/<string:hashed_treatment>/survey', methods=['GET', 'POST'])
 def info_test_survey(hashed_user_id, hashed_treatment):
@@ -313,7 +339,7 @@ def info_test_survey(hashed_user_id, hashed_treatment):
             db.execute(
                 'INSERT INTO survey (user_id, day, result, created, question_id)'
                 ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, 10, answer, now, treatment + "," + question)
+                (user_id, 10, answer, now, question)
             )
         db.commit()
         return render_template('completionPage.html')
