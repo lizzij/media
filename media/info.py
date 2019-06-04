@@ -302,15 +302,6 @@ def info_test(hashed_user_id, hashed_treatment):
     # not read yet
     if read is None:
         db = get_db()
-        info = db.execute(
-            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
-            ' FROM infos i'
-            ' WHERE i.event_id = ? AND cohort = ?',
-            (9, 1,)
-        ).fetchone()
-
-        curr_air_quality_source = u'（来自：北京晚报）'
-        curr_air_quality_source_logo = 'img/SourceBJEN.png'
 
         # record info page as read by user
         now = datetime.now()
@@ -321,8 +312,18 @@ def info_test(hashed_user_id, hashed_treatment):
         )
         db.commit()
 
+        # get test info and sources
+        info = db.execute(
+            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
+            ' FROM infos i'
+            ' WHERE i.event_id = ? AND cohort = ?',
+            (9, 1,)
+        ).fetchone()
+        curr_air_quality_source = u'（来自：北京晚报）'
+        curr_air_quality_source_logo = 'img/SourceBJEN.png'
         return render_template('infoPage' + treatment + '.html', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
 
+    # read info already, skip to survey
     else:
         return redirect(url_for('info.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment))
 
