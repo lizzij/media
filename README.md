@@ -145,7 +145,7 @@ flask init-db
 ## How to run remotely:
 - Login (with password)
 ```
-ssh donghee@202.182.126.239
+ssh username@202.182.126.239
 ```
 - Navigate to folder
 ```
