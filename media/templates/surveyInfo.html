@@ -15,6 +15,7 @@
 
 <body>
   <form lang="zh" action="" method="post">
+
   <!-- page 1 -->
   <div class="page" id="page1">
 
@@ -23,11 +24,12 @@
       <div class="question">
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">该活动的名字是？</div>
+          <input name="eventNameOrder" id="eventNameOptionsOrder" type="hidden" value="1234">
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name1" value="option1" ><label class="form-check-label" for="name1">徒游北京: 东四胡同头条到四条</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name2" value="option2" ><label class="form-check-label" for="name2">周末漫步神堂峪山水栈道</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name3" value="option3" ><label class="form-check-label" for="name3">紫荆关漂流: 京郊第一漂</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="eventName" id="name4" value="option4" required><label class="form-check-label" for="name4">攀北京第三高峰，赏百花齐放！</label></div>
+            <div class="form-check" id="nameOption1" ><input class="form-check-input" type="radio" name="eventName" id="name1" value="name1" ><label class="form-check-label" for="name1">徒游北京: 东四胡同头条到四条</label></div>
+            <div class="form-check" id="nameOption2" ><input class="form-check-input" type="radio" name="eventName" id="name2" value="name2" ><label class="form-check-label" for="name2">周末漫步神堂峪山水栈道</label></div>
+            <div class="form-check" id="nameOption3" ><input class="form-check-input" type="radio" name="eventName" id="name3" value="name3" ><label class="form-check-label" for="name3">紫荆关漂流: 京郊第一漂</label></div>
+            <div class="form-check" id="nameOption4" ><input class="form-check-input" type="radio" name="eventName" id="name4" value="name4" required><label class="form-check-label" for="name4">攀北京第三高峰，赏百花齐放！</label></div>
           </div>
         </div>
       </div>
@@ -49,11 +51,12 @@
       <div class="question">
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">空气质量的信息来源是？</div>
+          <input name="sourceOrder" id="AQSourceOptionsOrder" type="hidden" value="1234">
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="source" id="source1" value="someSource1" ><label class="form-check-label" for="source1">北京晚报</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="source" id="source2" value="someSource2" ><label class="form-check-label" for="source2">北京广播电视台</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="source" id="source3" value="someSource3" ><label class="form-check-label" for="source3">新京报</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="source" id="source4" value="someSource4" required><label class="form-check-label" for="source4">参考消息</label></div>
+            <div class="form-check" id="sourceOption1" ><input class="form-check-input" type="radio" name="source" id="source1" value="source1" ><label class="form-check-label" for="source1">北京晚报</label></div>
+            <div class="form-check" id="sourceOption2" ><input class="form-check-input" type="radio" name="source" id="source2" value="source2" ><label class="form-check-label" for="source2">北京广播电视台</label></div>
+            <div class="form-check" id="sourceOption3" ><input class="form-check-input" type="radio" name="source" id="source3" value="source3" ><label class="form-check-label" for="source3">新京报</label></div>
+            <div class="form-check" id="sourceOption4" ><input class="form-check-input" type="radio" name="source" id="source4" value="source4" required><label class="form-check-label" for="source4">参考消息</label></div>
           </div>
         </div>
       </div>
@@ -116,6 +119,7 @@
   </script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jweixin-1.2.0.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/surveyInfo.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
 
