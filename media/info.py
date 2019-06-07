@@ -319,7 +319,7 @@ def info_test(hashed_user_id, hashed_treatment):
             'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
             ' WHERE i.event_id = ? AND cohort = ?',
-            (9, 1,)
+            (5, 1,)
         ).fetchone()
         curr_air_quality_source = u'（来自：北京晚报）'
         curr_air_quality_source_logo = 'img/SourceBJEN.png'

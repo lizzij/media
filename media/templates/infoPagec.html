@@ -128,13 +128,14 @@
       <section class="airQuality">
         <div id="airQualityHeader">
           <div id="airQualityTitle">
-            去年{{ info['phrase_for_header'] }}空气质量：
+            空气质量
           </div>
-            <div id="airQualityCurr">良</div>
-          </div>
+        </div>
+        <div id="airQualitySubtitle">去年{{ info['phrase_for_header'] }}<br />空气质量：</div>
+        <div id="airQualityCurr">良</div>
         <div id="airQualitySource">{{ air_quality_source }}</div>
-        <div id="dongFang">
-          <img src={{url_for('static', filename=air_quality_source_logo) }} height="35">
+        <div id="airQualityLogo">
+          <img src={{url_for('static', filename=air_quality_source_logo) }} height="23">
         </div>
 
         <!-- air quality scale -->

@@ -103,10 +103,6 @@
       <!-- temperature -->
       <section class="temperature">
         <div id="temperatureHeader">室外气温</div>
-        <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
         <div id="temperatureSubtitle">{{ info['phrase_for_header'] }} <br />去年平均气温</div>
 
         <!-- temperture low -->
@@ -128,13 +124,14 @@
       <section class="airQuality">
         <div id="airQualityHeader">
           <div id="airQualityTitle">
-            去年{{ info['phrase_for_header'] }}空气质量：
+            空气质量
           </div>
-            <div id="airQualityCurr">良</div>
-          </div>
+        </div>
+        <div id="airQualitySubtitle">去年{{ info['phrase_for_header'] }}<br />空气质量：</div>
+        <div id="airQualityCurr">良</div>
         <div id="airQualitySource">{{ air_quality_source }}</div>
-        <div id="dongFang">
-          <img src={{url_for('static', filename=air_quality_source_logo) }} height="35">
+        <div id="airQualityLogo">
+          <img src={{url_for('static', filename=air_quality_source_logo) }} height="23">
         </div>
 
         <!-- air quality scale -->
