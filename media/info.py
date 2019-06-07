@@ -298,28 +298,18 @@ def info_test(hashed_user_id, hashed_treatment):
         'SELECT result'
         ' FROM survey s'
         ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
-        (user_id, 10, "infoPage")
+        (user_id, 10, "readInfo")
     ).fetchone()
 
     # not read yet
     if read is None:
-        db = get_db()
-
-        # record info page as read by user
-        now = datetime.now()
-        db.execute(
-            'INSERT INTO survey (user_id, day, result, created, question_id)'
-            ' VALUES (?, ?, ?, ?, ?)',
-            (user_id, 10, "read", now, "infoPage")
-        )
-        db.commit()
 
         # get test info and sources
-        info = db.execute(
+        info = get_db().execute(
             'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
             ' FROM infos i'
             ' WHERE i.event_id = ? AND cohort = ?',
-            (5, 1,)
+            (9, 1,)
         ).fetchone()
         curr_air_quality_source = u'（来自：北京晚报）'
         curr_air_quality_source_logo = 'img/SourceBJEN.png'
@@ -333,6 +323,17 @@ def info_test(hashed_user_id, hashed_treatment):
 def info_test_survey(hashed_user_id, hashed_treatment):
     user_id = '10' + hashed_user_id[12] + hashed_user_id[3]
     treatment = hashed_treatment[7]
+
+    # record info page as read by user
+    db = get_db()
+    now = datetime.now()
+    db.execute(
+        'INSERT INTO survey (user_id, day, result, created, question_id)'
+        ' VALUES (?, ?, ?, ?, ?)',
+        (user_id, 10, "read", now, "readInfo")
+    )
+    db.commit()
+
     if request.method == 'POST':
         questions = ['eventName', 'eventNameOrder', 'airQuality', 'source', 'sourceOrder']
         now = datetime.now()
