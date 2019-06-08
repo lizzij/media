@@ -252,27 +252,6 @@ header #eventLocation{
   color: #4F4F4F;
 }
 
-/* #temperatureSource{
-  position: absolute;
-  width: 94px;
-  height: 14px;
-  left: calc(50% - 94px/2 + 78px);
-  top: 10px;
-
-  font-family: PingFangHK-Regular, sans-serif;
-  font-size: 14px;
-
-  color: #4F4F4F;
-}
-
-#qingNian{
-  position: absolute;
-  width: 50px;
-  height: 16.36px;
-  left: calc(50% - 50px/2 + 141px);
-  top: 7px;
-} */
-
 #temperatureSubtitle{
   position: absolute;
   width: 120px;
@@ -387,6 +366,7 @@ header #eventLocation{
   left: calc(50% - 150px/2 - 89px);
   top: 12px;
   white-space: nowrap;
+  /* font-weight: bold; */
 }
 
 #airQualityTitle{
@@ -397,37 +377,42 @@ header #eventLocation{
   color: #4F4F4F;
 }
 
+#airQualitySubtitle{
+  position: absolute;
+  width: 300px;
+  height: 47px;
+  left: calc(50% - 87px/2 - 120px);
+  top: 45px;
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 18px;
+  color: #525252;
+}
+
 #airQualityCurr{
-  display: inline-block;
+  position: absolute;
+  top: 69px;
+  left: 99px;
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   font-weight: bold;
-
   color: #000000;
 }
 
 #airQualitySource{
-  position: relative;
-  padding-top: 50px;
-  /* text-align: right; */
-  padding-right: 3px;
-  /* position: absolute; */
-  /* width: 100px; */
-  /* height: 14px; */
-  flex-direction: rigt;
-  /* left: calc(50% - 78px/2 + 10px); */
-  /* top: 40px; */
+  position: absolute;
+  top: 45px;
+  right: 3px;
   font-family: PingFangHK-Regular, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   color: #4F4F4F;
 }
 
-#dongFang{
+#airQualityLogo{
   position: absolute;
   width: 70px;
   height: 11.43px;
-  right: 48px;
-  top: 44px;
+  right: 46px;
+  top: 71px;
 }
 
 .airQualityScale{
@@ -435,7 +420,7 @@ header #eventLocation{
   width: 334.5px;
   height: 34px;
   left: 8.5px;
-  top: 40px;
+  top: 54px;
 }
 
 .levels{
@@ -450,6 +435,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 - 134px);
+  opacity: 0.25;
 }
 
 #infoLevel2{
@@ -459,7 +445,7 @@ header #eventLocation{
   top: 54px;
   left: calc(50% - 58px/2 - 79px);
   font-weight: bold;
-  color: #4F4F4F;
+  color: #000000;
 }
 
 #infoLevel3{
@@ -468,6 +454,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 - 24px);
+  opacity: 0.25;
 }
 
 #infoLevel4{
@@ -476,6 +463,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 + 31px);
+  opacity: 0.25;
 }
 
 #infoLevel5{
@@ -484,6 +472,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 + 86px);
+  opacity: 0.25;
 }
 
 #infoLevel6{
@@ -492,6 +481,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 + 141px);
+  opacity: 0.25;
 }
 
 .levelDescription{
@@ -507,6 +497,7 @@ header #eventLocation{
   height: 11px;
   left: calc(50% - 58px/2 - 134.5px);
   top: 82.5px;
+  opacity: 0.25;
 }
 
 #level2Description{
@@ -516,7 +507,7 @@ header #eventLocation{
   left: calc(50% - 58px/2 - 79.5px);
   top: 82.5px;
   font-weight: bold;
-  color: #4F4F4F;
+  color: #000000;
 }
 
 #level3Description{
@@ -525,6 +516,7 @@ header #eventLocation{
   height: 11px;
   left: calc(50% - 58px/2 - 24.5px);
   top: 82.5px;
+  opacity: 0.25;
 }
 
 #level4Description{
@@ -533,6 +525,7 @@ header #eventLocation{
   height: 11px;
   left: calc(50% - 58px/2 + 30.5px);
   top: 82.5px;
+  opacity: 0.25;
 }
 
 #level5Description{
@@ -541,6 +534,7 @@ header #eventLocation{
   height: 11px;
   left: calc(50% - 58px/2 + 85.5px);
   top: 82.5px;
+  opacity: 0.25;
 }
 
 #level6Description{
@@ -549,6 +543,7 @@ header #eventLocation{
   height: 11px;
   left: calc(50% - 58px/2 + 140.5px);
   top: 82.5px;
+  opacity: 0.25;
 }
 
 #colorBar1{
@@ -560,7 +555,7 @@ header #eventLocation{
 
   /* PM2.5-1 */
   background: #00E400;
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 #colorBar2{
@@ -572,7 +567,7 @@ header #eventLocation{
 
   /* PM2.5-2 */
   background: #FFFF00;
-  box-shadow: 0px 3px 5px rgba(151,151,151,1);
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7);
 }
 
 #colorBar3{
@@ -584,7 +579,7 @@ header #eventLocation{
 
   /* PM2.5-3 */
   background: #FF7E00;
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 #colorBar4{
@@ -594,7 +589,7 @@ header #eventLocation{
   left: calc(50% - 54px/2 + 27.5px);
   top: 73px;
   background: #FF0000;
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 #colorBar5{
@@ -606,7 +601,7 @@ header #eventLocation{
 
   /* PM2.5-5 */
   background: #99004C;
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 #colorBar6{
@@ -618,7 +613,7 @@ header #eventLocation{
 
   /* PM2.5-6 */
   background: #7E0023;
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 #airQualityDetail{
@@ -626,9 +621,9 @@ header #eventLocation{
   width: 333px;
   height: 37px;
   left: calc(50% - 333px/2 + 3.5px);
-  top: 120px;
+  top: 119px;
   font-family: PingFangHK-Regular, sans-serif;
-  line-height: 26px;
+  /* line-height: 20px; */
   font-size: 16px;
   color: #525252;
 }

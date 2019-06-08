@@ -23,9 +23,10 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p>以下是一项在{{ (info['phrase_for_week']) }}举办的本地活动。
-        <br>请您仔细思考是否愿意参加该活动。
-        <br>我们从多种来源获得关于该活动的信息，这些来源对信息的准确性负责。</p>
+      <p>以下是一项关于北京本地或周边的户外活动及场所的信息。
+        依照参与者的意向，我们或将于{{ (info['phrase_for_week']) }}组团结伴前往。
+        请您仔细思考是否有意向参与该活动。
+        (我们从多种来源获得该活动的信息，这些来源对信息的准确性负责。)</p>
     </div>
 
   </div>
@@ -103,10 +104,6 @@
       <!-- temperature -->
       <section class="temperature">
         <div id="temperatureHeader">室外气温</div>
-        <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
         <div id="temperatureSubtitle">{{ info['phrase_for_header'] }} <br />去年平均气温</div>
 
         <!-- temperture low -->
@@ -128,13 +125,14 @@
       <section class="airQuality">
         <div id="airQualityHeader">
           <div id="airQualityTitle">
-            去年{{ info['phrase_for_header'] }}空气质量：
+            空气质量
           </div>
-            <div id="airQualityCurr">良</div>
-          </div>
+        </div>
+        <div id="airQualitySubtitle">去年{{ info['phrase_for_header'] }}<br />空气质量：</div>
+        <div id="airQualityCurr">良</div>
         <div id="airQualitySource">{{ air_quality_source }}</div>
-        <div id="dongFang">
-          <img src={{url_for('static', filename=air_quality_source_logo) }} height="35">
+        <div id="airQualityLogo">
+          <img src={{url_for('static', filename=air_quality_source_logo) }} height="23">
         </div>
 
         <!-- air quality scale -->

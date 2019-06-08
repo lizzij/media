@@ -777,13 +777,6 @@ function randomizeQuestion() {
     document.getElementById("sourceTrustOrder").value = "21";
     $( "#page8" ).prepend( $( "#survey2" ) );
     $( "#page9" ).prepend( $( "#survey1" ) );
-
-    // var survey1 = document.getElementById("survey1");
-    // var survey2 = document.getElementById("survey2");
-    // var page8 = document.getElementById("page8");
-    // var page9 = document.getElementById("page9");
-    // page8.innerHTML = survey2;
-    // page9.innerHTML = survey1;
   }
   else {
     document.getElementById("sourceTrustOrder").value = "12";

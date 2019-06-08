@@ -14,10 +14,11 @@
 </head>
 
 <body>
-  <form lang="zh" action="" onsubmit="return validateStar();" method="post" id="airQualityQn">
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
+    <input name="questionOrder" id="questionRandomOrder" type="hidden" value="{{ user_id }}">
   <!-- page 1 -->
   <div id="page1" >
-    <div class="survey">
+    <div class="survey" id="survey1">
       <div class="question">
         <div class="questionPrompt">
           <p>基于您的经历，您认为<b>过去一周</b>的空气质量如何？</p>
@@ -222,10 +223,10 @@
   </div>
 </form>
 
-<form lang="zh" action="" method="post" id="TrustQn">
+<form lang="zh" action="" method="post" onsubmit="return validateStar();">
   <!-- page 2 -->
   <div id="page2" style="display:none">
-    <div class="survey">
+    <div class="survey" id="survey2">
       <!-- people trust degree -->
       <div class="question">
         <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
