@@ -258,11 +258,10 @@ header #eventLocation{
   height: 47px;
   left: calc(50% - 87px/2 - 120px);
   top: 40px;
-
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
-
   color: #525252;
+  line-height: 24px;
 }
 
 .temperatureLow{
@@ -306,6 +305,7 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #525252;
+  line-height: 24px;
 }
 
 .temperatureHigh{
@@ -347,6 +347,7 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #525252;
+  line-height: 24px;
 }
 
 .airQuality{
@@ -386,12 +387,12 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #525252;
-  line-height: 24px;
+  line-height: 25px;
 }
 
 #airQualityCurr{
   position: absolute;
-  top: 69px;
+  top: 70px;
   left: 99px;
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
@@ -624,7 +625,7 @@ header #eventLocation{
   left: calc(50% - 333px/2 + 3.5px);
   top: 119px;
   font-family: PingFangHK-Regular, sans-serif;
-  line-height: 20px;
+  line-height: 23px;
   font-size: 16px;
   color: #525252;
 }
