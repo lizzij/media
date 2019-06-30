@@ -161,6 +161,13 @@ sudo systemctl restart media
 ## Changes!
 - start using git branches
   - `master` = deployed
+    - merge `dev` to `master`
+    ```
+(on dev)$ git merge master
+(resolve any merge conflicts if there are any)
+git checkout master
+git merge dev (there won't be any conflicts now)
+    ```
   - `dev` = latest working demo, merge into master regularly for deployment
     - push `dev` branch work to `dev`: `git push -u origin dev`
   - `<feature branches>` = developing, merge into dev branch regularly
