@@ -157,3 +157,10 @@ cd ~/media
 git pull
 sudo systemctl restart media
 ```
+
+## Changes!
+- start using git branches
+  - master = deployed
+  - dev = latest working demo, merge into master regularly for deployment
+  - <feature branches> merge into dev branch regularly
+- 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
