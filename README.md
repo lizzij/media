@@ -170,5 +170,5 @@ git merge dev (there won't be any conflicts now)
     ```
   - `dev` = latest working demo, merge into master regularly for deployment
     - push `dev` branch work to `dev`: `git push -u origin dev`
-  - `<feature branches>` = developing, merge into dev branch regularly
+  - `<feature-branch>` = developing, merge into dev branch regularly
 - 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
