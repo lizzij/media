@@ -32,8 +32,10 @@ def create_app(test_config=None):
     from media import db
     db.init_app(app)
 
-    from media import info
+    from media import crud, info, xian
+    app.register_blueprint(crud.bp)
     app.register_blueprint(info.bp)
+    app.register_blueprint(xian.bp)
 
     return app
 
