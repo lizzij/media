@@ -22,8 +22,10 @@ def get_user(user_id_hashid, day_hashid, cohort = 3):
     ).fetchone()
     if user is None:
         abort(404, "User {0}/{1}/{2} doesn't exist.".format(user_id_hashid, day_hashid, cohort))
+    else:
+        return user
 
-def get_event(event_id, cohort):
+def get_event_info(event_id, cohort):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
@@ -34,14 +36,18 @@ def get_event(event_id, cohort):
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
-    user = get_user(user_id_hashid, day_hashid)
+    user = get_user(user_id_hashid, day_hashid, 1)
     user_id = user[0]
     day = user[1]
     treatment = user[2]
     if day == 1:
-        info = get_event(1, 1)
+        info = get_event_info(10, 3)
         template = 'a'
     elif day == 2:
-        info = get_event(2, 1)
+        info = get_event_info(2, 1)
         template = 'c'
-    render_template('xian/infoPage' + template + '.html', info=info, day=day, treatment=treatment)
+    return render_template('xian/infoPage' + template + '.html', info=info, user=user, day=day, treatment=treatment)
+
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
+def get_survey(user_id_hashid, day_hashid):
+    return 'survey'
