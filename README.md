@@ -163,21 +163,22 @@ sudo systemctl restart media
   - `master` = deployed
     - merge `dev` to `master`
     ```
-(on dev)$ git merge master
-(resolve any merge conflicts if there are any)
-git checkout master
-git merge dev (there won't be any conflicts now)
+    (on dev)$ git merge master
+    (resolve any merge conflicts if there are any)
+    git checkout master
+    git merge dev (there won't be any conflicts now)
     ```
+
   - `dev` = latest working demo, merge into master regularly for deployment
     - push `dev` branch work to `dev`: `git push -u origin dev`
   - `<feature-branch>` = developing, merge into dev branch regularly
     - start a new feature: `git checkout -b <feature-branch> dev`
     - commit, test and merge to `dev`
     ```
-git commit -am "Your message"
-git checkout dev
-git merge --no-ff <feature-branch>
-git push origin dev
-git push origin <feature-branch>
+    git commit -am "Your message"
+    git checkout dev
+    git merge --no-ff <feature-branch>
+    git push origin dev
+    git push origin <feature-branch>
     ```
 - 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
