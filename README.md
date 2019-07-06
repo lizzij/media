@@ -1,4 +1,5 @@
 # Media Study
+Flask app for info and survey distribution.
 
 ## Documentations
 ### pilot
