@@ -27,7 +27,7 @@ def create_app(test_config=None):
     @app.route('/')
     @app.route('/home')
     def home():
-        return render_template('home.html')
+        return render_template('crud/home.html')
 
     from media import db
     db.init_app(app)
