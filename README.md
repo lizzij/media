@@ -158,10 +158,12 @@ git pull
 sudo systemctl restart media
 ```
 
-## Changes!
+## Developing...
+- 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
 - start using git branches
   - `master` = deployed
     - merge `dev` to `master`
+
     ```
     (on dev)$ git merge master
     (resolve any merge conflicts if there are any)
@@ -174,6 +176,7 @@ sudo systemctl restart media
   - `<feature-branch>` = developing, merge into dev branch regularly
     - start a new feature: `git checkout -b <feature-branch> dev`
     - commit, test and merge to `dev`
+    
     ```
     git commit -am "Your message"
     git checkout dev
@@ -181,4 +184,3 @@ sudo systemctl restart media
     git push origin dev
     git push origin <feature-branch>
     ```
-- 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
