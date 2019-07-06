@@ -306,7 +306,7 @@
         <div id="infoNext">下一页</div>
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
-            location.href = "{{ url_for('info.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment) }}";
+            location.href = "{{ url_for('pilot.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment) }}";
           }
         </script>
       </div>

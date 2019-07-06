@@ -1,5 +1,17 @@
 # Flask Web App
 
+## Documentations
+### pilot
+- [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
+  - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
+
+- [Q&A Code](https://docs.google.com/spreadsheets/d/13eTESZNvaWt9HJT508376lfapPdtOMc5z4Z9fiaU_P4/edit?usp=sharing)
+  - Question (from google doc), QuestionCode, Option/Subqn (from google doc), OptionCode, Relevant (note and related questions)
+
+### xian
+- [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
+  - 2 days Xi'an Pilot
+
 ## Results
 Paste the code into terminal, and hit Return key.
 ### Get allActivites.csv
@@ -27,14 +39,9 @@ Headers: event_id, title, subtitle, info_date, info_time, location, image_file, 
 ```bash
 wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
 ```
-## Set up
-[Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
-- Event 6 (cohort 1: user 1-4; cohort 2: user 5)
-
-[Q&A Code](https://docs.google.com/spreadsheets/d/13eTESZNvaWt9HJT508376lfapPdtOMc5z4Z9fiaU_P4/edit?usp=sharing)
-- Question (from google doc), QuestionCode, Option/Subqn (from google doc), OptionCode, Relevant (note and related questions)
 
 ## Local  
+### pilot
 **user_id: 1 (T1)**  
 
 0. http://127.0.0.1:5000/nBEXdMJkv56ymRZx/vQp4l04x0q/info
@@ -132,8 +139,6 @@ cd media
 - Navigate to root dir
 ```
 source venv/bin/activate
-export FLASK_APP=media
-export FLASK_ENV=development
 flask run
 ```
 
@@ -159,8 +164,7 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-- 2 days Xi'an Pilot [edit google docs](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
-- start using git branches
+- Git branches
   - `master` = deployed
     - merge `dev` to `master`
 
@@ -176,7 +180,7 @@ sudo systemctl restart media
   - `<feature-branch>` = developing, merge into dev branch regularly
     - start a new feature: `git checkout -b <feature-branch> dev`
     - commit, test and merge to `dev`
-    
+
     ```
     git commit -am "Your message"
     git checkout dev
@@ -184,3 +188,7 @@ sudo systemctl restart media
     git push origin dev
     git push origin <feature-branch>
     ```
+
+  - get changes from master to branches
+    - `git checkout <branch>` get to the branch
+    - `git rebase master` (discard history) or `git merge origin/master`
