@@ -11,7 +11,7 @@ from flask import (
 from media.db import get_db
 from werkzeug.exceptions import abort
 
-bp = Blueprint('info', __name__)
+bp = Blueprint('pilot', __name__)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
@@ -67,15 +67,15 @@ def get_info(user_id_hashid, day_hashid):
         if lastpage <= 0: # sent consent, not submitted
             lastpage = 0
         elif day == 0 and lastday >= 0: # completed consent, not survey => redirect to survey 1
-            return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
+            return redirect(url_for('pilot.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
         elif day <= lastday: # completed or partially completed
-            return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+            return redirect(url_for('pilot.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
         else:
             pass
 
     # direct to survey for day 7, 8
     if day > 6:
-        return redirect(url_for('info.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+        return redirect(url_for('pilot.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
     # consent collect, redirect to day 1
     if day == 0:
@@ -96,10 +96,10 @@ def get_info(user_id_hashid, day_hashid):
                     (1, 0, now, user_id)
                 )
                 db.commit()
-                return redirect(url_for('info.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
+                return redirect(url_for('pilot.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid))
             elif consent == 'notProceed':
                 flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
-        return render_template('consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        return render_template('pilot/consentForm.html', next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # retrieve info by event_id
     if treatment == "T3":
@@ -144,10 +144,10 @@ def get_info(user_id_hashid, day_hashid):
                  'T4' : {4:'infoPageAQ.html', 5:'infoPageAQ.html', 6:'infoPage.html', },
                  'T5' : {4:'infoPageCO.html', 5:'infoPageCO.html', 6:'infoPage.html', }}
     if day <= 3:
-        return render_template('infoPage.html', user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+        return render_template('pilot/infoPage.html', user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
     else:
         curr_template = template[treatment][day]
-        return render_template(curr_template, user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
+        return render_template('pilot/' + curr_template, user=user, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
@@ -268,83 +268,22 @@ def get_survey(user_id_hashid, day_hashid):
             (8, cohort,)
         ).fetchone()
         if treatment == 'T3':
-            return render_template('survey6T3.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('pilot/survey6T3.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         elif treatment == 'T5':
-            return render_template('survey6T5.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('pilot/survey6T5.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
         else:
-            return render_template('survey6.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+            return render_template('pilot/survey6.html', user_id=user_id, second_event=second_event, third_event=third_event, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # get walkathon day for survey 7
     if day == 7:
         walkathon_date = get_db().execute('SELECT phrase_for_day, phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (8, cohort)).fetchone()
-        return render_template('survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
+        return render_template('pilot/survey7.html', walkathon_date=walkathon_date, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
 
     # get walkathon day for survey 7
     if day == 1:
         week = get_db().execute('SELECT phrase_for_week FROM infos WHERE event_id = ? AND cohort = ?', (1, cohort)).fetchone()
-        return render_template('survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid, user_id=user_id)
+        return render_template('pilot/survey1.html', week=week, lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid, user_id=user_id)
 
     if day == 8:
-        return render_template('survey' + str(day) + '.html', lastpage=lastpage, user_id=user_id)
-    return render_template('survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)
-
-@bp.route('/test/<string:hashed_user_id>/<string:hashed_treatment>/info')
-def info_test(hashed_user_id, hashed_treatment):
-    user_id = '10' + hashed_user_id[12] + hashed_user_id[3]
-    treatment = hashed_treatment[7]
-
-    # check if user already read the info page
-    read = get_db().execute(
-        'SELECT result'
-        ' FROM survey s'
-        ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
-        (user_id, 10, "readInfo")
-    ).fetchone()
-
-    # not read yet
-    if read is None:
-
-        # get test info and sources
-        info = get_db().execute(
-            'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
-            ' FROM infos i'
-            ' WHERE i.event_id = ? AND cohort = ?',
-            (9, 1,)
-        ).fetchone()
-        curr_air_quality_source = u'（来自：北京晚报）'
-        curr_air_quality_source_logo = 'img/SourceBJEN.png'
-        return render_template('infoPage' + treatment + '.html', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment, info=info, air_quality_source=curr_air_quality_source, air_quality_source_logo=curr_air_quality_source_logo)
-
-    # read info already, skip to survey
-    else:
-        return redirect(url_for('info.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment))
-
-@bp.route('/test/<string:hashed_user_id>/<string:hashed_treatment>/survey', methods=['GET', 'POST'])
-def info_test_survey(hashed_user_id, hashed_treatment):
-    user_id = '10' + hashed_user_id[12] + hashed_user_id[3]
-    treatment = hashed_treatment[7]
-
-    # record info page as read by user
-    db = get_db()
-    now = datetime.now()
-    db.execute(
-        'INSERT INTO survey (user_id, day, result, created, question_id)'
-        ' VALUES (?, ?, ?, ?, ?)',
-        (user_id, 10, "read", now, "readInfo")
-    )
-    db.commit()
-
-    if request.method == 'POST':
-        questions = ['eventName', 'eventNameOrder', 'airQuality', 'source', 'sourceOrder']
-        now = datetime.now()
-        db = get_db()
-        for question in questions:
-            answer = request.form[question]
-            db.execute(
-                'INSERT INTO survey (user_id, day, result, created, question_id)'
-                ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, 10, answer, now, question)
-            )
-        db.commit()
-        return render_template('completionPage.html')
-    return render_template('surveyInfo.html')
+        return render_template('pilot/survey' + str(day) + '.html', lastpage=lastpage, user_id=user_id)
+    return render_template('pilot/survey' + str(day) + '.html', lastpage=lastpage, next_user_id_hashid=next_user_id_hashid, next_day_hashid=next_day_hashid)

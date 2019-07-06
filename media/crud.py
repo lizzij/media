@@ -22,7 +22,7 @@ def user_results():
         ' FROM survey s'
         ' ORDER BY created ASC'
     ).fetchall()
-    return render_template('surveyList.html', surveys=surveys)
+    return render_template('crud/surveyList.html', surveys=surveys)
 
 @bp.route('/allUsers')
 def users():
@@ -33,7 +33,7 @@ def users():
         ' FROM user s'
         ' ORDER BY user_id ASC'
     ).fetchall()
-    return render_template('userList.html', users=users)
+    return render_template('crud/userList.html', users=users)
 
 @bp.route('/allActivities')
 def user_activities():
@@ -44,7 +44,7 @@ def user_activities():
         ' FROM activity s'
         ' ORDER BY user_id ASC'
     ).fetchall()
-    return render_template('activityList.html', users=users)
+    return render_template('crud/activityList.html', users=users)
 
 @bp.route('/allEvents')
 def all_events():
@@ -53,7 +53,7 @@ def all_events():
     events = db.execute(
         'SELECT * FROM infos ORDER BY info_id ASC'
     ).fetchall()
-    return render_template('infoList.html', events=events)
+    return render_template('crud/infoList.html', events=events)
 
 @bp.route('/eventUpdate', methods=['GET', 'POST'])
 def update_events():
@@ -80,7 +80,7 @@ def update_events():
                     'UPDATE infos SET ' +field+ ' = ? WHERE event_id = ? AND cohort = ?',
                     (value, event_id, cohort))
         db.commit()
-    return render_template('updateEvent.html', info=info)
+    return render_template('crud/updateEvent.html', info=info)
 
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):

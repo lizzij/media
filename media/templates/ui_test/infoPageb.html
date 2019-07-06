@@ -82,7 +82,7 @@
       </div>
     </section>
 
-    <div id="moreInfoButton">
+    <!-- <div id="moreInfoButton">
       <div>
         <img src="{{ url_for('static', filename='img/Button.png') }}">
       </div>
@@ -94,20 +94,16 @@
           window.scrollTo(0, 517);
         }
       </script>
-    </div>
+    </div> -->
   </div>
 
-  <div id="moreInfo" style="display:none;">
+  <div id="moreInfo">
     <!-- weather -->
     <section class="weather">
 
       <!-- temperature -->
       <section class="temperature">
         <div id="temperatureHeader">室外气温</div>
-        <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
         <div id="temperatureSubtitle">{{ info['phrase_for_header'] }} <br />去年平均气温</div>
 
         <!-- temperture low -->
@@ -306,7 +302,7 @@
         <div id="infoNext">下一页</div>
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
-            location.href = "{{ url_for('info.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment) }}";
+            location.href = "{{ url_for('pilot.info_test_survey', hashed_user_id=hashed_user_id, hashed_treatment=hashed_treatment) }}";
           }
         </script>
       </div>
@@ -315,7 +311,20 @@
       </div>
     </section>
   </div>
-
+  <!-- powered by -->
+  <!-- <section class="poweredBy">
+    <div id="lizzijIcon">
+      <img src="{{ url_for('static', filename='img/lizzij icon.png') }}" width="11.25" height="9">
+    </div>
+    <div id="lizzij">
+      <img src="{{ url_for('static', filename='img/lizzij.png') }}" width="15" height="9">
+    </div>
+    <section class="poweredByText">
+      <div id="dashLeft">-</div>
+      <div id="poweredBy">Powered by</div>
+      <div id="dashRight">-</div>
+    </section>
+  </section> -->
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
 </body>
 
