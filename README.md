@@ -123,7 +123,8 @@ sudo systemctl restart media
     - push `dev` branch work to `dev`: `git push -u origin dev`
   - `<feature-branch>` = developing, merge into dev branch regularly
     - start a new feature: `git checkout -b <feature-branch> dev`
-    - commit, test and merge to `dev`
+    - commit, test and push `git push --set-upstream origin <feature-branch>`
+    - merge to `dev`
 
     ```
     git commit -am "Your message"
