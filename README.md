@@ -138,3 +138,81 @@ sudo systemctl restart media
   - get changes from master to branches
     - `git checkout <branch>` get to the branch
     - `git rebase master` (discard history) or `git merge origin/master`
+- File structure
+```bash
+media
+├── __init__.py
+├── crud.py
+├── db.py
+├── pilot.py
+├── schema.sql
+├── static
+│   ├── img
+│   │   ├── ...
+│   │   ├── favicon.ico
+│   │   ├── favicon_package_v0.16
+│   │   │   └── ...
+│   ├── scripts
+│   │   ├── bootstrap.js
+│   │   ├── bootstrap.min.js
+│   │   ├── jquery-3.3.1.slim.min.js
+│   │   ├── jweixin-1.2.0.js
+│   │   ├── popper.min.js
+│   │   ├── survey1.js
+│   │   ├── survey2.js
+│   │   ├── survey3.js
+│   │   ├── survey4.js
+│   │   ├── survey5.js
+│   │   ├── survey6.js
+│   │   ├── survey7.js
+│   │   ├── survey8.js
+│   │   └── surveyInfo.js
+│   └── styles
+│       ├── bootstrap.css
+│       ├── consentForm.css
+│       ├── infoPage.css
+│       ├── infoPageTest.css
+│       └── questions.css
+├── templates
+│   ├── crud
+│   │   ├── README.md
+│   │   ├── activityList.html
+│   │   ├── home.html
+│   │   ├── infoList.html
+│   │   ├── surveyList.html
+│   │   ├── updateEvent.html
+│   │   └── userList.html
+│   ├── pilot
+│   │   ├── README.md
+│   │   ├── completionPage.html
+│   │   ├── consentForm.html
+│   │   ├── infoPage.html
+│   │   ├── infoPageAQ.html
+│   │   ├── infoPageCO.html
+│   │   ├── survey1.html
+│   │   ├── survey2.html
+│   │   ├── survey3.html
+│   │   ├── survey4.html
+│   │   ├── survey5.html
+│   │   ├── survey6.html
+│   │   ├── survey6T3.html
+│   │   ├── survey6T5.html
+│   │   ├── survey7.html
+│   │   ├── survey8.html
+│   │   └── surveyInfo.html
+│   ├── ui_test
+│   │   ├── README.md
+│   │   ├── infoPagea.html
+│   │   ├── infoPageb.html
+│   │   ├── infoPagec.html
+│   │   └── infoPaged.html
+│   └── xian
+│       ├── README.md
+│       ├── infoPagea.html
+│       ├── infoPagec.html
+│       ├── survey1.html
+│       └── survey2.html
+├── ui_test.py
+├── xian.py
+└── xian.pyc
+```
