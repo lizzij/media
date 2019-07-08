@@ -1,4 +1,5 @@
 # Media Study
+Flask app for info and survey distribution.
 
 ## Documentations
 ### pilot
@@ -59,19 +60,19 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 ## Cohorts
 ### CRUD
 (Applicable to all cohorts) create, read, update and delete.  
-Click [here]() for testing links and detailed README.
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/crud/README.md) for testing links and detailed README.
 
 ### Pilot
 For Shanghai cohort 1, 2 in May, June.    
-Click [here]() for testing links and detailed README.
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/pilot/README.md) for testing links and detailed README.
 
 ### Ui Test
 For testing info page button and layout, Beijing in June.     
-Click [here]() for testing links and detailed README.
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/ui_test/README.md) for testing links and detailed README.
 
 ### Xi'an Trial
 For Xi'an cohort 3 in July.  
-Click [here]() for testing links and detailed README.
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/xian/README.md) for testing links and detailed README.
 
 ## How to run locally:
 - Clone repo locally
