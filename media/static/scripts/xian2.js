@@ -1,138 +1,33 @@
-"+index+"// Page 1 ======================================================================
-function walkathonSlide() {
-  var value=document.getElementById("walkathonSlider").value;
-  var walkathonAmount = `${value}步`;
-  var distance = value * 0.0008;
-  var donation = value * 0.002;
-  distance = distance.toFixed(2);
-  donation = donation.toFixed(2);
-  document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-  var left = value * 0.0172;
-  document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+function signUpFeeSlide() {
+  var value=document.getElementById("signUpFeeSlider").value;
+  var signUpFeeAmount = `${value}元`;
+  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
 }
 
-function hideWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "none";
-}
-function showWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "block";
-}
-
-// Page 2 ======================================================================
-document.getElementById("weatherClearAllStarsButton").style.display='none';
-document.getElementById("clearAllStarsButton").style.display='none';
-
-// validate weather star question on page 2 => page3
-function validateWeatherStar() {
-  var alert = document.getElementById("weatherStarAlert").innerHTML;
-  var numStarLeft = document.getElementById("weatherStarLeftCount").innerHTML;
-  if ((parseInt(numStarLeft)) > 0) {
-    document.getElementById("weatherStarAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page2').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
-    document.getElementById("weatherClearAllStarsButton").style.display='block';
-    return false;
-  }
-  return true;
+function signUpFeeSlide2() {
+  var value=document.getElementById("signUpFeeSlider2").value;
+  var signUpFeeAmount = `${value}元`;
+  document.getElementById("signUpFeeAmount2").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount2").style.paddingLeft = left + "px";
 }
 
-// validate star question on page 3 => page 4
+// Page 5 ======================================================================
+// validate star question on page 5 => page 6
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
   return true;
 }
 
-function updateInput(index) {
-  document.getElementById("weatherStarCountGroup" + index + "Input").value = document.getElementById("weatherStarCountGroup" + index).innerHTML;
-}
-
-weatherShowClearAllStarsButton()
-
-function weatherStarCountGroup(index, number) {
-  var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
-  var count = document.getElementById("weatherStarCountGroup" + index).innerHTML;
-  if (weatherStarLeftCount == 0 && number > count) {
-    document.getElementById("weatherStarAlert").innerHTML = '已用完12个星星！';
-  }
-  else if (number - count > weatherStarLeftCount) {
-    document.getElementById("weatherStarAlert").innerHTML = '超过剩余星星！';
-  }
-  else if (number == 1 && count == 0) {
-    document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup" + index + "Cover").innerHTML = '<div class="star" onclick="weatherStarCountGroup('+index+',1)">&starf;</div>';
-    document.getElementById("weatherStarCountGroup" + index).innerHTML = '1';
-  }
-  else if (number == 1 && count == 1) {
-    document.getElementById("weatherStarAlert").innerHTML = '';
-    document.getElementById("weatherStarGroup1Cover").innerHTML = '';
-    document.getElementById("weatherStarCountGroup" + index).innerHTML = '0';
-  }
-  else {
-    document.getElementById("weatherStarAlert").innerHTML = '';
-    var star = '';
-    var i;
-    for (i = 0; i < number; i++) {
-      star = star + '<div class="star" onclick="weatherStarCountGroup(' + index + ',' + (i+1) + ')">&starf;</div>';
-    }
-    document.getElementById("weatherStarGroup" + index + "Cover").innerHTML = star;
-    document.getElementById("weatherStarCountGroup" + index).innerHTML = number;
-  }
-  weatherStarLeft();
-  updateInput(index);
-  return false;
-}
-
-function weatherStarLeft() {
-  var weatherStarLeftCount = 12;
-  var weatherStarLeft = '';
-  weatherStarLeftCount = weatherStarLeftCount
-  - document.getElementById("weatherStarCountGroup1").innerHTML
-  - document.getElementById("weatherStarCountGroup2").innerHTML
-  - document.getElementById("weatherStarCountGroup3").innerHTML
-  - document.getElementById("weatherStarCountGroup4").innerHTML;
-  var i;
-  for (i = 0; i < weatherStarLeftCount; i++) {
-    weatherStarLeft = weatherStarLeft + '<div class="star">&starf;</div>';
-  }
-  document.getElementById("weatherStarLeftCount").innerHTML = weatherStarLeftCount + "";
-  document.getElementById("weatherStarLeftContainer").innerHTML = weatherStarLeft;
-  weatherShowClearAllStarsButton();
-}
-
-function weatherShowClearAllStarsButton() {
-  var weatherStarLeftCount = document.getElementById("weatherStarLeftCount").innerHTML;
-  if ((parseInt(weatherStarLeftCount)) < 12) {
-    document.getElementById("weatherClearAllStarsButton").style.display='block';
-  }
-  else {
-    document.getElementById("weatherClearAllStarsButton").style.display='none';
-  }
-}
-
-function weatherClearAllStars() {
-  document.getElementById("weatherStarAlert").innerHTML = '';
-  var starCounts = ["weatherStarCountGroup1", "weatherStarCountGroup2", "weatherStarCountGroup3",
-  "weatherStarCountGroup4"];
-  var starCovers = ["weatherStarGroup1Cover", "weatherStarGroup2Cover", "weatherStarGroup3Cover",
-  "weatherStarGroup4Cover"];
-  var i;
-  for (i = 0; i < starCounts.length; i++) {
-    var starCount = starCounts[i];
-    document.getElementById(starCount).innerHTML = '0';
-    var starCover = starCovers[i];
-    document.getElementById(starCover).innerHTML = '';
-  }
-  weatherStarLeft();
-}
-
-// Page 3 ======================================================================
 function updateStarInput(index) {
   document.getElementById("starCountGroup"+index+"Input").value = document.getElementById("starCountGroup"+index).innerHTML;
 }
@@ -226,8 +121,9 @@ function showClearAllStarsButton() {
 }
 
 $( document ).ready(function() {
-  document.getElementById("weatherClearAllStarsButton").style.display='none';
   document.getElementById("clearAllStarsButton").style.display='none';
+  randomize();
+  randomizeQuestion();
 });
 
 function outingSlide(index) {
@@ -259,4 +155,137 @@ function outingSlide(index) {
   }
   var left = 2 + 2.88 * value;
   document.getElementById("outing"+index+"Amount").style.paddingLeft = left + "px";
+}
+
+// Page 6 ======================================================================
+function walkathonSlide() {
+  var value=document.getElementById("walkathonSlider").value;
+  var walkathonAmount = `${value}步`;
+  var distance = value * 0.0008;
+  var donation = value * 0.002;
+  distance = distance.toFixed(2);
+  donation = donation.toFixed(2);
+  document.getElementById("walkathonAmount").value=walkathonAmount;
+  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
+  var left = value * 0.0172;
+  document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+}
+
+function hideWalkathonSlider() {
+  document.getElementById("walkathon").style.display = "none";
+}
+function showWalkathonSlider() {
+  document.getElementById("walkathon").style.display = "block";
+}
+
+
+// Page % ======================================================================
+// Get the modal
+var modal = document.getElementById('myModal1');
+
+// Get the <span> element that closes the modal
+var span = document.getElementById('close1');
+
+modal.style.display = "block";
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Page 9 ======================================================================
+function dunno(index) {
+  var isDunnoChecked = document.getElementById("dunno"+index+"checkbox").checked
+  if (isDunnoChecked) {
+    document.getElementById("trustSlider"+index).style.display = "none";
+  }
+  else {
+    document.getElementById("trustSlider"+index).style.display = "block";
+  }
+}
+
+// Page 9 ======================================================================
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
+function randomize() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5, 6];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("trustOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#question"+order[i] ).after( $( "#question"+order[i+1] ) );
+  }
+}
+
+function randomizeQuestion() {
+  var user_id;
+  user_id = document.getElementById("sourceTrustOrder").value;
+  // user_id odd, swap questions; even do nothing
+  if (user_id % 2) {
+    document.getElementById("sourceTrustOrder").value = "21";
+    $( "#page8" ).prepend( $( "#survey2" ) );
+    $( "#page9" ).prepend( $( "#survey1" ) );
+  }
+  else {
+    document.getElementById("sourceTrustOrder").value = "12";
+  }
+}
+
+function trustSlide(index) {
+  document.getElementById("trust"+index+"Amount").value=Math.floor(document.getElementById("trust"+index).value/2)*2;
+  var trust=document.getElementById("trust"+index).value;
+  var trustIds = ['trust'+index+'ScaleLabel1', 'trust'+index+'ScaleLabel2', 'trust'+index+'ScaleLabel3',
+  'trust'+index+'ScaleLabel4', 'trust'+index+'ScaleLabel5'];
+  var selected;
+  for (i = 0; i < trustIds.length; i++) {
+    notSelected = trustIds[i];
+    document.getElementById(notSelected).style.color = "#979797";
+    document.getElementById(notSelected).style.fontWeight = 'normal';
+
+  }
+  if (0 <= trust && trust < 20) {
+    document.getElementById("trust"+index+"ScaleLabel1").style.fontWeight = 'bold';
+    document.getElementById("trust"+index+"ScaleLabel1").style.color = "#4F4F4F";
+  }
+  else if (20 <= trust && trust < 40) {
+    document.getElementById("trust"+index+"ScaleLabel2").style.fontWeight = 'bold';
+    document.getElementById("trust"+index+"ScaleLabel2").style.color = "#4F4F4F";
+  }
+  else if (40 <= trust && trust < 60) {
+    document.getElementById("trust"+index+"ScaleLabel3").style.fontWeight = 'bold';
+    document.getElementById("trust"+index+"ScaleLabel3").style.color = "#4F4F4F";
+  }
+  else if (60 <= trust && trust < 80) {
+    document.getElementById("trust"+index+"ScaleLabel4").style.fontWeight = 'bold';
+    document.getElementById("trust"+index+"ScaleLabel4").style.color = "#4F4F4F";
+  }
+  else if (80 <= trust && trust <= 100) {
+    document.getElementById("trust"+index+"ScaleLabel5").style.fontWeight = 'bold';
+    document.getElementById("trust"+index+"ScaleLabel5").style.color = "#4F4F4F";
+  }
+  var left = 2 + 2.88 * trust;
+  document.getElementById("trust"+index+"Amount").style.paddingLeft = left + "px";
 }
