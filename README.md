@@ -109,36 +109,38 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-- Git branches
-  - `master` = deployed
-    - merge `dev` to `master`
+Git branches
+- `master` = deployed
+  - merge `dev` to `master`
 
-    ```
-    (on dev)$ git merge master
-    (resolve any merge conflicts if there are any)
-    git checkout master
-    git merge dev (there won't be any conflicts now)
-    ```
+  ```
+  (on dev)$ git merge master
+  (resolve any merge conflicts if there are any)
+  git checkout master
+  git merge dev (there won't be any conflicts now)
+  ```
 
-  - `dev` = latest working demo, merge into master regularly for deployment
-    - push `dev` branch work to `dev`: `git push -u origin dev`
-  - `<feature-branch>` = developing, merge into dev branch regularly
-    - start a new feature: `git checkout -b <feature-branch> dev`
-    - commit, test and push `git push --set-upstream origin <feature-branch>`
-    - merge to `dev`
+- `dev` = latest working demo, merge into master regularly for deployment
+  - push `dev` branch work to `dev`: `git push -u origin dev`
+- `<feature-branch>` = developing, merge into dev branch regularly
+  - start a new feature: `git checkout -b <feature-branch> dev`
+  - commit, test and push `git push --set-upstream origin <feature-branch>`
+  - merge to `dev`
 
-    ```
-    git commit -am "Your message"
-    git checkout dev
-    git merge --no-ff <feature-branch>
-    git push origin dev
-    git push origin <feature-branch>
-    ```
+  ```
+  git commit -am "Your message"
+  git checkout dev
+  git merge --no-ff <feature-branch>
+  git push origin dev
+  git push origin <feature-branch>
+  ```
 
-  - get changes from master to branches
-    - `git checkout <branch>` get to the branch
-    - `git rebase master` (discard history) or `git merge origin/master`
-- File structure
+- get changes from master to branches
+  - `git checkout <branch>` get to the branch
+  - `git rebase master` (discard history) or `git merge origin/master`
+
+File structure
+
 ```bash
 media
 ├── __init__.py
