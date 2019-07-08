@@ -41,22 +41,6 @@ Headers: event_id, title, subtitle, info_date, info_time, location, image_file, 
 wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
 ```
 
-## Local  
-**Crud**
-- http://127.0.0.1:5000/allResults
-- http://127.0.0.1:5000/allActivities
-- http://127.0.0.1:5000/allUsers
-- http://127.0.0.1:5000/allEvents
-- http://127.0.0.1:5000/eventUpdate
-
-## HTTPS  
-**Crud**
-- https://dailyeventinfo.com/allResults
-- https://dailyeventinfo.com/allActivities
-- https://dailyeventinfo.com/allUsers
-- https://dailyeventinfo.com/allEvents
-- https://dailyeventinfo.com/eventUpdate
-
 ## Cohorts
 ### CRUD
 (Applicable to all cohorts) create, read, update and delete.  
