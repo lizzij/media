@@ -654,7 +654,7 @@
     })(window);
     {% if lastpage %}
         document.getElementById("page1").style = 'display: none;';
-        document.getElementById("page" + ({{lastpage}})).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
     {% else %}
     {% endif %}
   </script>

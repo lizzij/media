@@ -54,6 +54,8 @@ def get_lastpage(user_id, day):
         db.commit()
         # TODO TODO TODO TODO TODO TODO comment out if using chatbot to post update activity TODO TODO TODO TODO TODO TODO
         lastpage = 0
+    else:
+        lastpage = lastpage[0]
     return lastpage
 
 def update_lastpage(lastpage, day_complete, user_id, day):
@@ -64,6 +66,47 @@ def update_lastpage(lastpage, day_complete, user_id, day):
         (lastpage, now, day_complete, user_id, day,)
     )
     db.commit()
+
+def save_result(user_id, day, request, day_to_lastpage_dict):
+    lastpage = get_lastpage(user_id, day)
+
+    if request.method == 'POST':
+        now = datetime.now()
+        f = request.form
+        db = get_db()
+
+        # default do not go to next page on refresh or submit
+        global to_next_page
+        to_next_page = False
+
+        # save answer
+        for question in f.keys():
+            for result in f.getlist(question):
+                # check if answer already exists (prevent duplication)
+                previous_result = db.execute(
+                    'SELECT result'
+                    ' FROM survey s'
+                    ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+                    (user_id, day, question)
+                ).fetchone()
+
+                # save result if not duplicated
+                if previous_result is None:
+                    # and go to next page
+                    to_next_page = True
+                    db.execute(
+                        'INSERT INTO survey (user_id, day, result, created, question_id)'
+                        ' VALUES (?, ?, ?, ?, ?)',
+                        (user_id, day, result, now, question)
+                    )
+                    db.commit()
+
+        # update last page, activity (for day completion)
+        if to_next_page:
+            lastpage += 1
+            update_lastpage(lastpage, 0, user_id, day)
+            if lastpage == day_to_lastpage_dict[day]:
+                update_lastpage(lastpage, 1, user_id, day)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
@@ -102,9 +145,10 @@ def get_survey(user_id_hashid, day_hashid):
 
     # mark as completed
     day_to_lastpage_dict = {1:10, 2:10} # number of pages counting from 1 (different implementation from pilot)
-    if lastpage == day_to_lastpage_dict[day]:
-        update_lastpage(lastpage, 1, user_id, day)
+
+    # collect survey reponse
+    save_result(user_id, day, request, day_to_lastpage_dict)
 
     walkathon = {'phrase_for_day':u'2019年7月27日', 'phrase_for_week':u'2019年7月22-28日'}
 
-    return render_template('xian/survey' + str(day) + '.html', walkathon=walkathon)
+    return render_template('xian/survey' + str(day) + '.html', lastpage=lastpage, walkathon=walkathon)
