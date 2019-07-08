@@ -3,6 +3,7 @@ Flask app for info and survey distribution.
 
 ## Documentations
 ### pilot
+- Read [documentation](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
 - [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
   - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
 
@@ -40,22 +41,6 @@ Headers: event_id, title, subtitle, info_date, info_time, location, image_file, 
 ```bash
 wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
 ```
-
-## Local  
-**Crud**
-- http://127.0.0.1:5000/allResults
-- http://127.0.0.1:5000/allActivities
-- http://127.0.0.1:5000/allUsers
-- http://127.0.0.1:5000/allEvents
-- http://127.0.0.1:5000/eventUpdate
-
-## HTTPS  
-**Crud**
-- https://dailyeventinfo.com/allResults
-- https://dailyeventinfo.com/allActivities
-- https://dailyeventinfo.com/allUsers
-- https://dailyeventinfo.com/allEvents
-- https://dailyeventinfo.com/eventUpdate
 
 ## Cohorts
 ### CRUD
@@ -109,32 +94,111 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-- Git branches
-  - `master` = deployed
-    - merge `dev` to `master`
+**Git branches**
+- `master` = deployed
+  - merge `dev` to `master`
 
-    ```
-    (on dev)$ git merge master
-    (resolve any merge conflicts if there are any)
-    git checkout master
-    git merge dev (there won't be any conflicts now)
-    ```
+  ```
+  (on dev)$ git merge master
+  (resolve any merge conflicts if there are any)
+  git checkout master
+  git merge dev (there won't be any conflicts now)
+  ```
 
-  - `dev` = latest working demo, merge into master regularly for deployment
-    - push `dev` branch work to `dev`: `git push -u origin dev`
-  - `<feature-branch>` = developing, merge into dev branch regularly
-    - start a new feature: `git checkout -b <feature-branch> dev`
-    - commit, test and push `git push --set-upstream origin <feature-branch>`
-    - merge to `dev`
+- `dev` = latest working demo, merge into master regularly for deployment
+  - push `dev` branch work to `dev`: `git push -u origin dev`
+- `<feature-branch>` = developing, merge into dev branch regularly
+  - start a new feature: `git checkout -b <feature-branch> dev`
+  - commit, test and push `git push --set-upstream origin <feature-branch>`
+  - merge to `dev`
 
-    ```
-    git commit -am "Your message"
-    git checkout dev
-    git merge --no-ff <feature-branch>
-    git push origin dev
-    git push origin <feature-branch>
-    ```
+  ```
+  git commit -am "Your message"
+  git checkout dev
+  git merge --no-ff <feature-branch>
+  git push origin dev
+  git push origin <feature-branch>
+  ```
 
-  - get changes from master to branches
-    - `git checkout <branch>` get to the branch
-    - `git rebase master` (discard history) or `git merge origin/master`
+- get changes from master to branches
+  - `git checkout <branch>` get to the branch
+  - `git rebase master` (discard history) or `git merge origin/master`
+
+**File structure**
+```bash
+media
+├── __init__.py
+├── crud.py
+├── db.py
+├── pilot.py
+├── schema.sql
+├── static
+│   ├── img
+│   │   ├── ...
+│   │   ├── favicon.ico
+│   │   ├── favicon_package_v0.16
+│   │   │   └── ...
+│   ├── scripts
+│   │   ├── bootstrap.js
+│   │   ├── bootstrap.min.js
+│   │   ├── jquery-3.3.1.slim.min.js
+│   │   ├── jweixin-1.2.0.js
+│   │   ├── popper.min.js
+│   │   ├── survey1.js
+│   │   ├── survey2.js
+│   │   ├── survey3.js
+│   │   ├── survey4.js
+│   │   ├── survey5.js
+│   │   ├── survey6.js
+│   │   ├── survey7.js
+│   │   ├── survey8.js
+│   │   └── surveyInfo.js
+│   └── styles
+│       ├── bootstrap.css
+│       ├── consentForm.css
+│       ├── infoPage.css
+│       ├── infoPageTest.css
+│       └── questions.css
+├── templates
+│   ├── crud
+│   │   ├── README.md
+│   │   ├── activityList.html
+│   │   ├── home.html
+│   │   ├── infoList.html
+│   │   ├── surveyList.html
+│   │   ├── updateEvent.html
+│   │   └── userList.html
+│   ├── pilot
+│   │   ├── README.md
+│   │   ├── completionPage.html
+│   │   ├── consentForm.html
+│   │   ├── infoPage.html
+│   │   ├── infoPageAQ.html
+│   │   ├── infoPageCO.html
+│   │   ├── survey1.html
+│   │   ├── survey2.html
+│   │   ├── survey3.html
+│   │   ├── survey4.html
+│   │   ├── survey5.html
+│   │   ├── survey6.html
+│   │   ├── survey6T3.html
+│   │   ├── survey6T5.html
+│   │   ├── survey7.html
+│   │   ├── survey8.html
+│   │   └── surveyInfo.html
+│   ├── ui_test
+│   │   ├── README.md
+│   │   ├── infoPagea.html
+│   │   ├── infoPageb.html
+│   │   ├── infoPagec.html
+│   │   └── infoPaged.html
+│   └── xian
+│       ├── README.md
+│       ├── infoPagea.html
+│       ├── infoPagec.html
+│       ├── survey1.html
+│       └── survey2.html
+├── ui_test.py
+├── xian.py
+└── xian.pyc
+```
