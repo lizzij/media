@@ -34,28 +34,24 @@ def get_event_info(event_id, cohort = 1): # TODO TODO TODO TODO TODO TODO: chang
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day):
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:10}):
     db = get_db()
-    lastpage = db.execute(
+    last_activity = db.execute(
         'SELECT survey_page, day'
         ' FROM activity a'
         ' WHERE a.user_id = ?',
         (user_id,)
     ).fetchone()
-    if lastpage is None:
-        # TODO TODO TODO TODO TODO TODO comment out if using chatbot to post update activity TODO TODO TODO TODO TODO TODO
-        now = datetime.now()
-        db = get_db()
-        db.execute(
-            'INSERT INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
-            ' VALUES (?, ?, ?, ?, ?, ?)',
-            (user_id, day, False, 0, now, now)
-        )
-        db.commit()
-        # TODO TODO TODO TODO TODO TODO comment out if using chatbot to post update activity TODO TODO TODO TODO TODO TODO
+    if last_activity is None:
         lastpage = 0
     else:
-        lastpage = lastpage[0]
+        lastday = last_activity[1]
+        if day < lastday: # completed
+            lastpage = day_to_lastpage_dict[day]
+        elif day == lastday: # partially completed
+            lastpage = last_activity[0]
+        else:
+            lastpage = 0
     return lastpage
 
 def update_lastpage(lastpage, day_complete, user_id, day):
@@ -140,14 +136,50 @@ def get_survey(user_id_hashid, day_hashid):
 
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
-    if lastpage == 0: # if reading for the first time
-        update_lastpage(1, 0, user_id, day)
 
     # mark as completed
-    day_to_lastpage_dict = {1:10, 2:10} # number of pages counting from 1 (different implementation from pilot)
+    day_to_lastpage_dict = {1:4, 2:10} # number of pages counting from 1 (different implementation from pilot)
 
     # collect survey reponse
-    save_result(user_id, day, request, day_to_lastpage_dict)
+    lastpage = get_lastpage(user_id, day)
+
+    if request.method == 'POST':
+        now = datetime.now()
+        f = request.form
+        db = get_db()
+
+        # default do not go to next page on refresh or submit
+        global to_next_page
+        to_next_page = False
+
+        # save answer
+        for question in f.keys():
+            for result in f.getlist(question):
+                # check if answer already exists (prevent duplication)
+                previous_result = db.execute(
+                    'SELECT result'
+                    ' FROM survey s'
+                    ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+                    (user_id, day, question)
+                ).fetchone()
+
+                # save result if not duplicated
+                if previous_result is None:
+                    # and go to next page
+                    to_next_page = True
+                    db.execute(
+                        'INSERT INTO survey (user_id, day, result, created, question_id)'
+                        ' VALUES (?, ?, ?, ?, ?)',
+                        (user_id, day, result, now, question)
+                    )
+                    db.commit()
+
+        # update last page, activity (for day completion)
+        if to_next_page:
+            lastpage += 1
+            update_lastpage(lastpage, 0, user_id, day)
+            if lastpage == day_to_lastpage_dict[day]:
+                update_lastpage(lastpage, 1, user_id, day)
 
     walkathon = {'phrase_for_day':u'2019年7月27日', 'phrase_for_week':u'2019年7月22-28日'}
 
