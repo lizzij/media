@@ -109,7 +109,7 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-Git branches
+**Git branches**
 - `master` = deployed
   - merge `dev` to `master`
 
@@ -139,8 +139,7 @@ Git branches
   - `git checkout <branch>` get to the branch
   - `git rebase master` (discard history) or `git merge origin/master`
 
-File structure
-
+**File structure**
 ```bash
 media
 ├── __init__.py
