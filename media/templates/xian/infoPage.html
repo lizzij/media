@@ -23,7 +23,7 @@
     <!-- Modal content -->
     <div class="modal-content">
       <span class="close">&times;</span>
-      <p>以下是一项关于北京本地或周边的户外活动及场所的信息。
+      <p>以下是一项关于西安本地或周边的户外活动及场所的信息。
         依照参与者的意向，我们或将于{{ (info['phrase_for_week']) }}组团结伴前往。
         请您仔细思考是否有意向参与该活动。
         (我们从多种来源获得该活动的信息，这些来源对信息的准确性负责。)</p>
@@ -99,15 +99,11 @@
 
   <div id="moreInfo" style="display:none;">
     <!-- weather -->
-    <section class="weather">
+    <section class="weather" style="top:560px;">
 
       <!-- temperature -->
-      <section class="temperature">
+      <section class="temperature" style="top:0px;">
         <div id="temperatureHeader">室外气温</div>
-        <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
         <div id="temperatureSubtitle">{{ info['phrase_for_header'] }} <br />去年平均气温</div>
 
         <!-- temperture low -->
@@ -125,76 +121,10 @@
         </div>
       </section>
 
-      <!-- air quality -->
-      <section class="airQuality">
-        <div id="airQualityHeader">
-          <div id="airQualityTitle">
-            空气质量
-          </div>
-        </div>
-        <div id="airQualitySubtitle">去年{{ info['phrase_for_header'] }}<br />空气质量：</div>
-        <div id="airQualityCurr">良</div>
-        <div id="airQualitySource">{{ air_quality_source }}</div>
-        <div id="airQualityLogo">
-          <img src={{url_for('static', filename=air_quality_source_logo) }} height="23">
-        </div>
-
-        <!-- air quality scale -->
-        <div class="airQualityScale">
-
-          <!-- levels -->
-          <div class="levels">
-            <div id="infoLevel1">1级</div>
-            <div id="infoLevel2">2级</div>
-            <div id="infoLevel3">3级</div>
-            <div id="infoLevel4">4级</div>
-            <div id="infoLevel5">5级</div>
-            <div id="infoLevel6">6级</div>
-          </div>
-
-          <!-- level descriptions -->
-          <div class="levelDescription">
-            <div id="level1Description">优</div>
-            <div id="level2Description">良</div>
-            <div id="level3Description">轻度污染</div>
-            <div id="level4Description">中度污染</div>
-            <div id="level5Description">重度污染</div>
-            <div id="level6Description">严重污染</div>
-          </div>
-
-          <!-- color bar -->
-          <div>
-            <svg id="colorBar1">
-              <rect />
-            </svg>
-            <svg id="colorBar2">
-              <rect />
-            </svg>
-            <svg id="colorBar3">
-              <rect />
-            </svg>
-            <svg id="colorBar4">
-              <rect />
-            </svg>
-            <svg id="colorBar5">
-              <rect />
-            </svg>
-            <svg id="colorBar6">
-              <rect />
-            </svg>
-          </div>
-
-          <!-- air quality detail -->
-          <div id="airQualityDetail">
-            良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
-          </div>
-        </div>
-      </section>
-
     </section>
 
     <!-- next button -->
-    <section class="infoNextButton" style="top:990px; padding-bottom:100px;">
+    <section class="infoNextButton" style="top:710px; padding-bottom:400px;">
       <div id="nextButton">
         <div id="infoButton">
           <img src="{{ url_for('static', filename='img/Button.png') }}">
@@ -202,7 +132,7 @@
         <div id="infoNext">下一页</div>
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
-            location.href = "{{ url_for('xian.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+            location.href = "{{ url_for('xian.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid) }}";
           }
         </script>
       </div>
@@ -211,20 +141,6 @@
       </div>
     </section>
   </div>
-  <!-- powered by -->
-  <!-- <section class="poweredBy">
-    <div id="lizzijIcon">
-      <img src="{{ url_for('static', filename='img/lizzij icon.png') }}" width="11.25" height="9">
-    </div>
-    <div id="lizzij">
-      <img src="{{ url_for('static', filename='img/lizzij.png') }}" width="15" height="9">
-    </div>
-    <section class="poweredByText">
-      <div id="dashLeft">-</div>
-      <div id="poweredBy">Powered by</div>
-      <div id="dashRight">-</div>
-    </section>
-  </section> -->
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
 </body>
 
