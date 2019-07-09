@@ -34,7 +34,7 @@ def get_event_info(event_id, cohort = 1): # TODO TODO TODO TODO TODO TODO: chang
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:9}):
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:8}):
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -102,7 +102,7 @@ def get_survey(user_id_hashid, day_hashid):
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
     # mark as completed
-    day_to_lastpage_dict = {1:4, 2:9}
+    day_to_lastpage_dict = {1:4, 2:8}
 
     if request.method == 'POST':
         form = request.form
