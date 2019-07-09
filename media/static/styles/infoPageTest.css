@@ -403,7 +403,7 @@ header #eventLocation{
 #airQualitySource{
   position: absolute;
   top: 45px;
-  right: 3px;
+  right: 70px;
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #4F4F4F;
@@ -413,7 +413,7 @@ header #eventLocation{
   position: absolute;
   width: 70px;
   height: 11.43px;
-  right: 70px;
+  right: 60px;
   top: 71px;
 }
 

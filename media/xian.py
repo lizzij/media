@@ -69,22 +69,27 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
     treatment = user[2]
+    user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
-    day_to_template_dict = {1:'', 2:'AQ'}
-    template = day_to_template_dict[day]
+    # Air quality info to be shown only to Groups TRO/TRN, not to TNO/TNN
+    treatment_day_to_template_dict = { 'TNO' : {1:'', 2:''}, 'TNN' : {1:'', 2:''}, 'TRO' : {1:'', 2:'AQ'}, 'TRN' : {1:'', 2:'AQ'}}
+    template = treatment_day_to_template_dict[treatment][day]
 
     day_to_info_id_dict = {1:1, 2:2} # TODO TODO TODO TODO TODO TODO change event_id to 1:10, 2:info_id (for day 2) TODO TODO TODO TODO TODO TODO
     info = get_event_info(day_to_info_id_dict[day])
 
-    air_quality_source = u'西安市生态环境局'
-    air_quality_source_logo = u'img/SourceXaepbLogo.jpeg'
+    day_to_air_quality_source_dict = {1:u'', 2:u'华商报'}
+    day_to_air_quality_source_logo_dict = {1:'img/transparent.png', 2:'img/SourceHSBLogo.png'}
+    air_quality_source = day_to_air_quality_source_dict[day]
+    air_quality_source_logo = day_to_air_quality_source_logo_dict[day]
+    air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
 
     # if competed direct to last saved survey page (skip info)
     lastpage = get_lastpage(user_id, day)
     if lastpage > 0: # have seen the survey page
         return redirect(url_for('xian.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
-    return render_template('xian/infoPage' + template + '.html', info=info, user_id_hashid=user_id_hashid, day_hashid=day_hashid, air_quality_source=air_quality_source, air_quality_source_logo=air_quality_source_logo)
+    return render_template('xian/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
