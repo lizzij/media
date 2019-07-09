@@ -97,6 +97,7 @@ def get_survey(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
     treatment = user[2]
+    user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
@@ -144,4 +145,4 @@ def get_survey(user_id_hashid, day_hashid):
     second_event = get_event_info(7,2) # TODO TODO TODO TODO TODO TODO change event id later TODO TODO TODO TODO TODO TODO
     walkathon = get_event_info(8,2) # TODO TODO TODO TODO TODO TODO change to 10,3 TODO TODO TODO TODO TODO TODO
 
-    return render_template('xian/survey' + str(day) + '.html', lastpage=lastpage, second_event=second_event, walkathon=walkathon)
+    return render_template('xian/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon)

@@ -386,6 +386,12 @@ div.trustScaleLabel > div{
   font-weight: bold;
 }
 
+#starSatisfiedLeftCount{
+  padding-left: 2px;
+  padding-right: 2px;
+  font-weight: bold;
+}
+
 .starGroup1{
   display: flex;
   padding-bottom: 5px;
@@ -480,7 +486,26 @@ div.trustScaleLabel > div{
   padding-top: 3px;
 }
 
-.starGroup6Cover{
+.starSatisfiedContainer{
+  overflow: hidden;
+  color: #979797;
+  padding-top: 3px;
+}
+
+.starSatisfiedContainer div {
+  height: 15px
+}
+
+.star {
+  text-align: center;
+  width: 19px;
+  float: left;
+  z-index: -1;
+  font-size: 18px;
+  line-height: 0.9;
+}
+
+.starSatisfiedGroup1Cover{
   position: absolute;
   content: '\2605';
   color: #FFD700;
@@ -489,11 +514,67 @@ div.trustScaleLabel > div{
   padding-top: 3px;
 }
 
+.starSatisfiedGroup2Cover{
+  position: absolute;
+  content: '\2605';
+  color: #FFD700;
+  padding-left: 92px;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.starSatisfiedGroup3Cover{
+  position: absolute;
+  content: '\2605';
+  color: #FFD700;
+  padding-left: 92px;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.starSatisfiedGroup4Cover{
+  position: absolute;
+  content: '\2605';
+  color: #FFD700;
+  padding-left: 92px;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.starSatisfiedGroup5Cover{
+  position: absolute;
+  content: '\2605';
+  color: #FFD700;
+  padding-left: 92px;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+
 #starLeftContainer{
   color: #FFD700;
 }
 
+#starSatisfiedLeftContainer{
+  padding-top: 4px;
+  color: #FFD700;
+}
+
 #starAlert{
+  position: absolute;
+  width:205px;
+  top: 496px;
+  left: calc(50% - 66px);
+  /* left: 116px; */
+  color: #FF3333;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  background: rgb(255,255,255);
+  background: rgba(255,255,255, 0.6);
+}
+
+#starSatisfiedAlert{
   position: absolute;
   width:205px;
   top: 496px;
@@ -534,6 +615,34 @@ div.trustScaleLabel > div{
 }
 
 #clear{
+  position:absolute;
+  top: -7px;
+  left: 4px;
+  width: 10px;
+  height: 19px;
+  font-size: 20px;
+  color: #000000;
+  z-index: 2;
+}
+
+#clearAllSatisfiedButton{
+  position:absolute;
+  top: 496px;
+  left: calc(50% + 140px);
+  /* left: 312px; */
+  width: 19px;
+  height: 19px;
+  border-radius: 15px;
+  right: 20px;
+  margin-right: auto;
+
+  /* ShanghaiGrey */
+  background: #DCDCDC;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+}
+
+#clearSatisfied{
   position:absolute;
   top: -7px;
   left: 4px;
