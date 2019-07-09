@@ -204,6 +204,366 @@
   </div>
   </form>
 
+  {% if user['treatment'] == 'TNO' or user['treatment'] == 'TRO' %}
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
+  <!-- page 3 -->
+  <div class="page" id="page3" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
+          <div id="note">
+            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十二个星星</br>
+                 - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+                 - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+                 - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starLeftCount">12</div>
+              <div>星</div>
+            </div>
+            <div class="starContainer" id="starLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>优</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
+              <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starGroup1Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starCountGroup(1,10)">☆</div>
+              <div class="star" onclick="starCountGroup(1,11)">☆</div>
+              <div class="star" onclick="starCountGroup(1,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>良</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
+              <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starGroup2Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starCountGroup(2,10)">☆</div>
+              <div class="star" onclick="starCountGroup(2,11)">☆</div>
+              <div class="star" onclick="starCountGroup(2,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>轻度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
+              <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starGroup3Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starCountGroup(3,10)">☆</div>
+              <div class="star" onclick="starCountGroup(3,11)">☆</div>
+              <div class="star" onclick="starCountGroup(3,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>中度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
+              <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starGroup4Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starCountGroup(4,10)">☆</div>
+              <div class="star" onclick="starCountGroup(4,11)">☆</div>
+              <div class="star" onclick="starCountGroup(4,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>重度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
+              <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starGroup5Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starCountGroup(5,10)">☆</div>
+              <div class="star" onclick="starCountGroup(5,11)">☆</div>
+              <div class="star" onclick="starCountGroup(5,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup6">
+            <div class="starPrompt">
+              <div>严重污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
+              <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup6Cover" id="starGroup6Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(6,1)">☆</div>
+              <div class="star" onclick="starCountGroup(6,2)">☆</div>
+              <div class="star" onclick="starCountGroup(6,3)">☆</div>
+              <div class="star" onclick="starCountGroup(6,4)">☆</div>
+              <div class="star" onclick="starCountGroup(6,5)">☆</div>
+              <div class="star" onclick="starCountGroup(6,6)">☆</div>
+              <div class="star" onclick="starCountGroup(6,7)">☆</div>
+              <div class="star" onclick="starCountGroup(6,8)">☆</div>
+              <div class="star" onclick="starCountGroup(6,9)">☆</div>
+              <div class="star" onclick="starCountGroup(6,10)">☆</div>
+              <div class="star" onclick="starCountGroup(6,11)">☆</div>
+              <div class="star" onclick="starCountGroup(6,12)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
+              <div id="clear">&times;</div>
+            </div></div>
+          <div id="groupDescription"></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+  {% else %}
+  <!-- alternative new question for TNN/TRN -->
+  <form lang="zh" action="" onsubmit="return validatestarSatisfied();" method="post">
+  <!-- page 3 -->
+  <div class="page" id="page3" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。请您预测一下您对那一周的空气质量满意程度。</p>
+          <div id="note">
+            <p>分配给您10个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十个星星</br>
+                 - 如果您极度不认同某个选项 → 请选择放置零星星</br>
+                 - 如果您认为完全认同某个选项 → 请选择放置所有星星</br>
+                 - 如果您对每个选项认同度相等 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starSatisfiedLeftCount">10</div>
+              <div>星</div>
+            </div>
+            <div class="starSatisfiedContainer" id="starSatisfiedLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starSatisfiedAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>非常满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup1" onchange="updatestarSatisfiedInput(1)">0</div>
+              <input name="starSatisfiedCountGroup1Input" id="starSatisfiedCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starSatisfiedGroup1Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>比较满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup2" onchange="updatestarSatisfiedInput(2)">0</div>
+              <input name="starSatisfiedCountGroup2Input" id="starSatisfiedCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starSatisfiedGroup2Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>中立</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup3" onchange="updatestarSatisfiedInput(3)">0</div>
+              <input name="starSatisfiedCountGroup3Input" id="starSatisfiedCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starSatisfiedGroup3Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>不太满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup4" onchange="updatestarSatisfiedInput(4)">0</div>
+              <input name="starSatisfiedCountGroup4Input" id="starSatisfiedCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starSatisfiedGroup4Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>非常不满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup5" onchange="updatestarSatisfiedInput(5)">0</div>
+              <input name="starSatisfiedCountGroup5Input" id="starSatisfiedCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starSatisfiedGroup5Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,10)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllstarSatisfiedsButton" onclick="clearAllstarSatisfieds()"><div id="clearAllButton">
+              <div id="clearSatisfied">&times;</div>
+            </div></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+  {% endif %}
+
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
   <!-- page 3 -->
   <div class="page" id="page3" style="display:none">
@@ -603,7 +963,7 @@
   </script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jweixin-1.2.0.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/xian.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/xian1.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
 
