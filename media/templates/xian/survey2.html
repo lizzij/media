@@ -10,7 +10,7 @@
   <title>问卷</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPageTest.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
@@ -131,9 +131,87 @@
             </div>
           </section>
 
+          {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
+          <section class="airQuality">
+            <div id="airQualityHeader">
+              <div id="airQualityTitle">
+                空气质量
+              </div>
+            </div>
+            <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
+            <div id="airQualityCurr">良</div>
+            <div id="airQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
+            <div id="airQualityLogo">
+              <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="23">
+            </div>
+
+            <!-- air quality scale -->
+            <div class="airQualityScale">
+
+              <!-- levels -->
+              <div class="levels">
+                <div id="infoLevel1">1级</div>
+                <div id="infoLevel2">2级</div>
+                <div id="infoLevel3">3级</div>
+                <div id="infoLevel4">4级</div>
+                <div id="infoLevel5">5级</div>
+                <div id="infoLevel6">6级</div>
+              </div>
+
+              <!-- level descriptions -->
+              <div class="levelDescription">
+                <div id="level1Description">优</div>
+                <div id="level2Description">良</div>
+                <div id="level3Description">轻度污染</div>
+                <div id="level4Description">中度污染</div>
+                <div id="level5Description">重度污染</div>
+                <div id="level6Description">严重污染</div>
+              </div>
+
+              <!-- color bar -->
+              <div>
+                <svg id="colorBar1">
+                  <rect />
+                </svg>
+                <svg id="colorBar2">
+                  <rect />
+                </svg>
+                <svg id="colorBar3">
+                  <rect />
+                </svg>
+                <svg id="colorBar4">
+                  <rect />
+                </svg>
+                <svg id="colorBar5">
+                  <rect />
+                </svg>
+                <svg id="colorBar6">
+                  <rect />
+                </svg>
+              </div>
+
+              <!-- air quality detail -->
+              <div id="airQualityDetail">
+                良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+              </div>
+            </div>
+          </section>
+          {% endif %}
+
         </section>
 
+        {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
         <!-- next button -->
+        <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 950px;">
+          <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
+          </input>
+        </div>
+        {% else %}
         <div class="nextButton" style="
             position: absolute;
             width: 375px;
@@ -143,6 +221,7 @@
           <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
           </input>
         </div>
+        {% endif %}
       </div>
     </div>
     </div>
@@ -266,9 +345,9 @@
             <!-- air quality -->
             <section class="airQuality">
               <div id="airQualityHeader">空气质量：良</div>
-              <div id="airQualitySource">{{ (walkathon['air_quality_source']) }}</div>
-              <div id="airQualityLogo">
-                <img src="{{ url_for('static', filename='img/SourceSHEnvironmentLogo.jpg') }}" height="23">
+              <div id="airQualitySource" style="right:13px;">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:80px;">
+                <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="23">
               </div>
 
               <!-- air quality scale -->
@@ -341,203 +420,367 @@
     </div>
   </form>
 
+  {% if user['treatment'] == 'TNO' or user['treatment'] == 'TRO' %}
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
-    <!-- page 5 -->
-    <div id="page5" style="display:none">
-      <div class="survey">
-        <div class="mainQuestion">关于天气预测的问题</div>
-        <div class="question">
-          <div class="questionPrompt">
-            <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
-            <div id="note">
-              <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
-                <p id="subNote"><b>注意：</b></br>
-                   - 每个星星代表十分之一的可能性</br>
-                   - 请用完所有十二个星星</br>
-                   - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
-                   - 如果您认为某类一定发生 → 请选择放置所有星星</br>
-                   - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
-                   - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+  <!-- page 3 -->
+  <div class="page" id="page5" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
+          <div id="note">
+            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十二个星星</br>
+                 - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+                 - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+                 - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starLeftCount">12</div>
+              <div>星</div>
+            </div>
+            <div class="starContainer" id="starLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
             </div>
           </div>
-          <div class="questionAnswer" style="padding-left: 0px;">
-            <div class="starLeft">
-              <div class="starPrompt" id="starLeftPrompt">
-                <div>余</div>
-                <div id="starLeftCount">12</div>
-                <div>星</div>
-              </div>
-              <div class="starContainer" id="starLeftContainer">
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-                <div class="star">&starf;</div>
-              </div>
+          <div id="starAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>优</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
+              <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
             </div>
-            <div id="starAlert"></div>
-            <div class="starGroup1">
-              <div class="starPrompt">
-                <div>优</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
-                <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup1Cover" id="starGroup1Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(1,1)">☆</div>
-                <div class="star" onclick="starCountGroup(1,2)">☆</div>
-                <div class="star" onclick="starCountGroup(1,3)">☆</div>
-                <div class="star" onclick="starCountGroup(1,4)">☆</div>
-                <div class="star" onclick="starCountGroup(1,5)">☆</div>
-                <div class="star" onclick="starCountGroup(1,6)">☆</div>
-                <div class="star" onclick="starCountGroup(1,7)">☆</div>
-                <div class="star" onclick="starCountGroup(1,8)">☆</div>
-                <div class="star" onclick="starCountGroup(1,9)">☆</div>
-                <div class="star" onclick="starCountGroup(1,10)">☆</div>
-                <div class="star" onclick="starCountGroup(1,11)">☆</div>
-                <div class="star" onclick="starCountGroup(1,12)">☆</div>
-              </div>
+            <div class="starGroup1Cover" id="starGroup1Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starCountGroup(1,10)">☆</div>
+              <div class="star" onclick="starCountGroup(1,11)">☆</div>
+              <div class="star" onclick="starCountGroup(1,12)">☆</div>
             </div>
-            <div class="starGroup2">
-              <div class="starPrompt">
-                <div>良</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
-                <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup2Cover" id="starGroup2Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(2,1)">☆</div>
-                <div class="star" onclick="starCountGroup(2,2)">☆</div>
-                <div class="star" onclick="starCountGroup(2,3)">☆</div>
-                <div class="star" onclick="starCountGroup(2,4)">☆</div>
-                <div class="star" onclick="starCountGroup(2,5)">☆</div>
-                <div class="star" onclick="starCountGroup(2,6)">☆</div>
-                <div class="star" onclick="starCountGroup(2,7)">☆</div>
-                <div class="star" onclick="starCountGroup(2,8)">☆</div>
-                <div class="star" onclick="starCountGroup(2,9)">☆</div>
-                <div class="star" onclick="starCountGroup(2,10)">☆</div>
-                <div class="star" onclick="starCountGroup(2,11)">☆</div>
-                <div class="star" onclick="starCountGroup(2,12)">☆</div>
-              </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>良</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
+              <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
             </div>
-            <div class="starGroup3">
-              <div class="starPrompt">
-                <div>轻度污染</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
-                <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup3Cover" id="starGroup3Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(3,1)">☆</div>
-                <div class="star" onclick="starCountGroup(3,2)">☆</div>
-                <div class="star" onclick="starCountGroup(3,3)">☆</div>
-                <div class="star" onclick="starCountGroup(3,4)">☆</div>
-                <div class="star" onclick="starCountGroup(3,5)">☆</div>
-                <div class="star" onclick="starCountGroup(3,6)">☆</div>
-                <div class="star" onclick="starCountGroup(3,7)">☆</div>
-                <div class="star" onclick="starCountGroup(3,8)">☆</div>
-                <div class="star" onclick="starCountGroup(3,9)">☆</div>
-                <div class="star" onclick="starCountGroup(3,10)">☆</div>
-                <div class="star" onclick="starCountGroup(3,11)">☆</div>
-                <div class="star" onclick="starCountGroup(3,12)">☆</div>
-              </div>
+            <div class="starGroup2Cover" id="starGroup2Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starCountGroup(2,10)">☆</div>
+              <div class="star" onclick="starCountGroup(2,11)">☆</div>
+              <div class="star" onclick="starCountGroup(2,12)">☆</div>
             </div>
-            <div class="starGroup4">
-              <div class="starPrompt">
-                <div>中度污染</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
-                <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup4Cover" id="starGroup4Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(4,1)">☆</div>
-                <div class="star" onclick="starCountGroup(4,2)">☆</div>
-                <div class="star" onclick="starCountGroup(4,3)">☆</div>
-                <div class="star" onclick="starCountGroup(4,4)">☆</div>
-                <div class="star" onclick="starCountGroup(4,5)">☆</div>
-                <div class="star" onclick="starCountGroup(4,6)">☆</div>
-                <div class="star" onclick="starCountGroup(4,7)">☆</div>
-                <div class="star" onclick="starCountGroup(4,8)">☆</div>
-                <div class="star" onclick="starCountGroup(4,9)">☆</div>
-                <div class="star" onclick="starCountGroup(4,10)">☆</div>
-                <div class="star" onclick="starCountGroup(4,11)">☆</div>
-                <div class="star" onclick="starCountGroup(4,12)">☆</div>
-              </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>轻度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
+              <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
             </div>
-            <div class="starGroup5">
-              <div class="starPrompt">
-                <div>重度污染</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
-                <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup5Cover" id="starGroup5Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(5,1)">☆</div>
-                <div class="star" onclick="starCountGroup(5,2)">☆</div>
-                <div class="star" onclick="starCountGroup(5,3)">☆</div>
-                <div class="star" onclick="starCountGroup(5,4)">☆</div>
-                <div class="star" onclick="starCountGroup(5,5)">☆</div>
-                <div class="star" onclick="starCountGroup(5,6)">☆</div>
-                <div class="star" onclick="starCountGroup(5,7)">☆</div>
-                <div class="star" onclick="starCountGroup(5,8)">☆</div>
-                <div class="star" onclick="starCountGroup(5,9)">☆</div>
-                <div class="star" onclick="starCountGroup(5,10)">☆</div>
-                <div class="star" onclick="starCountGroup(5,11)">☆</div>
-                <div class="star" onclick="starCountGroup(5,12)">☆</div>
-              </div>
+            <div class="starGroup3Cover" id="starGroup3Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starCountGroup(3,10)">☆</div>
+              <div class="star" onclick="starCountGroup(3,11)">☆</div>
+              <div class="star" onclick="starCountGroup(3,12)">☆</div>
             </div>
-            <div class="starGroup6">
-              <div class="starPrompt">
-                <div>严重污染</div>
-                <div>&nbsp</div>
-                <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
-                <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
-              </div>
-              <div class="starGroup6Cover" id="starGroup6Cover"></div>
-              <div class="starContainer">
-                <div class="star" onclick="starCountGroup(6,1)">☆</div>
-                <div class="star" onclick="starCountGroup(6,2)">☆</div>
-                <div class="star" onclick="starCountGroup(6,3)">☆</div>
-                <div class="star" onclick="starCountGroup(6,4)">☆</div>
-                <div class="star" onclick="starCountGroup(6,5)">☆</div>
-                <div class="star" onclick="starCountGroup(6,6)">☆</div>
-                <div class="star" onclick="starCountGroup(6,7)">☆</div>
-                <div class="star" onclick="starCountGroup(6,8)">☆</div>
-                <div class="star" onclick="starCountGroup(6,9)">☆</div>
-                <div class="star" onclick="starCountGroup(6,10)">☆</div>
-                <div class="star" onclick="starCountGroup(6,11)">☆</div>
-                <div class="star" onclick="starCountGroup(6,12)">☆</div>
-              </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>中度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
+              <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
             </div>
-            <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
-                <div id="clear">&times;</div>
-              </div></div>
-            <div id="groupDescription"></div>
+            <div class="starGroup4Cover" id="starGroup4Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starCountGroup(4,10)">☆</div>
+              <div class="star" onclick="starCountGroup(4,11)">☆</div>
+              <div class="star" onclick="starCountGroup(4,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>重度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
+              <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starGroup5Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starCountGroup(5,10)">☆</div>
+              <div class="star" onclick="starCountGroup(5,11)">☆</div>
+              <div class="star" onclick="starCountGroup(5,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup6">
+            <div class="starPrompt">
+              <div>严重污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
+              <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup6Cover" id="starGroup6Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(6,1)">☆</div>
+              <div class="star" onclick="starCountGroup(6,2)">☆</div>
+              <div class="star" onclick="starCountGroup(6,3)">☆</div>
+              <div class="star" onclick="starCountGroup(6,4)">☆</div>
+              <div class="star" onclick="starCountGroup(6,5)">☆</div>
+              <div class="star" onclick="starCountGroup(6,6)">☆</div>
+              <div class="star" onclick="starCountGroup(6,7)">☆</div>
+              <div class="star" onclick="starCountGroup(6,8)">☆</div>
+              <div class="star" onclick="starCountGroup(6,9)">☆</div>
+              <div class="star" onclick="starCountGroup(6,10)">☆</div>
+              <div class="star" onclick="starCountGroup(6,11)">☆</div>
+              <div class="star" onclick="starCountGroup(6,12)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
+              <div id="clear">&times;</div>
+            </div></div>
+          <div id="groupDescription"></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+  {% else %}
+  <!-- alternative new question for TNN/TRN -->
+  <form lang="zh" action="" onsubmit="return validatestarSatisfied();" method="post">
+  <!-- page 5 -->
+  <div class="page" id="page5" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。请您预测一下您对那一周的空气质量满意程度。</p>
+          <div id="note">
+            <p>分配给您10个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十个星星</br>
+                 - 如果您极度不认同某个选项 → 请选择放置零星星</br>
+                 - 如果您认为完全认同某个选项 → 请选择放置所有星星</br>
+                 - 如果您对每个选项认同度相等 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starSatisfiedLeftCount">10</div>
+              <div>星</div>
+            </div>
+            <div class="starSatisfiedContainer" id="starSatisfiedLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starSatisfiedAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>非常满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup1" onchange="updatestarSatisfiedInput(1)">0</div>
+              <input name="starSatisfiedCountGroup1Input" id="starSatisfiedCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starSatisfiedGroup1Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>比较满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup2" onchange="updatestarSatisfiedInput(2)">0</div>
+              <input name="starSatisfiedCountGroup2Input" id="starSatisfiedCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starSatisfiedGroup2Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>中立</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup3" onchange="updatestarSatisfiedInput(3)">0</div>
+              <input name="starSatisfiedCountGroup3Input" id="starSatisfiedCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starSatisfiedGroup3Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>不太满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup4" onchange="updatestarSatisfiedInput(4)">0</div>
+              <input name="starSatisfiedCountGroup4Input" id="starSatisfiedCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starSatisfiedGroup4Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>非常不满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup5" onchange="updatestarSatisfiedInput(5)">0</div>
+              <input name="starSatisfiedCountGroup5Input" id="starSatisfiedCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starSatisfiedGroup5Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,10)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllstarSatisfiedsButton" onclick="clearAllstarSatisfieds()">
+            <div id="clearAllButton">
+              <div id="clearSatisfied">&times;</div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 40%; background-color: #979797;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
     </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
   </form>
+  {% endif %}
 
   <form lang="zh" action="" method="post">
     <!-- page 6 -->
@@ -636,10 +879,10 @@
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">上海环境监测中心</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">新闻晨报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">新闻广播FM93.4</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">上海环境东方网微博</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">西安市生态环境局</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">华商报</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">陕西交通广播 FM91.6</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">西安晚报</label></div>
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
             <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo"><label class="form-check-label" for="sourceNo">我不知道</label></div>
           </div>
@@ -658,34 +901,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <input name="questionOrder" id="sourceTrustOrder" type="hidden" value="{{ user_id }}">
     <div id="page8" style="display:none">
-      <div class="survey" id="survey1">
-        <div class="question">
-          <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
-          <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level1" value="level1"><label class="form-check-label" for="level1">我不知道</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level2" value="level2"><label class="form-check-label" for="level2">绝不可能</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level3" value="level3"><label class="form-check-label" for="level3">不可能</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level4" value="level4"><label class="form-check-label" for="level4">有点可能</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level5" value="level5"><label class="form-check-label" for="level5">可能</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="notReportingProbability" id="level6" value="level6" required><label class="form-check-label" for="level6">极有可能</label></div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 94%; background-color: #979797;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </form>
-
-  <form lang="zh" action="" method="post">
-    <div id="page9" style="display:none">
       <div class="survey" id="survey2">
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
@@ -725,7 +941,7 @@
             </div><!-- option 2 -->
             <div class="peopleTrustOption" id="question2">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">新闻晨报</div>
+                <div class="trustOptionText">西安市生态环境局</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowMorningPost" onclick="dunno(2)">
                   <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
@@ -756,7 +972,7 @@
             </div><!-- option 3 -->
             <div class="peopleTrustOption" id="question3">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">新闻广播FM93.4</div>
+                <div class="trustOptionText">华商报</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowFM" onclick="dunno(3)">
                   <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
@@ -787,7 +1003,7 @@
             </div><!-- option 4 -->
             <div class="peopleTrustOption" id="question4">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">上海市环境监测中心</div>
+                <div class="trustOptionText">陕西交通广播 FM91.6</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="dontKnowSEMC" onclick="dunno(4)">
                   <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
@@ -897,8 +1113,8 @@
     </div>
   </form>
 
-  <!-- page 10 -->
-  <div id="page10" style="display:none">
+  <!-- page 9 -->
+  <div id="page9" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。</div>
     </div>

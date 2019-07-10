@@ -121,7 +121,6 @@ function showClearAllStarsButton() {
 }
 
 $( document ).ready(function() {
-  document.getElementById("clearAllStarsButton").style.display='none';
   randomize();
   randomizeQuestion();
 });
@@ -288,4 +287,100 @@ function trustSlide(index) {
   }
   var left = 2 + 2.88 * trust;
   document.getElementById("trust"+index+"Amount").style.paddingLeft = left + "px";
+}
+
+// new Star qn =================================================================
+function updatestarSatisfiedInput(index) {
+  document.getElementById("starSatisfiedCountGroup"+index+"Input").value = document.getElementById("starSatisfiedCountGroup"+index).innerHTML;
+}
+
+function starSatisfiedCountGroup(index, number) {
+  var starSatisfiedLeftCount = document.getElementById("starSatisfiedLeftCount").innerHTML;
+  var count = document.getElementById("starSatisfiedCountGroup" + index).innerHTML;
+  if (starSatisfiedLeftCount == 0 && number > count) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '已用完10个星星！';
+  }
+  else if (number - count > starSatisfiedLeftCount) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '超过剩余星星！';
+  }
+  else if (number == 1 && count == 0) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '';
+    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = '<div class="star" onclick="starSatisfiedCountGroup('+index+'1)">&starf;</div>';
+    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = '1';
+  }
+  else if (number == 1 && count == 1) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '';
+    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = '';
+    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = '0';
+  }
+  else {
+    document.getElementById("starSatisfiedAlert").innerHTML = '';
+    var starSatisfied = '';
+    var i;
+    for (i = 0; i < number; i++) {
+      starSatisfied = starSatisfied + '<div class="star" onclick="starSatisfiedCountGroup(' + index + ',' + (i+1) + ')">&starf;</div>';
+    }
+    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = starSatisfied;
+    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = number;
+  }
+  starSatisfiedLeft();
+  updatestarSatisfiedInput(index);
+  return false;
+}
+
+function clearAllstarSatisfieds() {
+  document.getElementById("starSatisfiedAlert").innerHTML = '';
+  var starSatisfiedCounts = ["starSatisfiedCountGroup1", "starSatisfiedCountGroup2", "starSatisfiedCountGroup3",
+  "starSatisfiedCountGroup4", "starSatisfiedCountGroup5"];
+  var starSatisfiedCovers = ["starSatisfiedGroup1Cover", "starSatisfiedGroup2Cover", "starSatisfiedGroup3Cover",
+  "starSatisfiedGroup4Cover", "starSatisfiedGroup5Cover"];
+  var i;
+  for (i = 0; i < starSatisfiedCounts.length; i++) {
+    var starSatisfiedCount = starSatisfiedCounts[i];
+    document.getElementById(starSatisfiedCount).innerHTML = '0';
+    var starSatisfiedCover = starSatisfiedCovers[i];
+    document.getElementById(starSatisfiedCover).innerHTML = '';
+  }
+  starSatisfiedLeft();
+}
+
+function starSatisfiedLeft() {
+  var starSatisfiedLeftCount = 10;
+  var starSatisfiedLeft = '';
+  starSatisfiedLeftCount = starSatisfiedLeftCount
+  - document.getElementById("starSatisfiedCountGroup1").innerHTML
+  - document.getElementById("starSatisfiedCountGroup2").innerHTML
+  - document.getElementById("starSatisfiedCountGroup3").innerHTML
+  - document.getElementById("starSatisfiedCountGroup4").innerHTML
+  - document.getElementById("starSatisfiedCountGroup5").innerHTML;
+  var i;
+  for (i = 0; i < starSatisfiedLeftCount; i++) {
+    starSatisfiedLeft = starSatisfiedLeft + '<div class="star">&starf;</div>';
+  }
+  document.getElementById("starSatisfiedLeftCount").innerHTML = starSatisfiedLeftCount + "";
+  document.getElementById("starSatisfiedLeftContainer").innerHTML = starSatisfiedLeft;
+  showClearAllstarSatisfiedsButton();
+}
+
+function showClearAllstarSatisfiedsButton() {
+  var starSatisfiedLeftCount = document.getElementById("starSatisfiedLeftCount").innerHTML;
+  if ((parseInt(starSatisfiedLeftCount)) < 10) {
+    document.getElementById("clearAllstarSatisfiedsButton").style.display='block';
+  }
+  else {
+    document.getElementById("clearAllstarSatisfiedsButton").style.display='none';
+  }
+}
+
+// page 5 => page 6
+function validateStar() {
+  var alert = document.getElementById("starSatisfiedAlert").innerHTML;
+  var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("clearAllStarsButton").style.display='block';
+    return false;
+  }
+  return true;
 }
