@@ -10,7 +10,7 @@
   <title>问卷</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPage.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPageTest.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
@@ -345,8 +345,8 @@
             <!-- air quality -->
             <section class="airQuality">
               <div id="airQualityHeader">空气质量：良</div>
-              <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-              <div id="airQualityLogo">
+              <div id="airQualitySource" style="right:13px;">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:80px;">
                 <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="23">
               </div>
 
@@ -763,9 +763,11 @@
               <div class="star" onclick="starSatisfiedCountGroup(5,10)">☆</div>
             </div>
           </div>
-          <div id="clearAllstarSatisfiedsButton" onclick="clearAllstarSatisfieds()"><div id="clearAllButton">
+          <div id="clearAllstarSatisfiedsButton" onclick="clearAllstarSatisfieds()">
+            <div id="clearAllButton">
               <div id="clearSatisfied">&times;</div>
-            </div></div>
+            </div>
+          </div>
         </div>
       </div>
     </div><!-- next button -->

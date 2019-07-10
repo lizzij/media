@@ -121,7 +121,6 @@ function showClearAllStarsButton() {
 }
 
 $( document ).ready(function() {
-  document.getElementById("clearAllStarsButton").style.display='none';
   randomize();
   randomizeQuestion();
 });
