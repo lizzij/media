@@ -34,7 +34,7 @@ def get_event_info(event_id, cohort = 1): # TODO TODO TODO TODO TODO TODO: chang
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:9}):
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:8}):
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -102,7 +102,7 @@ def get_survey(user_id_hashid, day_hashid):
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
     # mark as completed
-    day_to_lastpage_dict = {1:4, 2:9}
+    day_to_lastpage_dict = {1:4, 2:8}
 
     if request.method == 'POST':
         form = request.form
@@ -145,4 +145,7 @@ def get_survey(user_id_hashid, day_hashid):
     second_event = get_event_info(7,2) # TODO TODO TODO TODO TODO TODO change event id later TODO TODO TODO TODO TODO TODO
     walkathon = get_event_info(8,2) # TODO TODO TODO TODO TODO TODO change to 10,3 TODO TODO TODO TODO TODO TODO
 
-    return render_template('xian/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon)
+    air_quality = { 'second_event' : { 'air_quality_source':u'陕西交通广播 FM91.6', 'air_quality_source_logo':'img/SourceSXJTLogo.png' },
+                    'walkathon' : { 'air_quality_source':u'西安市生态环境局', 'air_quality_source_logo':'img/SourceXaepbLogo.jpeg' } }
+
+    return render_template('xian/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)

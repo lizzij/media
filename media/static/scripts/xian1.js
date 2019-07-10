@@ -226,6 +226,19 @@ function showClearAllStarsButton() {
 }
 
 // new Page 3 ==================================================================
+// validate star question on page 3 => page 4
+function validateStar() {
+  var alert = document.getElementById("starSatisfiedAlert").innerHTML;
+  var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("clearAllStarsButton").style.display='block';
+    return false;
+  }
+  return true;
+}
+
 function updatestarSatisfiedInput(index) {
   document.getElementById("starSatisfiedCountGroup"+index+"Input").value = document.getElementById("starSatisfiedCountGroup"+index).innerHTML;
 }
