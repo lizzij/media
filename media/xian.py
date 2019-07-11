@@ -34,7 +34,7 @@ def get_event_info(event_id, cohort = 1): # TODO TODO TODO TODO TODO TODO: chang
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:8}):
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:4, 2:9}):
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -69,7 +69,7 @@ def get_info(user_id_hashid, day_hashid):
     user_id = user[0]
     day = user[1]
     treatment = user[2]
-    user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
+    user = {'treatment':treatment, 'day':day, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
     # Air quality info to be shown only to Groups TRO/TRN, not to TNO/TNN
     treatment_day_to_template_dict = { 'TNO' : {1:'', 2:''}, 'TNN' : {1:'', 2:''}, 'TRO' : {1:'', 2:'AQ'}, 'TRN' : {1:'', 2:'AQ'}}
@@ -102,7 +102,7 @@ def get_survey(user_id_hashid, day_hashid):
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
     # mark as completed
-    day_to_lastpage_dict = {1:4, 2:8}
+    day_to_lastpage_dict = {1:4, 2:9}
 
     if request.method == 'POST':
         form = request.form
