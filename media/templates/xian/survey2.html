@@ -806,8 +806,8 @@
               <div>请移动下面的滑块：</div>
               <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
                 <div >
-                   我将在{{ walkathon['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走5000步（4公里）
-                     —— 研究人员将代表您向上海联合基金会捐赠10元人民币。</output>
+                   我将在{{ walkathon['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里）
+                     —— 研究人员将代表您向中国儿童少年基金会捐赠0元人民币。</output>
                 </div>
             </pre>
             </div>
@@ -863,8 +863,25 @@
             <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes" ><label class="form-check-label" for="yes">记得</label></div>
           </div>
         </div>
+      </div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 7 -->
+    <div id="page8" style="display:none">
+      <div class="survey">
         <div class="question">
-          <div class="questionPrompt">您认为在过去的6天内，我们引用过多少个空气质量信息的来源</div>
+          <div class="questionPrompt">您认为在过去的2天内，我们引用过多少个空气质量信息的来源</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="1" value="1"><label class="form-check-label" for="1">1</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="2" value="2"><label class="form-check-label" for="2">2</label></div>
@@ -901,8 +918,9 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <div id="page8" style="display:none">
+    <div id="page9" style="display:none">
       <div class="survey" id="survey2">
+        <div class="mainQuestion">关于日常新闻来源的问题</div>
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
           <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="123456">
@@ -1114,7 +1132,7 @@
   </form>
 
   <!-- page 9 -->
-  <div id="page9" style="display:none">
+  <div id="page10" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。</div>
     </div>
