@@ -82,6 +82,15 @@ def update_events():
         db.commit()
     return render_template('crud/updateEvent.html', info=info)
 
+@bp.route('/eventDelete/<event_id>/<cohort>', methods=['GET', 'POST'])
+def delete_event(event_id, cohort):
+    db = get_db()
+    db.execute(
+        'DELETE FROM infos WHERE event_id = ? AND cohort = ?',(event_id, cohort,)
+    )
+    db.commit()
+    return 'complete'
+
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
