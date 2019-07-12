@@ -235,7 +235,7 @@ header #eventLocation{
   width: 346px;
   height: 100px;
   left: calc(50% - 346px/2 + 1px);
-  top: 248px;
+  top: -31px;
   box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.4);
 }
 
@@ -355,7 +355,7 @@ header #eventLocation{
   width: 346px;
   height: 250px;
   left: calc(50% - 346px/2 + 1px);
-  top: -31px;
+  top: 100px;
   /* background: #FFFFFF; */
   box-shadow: 1px 1px 4px rgba(151, 151, 151, 0.4);
 }
