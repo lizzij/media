@@ -6,7 +6,7 @@ function walkathonSlide() {
   var donation = value * 0.002;
   distance = distance.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向中国儿童少年基金会捐赠${donation}元人民币。`;
+  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）`;
   var left = value * 0.0172;
   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
 }
@@ -19,9 +19,6 @@ function showWalkathonSlider() {
 }
 
 // Page 2 ======================================================================
-document.getElementById("weatherClearAllStarsButton").style.display='none';
-document.getElementById("clearAllStarsButton").style.display='none';
-
 // validate weather star question on page 2 => page3
 function validateWeatherStar() {
   var alert = document.getElementById("weatherStarAlert").innerHTML;
@@ -224,17 +221,20 @@ function showClearAllStarsButton() {
   }
 }
 
+document.getElementById("clearAllStarsButton").style.display='none';
+
 // new Page 3 ==================================================================
 // validate star question on page 3 => page 4
-function validateStar() {
+function validatestarSatisfied() {
   var alert = document.getElementById("starSatisfiedAlert").innerHTML;
   var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
-    document.getElementById("clearAllStarsButton").style.display='block';
+    document.getElementById('page3new').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("clearAllstarSatisfiedsButton").style.display='block';
     return false;
   }
+  document.getElementById('page3new').style='display: none;';
   return true;
 }
 
@@ -323,7 +323,7 @@ function showClearAllstarSatisfiedsButton() {
 // Page 4 ======================================================================
 $( document ).ready(function() {
   document.getElementById("weatherClearAllStarsButton").style.display='none';
-  document.getElementById("clearAllStarsButton").style.display='none';
+  document.getElementById("clearAllstarSatisfiedsButton").style.display='none';
 });
 
 function outingSlide(index) {

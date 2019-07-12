@@ -139,7 +139,7 @@
               </div>
             </div>
             <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
-            <div id="airQualityCurr">良</div>
+            <div id="airQualityCurr">优</div>
             <div id="airQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
             <div id="airQualityLogo">
               <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="23">
@@ -192,7 +192,7 @@
 
               <!-- air quality detail -->
               <div id="airQualityDetail">
-                良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+                优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
               </div>
             </div>
           </section>
@@ -344,9 +344,15 @@
 
             <!-- air quality -->
             <section class="airQuality">
-              <div id="airQualityHeader">空气质量：良</div>
-              <div id="airQualitySource" style="right:13px;">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-              <div id="airQualityLogo" style="right:80px;">
+              <div id="airQualityHeader">
+                <div id="airQualityTitle">
+                  空气质量
+                </div>
+              </div>
+              <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
+              <div id="airQualityCurr">优</div>
+              <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo">
                 <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="23">
               </div>
 
@@ -397,7 +403,7 @@
 
                 <!-- air quality detail -->
                 <div id="airQualityDetail">
-                  良：空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响。极少数异常敏感人群应减少户外活动。
+                  优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
                 </div>
               </div>
             </section>
