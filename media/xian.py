@@ -25,7 +25,7 @@ def get_user(user_id_hashid, day_hashid, cohort = 3):
     else:
         return user
 
-def get_event_info(event_id, cohort = 1): # TODO TODO TODO TODO TODO TODO: change 1 to 3 TODO TODO TODO TODO TODO TODO
+def get_event_info(event_id, cohort = 3):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
@@ -75,7 +75,7 @@ def get_info(user_id_hashid, day_hashid):
     treatment_day_to_template_dict = { 'TNO' : {1:'', 2:''}, 'TNN' : {1:'', 2:''}, 'TRO' : {1:'', 2:'AQ'}, 'TRN' : {1:'', 2:'AQ'}}
     template = treatment_day_to_template_dict[treatment][day]
 
-    day_to_info_id_dict = {1:1, 2:2} # TODO TODO TODO TODO TODO TODO change event_id to 1:10, 2:info_id (for day 2) TODO TODO TODO TODO TODO TODO
+    day_to_info_id_dict = {1:10, 2:11}
     info = get_event_info(day_to_info_id_dict[day])
 
     day_to_air_quality_source_dict = {1:u'', 2:u'华商报'}
@@ -142,8 +142,8 @@ def get_survey(user_id_hashid, day_hashid):
             if lastpage == day_to_lastpage_dict[day]:
                 update_lastpage(lastpage, 1, user_id, day)
 
-    second_event = get_event_info(7,2) # TODO TODO TODO TODO TODO TODO change event id later TODO TODO TODO TODO TODO TODO
-    walkathon = get_event_info(8,2) # TODO TODO TODO TODO TODO TODO change to 10,3 TODO TODO TODO TODO TODO TODO
+    second_event = get_event_info(12,3)
+    walkathon = get_event_info(10,3)
 
     air_quality = { 'second_event' : { 'air_quality_source':u'陕西交通广播 FM91.6', 'air_quality_source_logo':'img/SourceSXJTLogo.png' },
                     'walkathon' : { 'air_quality_source':u'西安市生态环境局', 'air_quality_source_logo':'img/SourceXaepbLogo.jpeg' } }
