@@ -486,6 +486,15 @@ div.trustScaleLabel > div{
   padding-top: 3px;
 }
 
+.starGroup6Cover {
+    position: absolute;
+    content: '\2605';
+    color: #FFD700;
+    padding-left: 92px;
+    white-space: nowrap;
+    padding-top: 3px;
+}
+
 .starSatisfiedContainer{
   overflow: hidden;
   color: #979797;
