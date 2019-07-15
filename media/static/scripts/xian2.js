@@ -122,7 +122,7 @@ function showClearAllStarsButton() {
 
 $( document ).ready(function() {
   randomize();
-  randomizeQuestion();
+  randomizeSource();
 });
 
 function outingSlide(index) {
@@ -238,17 +238,16 @@ function randomize() {
   }
 }
 
-function randomizeQuestion() {
-  var user_id;
-  user_id = document.getElementById("sourceTrustOrder").value;
-  // user_id odd, swap questions; even do nothing
-  if (user_id % 2) {
-    document.getElementById("sourceTrustOrder").value = "21";
-    $( "#page8" ).prepend( $( "#survey2" ) );
-    $( "#page9" ).prepend( $( "#survey1" ) );
-  }
-  else {
-    document.getElementById("sourceTrustOrder").value = "12";
+function randomizeSource() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5, 6, 7];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("sourceOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#source"+order[i] ).after( $( "#source"+order[i+1] ) );
   }
 }
 
@@ -289,6 +288,19 @@ function trustSlide(index) {
 }
 
 // new Star qn =================================================================
+function validatestarSatisfied() {
+  var alert = document.getElementById("starSatisfiedAlert").innerHTML;
+  var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
+  if ((parseInt(numStarLeft)) > 0) {
+    document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
+    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById("clearAllstarSatisfiedsButton").style.display='block';
+    return false;
+  }
+  document.getElementById('page5').style='display: none;';
+  return true;
+}
+
 function updatestarSatisfiedInput(index) {
   document.getElementById("starSatisfiedCountGroup"+index+"Input").value = document.getElementById("starSatisfiedCountGroup"+index).innerHTML;
 }
@@ -371,15 +383,15 @@ function showClearAllstarSatisfiedsButton() {
   }
 }
 
-// page 5 => page 6
-function validateStar() {
-  var alert = document.getElementById("starSatisfiedAlert").innerHTML;
-  var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
-  if ((parseInt(numStarLeft)) > 0) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
-    document.getElementById("clearAllStarsButton").style.display='block';
-    return false;
-  }
-  return true;
+// Get the modal ===============================================================
+var modal2 = document.getElementById('myModal2');
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementById("close2");
+
+modal2.style.display = "block";
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
 }
