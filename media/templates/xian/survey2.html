@@ -351,8 +351,8 @@
               </div>
               <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
               <div id="airQualityCurr">优</div>
-              <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-              <div id="airQualityLogo">
+              <div id="airQualitySource" style="right:20px">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:85px">
                 <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="23">
               </div>
 
@@ -899,15 +899,16 @@
         </div>
         <div class="question">
           <div class="questionPrompt">根据您的回忆，请选择我们在过去6天内引用过的所有空气质量信息的来源。（可多选）</div>
+          <input name="sourceOptionsOrder" id="sourceOrder" type="hidden" value="1234567">
           <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">西安市生态环境局</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">华商报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">陕西交通广播 FM91.6</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">西安晚报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo" required><label class="form-check-label" for="sourceNo">我不知道</label></div>
+            <div class="form-check" id="source1"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
+            <div class="form-check" id="source2"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
+            <div class="form-check" id="source3"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">西安市生态环境局</label></div>
+            <div class="form-check" id="source4"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">华商报</label></div>
+            <div class="form-check" id="source5"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">陕西交通广播 FM91.6</label></div>
+            <div class="form-check" id="source6"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">西安晚报</label></div>
+            <div class="form-check" id="source7"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
+            <div class="form-check" id="sourceNo"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo" required><label class="form-check-label" for="sourceNo">我不知道</label></div>
           </div>
         </div>
       </div>

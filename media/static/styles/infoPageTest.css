@@ -437,7 +437,8 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 - 134px);
-  opacity: 0.25;
+  font-weight: bold;
+  color: #000000;
 }
 
 #infoLevel2{
@@ -446,8 +447,7 @@ header #eventLocation{
   height: 9px;
   top: 54px;
   left: calc(50% - 58px/2 - 79px);
-  font-weight: bold;
-  color: #000000;
+  opacity: 0.25;
 }
 
 #infoLevel3{
