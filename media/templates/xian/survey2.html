@@ -140,8 +140,8 @@
             </div>
             <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
             <div id="airQualityCurr">优</div>
-            <div id="airQualitySource" style="right:5px;">{{ air_quality['second_event']['air_quality_source'] }}</div>
-            <div id="airQualityLogo" style="right:35px;">
+            <div id="airQualitySource" style="width:110px;">{{ air_quality['second_event']['air_quality_source'] }}</div>
+            <div id="airQualityLogo" style="right:10px;">
               <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="23">
             </div>
 
@@ -840,7 +840,6 @@
     <!-- page 7 -->
     <div id="page7" style="display:none">
       <div class="survey">
-        <div class="mainQuestion">关于天气预测的问题</div>
         <div class="question">
           <div class="questionPrompt">您是否还记得我们为您提供的{{ walkathon['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
           <div id="AQLevelHint">
