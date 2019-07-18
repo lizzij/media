@@ -78,7 +78,7 @@ def get_info(user_id_hashid, day_hashid):
     day_to_info_id_dict = {1:10, 2:11}
     info = get_event_info(day_to_info_id_dict[day])
 
-    day_to_air_quality_source_dict = {1:u'', 2:u'华商报'}
+    day_to_air_quality_source_dict = {1:u'', 2:u'来自：华商报'}
     day_to_air_quality_source_logo_dict = {1:'img/transparent.png', 2:'img/SourceHSBLogo.png'}
     air_quality_source = day_to_air_quality_source_dict[day]
     air_quality_source_logo = day_to_air_quality_source_logo_dict[day]

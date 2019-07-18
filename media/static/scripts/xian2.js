@@ -247,7 +247,7 @@ function randomizeSource() {
   // update order
   var i;
   for (i = 0; i < order.length - 1; i++) {
-    $( "#source"+order[i] ).after( $( "#source"+order[i+1] ) );
+    $( "#sourceOption"+order[i] ).after( $( "#sourceOption"+order[i+1] ) );
   }
 }
 
@@ -298,6 +298,20 @@ function validatestarSatisfied() {
     return false;
   }
   document.getElementById('page5').style='display: none;';
+  return true;
+}
+
+function validateRandomizedForcedAns() {
+  var alert = document.getElementById("fillAll").innerHTML;
+  const options = ['source1', 'source2', 'source3', 'source4', 'source5', 'source6', 'source7', 'sourceNo']
+  var filled = false;
+  options.forEach(option => {
+    filled = filled || document.getElementById(option).checked
+  })
+  if (!filled) {
+    document.getElementById("fillAll").innerHTML = "请选择！"
+    return false;
+  }
   return true;
 }
 
