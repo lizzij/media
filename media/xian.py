@@ -78,7 +78,7 @@ def get_info(user_id_hashid, day_hashid):
     day_to_info_id_dict = {1:10, 2:11}
     info = get_event_info(day_to_info_id_dict[day])
 
-    day_to_air_quality_source_dict = {1:u'', 2:u'来自：华商报'}
+    day_to_air_quality_source_dict = {1:u'', 2:u'（来自：华商报）'}
     day_to_air_quality_source_logo_dict = {1:'img/transparent.png', 2:'img/SourceHSBLogo.png'}
     air_quality_source = day_to_air_quality_source_dict[day]
     air_quality_source_logo = day_to_air_quality_source_logo_dict[day]
@@ -145,7 +145,7 @@ def get_survey(user_id_hashid, day_hashid):
     second_event = get_event_info(12,3)
     walkathon = get_event_info(10,3)
 
-    air_quality = { 'second_event' : { 'air_quality_source':u'陕西交通广播 FM91.6', 'air_quality_source_logo':'img/SourceSXJTLogo.png' },
-                    'walkathon' : { 'air_quality_source':u'西安市生态环境局', 'air_quality_source_logo':'img/SourceXaepbLogo.jpeg' } }
+    air_quality = { 'second_event' : { 'air_quality_source':u'（来自：陕西交通广播 FM91.6）', 'air_quality_source_logo':'img/SourceSXJTLogo.png' },
+                    'walkathon' : { 'air_quality_source':u'（来自：西安市生态环境局）', 'air_quality_source_logo':'img/SourceXaepbLogo.jpeg' } }
 
     return render_template('xian/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
