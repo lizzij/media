@@ -241,7 +241,7 @@ header #eventLocation{
 
 #temperatureHeader{
   position: absolute;
-  width: 120px;
+  width: 250px;
   height: 47px;
   left: calc(50% - 87px/2 - 120px);
   top: 8px;
@@ -268,7 +268,7 @@ header #eventLocation{
   position: absolute;
   width: 61px;
   height: 54px;
-  left: calc(50% - 61px/2 + 14.5px);
+  left: calc(50% - 240px/2 + 14.5px);
   top: 31px;
 }
 
@@ -312,7 +312,7 @@ header #eventLocation{
   position: absolute;
   width: 58px;
   height: 42px;
-  left: calc(50% - 58px/2 + 104px);
+  left: calc(50% - 150px/2 + 104px);
   top: 31px;
 }
 
@@ -402,8 +402,8 @@ header #eventLocation{
 
 #airQualitySource{
   position: absolute;
-  top: 45px;
-  right: 45px;
+  top: 44px;
+  right: 5px;
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #4F4F4F;
@@ -414,7 +414,7 @@ header #eventLocation{
   width: 70px;
   height: 11.43px;
   right: 60px;
-  top: 71px;
+  top: 76px;
 }
 
 .airQualityScale{
@@ -422,7 +422,7 @@ header #eventLocation{
   width: 334.5px;
   height: 34px;
   left: 8.5px;
-  top: 54px;
+  top: 75px;
 }
 
 .levels{
@@ -623,7 +623,7 @@ header #eventLocation{
   width: 333px;
   height: 37px;
   left: calc(50% - 333px/2 + 3.5px);
-  top: 119px;
+  top: 115px;
   font-family: PingFangHK-Regular, sans-serif;
   line-height: 23px;
   font-size: 16px;

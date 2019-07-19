@@ -113,8 +113,8 @@
 
           <!-- temperature -->
           <section class="temperature">
-            <div id="temperatureHeader">室外气温</div>
-            <div id="temperatureSubtitle">{{ second_event['phrase_for_header'] }} <br />平均历史气温</div>
+            <div id="temperatureHeader">去年{{ second_event['phrase_for_header'] }} 室外气温</div>
+            <!-- <div id="temperatureSubtitle">{{ second_event['phrase_for_header'] }} <br />平均历史气温</div> -->
 
             <!-- temperture low -->
             <div class="temperatureLow">
@@ -135,14 +135,14 @@
           <section class="airQuality">
             <div id="airQualityHeader">
               <div id="airQualityTitle">
-                空气质量
+                去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
               </div>
             </div>
-            <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
-            <div id="airQualityCurr">优</div>
-            <div id="airQualitySource" style="width:110px;">{{ air_quality['second_event']['air_quality_source'] }}</div>
+            <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
+            <!-- <div id="airQualityCurr">优</div> -->
+            <div id="airQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
             <div id="airQualityLogo" style="right:10px;">
-              <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="23">
+              <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="40">
             </div>
 
             <!-- air quality scale -->
@@ -320,12 +320,12 @@
 
             <!-- temperature -->
             <section class="temperature">
-              <div id="temperatureHeader">室外气温</div>
+              <div id="temperatureHeader">去年{{ walkathon['phrase_for_header'] }} 室外气温</div>
               <!-- <div id="temperatureSource">* 来自中国青年报</div>
           <div id="qingNian">
             <img src="../img/QingNian.jpg" width="50" height="16.36">
           </div> -->
-              <div id="temperatureSubtitle">{{ walkathon['phrase_for_header'] }} <br />平均历史气温</div>
+              <!-- <div id="temperatureSubtitle">{{ walkathon['phrase_for_header'] }} <br />平均历史气温</div> -->
 
               <!-- temperture low -->
               <div class="temperatureLow">
@@ -346,14 +346,14 @@
             <section class="airQuality">
               <div id="airQualityHeader">
                 <div id="airQualityTitle">
-                  空气质量
+                  去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
                 </div>
               </div>
-              <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div>
-              <div id="airQualityCurr">优</div>
-              <div id="airQualitySource" style="right:20px">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-              <div id="airQualityLogo" style="right:85px">
-                <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="23">
+              <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
+              <!-- <div id="airQualityCurr">优</div> -->
+              <div id="airQualitySource" style="right:10px">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:170px">
+                <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="40">
               </div>
 
               <!-- air quality scale -->
