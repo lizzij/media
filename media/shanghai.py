@@ -62,3 +62,97 @@ def update_lastpage(lastpage, day_complete, user_id, day):
         (lastpage, now, day_complete, user_id, day,)
     )
     db.commit()
+
+def consent(user_id):
+    db = get_db()
+    day1 = db.execute(
+        'SELECT user_id_hashid, day_hashid'
+        ' FROM user u'
+        ' WHERE u.user_id = ? AND u.day = ?',
+        (user_id, 1,)
+    ).fetchone()
+    day1_user_id_hashid = day1[0]
+    day1_day_hashid = day1[1]
+    if request.method == 'POST':
+        now = datetime.now()
+        consent = request.form['consent']
+        db.execute(
+            'INSERT INTO survey (user_id, day, result, created, question_id)'
+            ' VALUES (?, ?, ?, ?, ?)',
+            (user_id, 0, consent, now, 'consent')
+        )
+        db.commit()
+        if consent == 'proceed':
+            db.execute(
+                'UPDATE activity SET day=?, day_complete = ?, curr_time = ? WHERE user_id = ?',
+                (1, 0, now, user_id)
+            )
+            db.commit()
+            return redirect(url_for('shanghai.get_info', user_id_hashid='waYl7vPXjbJzLbeG', day_hashid='RE1jAGQPXG'))
+        elif consent == 'notProceed':
+            flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
+    return render_template('shanghai/consentForm.html')
+
+
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
+def get_info(user_id_hashid, day_hashid):
+    user = get_user(user_id_hashid, day_hashid)
+    user_id = user[0]
+    day = user[1]
+    treatment = user[2]
+    user = {'treatment':treatment, 'day':day, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
+
+    if day == 0:
+        db = get_db()
+        day1 = db.execute(
+            'SELECT user_id_hashid, day_hashid'
+            ' FROM user u'
+            ' WHERE u.user_id = ? AND u.day = ?',
+            (user_id, 1,)
+        ).fetchone()
+        day1_user_id_hashid = day1[0]
+        day1_day_hashid = day1[1]
+        if request.method == 'POST':
+            now = datetime.now()
+            consent = request.form['consent']
+            db.execute(
+                'INSERT INTO survey (user_id, day, result, created, question_id)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (user_id, 0, consent, now, 'consent')
+            )
+            db.commit()
+            if consent == 'proceed':
+                db.execute(
+                    'UPDATE activity SET day=?, day_complete = ?, curr_time = ? WHERE user_id = ?',
+                    (1, 0, now, user_id)
+                )
+                db.commit()
+                return redirect(url_for('shanghai.get_info', user_id_hashid='waYl7vPXjbJzLbeG', day_hashid='RE1jAGQPXG'))
+            elif consent == 'notProceed':
+                flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
+        return render_template('shanghai/consentForm.html')
+
+    # Air quality info to be shown only to Groups TRO/TRN, not to TNO/TNN
+    treatment_day_to_template_dict = {
+        'T1' : {1:'', 2:''},
+        'T2' : {1:'', 2:''},
+        'T3' : {1:'', 2:'AQ'},
+        'T4' : {1:'', 2:'AQ'}
+    }
+    template = treatment_day_to_template_dict[treatment][day]
+
+    day_to_info_id_dict = {1:13, 2:14}
+    info = get_event_info(day_to_info_id_dict[day])
+
+    day_to_air_quality_source_dict = {1:u'', 2:u'（来自：华商报）'}
+    day_to_air_quality_source_logo_dict = {1:'img/transparent.png', 2:'img/SourceHSBLogo.png'}
+    air_quality_source = day_to_air_quality_source_dict[day]
+    air_quality_source_logo = day_to_air_quality_source_logo_dict[day]
+    air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
+
+    # if competed direct to last saved survey page (skip info)
+    lastpage = get_lastpage(user_id, day)
+    if lastpage > 0: # have seen the survey page
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
+    return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
