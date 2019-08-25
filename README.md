@@ -66,10 +66,6 @@ Click [here](https://github.com/lizzij/media/blob/master/media/templates/ui_test
 For Xi'an cohort 3 in July.  
 Click [here](https://github.com/lizzij/media/blob/master/media/templates/xian/README.md) for testing links and detailed README.
 
-### Shanghai Full-scale Trial
-For Shanghai cohort 4 in Sept/Oct.  
-Click [here](https://github.com/lizzij/media/blob/master/media/templates/shanghai/README.md) for testing links and detailed README.
-
 ## How to run locally:
 - Clone repo locally
 ```
