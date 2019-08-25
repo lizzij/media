@@ -134,5 +134,68 @@ def get_info(user_id_hashid, day_hashid):
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
-    # return render_template('crud/home.html')
-    return "Hello {0} {1}!!".format(user_id_hashid, day_hashid)
+
+    user = get_user(user_id_hashid, day_hashid)
+    user_id = user[0]
+    day = user[1]
+    treatment = user[2]
+    user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
+
+    # mark info page as read
+    lastpage = get_lastpage(user_id, day)
+    # mark as completed
+    day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:0, 5:1, 6:12, 7:5, 8:3}
+
+    if request.method == 'POST':
+        form = request.form
+        now = datetime.now()
+        db = get_db()
+
+        # default do not go to next page on refresh or submit
+        global to_next_page
+        to_next_page = False
+
+        # save answer
+        for question in form.keys():
+            for result in form.getlist(question):
+                # check if answer already exists (prevent duplication)
+                previous_result = db.execute(
+                    'SELECT result'
+                    ' FROM survey s'
+                    ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+                    (user_id, day, question)
+                ).fetchone()
+
+                # save result if not duplicated
+                if previous_result is None:
+                    # and go to next page
+                    to_next_page = True
+                    db.execute(
+                        'INSERT INTO survey (user_id, day, result, created, question_id)'
+                        ' VALUES (?, ?, ?, ?, ?)',
+                        (user_id, day, result, now, question)
+                    )
+                    db.commit()
+
+        # update last page, activity (for day completion)
+        if to_next_page:
+            lastpage += 1
+            update_lastpage(lastpage, 0, user_id, day)
+            if lastpage == day_to_lastpage_dict[day]:
+                update_lastpage(lastpage, 1, user_id, day)
+
+    second_event = get_event_info(12,3)
+    walkathon = get_event_info(10,3)
+
+    t1_air_quality_source = { 'second_event' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' },
+                              'walkathon' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' } }
+    t2_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' },
+                              'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
+    t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
+                              'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
+    t4_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4 + [TBD]）', 'air_quality_source_logo':'img/SourceTBD.png' },
+                              'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
+    treatment_to_air_quality_dict = {'T1': t1_air_quality_source, 'T2': t2_air_quality_source, 'T3': t3_air_quality_source, 'T4': t4_air_quality_source}
+    air_quality = treatment_to_air_quality_dict[treatment]
+
+    return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
