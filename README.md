@@ -23,19 +23,19 @@ Paste the code into terminal, and hit Return key.
 ### Get allActivites.csv
 Headers: user_id, day, day_complete, survey_page, day_started, curr_time
 ```bash
-wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allActivites.csv
+wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Activities//;/^$/d' > allActivites.csv
 ```
 
 ### Get allUsers.csv
 Headers: user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid
 ```bash
-wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
+wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Users//;/^$/d' > allUsers.csv
 ```
 
 ### Get allResults.csv
 Headers: user_id, day, question_id, result, created
 ```bash
-wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allResults.csv
+wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Results//;/^$/d' > allResults.csv
 ```
 
 ### Get allEvents.csv
@@ -43,7 +43,7 @@ Paste from [here](https://dailyeventinfo.com/allEvents), or use the script below
 
 Headers: event_id, title, subtitle, info_date, info_time, location, image_file, air_quality_source, air_quality_source_logo, short_description, low_temp, high_temp, suitable_for_family, suitable_for_friends, suitable_for_lover, suitable_for_baby, suitable_for_elderly, suitable_for_pet, event_details, phrase_for_week, phrase_for_day, phrase_for_header, cohort
 ```bash
-wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
+wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Event Info//;/^$/d' > allEvents.csv
 ```
 
 ## Cohorts
