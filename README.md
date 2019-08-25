@@ -48,11 +48,11 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 
 | local                               | https                                    |
 |-------------------------------------|------------------------------------------|
-| http://127.0.0.1:5000/allResults    | https://dailyeventinfo.com/allResults    |
-| http://127.0.0.1:5000/allActivities | https://dailyeventinfo.com/allActivities |
-| http://127.0.0.1:5000/allUsers      | https://dailyeventinfo.com/allUsers      |
-| http://127.0.0.1:5000/allEvents     | https://dailyeventinfo.com/allEvents     |
-| http://127.0.0.1:5000/eventUpdate   | https://dailyeventinfo.com/eventUpdate   |
+| http://localhost:5000/allResults    | https://dailyeventinfo.com/allResults    |
+| http://localhost:5000/allActivities | https://dailyeventinfo.com/allActivities |
+| http://localhost:5000/allUsers      | https://dailyeventinfo.com/allUsers      |
+| http://localhost:5000/allEvents     | https://dailyeventinfo.com/allEvents     |
+| http://localhost:5000/eventUpdate   | https://dailyeventinfo.com/eventUpdate   |
 
 ### Pilot
 For Shanghai cohort 1, 2 in May, June.    
