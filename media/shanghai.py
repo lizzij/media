@@ -71,6 +71,7 @@ def get_info(user_id_hashid, day_hashid):
     treatment = user[2]
     user = {'treatment':treatment, 'day':day, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
+    # consent form on day 0
     if day == 0:
         db = get_db()
         day1 = db.execute(
@@ -90,6 +91,7 @@ def get_info(user_id_hashid, day_hashid):
                 (user_id, 0, consent, now, 'consent')
             )
             db.commit()
+            # redirect to day 1 info page if consented
             if consent == 'proceed':
                 db.execute(
                     'UPDATE activity SET day=?, day_complete = ?, curr_time = ? WHERE user_id = ?',
@@ -97,33 +99,40 @@ def get_info(user_id_hashid, day_hashid):
                 )
                 db.commit()
                 return redirect(url_for('shanghai.get_info', user_id_hashid=day1_user_id_hashid, day_hashid=day1_day_hashid))
+            # show alert box if not to proceed
             elif consent == 'notProceed':
                 flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('shanghai/consentForm.html')
 
-    return render_template('crud/home.html')
+    # only show AQ to T2/3/4 on day 6
+    if day == 6 and treatment != 'T1':
+        template = 'AQ'
+    else:
+        template = ''
 
-    # # Air quality info to be shown only to Groups TRO/TRN, not to TNO/TNN
-    # treatment_day_to_template_dict = {
-    #     'T1' : {1:'', 2:''},
-    #     'T2' : {1:'', 2:''},
-    #     'T3' : {1:'', 2:'AQ'},
-    #     'T4' : {1:'', 2:'AQ'}
-    # }
-    # template = treatment_day_to_template_dict[treatment][day]
-    #
-    # day_to_info_id_dict = {1:13, 2:14}
-    # info = get_event_info(day_to_info_id_dict[day])
-    #
-    # day_to_air_quality_source_dict = {1:u'', 2:u'（来自：华商报）'}
-    # day_to_air_quality_source_logo_dict = {1:'img/transparent.png', 2:'img/SourceHSBLogo.png'}
-    # air_quality_source = day_to_air_quality_source_dict[day]
-    # air_quality_source_logo = day_to_air_quality_source_logo_dict[day]
-    # air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
-    #
-    # # if competed direct to last saved survey page (skip info)
-    # lastpage = get_lastpage(user_id, day)
-    # if lastpage > 0: # have seen the survey page
-    #     return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
-    #
-    # return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
+    # direct to survey for day 7, 8 (no info)
+    if day > 6:
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
+    # get event details if on day 1-6 (cohort set to 4)
+    day_to_info_id_dict = {1:13, 2:14, 3:15, 4:16, 5:17, 6:18}
+    info = get_event_info(day_to_info_id_dict[day])
+
+    # air quality source for treatment groups different on day 6
+    treatment_to_aq_source_dict = {'T1':'', 'T2':u'（来自：上海市环境监测中心）', 'T3':u'（来自：新闻晨报）', 'T4':u'（来自：[TBD]）' }
+    treatment_to_aq_source_logo_dict = {'T1':'img/transparent.png', 'T2':'img/SourceSHEnvironmentLogo.jpg', 'T3':'img/SourceMorningPostLogo.jpg', 'T4':'img/SourceTBD.png' }
+    air_quality_source = treatment_to_aq_source_dict[treatment]
+    air_quality_source_logo = treatment_to_aq_source_logo_dict[treatment]
+    air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
+
+    # if competed direct to last saved survey page (skip info)
+    lastpage = get_lastpage(user_id, day)
+    if lastpage > 0: # have seen the survey page
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
+
+    return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
+
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
+def get_survey(user_id_hashid, day_hashid):
+    # return render_template('crud/home.html')
+    return "Hello {0} {1}!!".format(user_id_hashid, day_hashid)
