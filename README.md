@@ -140,34 +140,25 @@ sudo systemctl restart media
   - `git rebase master` (discard history) or `git merge origin/master`
 
 **File structure**
+- use `tree` in `./media` dir to get the file tree
 ```bash
 media
 ├── __init__.py
 ├── crud.py
 ├── db.py
+├── info.py
 ├── pilot.py
 ├── schema.sql
+├── shanghai.py
 ├── static
 │   ├── img
+│   │   ├── AQLevelHint.png
 │   │   ├── ...
-│   │   ├── favicon.ico
-│   │   ├── favicon_package_v0.16
-│   │   │   └── ...
+│   │   └── xian2.jpg
 │   ├── scripts
 │   │   ├── bootstrap.js
-│   │   ├── bootstrap.min.js
-│   │   ├── jquery-3.3.1.slim.min.js
-│   │   ├── jweixin-1.2.0.js
-│   │   ├── popper.min.js
-│   │   ├── survey1.js
-│   │   ├── survey2.js
-│   │   ├── survey3.js
-│   │   ├── survey4.js
-│   │   ├── survey5.js
-│   │   ├── survey6.js
-│   │   ├── survey7.js
-│   │   ├── survey8.js
-│   │   └── surveyInfo.js
+│   │   ├── ...
+│   │   └── xian2.js
 │   └── styles
 │       ├── bootstrap.css
 │       ├── consentForm.css
@@ -186,34 +177,25 @@ media
 │   ├── pilot
 │   │   ├── README.md
 │   │   ├── completionPage.html
-│   │   ├── consentForm.html
-│   │   ├── infoPage.html
-│   │   ├── infoPageAQ.html
-│   │   ├── infoPageCO.html
-│   │   ├── survey1.html
-│   │   ├── survey2.html
-│   │   ├── survey3.html
-│   │   ├── survey4.html
-│   │   ├── survey5.html
-│   │   ├── survey6.html
-│   │   ├── survey6T3.html
-│   │   ├── survey6T5.html
-│   │   ├── survey7.html
-│   │   ├── survey8.html
+│   │   ├── ...
 │   │   └── surveyInfo.html
+│   ├── shanghai
+│   │   └── shanghai.md
 │   ├── ui_test
 │   │   ├── README.md
 │   │   ├── infoPagea.html
-│   │   ├── infoPageb.html
-│   │   ├── infoPagec.html
+│   │   ├── ...
 │   │   └── infoPaged.html
-│   └── xian
+│   ├── ui_test
+│   │   ├── README.md
+│   │   ├── infoPage.html
+│   │   ├── ...
+│   │   └── survey2.html
+│   └── shanghai
 │       ├── README.md
-│       ├── infoPagea.html
-│       ├── infoPagec.html
-│       ├── survey1.html
-│       └── survey2.html
+│       ├── infoPage.html
+│       ├── ...
+│       └── survey8.html
 ├── ui_test.py
-├── xian.py
-└── xian.pyc
+└── xian.py
 ```
