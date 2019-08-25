@@ -44,8 +44,23 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 
 ## Cohorts
 ### CRUD
-(Applicable to all cohorts) create, read, update and delete.  
-Click [here](https://github.com/lizzij/media/blob/master/media/templates/crud/README.md) for testing links and detailed README.
+(Applicable to all cohorts) create, read, update and delete
+
+#### Local  
+**Crud**
+- http://127.0.0.1:5000/allResults
+- http://127.0.0.1:5000/allActivities
+- http://127.0.0.1:5000/allUsers
+- http://127.0.0.1:5000/allEvents
+- http://127.0.0.1:5000/eventUpdate
+
+#### HTTPS  
+**Crud**
+- https://dailyeventinfo.com/allResults
+- https://dailyeventinfo.com/allActivities
+- https://dailyeventinfo.com/allUsers
+- https://dailyeventinfo.com/allEvents
+- https://dailyeventinfo.com/eventUpdate
 
 ### Pilot
 For Shanghai cohort 1, 2 in May, June.    
