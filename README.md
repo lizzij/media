@@ -14,6 +14,10 @@ Flask app for info and survey distribution.
 - [Google docs (edit mode)](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
   - 2 days Xi'an Pilot
 
+### shanghai
+- [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
+  - 8 days Shanghai Pilot
+
 ## Results
 Paste the code into terminal, and hit Return key.
 ### Get allActivites.csv
@@ -65,6 +69,10 @@ Click [here](https://github.com/lizzij/media/blob/master/media/templates/ui_test
 ### Xi'an Trial
 For Xi'an cohort 3 in July.  
 Click [here](https://github.com/lizzij/media/blob/master/media/templates/xian/README.md) for testing links and detailed README.
+
+### Shanghai Trial
+For Shanghai cohort 4 in Sept/Oct.  
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/shanghai/README.md) for testing links and detailed README.
 
 ## How to run locally:
 - Clone repo locally
