@@ -46,21 +46,13 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 ### CRUD
 (Applicable to all cohorts) create, read, update and delete
 
-#### Local  
-**Crud**
-- http://127.0.0.1:5000/allResults
-- http://127.0.0.1:5000/allActivities
-- http://127.0.0.1:5000/allUsers
-- http://127.0.0.1:5000/allEvents
-- http://127.0.0.1:5000/eventUpdate
-
-#### HTTPS  
-**Crud**
-- https://dailyeventinfo.com/allResults
-- https://dailyeventinfo.com/allActivities
-- https://dailyeventinfo.com/allUsers
-- https://dailyeventinfo.com/allEvents
-- https://dailyeventinfo.com/eventUpdate
+| local                               | https                                    |
+|-------------------------------------|------------------------------------------|
+| http://127.0.0.1:5000/allResults    | https://dailyeventinfo.com/allResults    |
+| http://127.0.0.1:5000/allActivities | https://dailyeventinfo.com/allActivities |
+| http://127.0.0.1:5000/allUsers      | https://dailyeventinfo.com/allUsers      |
+| http://127.0.0.1:5000/allEvents     | https://dailyeventinfo.com/allEvents     |
+| http://127.0.0.1:5000/eventUpdate   | https://dailyeventinfo.com/eventUpdate   |
 
 ### Pilot
 For Shanghai cohort 1, 2 in May, June.    
