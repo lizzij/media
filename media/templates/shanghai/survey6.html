@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+<html lang="zh" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>问卷</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPageTest.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <form lang="zh" action="" method="post">
+    <!-- page 1 -->
+    <div id="page1">
+      <div class="survey">
+        <!-- sign up fee -->
+        <div class="question">
+          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
+          <div class="questionAnswer">
+            <div class="slidecontainer" id="signUpFee">
+              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="signUpFeeAmount" for="rangeInput">0元</output>
+                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider" name="signUpFeeEvent1" oninput="signUpFeeSlide()"></input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 2 -->
+    <div id="page2" style="display:none;">
+      <div style="display: block;margin: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;height:1200px;">
+        <!-- The Modal -->
+        <div id="myModal1" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content" style="width:285px;">
+            <span id="close1">&times;</span>
+            <p>以下是一项关于西安本地或周边的户外活动及场所的信息。依照参与者的意向，我们或将于{{ (second_event['phrase_for_week']) }}组团结伴前往。请您仔细思考是否有意向参与该活动。(我们从多种来源获得该活动的信息，这些来源对信息的准确性负责。)</p>
+          </div>
+
+        </div>
+
+        <header>
+          <div class="title">
+            <div id="eventName">{{ (second_event['title']) }}<br />{{ (second_event['subtitle']) }}</div>
+            <div id="eventDate">{{ (second_event['info_date']) }}</div>
+            <div id="eventTime">{{ (second_event['info_time']) }}</div>
+            <div id="eventLocation">{{ (second_event['location']) }}</div>
+          </div>
+        </header>
+
+        <!-- Image -->
+        <section class="image">
+          <div id="eventImage">
+            <div>
+              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="276">
+            </div>
+          </div>
+        </section>
+
+        <!-- description short -->
+        <section class="descriptionShort">
+          <div class="paragraphShort">
+            <!-- <div id="firstCharacter">平</div> -->
+            <div id="descriptionShortPara">
+              {{ (second_event['short_description']) }}
+            </div>
+          </div>
+        </section>
+
+        <div id="moreInfoButton1">
+          <div>
+            <img src="{{ url_for('static', filename='img/Button.png') }}">
+          </div>
+          <div id="moreInfoButtonNext">下一页</div>
+          <script type="text/javascript">
+            document.getElementById("moreInfoButton1").onclick = function() {
+              document.getElementById("moreInfoButton1").style.display = 'none';
+              window.scrollTo(0, 517);
+              document.getElementById("moreInfo1").style.display = 'block';
+            }
+          </script>
+        </div>
+      </div>
+
+      <div id="moreInfo1" style="display:none;">
+
+        <!-- weather -->
+        <section class="weather">
+
+          <!-- temperature -->
+          <section class="temperature">
+            <div id="temperatureHeader">去年{{ second_event['phrase_for_header'] }} 室外气温</div>
+            <!-- <div id="temperatureSubtitle">{{ second_event['phrase_for_header'] }} <br />平均历史气温</div> -->
+
+            <!-- temperture low -->
+            <div class="temperatureLow">
+              <div id="lowValue">{{ '%d' % (second_event['low_temp']) }}</div>
+              <div id="lowUnit">°C</div>
+              <div id="low">平均最低<br />气温</div>
+            </div>
+
+            <!-- temperture high -->
+            <div class="temperatureHigh">
+              <div id="highValue">{{ '%d' % (second_event['high_temp']) }}</div>
+              <div id="highUnit">°C</div>
+              <div id="high">平均最高<br />气温</div>
+            </div>
+          </section>
+
+          {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
+          <section class="airQuality">
+            <div id="airQualityHeader">
+              <div id="airQualityTitle">
+                去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
+              </div>
+            </div>
+            <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
+            <!-- <div id="airQualityCurr">优</div> -->
+            <div id="airQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
+            <div id="airQualityLogo" style="right:10px;">
+              <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="40">
+            </div>
+
+            <!-- air quality scale -->
+            <div class="airQualityScale">
+
+              <!-- levels -->
+              <div class="levels">
+                <div id="infoLevel1">1级</div>
+                <div id="infoLevel2">2级</div>
+                <div id="infoLevel3">3级</div>
+                <div id="infoLevel4">4级</div>
+                <div id="infoLevel5">5级</div>
+                <div id="infoLevel6">6级</div>
+              </div>
+
+              <!-- level descriptions -->
+              <div class="levelDescription">
+                <div id="level1Description">优</div>
+                <div id="level2Description">良</div>
+                <div id="level3Description">轻度污染</div>
+                <div id="level4Description">中度污染</div>
+                <div id="level5Description">重度污染</div>
+                <div id="level6Description">严重污染</div>
+              </div>
+
+              <!-- color bar -->
+              <div>
+                <svg id="colorBar1">
+                  <rect />
+                </svg>
+                <svg id="colorBar2">
+                  <rect />
+                </svg>
+                <svg id="colorBar3">
+                  <rect />
+                </svg>
+                <svg id="colorBar4">
+                  <rect />
+                </svg>
+                <svg id="colorBar5">
+                  <rect />
+                </svg>
+                <svg id="colorBar6">
+                  <rect />
+                </svg>
+              </div>
+
+              <!-- air quality detail -->
+              <div id="airQualityDetail">
+                优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
+              </div>
+            </div>
+          </section>
+          {% endif %}
+
+        </section>
+
+        {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
+        <!-- next button -->
+        <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 950px;">
+          <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
+          </input>
+        </div>
+        {% else %}
+        <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 800px;">
+          <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
+          </input>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 3 -->
+    <div id="page3" style="display:none">
+      <div class="survey">
+        <!-- sign up fee -->
+        <div class="question">
+          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
+          <div class="questionAnswer">
+            <div class="slidecontainer" id="signUpFee2">
+              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="signUpFeeAmount2" for="rangeInput">0元</output>
+                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider2" name="signUpFeeEvent2" oninput="signUpFeeSlide2()"></input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 4 -->
+    <div id="page4" style="display:none">
+      <div style="display: block;height: 1350px;" >
+        <!-- The Modal -->
+        <div id="myModal2" class="modalLarge">
+
+          <!-- Modal content -->
+          <div class="modal-content" style="width:285px;">
+            <span id="close2">&times;</span>
+            <p>您或许还记得我们向您介绍的“儿童慈善徒步运动”。 根据我们得到的反馈，我们将于{{ (walkathon['phrase_for_week']) }}举办该活动，以下是此次活动的详细信息。请您仔细思考是否有意向参加该活动。（我们从其他来源获得有关的天气信息，这些来源对信息的准确性负责）。</p>
+          </div>
+
+        </div>
+
+        <div>
+          <header>
+            <div class="title">
+              <div id="eventName">{{ (walkathon['title']) }}<br />{{ (walkathon['subtitle']) }}</div>
+              <div id="eventDate">{{ (walkathon['info_date']) }}</div>
+              <div id="eventTime">{{ (walkathon['info_time']) }}</div>
+              <div id="eventLocation">{{ (walkathon['location']) }}</div>
+            </div>
+          </header>
+
+          <!-- Image -->
+          <section class="image">
+            <div id="eventImage">
+              <div>
+                <img src="{{ url_for('static', filename=walkathon['image_file']) }}" height="276">
+              </div>
+            </div>
+          </section>
+
+          <!-- description short -->
+          <section class="descriptionShort">
+            <div class="paragraphShort">
+              <!-- <div id="firstCharacter">步</div> -->
+              <div id="descriptionShortPara">
+                {{ (walkathon['short_description']) }}
+              </div>
+            </div>
+          </section>
+
+          <div id="moreInfoButton2">
+            <div>
+              <img src="{{ url_for('static', filename='img/Button.png') }}">
+            </div>
+            <div id="moreInfoButtonNext">下一页</div>
+            <script type="text/javascript">
+              document.getElementById("moreInfoButton2").onclick = function() {
+                document.getElementById("moreInfoButton2").style.display = 'none';
+                document.getElementById("moreInfo2").style.display = 'block';
+                window.scrollTo(0, 540);
+              }
+            </script>
+          </div>
+        </div>
+
+        <div id="moreInfo2" style="display:none;">
+          <!-- weather -->
+          <section class="weather">
+
+            <!-- temperature -->
+            <section class="temperature">
+              <div id="temperatureHeader">去年{{ walkathon['phrase_for_header'] }} 室外气温</div>
+              <!-- <div id="temperatureSource">* 来自中国青年报</div>
+          <div id="qingNian">
+            <img src="../img/QingNian.jpg" width="50" height="16.36">
+          </div> -->
+              <!-- <div id="temperatureSubtitle">{{ walkathon['phrase_for_header'] }} <br />平均历史气温</div> -->
+
+              <!-- temperture low -->
+              <div class="temperatureLow">
+                <div id="lowValue">{{ walkathon['low_temp'] }}</div>
+                <div id="lowUnit">°C</div>
+                <div id="low">平均最低<br />气温</div>
+              </div>
+
+              <!-- temperture high -->
+              <div class="temperatureHigh">
+                <div id="highValue">{{ (walkathon['high_temp']) }}</div>
+                <div id="highUnit">°C</div>
+                <div id="high">平均最高<br />气温</div>
+              </div>
+            </section>
+
+            <!-- air quality -->
+            <section class="airQuality">
+              <div id="airQualityHeader">
+                <div id="airQualityTitle">
+                  去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
+                </div>
+              </div>
+              <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
+              <!-- <div id="airQualityCurr">优</div> -->
+              <div id="airQualitySource" style="right:10px">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:170px">
+                <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="40">
+              </div>
+
+              <!-- air quality scale -->
+              <div class="airQualityScale">
+
+                <!-- levels -->
+                <div class="levels">
+                  <div id="infoLevel1">1级</div>
+                  <div id="infoLevel2">2级</div>
+                  <div id="infoLevel3">3级</div>
+                  <div id="infoLevel4">4级</div>
+                  <div id="infoLevel5">5级</div>
+                  <div id="infoLevel6">6级</div>
+                </div>
+
+                <!-- level descriptions -->
+                <div class="levelDescription">
+                  <div id="level1Description">优</div>
+                  <div id="level2Description">良</div>
+                  <div id="level3Description">轻度污染</div>
+                  <div id="level4Description">中度污染</div>
+                  <div id="level5Description">重度污染</div>
+                  <div id="level6Description">严重污染</div>
+                </div>
+
+                <!-- color bar -->
+                <div>
+                  <svg id="colorBar1">
+                    <rect />
+                  </svg>
+                  <svg id="colorBar2">
+                    <rect />
+                  </svg>
+                  <svg id="colorBar3">
+                    <rect />
+                  </svg>
+                  <svg id="colorBar4">
+                    <rect />
+                  </svg>
+                  <svg id="colorBar5">
+                    <rect />
+                  </svg>
+                  <svg id="colorBar6">
+                    <rect />
+                  </svg>
+                </div>
+
+                <!-- air quality detail -->
+                <div id="airQualityDetail">
+                  优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
+                </div>
+              </div>
+            </section>
+
+          </section>
+
+          <!-- next button -->
+          <div class="nextButton" style="
+            position: absolute;
+            width: 375px;
+            height: 124px;
+            left: calc(50% - 375px/2 + 64px);
+            top: 950px;
+            padding-bottom:100px;">
+            <input class="button" type="submit" value="下一页" name="thirdEventNextButton" style="color: white; font-size: 14px;">
+            </input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {% if user['treatment'] == 'TNO' or user['treatment'] == 'TRO' %}
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
+  <!-- page 3 -->
+  <div class="page" id="page5" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
+          <div id="note">
+            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十二个星星</br>
+                 - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+                 - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+                 - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starLeftCount">12</div>
+              <div>星</div>
+            </div>
+            <div class="starContainer" id="starLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>优</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
+              <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starGroup1Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starCountGroup(1,10)">☆</div>
+              <div class="star" onclick="starCountGroup(1,11)">☆</div>
+              <div class="star" onclick="starCountGroup(1,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>良</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
+              <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starGroup2Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starCountGroup(2,10)">☆</div>
+              <div class="star" onclick="starCountGroup(2,11)">☆</div>
+              <div class="star" onclick="starCountGroup(2,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>轻度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
+              <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starGroup3Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starCountGroup(3,10)">☆</div>
+              <div class="star" onclick="starCountGroup(3,11)">☆</div>
+              <div class="star" onclick="starCountGroup(3,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>中度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
+              <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starGroup4Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starCountGroup(4,10)">☆</div>
+              <div class="star" onclick="starCountGroup(4,11)">☆</div>
+              <div class="star" onclick="starCountGroup(4,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>重度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
+              <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starGroup5Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starCountGroup(5,10)">☆</div>
+              <div class="star" onclick="starCountGroup(5,11)">☆</div>
+              <div class="star" onclick="starCountGroup(5,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup6">
+            <div class="starPrompt">
+              <div>严重污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
+              <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup6Cover" id="starGroup6Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(6,1)">☆</div>
+              <div class="star" onclick="starCountGroup(6,2)">☆</div>
+              <div class="star" onclick="starCountGroup(6,3)">☆</div>
+              <div class="star" onclick="starCountGroup(6,4)">☆</div>
+              <div class="star" onclick="starCountGroup(6,5)">☆</div>
+              <div class="star" onclick="starCountGroup(6,6)">☆</div>
+              <div class="star" onclick="starCountGroup(6,7)">☆</div>
+              <div class="star" onclick="starCountGroup(6,8)">☆</div>
+              <div class="star" onclick="starCountGroup(6,9)">☆</div>
+              <div class="star" onclick="starCountGroup(6,10)">☆</div>
+              <div class="star" onclick="starCountGroup(6,11)">☆</div>
+              <div class="star" onclick="starCountGroup(6,12)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
+              <div id="clear">&times;</div>
+            </div></div>
+          <div id="groupDescription"></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+  {% else %}
+  <!-- alternative new question for TNN/TRN -->
+  <form lang="zh" action="" onsubmit="return validatestarSatisfied();" method="post">
+  <!-- page 5 -->
+  <div class="page" id="page5" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。请您预测一下您对那一周的空气质量满意程度。</p>
+          <div id="note">
+            <p>分配给您10个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十个星星</br>
+                 - 如果您极度不认同某个选项 → 请选择放置零星星</br>
+                 - 如果您认为完全认同某个选项 → 请选择放置所有星星</br>
+                 - 如果您对每个选项认同度相等 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starSatisfiedLeftCount">10</div>
+              <div>星</div>
+            </div>
+            <div class="starSatisfiedContainer" id="starSatisfiedLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starSatisfiedAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>非常满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup1" onchange="updatestarSatisfiedInput(1)">0</div>
+              <input name="starSatisfiedCountGroup1Input" id="starSatisfiedCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starSatisfiedGroup1Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(1,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>比较满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup2" onchange="updatestarSatisfiedInput(2)">0</div>
+              <input name="starSatisfiedCountGroup2Input" id="starSatisfiedCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starSatisfiedGroup2Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(2,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>中立</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup3" onchange="updatestarSatisfiedInput(3)">0</div>
+              <input name="starSatisfiedCountGroup3Input" id="starSatisfiedCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starSatisfiedGroup3Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(3,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>不太满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup4" onchange="updatestarSatisfiedInput(4)">0</div>
+              <input name="starSatisfiedCountGroup4Input" id="starSatisfiedCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starSatisfiedGroup4Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(4,10)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>非常不满意</div>
+              <div>&nbsp</div>
+              <div id="starSatisfiedCountGroup5" onchange="updatestarSatisfiedInput(5)">0</div>
+              <input name="starSatisfiedCountGroup5Input" id="starSatisfiedCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starSatisfiedGroup5Cover"></div>
+            <div class="starSatisfiedContainer">
+              <div class="star" onclick="starSatisfiedCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starSatisfiedCountGroup(5,10)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllstarSatisfiedsButton" onclick="clearAllstarSatisfieds()">
+            <div id="clearAllButton">
+              <div id="clearSatisfied">&times;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 48%; background-color: #979797;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+  {% endif %}
+
+  <form lang="zh" action="" method="post">
+    <!-- page 6 -->
+    <div id="page6" style="display:none">
+      <div class="survey">
+        <!-- walkathon distance -->
+        <div class="question">
+          <div class="questionPrompt">
+            <p>您想承诺参加我们组织的“儿童慈善徒步活动”吗？如果您同意，我们将在活动提前几日向您发送提示以及如何参与的说明。</p>
+            <p>实际捐款将视您现在所做的选择而定，以后不会进行调整。</p>
+          </div>
+          <div id="subNote">
+            <p>注意：</br>
+              - 如果您今天选择走6000步，之后未能走满6000步，我们则无法为您捐赠任何钱</br>
+              - 如果您今天选择走6000步，之后走了多过6000步，我们依将为您捐赠12元钱（对应6000步的捐款数额）
+          </div>
+          <div class="questionAnswer">
+            <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()" required><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
+          </div>
+          <div class="slidecontainer" id="walkathon" style="display:none">
+            <div id="note" style="padding-top:20px">
+              <div>请移动下面的滑块：</div>
+              <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
+                <div >
+                   我将在{{ walkathon['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里）
+                     —— 研究人员将代表您向中国儿童少年基金会捐赠0元人民币。</output>
+                </div>
+            </pre>
+            </div>
+            <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+              <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output>
+              <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 60%; background-color: #979797;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 7 -->
+    <div id="page7" style="display:none">
+      <div class="survey">
+        <div class="question">
+          <div class="questionPrompt">您是否还记得我们为您提供的{{ walkathon['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
+          <div id="AQLevelHint">
+            <img src="{{ url_for('static', filename='img/AQLevelHint.png') }}" width="300px">
+          </div>
+          <div class="questionAnswer">
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="cantRemember" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="varies" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="severelyPolluted" value="severelyPolluted"><label class="form-check-label" for="severelyPolluted">严重污染</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="highlyPolluted" value="highlyPolluted"><label class="form-check-label" for="highlyPolluted">重度污染</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="moderatelyPolluted" value="moderatelyPolluted"><label class="form-check-label" for="moderatelyPolluted">中度污染</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="lightlyPolluted" value="lightlyPolluted"><label class="form-check-label" for="lightlyPolluted">轻度污染</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="good" value="good"><label class="form-check-label" for="good">良</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="excellent" value="excellent" required><label class="form-check-label" for="excellent">优</label></div>
+          </div>
+        </div>
+        <div class="question">
+          <div class="questionPrompt">请问您还记得我们引用<b>空气质量</b>信息的来源吗？</div>
+          <div id="AQSourceHint">
+            <img src="{{ url_for('static', filename='img/AQSourceHint.png') }}" width="300px">
+          </div>
+          <div class="questionAnswer">
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="no" value="no"><label class="form-check-label" for="no">不记得了</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="maybe" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="probably" value="probably"><label class="form-check-label" for="probably">大概记得</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes" required><label class="form-check-label" for="yes">记得</label></div>
+          </div>
+        </div>
+      </div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post" onsubmit="return validateRandomizedForcedAns();" >
+    <!-- page 7 -->
+    <div id="page8" style="display:none">
+      <div class="survey">
+        <div class="question">
+          <div class="questionPrompt">您认为在过去的2天内，我们引用过多少个空气质量信息的来源</div>
+          <div class="questionAnswer">
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="1" value="1"><label class="form-check-label" for="1">1</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="2" value="2"><label class="form-check-label" for="2">2</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="3" value="3"><label class="form-check-label" for="3">3</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="4" value="4"><label class="form-check-label" for="4">4</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="5orMore" value="5orMore"><label class="form-check-label" for="5orMore">5个或更多</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="dunno" value="dunno" required><label class="form-check-label" for="dunno">我不知道</label></div>
+          </div>
+        </div>
+        <div class="question">
+          <div class="questionPrompt">根据您的回忆，请选择我们在过去6天内引用过的所有空气质量信息的来源。（可多选）</div>
+          <input name="sourceOptionsOrder" id="sourceOrder" type="hidden" value="1234567">
+          <div class="questionAnswer">
+            <div class="form-group">
+              <div class="form-check" id="sourceOption1"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
+              <div class="form-check" id="sourceOption2"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
+              <div class="form-check" id="sourceOption3"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">西安市生态环境局</label></div>
+              <div class="form-check" id="sourceOption4"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">华商报</label></div>
+              <div class="form-check" id="sourceOption5"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">陕西交通广播 FM91.6</label></div>
+              <div class="form-check" id="sourceOption6"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">西安晚报</label></div>
+              <div class="form-check" id="sourceOption7"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
+              <div class="form-check" id="sourceOptionNo"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo"><label class="form-check-label" for="sourceNo">我不知道</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="fillAll" class="fillAllAlert"></div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <div id="page9" style="display:none">
+      <div class="survey" id="survey2">
+        <div class="mainQuestion">关于日常新闻来源的问题</div>
+        <div class="question">
+          <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
+          <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="123456">
+          <div class="questionAnswer">
+            <!-- option 1 -->
+            <div class="peopleTrustOption" id="question1">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">人民日报</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="dontKnowPeoplesDaily" onclick="dunno(1)">
+                  <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
+                </div>
+              </div>
+              <div id="trustSlider1">
+                <div id="Scale1Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust1ScaleLabel1">完全不信任</div>
+                  <div id="trust1ScaleLabel2">不信任</div>
+                  <div id="trust1ScaleLabel3">中立</div>
+                  <div id="trust1ScaleLabel4">信任</div>
+                  <div id="trust1ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust1Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" name="trustPeoplesDaily" class="slider" id="trust1" oninput="trustSlide(1)"></input>
+                  </div>
+                </div>
+              </div>
+            </div><!-- option 2 -->
+            <div class="peopleTrustOption" id="question2">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">西安市生态环境局</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowMorningPost" onclick="dunno(2)">
+                  <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
+                </div>
+              </div>
+              <div id="trustSlider2">
+                <div id="Scale2Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust2ScaleLabel1">完全不信任</div>
+                  <div id="trust2ScaleLabel2">不信任</div>
+                  <div id="trust2ScaleLabel3">中立</div>
+                  <div id="trust2ScaleLabel4">信任</div>
+                  <div id="trust2ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust2Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" name="trustMorningPost" class="slider" id="trust2" oninput="trustSlide(2)"></input>
+                  </div>
+                </div>
+              </div>
+            </div><!-- option 3 -->
+            <div class="peopleTrustOption" id="question3">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">华商报</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowFM" onclick="dunno(3)">
+                  <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
+                </div>
+              </div>
+              <div id="trustSlider3">
+                <div id="Scale3Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust3ScaleLabel1">完全不信任</div>
+                  <div id="trust3ScaleLabel2">不信任</div>
+                  <div id="trust3ScaleLabel3">中立</div>
+                  <div id="trust3ScaleLabel4">信任</div>
+                  <div id="trust3ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust3Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" name="trustFM" class="slider" id="trust3" oninput="trustSlide(3)"></input>
+                  </div>
+                </div>
+              </div>
+            </div><!-- option 4 -->
+            <div class="peopleTrustOption" id="question4">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">陕西交通广播 FM91.6</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="dontKnowSEMC" onclick="dunno(4)">
+                  <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
+                </div>
+              </div>
+
+              <div id="trustSlider4">
+                <div id="Scale4Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust4ScaleLabel1">完全不信任</div>
+                  <div id="trust4ScaleLabel2">不信任</div>
+                  <div id="trust4ScaleLabel3">中立</div>
+                  <div id="trust4ScaleLabel4">信任</div>
+                  <div id="trust4ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust4Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" name="trustSEMC" class="slider" id="trust4" oninput="trustSlide(4)"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- option 5 -->
+            <div class="peopleTrustOption" id="question5">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">中国国家旅游局</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno5checkbox" name="dontKnowCNTA" onclick="dunno(5)">
+                  <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
+                </div>
+              </div>
+
+              <div id="trustSlider5">
+                <div id="Scale5Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust5ScaleLabel1">完全不信任</div>
+                  <div id="trust5ScaleLabel2">不信任</div>
+                  <div id="trust5ScaleLabel3">中立</div>
+                  <div id="trust5ScaleLabel4">信任</div>
+                  <div id="trust5ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust5Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" name="trustCNTA" class="slider" id="trust5" oninput="trustSlide(5)"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- option 6 -->
+            <div class="peopleTrustOption" id="question6">
+              <div class="trustOptionPrompt">
+                <div class="trustOptionText">纽约时报</div>
+                <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                  <input type="checkbox" class="form-check-input" id="dunno6checkbox" name="dontKnowNYT" onclick="dunno(6)">
+                  <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
+                </div>
+              </div>
+
+              <div id="trustSlider6">
+                <div id="Scale4Divider">
+                  <div id="scaleDivider1">·</div>
+                  <div id="scaleDivider2">·</div>
+                  <div id="scaleDivider3">·</div>
+                  <div id="scaleDivider4">·</div>
+                  <div id="scaleDivider5">·</div>
+                </div>
+                <div class="trustScaleLabel">
+                  <div id="trust6ScaleLabel1">完全不信任</div>
+                  <div id="trust6ScaleLabel2">不信任</div>
+                  <div id="trust6ScaleLabel3">中立</div>
+                  <div id="trust6ScaleLabel4">信任</div>
+                  <div id="trust6ScaleLabel5">非常信任</div>
+                </div>
+                <div class="slidecontainer">
+                  <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+                    <output class="sliderAmount" name="amount" id="trust6Amount" for="rangeInput">0</output>
+                    <input type="range" min="0" max="100" value="0" step="0.01" class="slider" name="trustNYT" id="trust6" oninput="trustSlide(6)"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 94%; background-color: #979797;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <!-- page 9 -->
+  <div id="page10" style="display:none">
+    <div class="survey">
+      <div class="mainQuestion">感谢您完成今天的调研。</div>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #979797;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function(global) {
+
+      if (typeof(global) === "undefined") {
+        throw new Error("window is undefined");
+      }
+
+      var _hash = "!";
+      var noBackPlease = function() {
+        global.location.href += "#";
+
+        // making sure we have the fruit available for juice....
+        // 50 milliseconds for just once do not cost much (^__^)
+        global.setTimeout(function() {
+          global.location.href += "!";
+        }, 50);
+      };
+
+      // Earlier we had setInerval here....
+      global.onhashchange = function() {
+        if (global.location.hash !== _hash) {
+          global.location.hash = _hash;
+        }
+      };
+
+      global.onload = function() {
+
+        noBackPlease();
+
+        // disables backspace on page except on input fields and textarea..
+        document.body.onkeydown = function(e) {
+          var elm = e.target.nodeName.toLowerCase();
+          if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+            e.preventDefault();
+          }
+          // stopping event bubbling up the DOM tree..
+          e.stopPropagation();
+        };
+
+      };
+
+    })(window);
+
+    {% if lastpage %}
+        document.getElementById("page1").style = 'display: none;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+    {% else %}
+    {% endif %}
+  </script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/shanghai6.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>
