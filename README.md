@@ -3,7 +3,7 @@ Flask app for info and survey distribution.
 
 ## Documentations
 ### pilot
-- Read [documentation](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
+- - Read documentation here: [Google docs (read only mode)](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
 - [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
   - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
 
@@ -11,11 +11,11 @@ Flask app for info and survey distribution.
   - Question (from google doc), QuestionCode, Option/Subqn (from google doc), OptionCode, Relevant (note and related questions)
 
 ### xian
-- [Google docs (edit mode)](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
+- Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
   - 2 days Xi'an Pilot
 
 ### shanghai
-- [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
+- Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
   - 8 days Shanghai Pilot
 
 ## Results
