@@ -34,9 +34,12 @@
       <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
       </input>
     </div>
-    <!-- <div class="progress" style="height: 8px;">
-      <div class="progress-bar" role="progressbar" style="width: 0%; background-color: #979797;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div> -->
+    <div class="surveyorOutput">Input ID: {{ input_ID }}</div>
+    {%for line in output%}
+      {% autoescape false %}
+        <p class="surveyorOutput">{{ line }}</p>
+      {% endautoescape %}
+    {%endfor%}
   </div>
   </form>
 

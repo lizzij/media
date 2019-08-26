@@ -1097,3 +1097,10 @@ pre{
 }
 
 .fillAllAlert{color: #FF3333;font-size: 14px;font-weight: bold;text-align: center;z-index: 3;}
+
+.surveyorOutput{
+  width: 320px;
+  overflow-wrap: break-word;
+  font-size: small;
+  margin: auto;
+}

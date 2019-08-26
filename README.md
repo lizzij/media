@@ -109,6 +109,8 @@ sudo systemctl restart media
 ```
 
 ## Developing...
+**Module management**
+- `pip install <module>` then `python -m flask run`
 **Git branches**
 - `master` = deployed
   - merge `dev` to `master`
