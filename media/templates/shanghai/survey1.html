@@ -208,8 +208,24 @@
   <div class="page" id="page3" style="display:none">
     <div class="survey">
       <div class="question">
-        <div class="questionPrompt">
-          <p>[BLUE SKY GRAY SKY QUESTION: THIS QUESTION WILL BE PROVIDED SOON. PUT AN ARBITRARY PLACEHOLDER QUESTION HERE FOR NOW.]</p>
+        <div class="questionPrompt">[BLUE SKY GRAY SKY QUESTION]</div>
+        <div class="questionAnswer">
+          <div class="form-check"><input class="form-check-input" type="radio" name="blueGraySky" value="blue" id="blueGraySky" ><label class="form-check-label" for="blue">Blue</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="blueGraySky" value="gray" id="blueGraySky" required><label class="form-check-label" for="gray">Gray</label></div>
+        </div>
+        <div class="slidecontainer" id="walkathon" style="display:none">
+          <div id="note" style="padding-top:20px">
+            <div>请移动下面的滑块：</div>
+            <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
+              <div>
+                 我将在{{ walkathon['phrase_for_walkathon_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里)</output>
+              </div>
+          </pre>
+          </div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output>
+            <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
+          </div>
         </div>
       </div>
     </div><!-- next button -->
@@ -432,7 +448,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">家人和朋友</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="dontKnowFamilyFriends" onclick="dunno(1))">
+                <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="dontKnowFamilyFriends" onclick="dunno(1)">
                 <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
               </div>
             </div>
@@ -695,7 +711,7 @@
   </div>
   </form>
 
-  <div class="page" id="page7" style="display:none">
+  <div class="page" id="page6" style="display:none">
     <div class="survey">
       <!-- good deed willingness degree -->
       <div class="question">

@@ -359,3 +359,11 @@ function willingnessSlide() {
   var left = 2 + 2.88 * trust;
   document.getElementById("willingnessAmount").style.marginLeft = left + "px";
 }
+
+function donationWillingSlide2() {
+  var value=document.getElementById("donationWillingSlider2").value;
+  var donationWillingAmount = `${value}元`;
+  document.getElementById("donationWillingAmount2").value=donationWillingAmount;
+  var left = 2 + 0.026 * value;
+  document.getElementById("donationWillingAmount2").style.marginLeft = left + "px";
+}
