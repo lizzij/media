@@ -1,38 +1,3 @@
-// function show(shown) {
-//   window.scroll(0,0);
-//   document.getElementById("clearAllStarsButton").style.display='none';
-//   var pages = ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page7part2', 'page8', 'page9'];
-//   var pageIndex;
-//   for (pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-//     pageId = pages[pageIndex];
-//     if (shown == pageId) {
-//       if (shown == 'page6') {
-//         var alert = document.getElementById("starAlert").innerHTML;
-//         var numStarLeft = document.getElementById("starLeftCount").innerHTML;
-//         if ((parseInt(numStarLeft)) > 0) {
-//           document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-//           document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
-//           document.getElementById("clearAllStarsButton").style.display='block';
-//         }
-//         else {
-//           document.getElementById('page6').style='display: flex;flex-direction: column;position: relative;';
-//         }
-//       }
-//       else if (shown == 'page7part2'){
-//         guessWeatherSource();
-//         document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-//       }
-//       else {
-//         document.getElementById(shown).style='display: flex;flex-direction: column;position: relative;';
-//       }
-//     }
-//     else {
-//       document.getElementById(pageId).style.display='none';
-//     }
-//   }
-//   return 0;
-// }
-
 function validateOneChecked(name) {
   return ($('input[name='+name+']:checked').length == 1);
 }

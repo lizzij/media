@@ -184,8 +184,8 @@ def get_survey(user_id_hashid, day_hashid):
             if lastpage == day_to_lastpage_dict[day]:
                 update_lastpage(lastpage, 1, user_id, day)
 
-    second_event = get_event_info(12,3)
-    walkathon = get_event_info(10,3)
+    second_event = get_event_info(19,4)
+    walkathon = get_event_info(13,4)
 
     t1_air_quality_source = { 'second_event' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' },
                               'walkathon' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' } }

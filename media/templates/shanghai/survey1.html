@@ -213,20 +213,6 @@
           <div class="form-check"><input class="form-check-input" type="radio" name="blueGraySky" value="blue" id="blueGraySky" ><label class="form-check-label" for="blue">Blue</label></div>
           <div class="form-check"><input class="form-check-input" type="radio" name="blueGraySky" value="gray" id="blueGraySky" required><label class="form-check-label" for="gray">Gray</label></div>
         </div>
-        <div class="slidecontainer" id="walkathon" style="display:none">
-          <div id="note" style="padding-top:20px">
-            <div>请移动下面的滑块：</div>
-            <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
-              <div>
-                 我将在{{ walkathon['phrase_for_walkathon_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里)</output>
-              </div>
-          </pre>
-          </div>
-          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
-            <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output>
-            <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
-          </div>
-        </div>
       </div>
     </div><!-- next button -->
     <div class="nextButton">
