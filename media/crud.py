@@ -125,3 +125,7 @@ def activity_update(user_id,day, day_complete, survey_page, h1, h2):
     )
     db.commit()
     return 'complete'
+
+@bp.route('/getLink', methods=['GET', 'POST'])
+def get_link():
+    return render_template('crud/getLink.html')
