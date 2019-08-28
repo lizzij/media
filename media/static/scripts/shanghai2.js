@@ -526,9 +526,11 @@ function univerisity(){
   var otherUni = document.getElementById('otherUni');
   if ( otherUni.selected === true ) {
     document.getElementById("otherUniFiller").style.display = "block";
+    document.getElementById("otherUniAnswer").required = true;
   }
   else {
     document.getElementById("otherUniFiller").style.display = "none";
+    document.getElementById("otherUniAnswer").required = false;
   }
 }
 
@@ -600,6 +602,20 @@ function randomize() {
   }
 }
 
+function randomizeEventNameOptions() {
+  // shuffle order
+  var order = [1, 2, 3, 4];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("eventNameOptionsOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#nameOption"+order[i] ).after( $( "#nameOption"+order[i+1] ) );
+  }
+}
+
 $( document ).ready(function() {
   randomize();
+  randomizeEventNameOptions();
 });
