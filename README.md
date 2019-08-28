@@ -109,9 +109,15 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-**Module management**
-- `pip install <module>` then `python -m flask run`
-**Git branches**
+####
+
+
+#### Module management
+- Installing packages using pip and virtual environments `pip install <module>` then `python -m flask run`
+- [packaging guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+- change `requirement.txt` then run `pip install -r requirements.txt`
+
+#### Git branches
 - `master` = deployed
   - merge `dev` to `master`
 
@@ -141,7 +147,7 @@ sudo systemctl restart media
   - `git checkout <branch>` get to the branch
   - `git rebase master` (discard history) or `git merge origin/master`
 
-**File structure**
+#### File structure
 - use `tree` in `./media` dir to get the file tree
 ```bash
 media
