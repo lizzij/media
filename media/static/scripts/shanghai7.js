@@ -6,7 +6,7 @@ function show(toShowIndex) {
   var alerts = ['timesUp1', 'timesUp2', 'timesUp3', 'timesUp4', 'timesUp5']
 
   if (toShowIndex == 1) {
-    document.getElementById('page4').style.display='none';
+    document.getElementById('page5').style.display='none';
     document.getElementById('question1').style='display: flex;flex-direction: column;position: relative;';
     startTimer(1);
   }
