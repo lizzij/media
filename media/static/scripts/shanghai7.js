@@ -356,16 +356,17 @@ function checkBeanNumberSource(){
   var AtoldMe = document.getElementById("AtoldMe").checked;
   var BtoldMe = document.getElementById("BtoldMe").checked;
   var CtoldMe = document.getElementById("CtoldMe").checked;
+  var wongAnswers = document.getElementById("whoToldMeWrongAnswers").value;
   if (AtoldMe && (!BtoldMe) && CtoldMe) {
     document.getElementById("beanNumberResult").innerHTML = '正确';
     document.getElementById("beanNumberResult").style.color = "#28a745";
     document.getElementById("beanCountEstimateQuestion").style.display = "block";
-
   }
   else {
     document.getElementById("beanNumberResult").innerHTML = '您的答案错误。 请再检查一次！';
     document.getElementById("beanNumberResult").style.color = "#FF3333";
-    document.getElementById("beanCountEstimateQuestion").style.display = "none";
+    var updatedWrongAns = wongAnswers.concat('(' + (AtoldMe ? 'AtoldMe ' : '') + (BtoldMe ? 'BtoldMe ' : '') + (CtoldMe ? 'CtoldMe ' : '') + ')');
+    document.getElementById("whoToldMeWrongAnswers").value = updatedWrongAns;
   }
 }
 
@@ -381,6 +382,7 @@ function startTimer(index) {
       sec--;
     }
     else if (sec == 00 && page.style.display != 'none') {
+      document.getElementById('math' + index + 'timeover').value = 'yes';
       alert.innerHTML = '时间到，请点击进入下一页';
       alert.style.color = "#FF3333";
       input.disabled = true;
