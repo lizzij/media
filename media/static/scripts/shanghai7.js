@@ -382,6 +382,7 @@ function startTimer(index) {
       sec--;
     }
     else if (sec == 00 && page.style.display != 'none') {
+      document.getElementById('math' + index + 'timeover').value = 'yes';
       alert.innerHTML = '时间到，请点击进入下一页';
       alert.style.color = "#FF3333";
       input.disabled = true;
