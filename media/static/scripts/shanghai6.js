@@ -15,13 +15,13 @@ function signUpFeeSlide2() {
 }
 
 // Page 5 ======================================================================
-// validate star question on page 5 => page 6
+// validate star question on page 6 => page 7
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById('page6').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
