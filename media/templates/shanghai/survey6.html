@@ -131,7 +131,7 @@
             </div>
           </section>
 
-          {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
+          {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
           <section class="airQuality">
             <div id="airQualityHeader">
               <div id="airQualityTitle">
@@ -200,7 +200,7 @@
 
         </section>
 
-        {% if user['treatment'] == 'TRO' or user['treatment'] == 'TRN' %}
+        {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
         <!-- next button -->
         <div class="nextButton" style="
             position: absolute;
@@ -215,9 +215,9 @@
         <div class="nextButton" style="
             position: absolute;
             width: 375px;
-            height: 124px;
+            height: 164px;
             left: calc(50% - 375px/2 + 64px);
-            top: 800px;">
+            top: 650px;">
           <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
           </input>
         </div>
@@ -321,13 +321,6 @@
             <!-- temperature -->
             <section class="temperature">
               <div id="temperatureHeader">去年{{ walkathon['phrase_for_header'] }} 室外气温</div>
-              <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
-              <!-- <div id="temperatureSubtitle">{{ walkathon['phrase_for_header'] }} <br />平均历史气温</div> -->
-
-              <!-- temperture low -->
               <div class="temperatureLow">
                 <div id="lowValue">{{ walkathon['low_temp'] }}</div>
                 <div id="lowUnit">°C</div>
@@ -343,16 +336,15 @@
             </section>
 
             <!-- air quality -->
+            {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
             <section class="airQuality">
               <div id="airQualityHeader">
                 <div id="airQualityTitle">
-                  去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
+                  去年{{ walkathon['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
                 </div>
               </div>
-              <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
-              <!-- <div id="airQualityCurr">优</div> -->
-              <div id="airQualitySource" style="right:10px">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-              <div id="airQualityLogo" style="right:170px">
+              <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+              <div id="airQualityLogo" style="right:10px;">
                 <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="40">
               </div>
 
@@ -407,20 +399,32 @@
                 </div>
               </div>
             </section>
+            {% endif %}
 
           </section>
 
+          {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
           <!-- next button -->
           <div class="nextButton" style="
-            position: absolute;
-            width: 375px;
-            height: 124px;
-            left: calc(50% - 375px/2 + 64px);
-            top: 950px;
-            padding-bottom:100px;">
-            <input class="button" type="submit" value="下一页" name="thirdEventNextButton" style="color: white; font-size: 14px;">
+              position: absolute;
+              width: 375px;
+              height: 124px;
+              left: calc(50% - 375px/2 + 64px);
+              top: 950px;">
+            <input class="button" type="submit" value="下一页" name="walkathonNextButton" style="color: white; font-size: 14px;">
             </input>
           </div>
+          {% else %}
+          <div class="nextButton" style="
+              position: absolute;
+              width: 375px;
+              height: 164px;
+              left: calc(50% - 375px/2 + 64px);
+              top: 650px;">
+            <input class="button" type="submit" value="下一页" name="walkathonNextButton" style="color: white; font-size: 14px;">
+            </input>
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>
