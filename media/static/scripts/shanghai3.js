@@ -2,7 +2,7 @@ function donationWillingSlide() {
   var value=document.getElementById("donationWillingSlider").value;
   var donationWillingAmount = `${value}元`;
   document.getElementById("donationWillingAmount").value=donationWillingAmount;
-  var left = 2 + 0.266 * value;
+  var left = 2 + 0.9 * value;
   document.getElementById("donationWillingAmount").style.marginLeft = left + "px";
 }
 
