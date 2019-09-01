@@ -166,6 +166,7 @@ def get_link():
 
     ## Using the input, create user profile in DB, and produce output
     def new_user_process(input_ID):
+        db = get_db()
         users = get_users()
         cohort_users = users.loc[users.cohort == int(cohort)].drop_duplicates(subset=['user_id'])
         curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
@@ -177,7 +178,13 @@ def get_link():
             return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
             <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<span>']
         elif curr_cohort_user_count >= maxnum_cohort: # Max cohort size reached
-            requests.post(URL+"userInsert/WAITLIST/TBD"+"/"+str(input_ID)+"/"+ str(int(cohort)+1)+"/TBD/TBD/TBD") # TODO change to db
+            db.execute(
+                'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
+                ' VALUES (?, ?, ?, ?, ?, ?, ?)',
+                ('WAITLIST', 'TBD', str(input_ID), str(int(cohort)+1), 'TBD', 'TBD', 'TBD')
+            )
+            db.commit()
+            # requests.post(URL+"userInsert/WAITLIST/TBD"+"/"+str(input_ID)+"/"+ str(int(cohort)+1)+"/TBD/TBD/TBD")
             return ["MAX SIZE REACHED: SAVED IN WAITLIST",msg_maxnum_cohort]
         else:
             # Create nickname #
@@ -192,11 +199,24 @@ def get_link():
                 day_hashids = Hashids(salt=str(10 * nextUserID + day) + "day", min_length=10)
                 hashed_user_id = user_id_hashids.encrypt(nextUserID)
                 hashed_day = day_hashids.encrypt(day)
-                requests.post(URL+"userInsert/"+str(nextUserID)+"/"+
-                    str(day)+"/"+str(input_ID)+"/"+ str(cohort) + "/" + str(treatment) +"/"+hashed_user_id+"/"+hashed_day) # TODO change to db
-                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## TODO check if URL is changed accordingly
+                # requests.post(URL+"userInsert/"+str(nextUserID)+"/"+
+                #     str(day)+"/"+str(input_ID)+"/"+ str(cohort) + "/" + str(treatment) +"/"+hashed_user_id+"/"+hashed_day)
+                db.execute(
+                    'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
+                    ' VALUES (?, ?, ?, ?, ?, ?, ?)',
+                    (str(nextUserID), str(day), str(input_ID), str(cohort), str(treatment), hashed_user_id, hashed_day)
+                )
+                db.commit()
+                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## TODO change URL accordingly
             # Set up initial allActivities #
-            requests.post(URL+"activityUpdate/"+str(nextUserID)+"/0/0/0/0/0") # TODO change to db
+            now = datetime.now()
+            # requests.post(URL+"activityUpdate/"+str(nextUserID)+"/0/0/0/0/0") # TODO change to db
+            db.execute(
+                'REPLACE INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
+                ' VALUES (?, ?, ?, ?, ?, ?)',
+                (str(nextUserID), 0, 0, 0, now, now)
+            )
+            db.commit()
             # Return output for surveyors #
             return [u'<b>请将其备注名改为</b>：'+'<span style="background-color:PaleGreen;">'+str(nextUserID),msg_initial+msg_URL+'<span>']
 
