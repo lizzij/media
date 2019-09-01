@@ -35,11 +35,11 @@
       </input>
     </div>
     <div class="surveyorOutput">Input ID: {{ input_ID }}</div>
-    {%for line in output%}
+    {% for line in output %}
       {% autoescape false %}
-        <p class="surveyorOutput">{{ line }}</p>
+        <div class="surveyorOutput">{{ line }}</div>
       {% endautoescape %}
-    {%endfor%}
+    {% endfor %}
   </div>
   </form>
 
