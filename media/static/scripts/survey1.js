@@ -55,13 +55,13 @@ function validateWeatherStar() {
   return true;
 }
 
-// validate star question on page 3 => page 4
+// validate star question on page 4 => page 5
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page3').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById('page4').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
@@ -1019,23 +1019,8 @@ function randomize() {
 
 $( document ).ready(function() {
   document.getElementById("weatherClearAllStarsButton").style.display='none';
-  document.getElementById("clearAllStarsButton").style.display='none';
+  document.getElementById("clearAllStarsButton").style.display='none !important!';
   randomize();
-  // $( "#question2" ).after( $( "#question1" ) );
-  // randomizeSlider(0, 1000, "#donationWillingSlider", "#donationWillingAmount", 2, 0.266, "元");
-  // randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.9, "");
-  //
-  // randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust7", "#trust7Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
-  // randomizeSlider(0, 100, "#trust8", "#trust8Amount", 2, 2.9, "");
-  //
-  // randomizeSlider(0, 100, "#willingness", "#willingnessAmount", 2, 2.9, "");
-  // randomizeSlider(0, 10000, "#donationWillingSlider2", "#donationWillingAmount2", 2, 0.025, "元");
 });
 
 function validateRadioButton(name) {
