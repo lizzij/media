@@ -138,9 +138,9 @@ def activity_update(user_id,day, day_complete, survey_page, h1, h2):
 def get_link():
     URL = "http://127.0.0.1:5000/" # XXX change to URL = "https://dailyeventinfo.com/"
     ## Scripts (XXX check these before deployment)
-    msg_ineligible = u'<br>Sorry, you are ineligible to participate in this survey this time. Thank you very much for your interest.'  ## XXX Chinese translation needed
-    msg_maxnum_cohort = u'<br>次轮招募已完成，我们将在下轮开始时尽快联系您！' ## XXX Google translate says "the second round of recuitment has been completed". If this is correct translation, can we say "this round" instead of "the second round"?
-    msg_initial = u'<br>此次调研总共维持6天时间。我们将在接下来的8天（包括今天）每天提供一些上海本地及周边的户外活动及场所的信息。根据参与者的意向，我们或将于 [Sep 30 - Oct 4 2019] 组团结伴前往。<br><br>\
+    msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>对不起，由于人数限制，您暂时不能参与这次调研。非常感谢您的参与！'
+    msg_maxnum_cohort = u'<br><b>请发送以下消息给该好友</b>：<br><br>本轮招募已完成，我们将在下轮开始时尽快联系您！'
+    msg_initial = u'<br><b>请发送以下消息给该好友</b>：<br><br>此次调研总共维持6天时间。我们将在接下来的8天（包括今天）每天提供一些上海本地及周边的户外活动及场所的信息。根据参与者的意向，我们或将于 [Sep 30 - Oct 4 2019] 组团结伴前往。<br><br>\
     接下来的4天里，我们将向您询问一些简短的问题（约5分钟） 。第5天和第6天的调研将在2周和4周后进行。<br><br>\
     我们也将会询问您一些关于各类话题的问题。 如果您想参加这项学术调研，请点击以下链接开始。 您的回答仅被用于学术研究，我们将对您的个人信息及回答进行严格保密。 调研结束后我们将进行抽奖，所有参与并完成调研的同学将有机会赢得800元人民币作为奖励。<br><br>'
 
@@ -170,11 +170,12 @@ def get_link():
         cohort_users = users.loc[users.cohort == int(cohort)].drop_duplicates(subset=['user_id'])
         curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
         if input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
-            return ["EXISTING USER",msg_ineligible]
+            return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
         elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort: just show the existing message
             theUser = cohort_users.loc[(cohort_users.wechat_id == input_ID) & (cohort_users.day == 0)]
             msg_URL = URL+"s/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
-            return ["(DUPLICATE INPUT) SAVE USER AS: "+str(theUser.user_id.iloc[0]),msg_initial+msg_URL]
+            return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
+            <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<span>']
         elif curr_cohort_user_count >= maxnum_cohort: # Max cohort size reached
             requests.post(URL+"userInsert/WAITLIST/TBD"+"/"+str(input_ID)+"/"+ str(int(cohort)+1)+"/TBD/TBD/TBD") # TODO change to db
             return ["MAX SIZE REACHED: SAVED IN WAITLIST",msg_maxnum_cohort]
@@ -193,16 +194,15 @@ def get_link():
                 hashed_day = day_hashids.encrypt(day)
                 requests.post(URL+"userInsert/"+str(nextUserID)+"/"+
                     str(day)+"/"+str(input_ID)+"/"+ str(cohort) + "/" + str(treatment) +"/"+hashed_user_id+"/"+hashed_day) # TODO change to db
-                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## XXX Change URL accordingly
-            # Set up initial allActivities #    # TODO change to db
-            requests.post(URL+"activityUpdate/"+str(nextUserID)+"/0/0/0/0/0") ## XXX I put day 0 here for new user. Is this going to be a problem? (I need this so that we send correct reminder for people who didn't even finish consent form)
+                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## TODO check if URL is changed accordingly
+            # Set up initial allActivities #
+            requests.post(URL+"activityUpdate/"+str(nextUserID)+"/0/0/0/0/0") # TODO change to db
             # Return output for surveyors #
-            return ["Save user as: "+str(nextUserID),msg_initial+msg_URL]
+            return [u'<b>请将其备注名改为</b>：'+'<span style="background-color:PaleGreen;">'+str(nextUserID),msg_initial+msg_URL+'<span>']
 
-    input_ID = '-'
-    output = ['Please input an user id above.']
+    input_ID = '/'
+    output = [u'<font color="gray">（还未输入，请在上方框内输入新好友的微信号...）</font>']
     if request.method == 'POST':
-        import pdb; pdb.set_trace()
         input_ID = request.form['wechatID']
         output = new_user_process(input_ID)
 

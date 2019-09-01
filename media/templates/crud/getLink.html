@@ -18,9 +18,8 @@
   <div class="page" style="display: flex;flex-direction: column;position: relative; overflow: visible;">
 
     <div class="survey">
-      <div class="mainQuestion">Hi surveyor,</div>
       <div class="question">
-        <div class="questionPrompt">Please copy and paste in the user's wechatID below</div>
+        <div class="questionPrompt">请输入新好友的微信号（即 wechatID）</div>
         <div class="questionAnswer">
           <div>
             <div class="form-group">
@@ -30,11 +29,11 @@
         </div>
       </div>
     </div>
-    <div class="nextButton">
+    <div class="nextButton" style="padding-top: 10px;">
       <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
       </input>
     </div>
-    <div class="surveyorOutput">Input ID: {{ input_ID }}</div>
+    <div class="surveyorOutput"><b>您刚刚输入的微信号是：</b>{{ input_ID }}</div>
     {% for line in output %}
       {% autoescape false %}
         <div class="surveyorOutput">{{ line }}</div>
