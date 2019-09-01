@@ -1,5 +1,6 @@
 # Media Study
 Flask app for info and survey distribution.
+To read more about the research project and the development process, please head to [Power of Repetition repo](https://github.com/lizzij/powerofrepetition).
 
 ## Documentations
 ### pilot
