@@ -234,7 +234,7 @@ def update_wechatID():
     if request.method == 'POST':
         user_id = request.form['user_id']
         wechat_id = request.form['wechat_id']
-        corhort = request.form['cohort']
+        cohort = request.form['cohort']
         user = db.execute(
             'SELECT user_id, day, treatment, cohort'
             ' FROM user u'
@@ -242,11 +242,11 @@ def update_wechatID():
             (user_id, cohort,)
         ).fetchone()
         if user is None:
-            output_message = "User {0} of cohort {1} doesn't exist.".format(user_id_hashid, day_hashid)
+            output_message = "User user_id {0} of cohort {1} doesn't exist.".format(user_id, cohort)
         else:
             db.execute(
                 'UPDATE user SET wechat_id=?, cohort = ? WHERE user_id = ?',
-                (wechat_id, corhort, user_id)
+                (wechat_id, cohort, user_id)
             )
             db.commit()
             output_message = 'Done:) Updated user with user_id %s, to <br>\
