@@ -134,6 +134,7 @@ def activity_update(user_id,day, day_complete, survey_page, h1, h2):
     db.commit()
     return 'complete'
 
+# to get links for surveyors
 @bp.route('/getLink', methods=['GET', 'POST'])
 def get_link():
     URL = "http://127.0.0.1:5000/" # XXX change to URL = "https://dailyeventinfo.com/"
@@ -184,7 +185,6 @@ def get_link():
                 ('WAITLIST', 'TBD', str(input_ID), str(int(cohort)+1), 'TBD', 'TBD', 'TBD')
             )
             db.commit()
-            # requests.post(URL+"userInsert/WAITLIST/TBD"+"/"+str(input_ID)+"/"+ str(int(cohort)+1)+"/TBD/TBD/TBD")
             return ["MAX SIZE REACHED: SAVED IN WAITLIST",msg_maxnum_cohort]
         else:
             # Create nickname #
@@ -199,8 +199,6 @@ def get_link():
                 day_hashids = Hashids(salt=str(10 * nextUserID + day) + "day", min_length=10)
                 hashed_user_id = user_id_hashids.encrypt(nextUserID)
                 hashed_day = day_hashids.encrypt(day)
-                # requests.post(URL+"userInsert/"+str(nextUserID)+"/"+
-                #     str(day)+"/"+str(input_ID)+"/"+ str(cohort) + "/" + str(treatment) +"/"+hashed_user_id+"/"+hashed_day)
                 db.execute(
                     'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
                     ' VALUES (?, ?, ?, ?, ?, ?, ?)',
@@ -210,7 +208,6 @@ def get_link():
                 if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## TODO change URL accordingly
             # Set up initial allActivities #
             now = datetime.now()
-            # requests.post(URL+"activityUpdate/"+str(nextUserID)+"/0/0/0/0/0") # TODO change to db
             db.execute(
                 'REPLACE INTO activity (user_id, day, day_complete, survey_page, day_started, curr_time)'
                 ' VALUES (?, ?, ?, ?, ?, ?)',
@@ -226,5 +223,32 @@ def get_link():
         input_ID = request.form['wechatID']
         output = new_user_process(input_ID)
 
-    # XXX form to Chinese, add forwarding email instruction
+    # TODO add forwarding email instructions
     return render_template('crud/getLink.html', input_ID=input_ID, output=output)
+
+# to update (backlog) wechat_id for corresponding user_id
+@bp.route('/updateWechatID', methods=['GET', 'POST'])
+def update_wechatID():
+    db = get_db()
+    output_message = ''
+    if request.method == 'POST':
+        user_id = request.form['user_id']
+        wechat_id = request.form['wechat_id']
+        corhort = request.form['cohort']
+        user = db.execute(
+            'SELECT user_id, day, treatment, cohort'
+            ' FROM user u'
+            ' WHERE u.user_id = ? AND u.cohort = ?',
+            (user_id, cohort,)
+        ).fetchone()
+        if user is None:
+            output_message = "User {0} of cohort {1} doesn't exist.".format(user_id_hashid, day_hashid)
+        else:
+            db.execute(
+                'UPDATE user SET wechat_id=?, cohort = ? WHERE user_id = ?',
+                (wechat_id, corhort, user_id)
+            )
+            db.commit()
+            output_message = 'Done:) Updated user with user_id %s, to <br>\
+            wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
+    return render_template('crud/updateWechatID.html', output_message=output_message)

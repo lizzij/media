@@ -4,7 +4,7 @@ To read more about the research project and the development process, please head
 
 ## Documentations
 ### pilot
-- - Read documentation here: [Google docs (read only mode)](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
+- Read documentation here: [Google docs (read only mode)](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
 - [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
   - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
 

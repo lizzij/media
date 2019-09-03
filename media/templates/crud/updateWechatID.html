@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>发送链接</title>
+  <title>update wechatID</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
@@ -19,26 +19,43 @@
 
     <div class="survey">
       <div class="question">
-        <div class="questionPrompt">请输入新好友的微信号（即 wechatID）</div>
+        <div class="questionPrompt">user_id</div>
         <div class="questionAnswer">
           <div>
             <div class="form-group">
-              <input type="text" class="form-control" id="wechatID" name="wechatID" placeholder="wechatID" >
+              <input type="text" class="form-control" id="user_id" name="user_id" placeholder="user_id" >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="questionPrompt">wechat_id</div>
+        <div class="questionAnswer">
+          <div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="wechat_id" name="wechat_id" placeholder="wechat_id" >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <div class="questionPrompt">cohort</div>
+        <div class="questionAnswer">
+          <div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="cohort" name="cohort" placeholder="cohort" >
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="nextButton" style="padding-top: 10px;">
-      <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
+      <input class="button" type="submit" value="submit" style="color: white; font-size: 14px;">
       </input>
     </div>
-    <div class="surveyorOutput"><b>您刚刚输入的微信号是：</b>{{ input_ID }}</div>
-    {% for line in output %}
-      {% autoescape false %}
-        <div class="surveyorOutput">{{ line }}</div>
-      {% endautoescape %}
-    {% endfor %}
+    {% autoescape false %}
+      <div class="surveyorOutput">{{ output_message }}</div>
+    {% endautoescape %}
   </div>
   </form>
 
