@@ -1,9 +1,10 @@
 # Media Study
-Flask app for info and survey distribution.
+Flask app for info and survey distribution.   
+To read more about the research project and the development process, please head to the *[Power of Repetition repo](https://github.com/lizzij/powerofrepetition)*.
 
 ## Documentations
 ### pilot
-- Read [documentation](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
+- Read documentation here: [Google docs (read only mode)](https://docs.google.com/document/d/1tng4vsgPXjuKzJaPWZg7eiDzAz9nOl0U7VqSZvYjSCk/edit?usp=sharing) here
 - [Treatment](https://docs.google.com/spreadsheets/d/1rbqW0Ooj0mW6yI6AapUmkkDcs3w8OI5H3VPDT4D049o/edit?usp=sharing) T1, T2 - T2.S.M, T3 - T2.M.S, T4 - T2.M.M.N, T5 - T2.M.M.C
   - Event 6 (cohort 1: user 1-4; cohort 2: user 5)
 
@@ -11,27 +12,31 @@ Flask app for info and survey distribution.
   - Question (from google doc), QuestionCode, Option/Subqn (from google doc), OptionCode, Relevant (note and related questions)
 
 ### xian
-- [Google docs (edit mode)](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
+- Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1xvPo-bulFDlbYwLeHmL--fx_NsrwSkMH_i8PZwZrUGc/edit?usp=sharing)
   - 2 days Xi'an Pilot
+
+### shanghai
+- Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
+  - 8 days Shanghai Pilot
 
 ## Results
 Paste the code into terminal, and hit Return key.
 ### Get allActivites.csv
 Headers: user_id, day, day_complete, survey_page, day_started, curr_time
 ```bash
-wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allActivites.csv
+wget -qO- https://dailyeventinfo.com/allActivities | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Activities//;/^$/d' > allActivites.csv
 ```
 
 ### Get allUsers.csv
 Headers: user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid
 ```bash
-wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allUsers.csv
+wget -qO- https://dailyeventinfo.com/allUsers | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Users//;/^$/d' > allUsers.csv
 ```
 
 ### Get allResults.csv
 Headers: user_id, day, question_id, result, created
 ```bash
-wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allResults.csv
+wget -qO- https://dailyeventinfo.com/allResults | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Results//;/^$/d' > allResults.csv
 ```
 
 ### Get allEvents.csv
@@ -39,13 +44,20 @@ Paste from [here](https://dailyeventinfo.com/allEvents), or use the script below
 
 Headers: event_id, title, subtitle, info_date, info_time, location, image_file, air_quality_source, air_quality_source_logo, short_description, low_temp, high_temp, suitable_for_family, suitable_for_friends, suitable_for_lover, suitable_for_baby, suitable_for_elderly, suitable_for_pet, event_details, phrase_for_week, phrase_for_day, phrase_for_header, cohort
 ```bash
-wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/完成情况//;/^$/d' > allEvents.csv
+wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/^[ \t]*//;s/All Event Info//;/^$/d' > allEvents.csv
 ```
 
 ## Cohorts
 ### CRUD
-(Applicable to all cohorts) create, read, update and delete.  
-Click [here](https://github.com/lizzij/media/blob/master/media/templates/crud/README.md) for testing links and detailed README.
+(Applicable to all cohorts) create, read, update and delete
+
+| local                               | https                                    |
+|-------------------------------------|------------------------------------------|
+| http://localhost:5000/allResults    | https://dailyeventinfo.com/allResults    |
+| http://localhost:5000/allActivities | https://dailyeventinfo.com/allActivities |
+| http://localhost:5000/allUsers      | https://dailyeventinfo.com/allUsers      |
+| http://localhost:5000/allEvents     | https://dailyeventinfo.com/allEvents     |
+| http://localhost:5000/eventUpdate   | https://dailyeventinfo.com/eventUpdate   |
 
 ### Pilot
 For Shanghai cohort 1, 2 in May, June.    
@@ -58,6 +70,10 @@ Click [here](https://github.com/lizzij/media/blob/master/media/templates/ui_test
 ### Xi'an Trial
 For Xi'an cohort 3 in July.  
 Click [here](https://github.com/lizzij/media/blob/master/media/templates/xian/README.md) for testing links and detailed README.
+
+### Shanghai Trial
+For Shanghai cohort 4 in Sept/Oct.  
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/shanghai/README.md) for testing links and detailed README.
 
 ## How to run locally:
 - Clone repo locally
@@ -94,7 +110,16 @@ sudo systemctl restart media
 ```
 
 ## Developing...
-**Git branches**
+####
+
+
+#### Module management
+- Installing packages using pip and virtual environments `pip install <module>` then `python -m flask run`
+- [packaging guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+- change `requirement.txt` then run `pip install -r requirements.txt`
+
+
+#### Git branches
 - `master` = deployed
   - merge `dev` to `master`
 
@@ -124,35 +149,26 @@ sudo systemctl restart media
   - `git checkout <branch>` get to the branch
   - `git rebase master` (discard history) or `git merge origin/master`
 
-**File structure**
+#### File structure
+- use `tree` in `./media` dir to get the file tree
 ```bash
 media
 ├── __init__.py
 ├── crud.py
 ├── db.py
+├── info.py
 ├── pilot.py
 ├── schema.sql
+├── shanghai.py
 ├── static
 │   ├── img
+│   │   ├── AQLevelHint.png
 │   │   ├── ...
-│   │   ├── favicon.ico
-│   │   ├── favicon_package_v0.16
-│   │   │   └── ...
+│   │   └── xian2.jpg
 │   ├── scripts
 │   │   ├── bootstrap.js
-│   │   ├── bootstrap.min.js
-│   │   ├── jquery-3.3.1.slim.min.js
-│   │   ├── jweixin-1.2.0.js
-│   │   ├── popper.min.js
-│   │   ├── survey1.js
-│   │   ├── survey2.js
-│   │   ├── survey3.js
-│   │   ├── survey4.js
-│   │   ├── survey5.js
-│   │   ├── survey6.js
-│   │   ├── survey7.js
-│   │   ├── survey8.js
-│   │   └── surveyInfo.js
+│   │   ├── ...
+│   │   └── xian2.js
 │   └── styles
 │       ├── bootstrap.css
 │       ├── consentForm.css
@@ -171,34 +187,25 @@ media
 │   ├── pilot
 │   │   ├── README.md
 │   │   ├── completionPage.html
-│   │   ├── consentForm.html
-│   │   ├── infoPage.html
-│   │   ├── infoPageAQ.html
-│   │   ├── infoPageCO.html
-│   │   ├── survey1.html
-│   │   ├── survey2.html
-│   │   ├── survey3.html
-│   │   ├── survey4.html
-│   │   ├── survey5.html
-│   │   ├── survey6.html
-│   │   ├── survey6T3.html
-│   │   ├── survey6T5.html
-│   │   ├── survey7.html
-│   │   ├── survey8.html
+│   │   ├── ...
 │   │   └── surveyInfo.html
+│   ├── shanghai
+│   │   └── shanghai.md
 │   ├── ui_test
 │   │   ├── README.md
 │   │   ├── infoPagea.html
-│   │   ├── infoPageb.html
-│   │   ├── infoPagec.html
+│   │   ├── ...
 │   │   └── infoPaged.html
-│   └── xian
+│   ├── ui_test
+│   │   ├── README.md
+│   │   ├── infoPage.html
+│   │   ├── ...
+│   │   └── survey2.html
+│   └── shanghai
 │       ├── README.md
-│       ├── infoPagea.html
-│       ├── infoPagec.html
-│       ├── survey1.html
-│       └── survey2.html
+│       ├── infoPage.html
+│       ├── ...
+│       └── survey8.html
 ├── ui_test.py
-├── xian.py
-└── xian.pyc
+└── xian.py
 ```

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>问卷</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page1">
+
+    <div class="survey">
+      <!-- questions about the event -->
+      <div class="mainQuestion">关于该活动的问题</div>
+      <div class="question">
+        <div class="questionPrompt">您是否有意向参加此活动？</div>
+        <div class="questionAnswer">
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()" required><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
+        </div>
+        <div class="slidecontainer" id="walkathon" style="display:none">
+          <div id="note" style="padding-top:20px">
+            <div>请移动下面的滑块：</div>
+            <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
+              <div >
+                 我将在{{ walkathon['phrase_for_walkathon_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里)</output>
+              </div>
+          </pre>
+          </div>
+          <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
+            <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output>
+            <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
+          </div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 14%; background-color: #979797;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+
+  <form lang="zh" action="" onsubmit="return validateWeatherStar();" method="post">
+  <div class="page" id="page2" style="display:none">
+    <div class="survey">
+      <div class="mainQuestion">关于天气预测的问题</div>
+      <div class="question">
+        <div class="questionPrompt">
+          <p>该活动预计将在<b>{{ walkathon['phrase_for_week'] }}</b>举办。您认为那周的天气将如何？</p>
+          <div id="note">
+            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</p>
+            <p id="subNote"><b>注意：</b></br>
+               - 每个星星代表十分之一的可能性</br>
+               - 请用完所有十二个星星</br>
+               - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+               - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+               - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+               - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="weatherStarLeftCount">12</div>
+              <div>星</div>
+            </div>
+            <div class="starContainer" id="weatherStarLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="weatherStarAlert" style="top:542px;"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>阳光普照</div>
+              <div>&nbsp</div>
+              <div id="weatherStarCountGroup1" onchange="updateInput(1)">0</div>
+              <input name="weatherStarCountGroup1Input" id="weatherStarCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="weatherStarGroup1Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="weatherStarCountGroup(1,1)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,2)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,3)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,4)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,5)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,6)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,7)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,8)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,9)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,10)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,11)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(1,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>多云</div>
+              <div>&nbsp</div>
+              <div id="weatherStarCountGroup2" onchange="updateInput(2)">0</div>
+              <input name="weatherStarCountGroup2Input" id="weatherStarCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="weatherStarGroup2Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="weatherStarCountGroup(2,1)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,2)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,3)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,4)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,5)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,6)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,7)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,8)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,9)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,10)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,11)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(2,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>阴天</div>
+              <div>&nbsp</div>
+              <div id="weatherStarCountGroup3" onchange="updateInput(3)">0</div>
+              <input name="weatherStarCountGroup3Input" id="weatherStarCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="weatherStarGroup3Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="weatherStarCountGroup(3,1)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,2)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,3)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,4)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,5)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,6)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,7)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,8)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,9)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,10)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,11)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(3,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>下雨下雪</div>
+              <div>&nbsp</div>
+              <div id="weatherStarCountGroup4" onchange="updateInput(4)">0</div>
+              <input name="weatherStarCountGroup4Input" id="weatherStarCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="weatherStarGroup4Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="weatherStarCountGroup(4,1)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,2)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,3)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,4)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,5)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,6)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,7)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,8)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,9)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,10)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,11)">☆</div>
+              <div class="star" onclick="weatherStarCountGroup(4,12)">☆</div>
+            </div>
+          </div>
+          <div id="weatherClearAllStarsButton" onclick="weatherClearAllStars()"><div id="weatherClearAllButton" style="top:542px;">
+              <div id="weatherClear">&times;</div>
+            </div></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 28%; background-color: #979797;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page3" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_walkathon_day'] }}的那一周举办。您认为那段时间的空气质量会如何？</p>
+          <div id="note">
+            <p>下面是两张同一个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块的位置。</b></p>
+            <p id="subNote"><b>例如：</b></br>
+              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；反之，将其移至最右边。</br>
+              - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
+              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
+          </div>
+        </div>
+        <div id="blueGraySkyImage" style="padding-bottom: 46px;">
+          <div>
+            <img src="{{ url_for('static', filename='img/blueGraySky.jpg') }}" width="320">
+          </div>
+          <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
+        </div>
+        <div class="questionAnswer">
+          <div class="slidecontainer" id="blueGraySky">
+            <div class="form-group" style="margin-top:16px; margin-bottom:0px">
+              <output class="sliderAmount" name="amount"
+                id="blueGraySkyAmount" for="rangeInput" style="margin-left:146px;">50</output>
+              <input type="range" min="0" max="100" value="50" step="2" class="slider" name="blueGraySky" id="blueGraySkyAmountSlider" oninput="blueGraySkyAmountSlide()"></input>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 42%; background-color: #979797;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+
+  <form lang="zh" action="" onsubmit="return validateStar();" method="post">
+  <div class="page" id="page4" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">
+          <p>有活动预计在<b>{{ walkathon['phrase_for_week'] }}</b>举行。您认为那周的空气质量等级会如何？</p>
+          <div id="note">
+            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+              <p id="subNote"><b>注意：</b></br>
+                 - 每个星星代表十分之一的可能性</br>
+                 - 请用完所有十二个星星</br>
+                 - 如果您认为某类极不可能发生 → 请选择放置零星星</br>
+                 - 如果您认为某类一定发生 → 请选择放置所有星星</br>
+                 - 如果您认为每一类都有同等可能发生 → 您应该在所有类别中选择放置相同数量的星星</br>
+                 - 此题没有正确和错误的答案，请根据您自己的期望选择放置星星</p>
+          </div>
+        </div>
+        <div class="questionAnswer" style="padding-left: 0px;">
+          <div class="starLeft">
+            <div class="starPrompt" id="starLeftPrompt">
+              <div>余</div>
+              <div id="starLeftCount">12</div>
+              <div>星</div>
+            </div>
+            <div class="starContainer" id="starLeftContainer">
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+              <div class="star">&starf;</div>
+            </div>
+          </div>
+          <div id="starAlert"></div>
+          <div class="starGroup1">
+            <div class="starPrompt">
+              <div>优</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
+              <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup1Cover" id="starGroup1Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(1,1)">☆</div>
+              <div class="star" onclick="starCountGroup(1,2)">☆</div>
+              <div class="star" onclick="starCountGroup(1,3)">☆</div>
+              <div class="star" onclick="starCountGroup(1,4)">☆</div>
+              <div class="star" onclick="starCountGroup(1,5)">☆</div>
+              <div class="star" onclick="starCountGroup(1,6)">☆</div>
+              <div class="star" onclick="starCountGroup(1,7)">☆</div>
+              <div class="star" onclick="starCountGroup(1,8)">☆</div>
+              <div class="star" onclick="starCountGroup(1,9)">☆</div>
+              <div class="star" onclick="starCountGroup(1,10)">☆</div>
+              <div class="star" onclick="starCountGroup(1,11)">☆</div>
+              <div class="star" onclick="starCountGroup(1,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup2">
+            <div class="starPrompt">
+              <div>良</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
+              <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup2Cover" id="starGroup2Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(2,1)">☆</div>
+              <div class="star" onclick="starCountGroup(2,2)">☆</div>
+              <div class="star" onclick="starCountGroup(2,3)">☆</div>
+              <div class="star" onclick="starCountGroup(2,4)">☆</div>
+              <div class="star" onclick="starCountGroup(2,5)">☆</div>
+              <div class="star" onclick="starCountGroup(2,6)">☆</div>
+              <div class="star" onclick="starCountGroup(2,7)">☆</div>
+              <div class="star" onclick="starCountGroup(2,8)">☆</div>
+              <div class="star" onclick="starCountGroup(2,9)">☆</div>
+              <div class="star" onclick="starCountGroup(2,10)">☆</div>
+              <div class="star" onclick="starCountGroup(2,11)">☆</div>
+              <div class="star" onclick="starCountGroup(2,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup3">
+            <div class="starPrompt">
+              <div>轻度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
+              <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup3Cover" id="starGroup3Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(3,1)">☆</div>
+              <div class="star" onclick="starCountGroup(3,2)">☆</div>
+              <div class="star" onclick="starCountGroup(3,3)">☆</div>
+              <div class="star" onclick="starCountGroup(3,4)">☆</div>
+              <div class="star" onclick="starCountGroup(3,5)">☆</div>
+              <div class="star" onclick="starCountGroup(3,6)">☆</div>
+              <div class="star" onclick="starCountGroup(3,7)">☆</div>
+              <div class="star" onclick="starCountGroup(3,8)">☆</div>
+              <div class="star" onclick="starCountGroup(3,9)">☆</div>
+              <div class="star" onclick="starCountGroup(3,10)">☆</div>
+              <div class="star" onclick="starCountGroup(3,11)">☆</div>
+              <div class="star" onclick="starCountGroup(3,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup4">
+            <div class="starPrompt">
+              <div>中度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
+              <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup4Cover" id="starGroup4Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(4,1)">☆</div>
+              <div class="star" onclick="starCountGroup(4,2)">☆</div>
+              <div class="star" onclick="starCountGroup(4,3)">☆</div>
+              <div class="star" onclick="starCountGroup(4,4)">☆</div>
+              <div class="star" onclick="starCountGroup(4,5)">☆</div>
+              <div class="star" onclick="starCountGroup(4,6)">☆</div>
+              <div class="star" onclick="starCountGroup(4,7)">☆</div>
+              <div class="star" onclick="starCountGroup(4,8)">☆</div>
+              <div class="star" onclick="starCountGroup(4,9)">☆</div>
+              <div class="star" onclick="starCountGroup(4,10)">☆</div>
+              <div class="star" onclick="starCountGroup(4,11)">☆</div>
+              <div class="star" onclick="starCountGroup(4,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup5">
+            <div class="starPrompt">
+              <div>重度污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
+              <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup5Cover" id="starGroup5Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(5,1)">☆</div>
+              <div class="star" onclick="starCountGroup(5,2)">☆</div>
+              <div class="star" onclick="starCountGroup(5,3)">☆</div>
+              <div class="star" onclick="starCountGroup(5,4)">☆</div>
+              <div class="star" onclick="starCountGroup(5,5)">☆</div>
+              <div class="star" onclick="starCountGroup(5,6)">☆</div>
+              <div class="star" onclick="starCountGroup(5,7)">☆</div>
+              <div class="star" onclick="starCountGroup(5,8)">☆</div>
+              <div class="star" onclick="starCountGroup(5,9)">☆</div>
+              <div class="star" onclick="starCountGroup(5,10)">☆</div>
+              <div class="star" onclick="starCountGroup(5,11)">☆</div>
+              <div class="star" onclick="starCountGroup(5,12)">☆</div>
+            </div>
+          </div>
+          <div class="starGroup6">
+            <div class="starPrompt">
+              <div>严重污染</div>
+              <div>&nbsp</div>
+              <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
+              <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
+            </div>
+            <div class="starGroup6Cover" id="starGroup6Cover"></div>
+            <div class="starContainer">
+              <div class="star" onclick="starCountGroup(6,1)">☆</div>
+              <div class="star" onclick="starCountGroup(6,2)">☆</div>
+              <div class="star" onclick="starCountGroup(6,3)">☆</div>
+              <div class="star" onclick="starCountGroup(6,4)">☆</div>
+              <div class="star" onclick="starCountGroup(6,5)">☆</div>
+              <div class="star" onclick="starCountGroup(6,6)">☆</div>
+              <div class="star" onclick="starCountGroup(6,7)">☆</div>
+              <div class="star" onclick="starCountGroup(6,8)">☆</div>
+              <div class="star" onclick="starCountGroup(6,9)">☆</div>
+              <div class="star" onclick="starCountGroup(6,10)">☆</div>
+              <div class="star" onclick="starCountGroup(6,11)">☆</div>
+              <div class="star" onclick="starCountGroup(6,12)">☆</div>
+            </div>
+          </div>
+          <div id="clearAllStarsButton" onclick="clearAllStars()"><div id="clearAllButton">
+              <div id="clear">&times;</div>
+            </div></div>
+          <div id="groupDescription"></div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 56%; background-color: #979797;" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page5" style="display:none">
+    <div class="survey">
+      <div class="question">
+        <div class="questionPrompt">您对下面这些群体的信任程度如何？</div>
+        <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="12345678">
+        <div class="questionAnswer">
+          <!-- option 1 -->
+          <div class="peopleTrustOption" id="question1">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">家人和朋友</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="dontKnowFamilyFriends" onclick="dunno(1)">
+                <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider1">
+              <div id="Scale1Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust1ScaleLabel1">完全不信任</div>
+                <div id="trust1ScaleLabel2">不信任</div>
+                <div id="trust1ScaleLabel3">中立</div>
+                <div id="trust1ScaleLabel4">信任</div>
+                <div id="trust1ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust1Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust1" class="slider" id="trust1" oninput="trustSlide(1)"></input>
+                  </div>
+              </div>
+            </div>
+
+          </div><!-- option 2 -->
+          <div class="peopleTrustOption" id="question2">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">初次见面的陌生人</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowStrangers" onclick="dunno(2)">
+                <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider2">
+              <div id="Scale2Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust2ScaleLabel1">完全不信任</div>
+                <div id="trust2ScaleLabel2">不信任</div>
+                <div id="trust2ScaleLabel3">中立</div>
+                <div id="trust2ScaleLabel4">信任</div>
+                <div id="trust2ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust2Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust2" class="slider" id="trust2" oninput="trustSlide(2)"></input>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- option 3 -->
+          <div class="peopleTrustOption" id="question3">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">外国人</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowForeigners" onclick="dunno(3)">
+                <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider3">
+              <div id="Scale3Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust3ScaleLabel1">完全不信任</div>
+                <div id="trust3ScaleLabel2">不信任</div>
+                <div id="trust3ScaleLabel3">中立</div>
+                <div id="trust3ScaleLabel4">信任</div>
+                <div id="trust3ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust3Amount" for="range">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust3" class="slider" id="trust3" oninput="trustSlide(3)"></input>
+                  </div>
+              </div>
+            </div>
+          </div><!-- option 4 -->
+          <div class="peopleTrustOption" id="question4">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">媒体</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="dontKnowMedia" onclick="dunno(4)">
+                <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider4">
+              <div id="Scale4Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust4ScaleLabel1">完全不信任</div>
+                <div id="trust4ScaleLabel2">不信任</div>
+                <div id="trust4ScaleLabel3">中立</div>
+                <div id="trust4ScaleLabel4">信任</div>
+                <div id="trust4ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust4Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust4" class="slider" id="trust4" oninput="trustSlide(4)"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- option 5 -->
+          <div class="peopleTrustOption" id="question5">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">政府</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno5checkbox" name="dontKnowGovernment" onclick="dunno(5)">
+                <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider5">
+              <div id="Scale5Divider">
+                <div id="scaleDivider1">·</div>
+                <div id="scaleDivider2">·</div>
+                <div id="scaleDivider3">·</div>
+                <div id="scaleDivider4">·</div>
+                <div id="scaleDivider5">·</div>
+              </div>
+              <div class="trustScaleLabel">
+                <div id="trust5ScaleLabel1">完全不信任</div>
+                <div id="trust5ScaleLabel2">不信任</div>
+                <div id="trust5ScaleLabel3">中立</div>
+                <div id="trust5ScaleLabel4">信任</div>
+                <div id="trust5ScaleLabel5">非常信任</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="trust5Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust5" class="slider" id="trust5" oninput="trustSlide(5)"></input>
+                </div>
+              </div>
+            </div>
+          </div><!-- option 6 -->
+          <div class="peopleTrustOption" id="question6">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">高校</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno6checkbox" name="dontKnowHS" onclick="dunno(6)">
+                <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider6">
+            <div id="Scale6Divider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="trustScaleLabel">
+              <div id="trust6ScaleLabel1">完全不信任</div>
+              <div id="trust6ScaleLabel2">不信任</div>
+              <div id="trust6ScaleLabel3">中立</div>
+              <div id="trust6ScaleLabel4">信任</div>
+              <div id="trust6ScaleLabel5">非常信任</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="trust6Amount" for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust6" class="slider" id="trust6" oninput="trustSlide(6)"></input>
+              </div>
+            </div>
+            </div>
+          </div><!-- option 7 -->
+          <div class="peopleTrustOption" id="question7">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">慈善团体</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno7checkbox" name="dontKnowNGO" onclick="dunno(7)">
+                <label class="form-check-label" for="dunno7">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider7">
+            <div id="Scale7Divider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="trustScaleLabel">
+              <div id="trust7ScaleLabel1">完全不信任</div>
+              <div id="trust7ScaleLabel2">不信任</div>
+              <div id="trust7ScaleLabel3">中立</div>
+              <div id="trust7ScaleLabel4">信任</div>
+              <div id="trust7ScaleLabel5">非常信任</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="trust7Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust7" class="slider" id="trust7" oninput="trustSlide(7)"></input>
+                </div>
+            </div>
+            </div>
+          </div><!-- option 8 -->
+          <div class="peopleTrustOption" id="question8">
+            <div class="trustOptionPrompt">
+              <div class="trustOptionText">公司企业</div>
+              <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
+                <input type="checkbox" class="form-check-input" id="dunno8checkbox" name="dontKnowCorporation" onclick="dunno(8)">
+                <label class="form-check-label" for="dunno8">不够了解，无法回答</label>
+              </div>
+            </div>
+            <div id="trustSlider8">
+            <div id="Scale8Divider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="trustScaleLabel">
+              <div id="trust8ScaleLabel1">完全不信任</div>
+              <div id="trust8ScaleLabel2">不信任</div>
+              <div id="trust8ScaleLabel3">中立</div>
+              <div id="trust8ScaleLabel4">信任</div>
+              <div id="trust8ScaleLabel5">非常信任</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-top:26px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="trust8Amount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust8" class="slider" id="trust8" oninput="trustSlide(8)"></input>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 64%; background-color: #979797;" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page6" style="display:none">
+    <div class="survey">
+      <!-- good deed willingness degree -->
+      <div class="question">
+        <div class="questionPrompt">您是否愿意在不期任何回报的情况下做好事？</div>
+        <div class="questionAnswer">
+          <div class="peopleTrustOption">
+            <div id="GoodDeedDivider">
+              <div id="scaleDivider1">·</div>
+              <div id="scaleDivider2">·</div>
+              <div id="scaleDivider3">·</div>
+              <div id="scaleDivider4">·</div>
+              <div id="scaleDivider5">·</div>
+            </div>
+            <div class="willingnessScaleLabel">
+              <div id="willingnessLabel1">完全不愿意</div>
+              <div id="willingnessLabel2">不愿意</div>
+              <div id="willingnessLabel3">中立</div>
+              <div id="willingnessLabel4">愿意</div>
+              <div id="willingnessLabel5">非常愿意</div>
+            </div>
+            <div class="slidecontainer">
+              <div class="form-group" style="margin-top:50px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount" id="willingnessAmount"
+                  for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="goodDeedWillingness" class="slider" id="willingness" oninput="willingnessSlide()"></input>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- donation degree -->
+      <div class="question">
+        <div class="questionPrompt">假若今天您意外得到了10000元人民币。 您愿意捐给慈善事业多少？</div>
+        <div class="questionAnswer">
+          <div class="slidecontainer" id="donationWilling">
+            <div class="form-group" style="margin-top:16px; margin-bottom:0px">
+              <output class="sliderAmount" name="amount"
+                id="donationWillingAmount2" for="rangeInput">0元</output>
+              <input type="range" min="0" max="10000" value="0" step="100" class="slider" name="donationWillingness" id="donationWillingSlider2" oninput="donationWillingSlide2()"></input>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+  </form>
+
+  <div id="page7" style="display:none">
+    <div class="survey">
+      <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #979797;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  (function (global) {
+
+    if(typeof (global) === "undefined")
+    {
+    throw new Error("window is undefined");
+    }
+
+    var _hash = "!";
+    var noBackPlease = function () {
+      global.location.href += "#";
+
+    // making sure we have the fruit available for juice....
+    // 50 milliseconds for just once do not cost much (^__^)
+      global.setTimeout(function () {
+          global.location.href += "!";
+      }, 50);
+    };
+
+    // Earlier we had setInerval here....
+    global.onhashchange = function () {
+      if (global.location.hash !== _hash) {
+          global.location.hash = _hash;
+      }
+    };
+
+    global.onload = function () {
+
+    noBackPlease();
+
+    // disables backspace on page except on input fields and textarea..
+    document.body.onkeydown = function (e) {
+          var elm = e.target.nodeName.toLowerCase();
+          if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+              e.preventDefault();
+          }
+          // stopping event bubbling up the DOM tree..
+          e.stopPropagation();
+      };
+
+    };
+
+    })(window);
+    {% if lastpage %}
+        document.getElementById("page1").style = 'display: none;';
+        document.getElementById("page" + ({{lastpage}}+1)).style = 'display: flex;flex-direction: column;position: relative; overflow: visible;';
+    {% else %}
+    {% endif %}
+  </script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/jweixin-1.2.0.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/shanghai1.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>

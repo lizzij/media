@@ -1,85 +1,23 @@
-function validateOneChecked(name) {
-  return ($('input[name='+name+']:checked').length == 1);
-}
+document.getElementById("clearAllStarsButton").style.display='none';
 
-function validateShownAndFilled(formName, name) {
-
-  var display = document.getElementById(formName).style.display;
-  var value = document.getElementById(name).value;
-
-  if (display != "none") {
-    return (value != null && value != '');
-  }
-  return true;
-}
-
-function show(nextPart) {
-  document.getElementById("clearAllStarsButton").style.display='none';
-  if (nextPart == 'page7part2'){
-    if (validateOneChecked("otherSource") && validateOneChecked("otherWeatherSource") && validateOneChecked("recallAirQuality")
-    && validateOneChecked("recallAirQualitySource") && validateOneChecked("recallNumberOfAirQualitySource")
-    && validateShownAndFilled("otherHowManyTimes", "numberOfTimes")
-    && validateShownAndFilled("otherHowManyWeatherTimes", "numberOfWeatherTimes")) {
-      if (validateWeatherSource()) {
-        guessWeatherSource();
-        document.getElementById('page7').style='display:none;';
-        window.scroll(0,0);
-        document.getElementById(nextPart).style='display: flex;flex-direction: column;position: relative;';
-      }
-    }
-    else {
-      document.getElementById("sourceTokenAlert").innerHTML = '请回答所有问题！';
-    }
-  }
-}
-
-// validate star question on page 5 => page 6
+// validate star question on page 1 => page 2
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
+  var user_id = document.getElementById("questionRandomOrder").value;
+  var displayPage3 = document.getElementById("page3").style.display;
+  if (user_id == '21' && displayPage2 == 'none') {
+    return true;
+  }
+  else if (user_id == '12' && displayPage3 != 'none') {
+    return true;
+  }
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
-  guessWeatherSource();
   return true;
-}
-
-// validate guess weather source question on page 7 => page 8
-function validateWeatherSource() {
-  var checkboxs=document.getElementsByName("recallWhichAirQualitySource");
-  var valid=false;
-  for(var i=0,l=checkboxs.length;i<l;i++) {
-    if(checkboxs[i].checked) {
-      valid=true;
-      break;
-    }
-  }
-  if (!valid) {
-    document.getElementById("sourceTokenAlert").innerHTML = '请选择空气质量信息的来源！';
-    return false;
-  }
-  else {
-    return true;
-  }
-}
-
-function signUpFeeSlide() {
-  var value=document.getElementById("signUpFeeSlider").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
-  var left = 2 + 0.9 * value;
-  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
-}
-
-function signUpFeeSlide2() {
-  var value=document.getElementById("signUpFeeSlider2").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount2").value=signUpFeeAmount;
-  var left = 2 + 0.9 * value;
-  document.getElementById("signUpFeeAmount2").style.paddingLeft = left + "px";
 }
 
 function starCountGroup1(number) {
@@ -343,50 +281,32 @@ function clearAllStars() {
   starLeft();
 }
 
-function hideWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "none";
-}
-function showWalkathonSlider() {
-  document.getElementById("walkathon").style.display = "block";
-}
-
-function walkathonSlide() {
-var value=document.getElementById("walkathonSlider").value;
-var walkathonAmount = `${value}步`;
-var distance = value * 0.0008;
-var donation = value * 0.002;
-distance = distance.toFixed(2);
-donation = donation.toFixed(2);
-document.getElementById("walkathonAmount").value=walkathonAmount;
-document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-var left = value * 0.0172;
-document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
+function checkBeanNumberSource(){
+  var AtoldMe = document.getElementById("AtoldMe").checked;
+  var BtoldMe = document.getElementById("BtoldMe").checked;
+  var CtoldMe = document.getElementById("CtoldMe").checked;
+  if (AtoldMe && (!BtoldMe) && CtoldMe) {
+    document.getElementById("beanNumberResult").innerHTML = '正确';
+    document.getElementById("beanNumberResult").style.color = "#28a745";
+  }
+  else {
+    document.getElementById("beanNumberResult").innerHTML = '您的答案错误。 请再检查一次！';
+    document.getElementById("beanNumberResult").style.color = "#FF3333";
+  }
 }
 
-// function updateWalkathonSlide(value) {
-//   var walkathonAmount = `${value}步`;
-//   var distance = value * 0.0008;
-//   var donation = (value - 4000) * 0.01;
-//   distance = distance.toFixed(2);
-//   donation = donation.toFixed(2);
-//   document.getElementById("walkathonAmount").value=walkathonAmount;
-//   document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-//   var left = 0.1 * value - 435;
-//   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
-// }
-
-function hideNumberOfTimes() {
-  document.getElementById("otherHowManyTimes").style.display = "none";
-}
-function showNumberOfTimes() {
-  document.getElementById("otherHowManyTimes").style.display = "block";
-}
-
-function hideNumberOfWeatherTimes() {
-  document.getElementById("otherHowManyWeatherTimes").style.display = "none";
-}
-function showNumberOfWeatherTimes() {
-  document.getElementById("otherHowManyWeatherTimes").style.display = "block";
+function startTimer(timer, page, timesUp) {
+  var sec = 60;
+  setInterval(function() {
+    document.getElementById(timer).innerHTML = sec;
+    if (sec > 0) {
+      sec--;
+    }
+    else if (sec == 00) {
+      document.getElementById(timesUp).innerHTML = '时间到，请点击进入下一页';
+      document.getElementById(timesUp).style.color = "#FF3333";
+    }
+  }, 1000);
 }
 
 function dunno1() {
@@ -665,46 +585,24 @@ function trust6Slide() {
   document.getElementById("trust6Amount").style.paddingLeft = left + "px";
 }
 
-//
-// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-//   var random = Math.floor(Math.random() * (max - min)) + min;
-//   $(sliderName).val(random);
-//   $(sliderAmount).val(random + unit);
-//   var left = leftStart + moveStep * random;
-//   $(sliderAmount).css("padding-left", left);
-// }
-
-// if sources other than SEMC is chosen randomly select one of them
-// for guessWeatherSource question
-// else do not display guessWeatherSource question
-
-function guessWeatherSource(){
-  var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
-  var checked = [];
-  var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
-  var isSEMCChecked = document.getElementById('source3').checked;
-  var isDunnoChecked = document.getElementById('sourceNo').checked;
-  for (i=0;i<options.length;i++) {
-    var isOptionChecked = document.getElementById(options[i]).checked;
-    if (isOptionChecked) {
-      checked.push(sources[i]);
-    }
-  }
-  var numChosen = checked.length;
-  // only SEMC is selected
-  if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
-    document.getElementById('page7part2').style.display = "none";
-    document.getElementById('guessWeatherSource').style.display = "none";
-    document.forms["surveyExperience"].submit();
-  }
-  else {
-    var randomIndex = Math.floor(Math.random() * (numChosen-1));
-    document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
-    document.getElementById('guessWeatherSource').style.display = "block";
-    document.getElementById("international").required = true;
-  }
+function updateStarInput1() {
+  document.getElementById("starCountGroup1Input").value = document.getElementById("starCountGroup1").innerHTML;
 }
-
+function updateStarInput2() {
+  document.getElementById("starCountGroup2Input").value = document.getElementById("starCountGroup2").innerHTML;
+}
+function updateStarInput3() {
+  document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup3").innerHTML;
+}
+function updateStarInput4() {
+  document.getElementById("starCountGroup4Input").value = document.getElementById("starCountGroup4").innerHTML;
+}
+function updateStarInput5() {
+  document.getElementById("starCountGroup5Input").value = document.getElementById("starCountGroup5").innerHTML;
+}
+function updateStarInput6() {
+  document.getElementById("starCountGroup6Input").value = document.getElementById("starCountGroup6").innerHTML;
+}
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -736,93 +634,28 @@ function randomize() {
 
 function randomizeQuestion() {
   var user_id;
-  user_id = document.getElementById("sourceTrustOrder").value;
+  user_id = document.getElementById("questionRandomOrder").value;
   // user_id odd, swap questions; even do nothing
   if (user_id % 2) {
-    document.getElementById("sourceTrustOrder").value = "21";
-    $( "#page8" ).prepend( $( "#survey2" ) );
-    $( "#page9" ).prepend( $( "#survey1" ) );
+    document.getElementById("questionRandomOrder").value = "21";
+    $( "#page1" ).prepend( $( "#survey2" ) );
+    $( "#page2" ).prepend( $( "#survey1" ) );
   }
   else {
-    document.getElementById("sourceTrustOrder").value = "12";
+    document.getElementById("questionRandomOrder").value = "12";
   }
 }
 
 $( document ).ready(function() {
-  document.getElementById("clearAllStarsButton").style.display='none';
-  randomize();
   randomizeQuestion();
-  // randomizeSlider(0, 300, "#signUpFeeSlider", "#signUpFeeAmount", 2, 0.9, "元");
-  // randomizeSlider(0, 300, "#signUpFeeSlider2", "#signUpFeeAmount2", 2, 0.9, "元");
-  // randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
-  // var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
-  // updateWalkathonSlide(walkathonRandom);
-  //
-  // randomizeSlider(0, 100, "#trust1", "#trust1Amount", 2, 2.88, "");
-  // randomizeSlider(0, 100, "#trust2", "#trust2Amount", 2, 2.88, "");
-  // randomizeSlider(0, 100, "#trust3", "#trust3Amount", 2, 2.88, "");
-  // randomizeSlider(0, 100, "#trust4", "#trust4Amount", 2, 2.88, "");
-  // randomizeSlider(0, 100, "#trust5", "#trust5Amount", 2, 2.88, "");
-  // randomizeSlider(0, 100, "#trust6", "#trust6Amount", 2, 2.88, "");
+  randomize();
 });
 
-// Get the modal
-var modal = document.getElementById('myModal1');
 
-// Get the <span> element that closes the modal
-var span = document.getElementById('close1');
-
-modal.style.display = "block";
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+function blueGraySkyAmountSlide() {
+  var value=document.getElementById("blueGraySkyAmountSlider").value;
+  var blueGraySkyAmount = `${value}`;
+  document.getElementById("blueGraySkyAmount").value=blueGraySkyAmount;
+  var left = 2 + 2.88 * value;
+  document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
 }
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-
-// Get the modal
-var modal2 = document.getElementById('myModal2');
-
-// Get the <span> element that closes the modal
-var span2 = document.getElementById("close2");
-
-modal2.style.display = "block";
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function() {
-  modal2.style.display = "none";
-}
-
-function updateStarInput1() {
-  document.getElementById("starCountGroup1Input").value = document.getElementById("starCountGroup1").innerHTML;
-}
-function updateStarInput2() {
-  document.getElementById("starCountGroup2Input").value = document.getElementById("starCountGroup2").innerHTML;
-}
-function updateStarInput3() {
-  document.getElementById("starCountGroup3Input").value = document.getElementById("starCountGroup3").innerHTML;
-}
-function updateStarInput4() {
-  document.getElementById("starCountGroup4Input").value = document.getElementById("starCountGroup4").innerHTML;
-}
-function updateStarInput5() {
-  document.getElementById("starCountGroup5Input").value = document.getElementById("starCountGroup5").innerHTML;
-}
-function updateStarInput6() {
-  document.getElementById("starCountGroup6Input").value = document.getElementById("starCountGroup6").innerHTML;
-}
-
-//
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal2.style.display = "none";
-//   }
-// }
