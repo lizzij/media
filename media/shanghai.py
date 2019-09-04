@@ -71,6 +71,10 @@ def get_info(user_id_hashid, day_hashid):
     treatment = user[2]
     user = {'treatment':treatment, 'day':day, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
+    # show survey not available on day 99
+    if day == 99:
+        return u'抱歉，此调查已过时效。'
+
     # consent form on day 0
     if day == 0:
         db = get_db()
@@ -140,6 +144,10 @@ def get_survey(user_id_hashid, day_hashid):
     day = user[1]
     treatment = user[2]
     user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
+
+    # show survey not available on day 99
+    if day == 99:
+        return u'抱歉，此调查已过时效。'
 
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
