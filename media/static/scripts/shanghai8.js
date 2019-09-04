@@ -650,3 +650,12 @@ $( document ).ready(function() {
   randomizeQuestion();
   randomize();
 });
+
+
+function blueGraySkyAmountSlide() {
+  var value=document.getElementById("blueGraySkyAmountSlider").value;
+  var blueGraySkyAmount = `${value}`;
+  document.getElementById("blueGraySkyAmount").value=blueGraySkyAmount;
+  var left = 2 + 2.88 * value;
+  document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
+}
