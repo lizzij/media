@@ -164,6 +164,8 @@ def get_link():
         csv_data = StringIO(unicode(data, "utf-8"))
         df = pd.read_csv(csv_data)
         df = df[pd.notnull(df['user_id'])]
+        db = get_db()
+        users = pd.read_sql_query('SELECT user_id, day, wechat_id, treatment, cohort, user_id_hashid, day_hashid FROM user s ORDER BY user_id ASC', db)
         return df
 
     ## Using the input, create user profile in DB, and produce output
@@ -206,7 +208,7 @@ def get_link():
                     (str(nextUserID), str(day), str(input_ID), str(cohort), str(treatment), hashed_user_id, hashed_day)
                 )
                 db.commit()
-                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" 
+                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info"
             # Set up initial allActivities #
             now = datetime.now()
             db.execute(
