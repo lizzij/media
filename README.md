@@ -116,7 +116,7 @@ sudo systemctl restart media
 #### Module management
 - Installing packages using pip and virtual environments `pip install <module>` then `python -m flask run`
 - [packaging guide](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-- change `requirement.txt` then
+- update `requirement.txt` with `pip freeze > requirements.txt` then
   - run `pip install -r requirements.txt` locally
   - or in server run `pip3 install --user -r requirements.txt`
 
