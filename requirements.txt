@@ -8,3 +8,4 @@ numpy
 hashids
 bs4
 requests
+pandas
