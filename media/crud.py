@@ -3,7 +3,7 @@
 import functools
 from bs4 import BeautifulSoup
 import requests
-from io import StringIO
+from StringIO import StringIO
 import pandas as pd
 import random
 from math import floor
@@ -137,7 +137,7 @@ def activity_update(user_id,day, day_complete, survey_page, h1, h2):
 # to get links for surveyors
 @bp.route('/getLink', methods=['GET', 'POST'])
 def get_link():
-    URL = "http://127.0.0.1:5000/" # XXX change to URL = "https://dailyeventinfo.com/"
+    URL = "https://dailyeventinfo.com/"
     ## Scripts (XXX check these before deployment)
     msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>对不起，由于人数限制，您暂时不能参与这次调研。非常感谢您的参与！'
     msg_maxnum_cohort = u'<br><b>请发送以下消息给该好友</b>：<br><br>本轮招募已完成，我们将在下轮开始时尽快联系您！'
