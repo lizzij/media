@@ -123,8 +123,8 @@ def get_info(user_id_hashid, day_hashid):
     info = get_event_info(day_to_info_id_dict[day])
 
     # air quality source for treatment groups different on day 6
-    treatment_to_aq_source_dict = {'T1':'', 'T2':u'（来自：上海市环境监测中心）', 'T3':u'（来自：新闻晨报）', 'T4':u'（来自：[TBD]）' }
-    treatment_to_aq_source_logo_dict = {'T1':'img/transparent.png', 'T2':'img/SourceSHEnvironmentLogo.jpg', 'T3':'img/SourceMorningPostLogo.jpg', 'T4':'img/SourceTBD.png' }
+    treatment_to_aq_source_dict = {'T1':'', 'T2':u'（来自：上海市环境监测中心）', 'T3':u'（来自：新闻晨报）', 'T4':u'（来自：新闻晨报，转载自：上海市环境监测中心）' }
+    treatment_to_aq_source_logo_dict = {'T1':'img/transparent.png', 'T2':'img/SourceSHEnvironmentLogo.jpg', 'T3':'img/SourceMorningPostLogo.jpg', 'T4':'img/SourceMorningPostLogo.jpg' }
     air_quality_source = treatment_to_aq_source_dict[treatment]
     air_quality_source_logo = treatment_to_aq_source_logo_dict[treatment]
     air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
@@ -201,7 +201,7 @@ def get_survey(user_id_hashid, day_hashid):
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
     t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    t4_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4 + [TBD]）', 'air_quality_source_logo':'img/SourceTBD.png' },
+    t4_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4，转载自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
     treatment_to_air_quality_dict = {'T1': t1_air_quality_source, 'T2': t2_air_quality_source, 'T3': t3_air_quality_source, 'T4': t4_air_quality_source}
     air_quality = treatment_to_air_quality_dict[treatment]

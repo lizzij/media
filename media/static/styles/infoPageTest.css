@@ -407,13 +407,14 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #4F4F4F;
+  width: 250px;
 }
 
 #airQualityLogo{
   position: absolute;
   width: 70px;
   height: 11.43px;
-  right: 60px;
+  right: 16px;
   top: 76px;
 }
 
