@@ -154,7 +154,8 @@ def get_link():
 
     ## Get list of users (XXX allUsers page should be updated with actual WeChat IDs of former users in Shanghai)
     def get_users():
-        page = requests.get(URL+"allUsers").text
+        # page = requests.get(URL+"allUsers").text
+        page = ''
         soup = BeautifulSoup(page, "html.parser")
         divList = soup.findAll('div', attrs={"class" : "list"})
         data=','.join(['user_id','day','wechat_id','cohort','treatment','user_id_hashid','day_hashid'])
@@ -205,7 +206,7 @@ def get_link():
                     (str(nextUserID), str(day), str(input_ID), str(cohort), str(treatment), hashed_user_id, hashed_day)
                 )
                 db.commit()
-                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" ## TODO change URL accordingly
+                if day == 0: msg_URL = URL+"shanghai/"+hashed_user_id+"/"+hashed_day + "/info" 
             # Set up initial allActivities #
             now = datetime.now()
             db.execute(
