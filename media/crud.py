@@ -3,7 +3,7 @@
 import functools
 from bs4 import BeautifulSoup
 import requests
-from StringIO import StringIO
+from io import StringIO
 import pandas as pd
 import random
 from math import floor
@@ -160,7 +160,7 @@ def get_link():
         data=','.join(['user_id','day','wechat_id','cohort','treatment','user_id_hashid','day_hashid'])
         for div in divList:
             data = data + '\n' + ' '.join(div.text.split())
-        csv_data = StringIO(data)
+        csv_data = StringIO(unicode(data, "utf-8"))
         df = pd.read_csv(csv_data)
         df = df[pd.notnull(df['user_id'])]
         return df
