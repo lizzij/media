@@ -154,19 +154,9 @@ def get_link():
 
     ## Get list of users (XXX allUsers page should be updated with actual WeChat IDs of former users in Shanghai)
     def get_users():
-        # page = requests.get(URL+"allUsers").text
-        page = ''
-        soup = BeautifulSoup(page, "html.parser")
-        divList = soup.findAll('div', attrs={"class" : "list"})
-        data=','.join(['user_id','day','wechat_id','cohort','treatment','user_id_hashid','day_hashid'])
-        for div in divList:
-            data = data + '\n' + ' '.join(div.text.split())
-        csv_data = StringIO(unicode(data, "utf-8"))
-        df = pd.read_csv(csv_data)
-        df = df[pd.notnull(df['user_id'])]
         db = get_db()
         users = pd.read_sql_query('SELECT user_id, day, wechat_id, treatment, cohort, user_id_hashid, day_hashid FROM user s ORDER BY user_id ASC', db)
-        return df
+        return users
 
     ## Using the input, create user profile in DB, and produce output
     def new_user_process(input_ID):
