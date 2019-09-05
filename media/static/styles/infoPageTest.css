@@ -353,7 +353,7 @@ header #eventLocation{
 .airQuality{
   position: absolute;
   width: 346px;
-  height: 250px;
+  height: 270px;
   left: calc(50% - 346px/2 + 1px);
   top: 100px;
   /* background: #FFFFFF; */
@@ -407,15 +407,16 @@ header #eventLocation{
   font-family: PingFangHK-Regular, sans-serif;
   font-size: 18px;
   color: #4F4F4F;
-  width: 250px;
+  width: 252px;
+  line-height: 24px;
 }
 
 #airQualityLogo{
-  position: absolute;
-  width: 70px;
   height: 11.43px;
   right: 16px;
-  top: 76px;
+  margin-top: 95px;
+  margin-right: 10px;
+  float: right;
 }
 
 .airQualityScale{
@@ -423,7 +424,7 @@ header #eventLocation{
   width: 334.5px;
   height: 34px;
   left: 8.5px;
-  top: 75px;
+  top: 95px;
 }
 
 .levels{
