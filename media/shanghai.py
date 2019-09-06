@@ -63,6 +63,17 @@ def update_lastpage(lastpage, day_complete, user_id, day):
     )
     db.commit()
 
+def get_activity_day(user_id):
+    db = get_db()
+    activity_day = db.execute(
+        'SELECT user_id, day'
+        ' FROM activity a'
+        ' WHERE a.user_id = ?',
+        (user_id,)
+    ).fetchone()
+    day = activity_day[1]
+    return day
+
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
     user = get_user(user_id_hashid, day_hashid)
@@ -72,7 +83,7 @@ def get_info(user_id_hashid, day_hashid):
     user = {'treatment':treatment, 'day':day, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
     # show survey not available on day 99
-    if day == 99:
+    if get_activity_day(user_id) == 99:
         return u'抱歉，此调查已过时效。'
 
     # consent form on day 0
@@ -138,7 +149,6 @@ def get_info(user_id_hashid, day_hashid):
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
 def get_survey(user_id_hashid, day_hashid):
-
     user = get_user(user_id_hashid, day_hashid)
     user_id = user[0]
     day = user[1]
@@ -146,7 +156,7 @@ def get_survey(user_id_hashid, day_hashid):
     user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
     # show survey not available on day 99
-    if day == 99:
+    if get_activity_day(user_id) == 99:
         return u'抱歉，此调查已过时效。'
 
     # mark info page as read
