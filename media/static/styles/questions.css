@@ -101,6 +101,57 @@ div.trustScaleLabel > div{
   width: 62px;
 }
 
+.blueGrayLabel{
+  position: absolute;
+  width: 0px;
+  display: flex;
+  flex-direction: row;
+  margin-top: -25px;
+  font-size: 15px;
+  color: #4F4F4F;
+  font-weight: bold;
+}
+
+#blueGrayLabelLeft{
+  text-align: left;
+  left: calc(50% - 150px);
+}
+
+#blueGrayLabelMiddle{
+  text-align: left;
+  left: calc(50% - 0px);
+}
+
+#blueGrayLabelRight{
+  text-align: left;
+  left: calc(50% + 150px);
+}
+
+.dividerDot {
+  position: absolute;
+  width: 0px;
+  display: flex;
+  flex-direction: row;
+  font-size: 50px;
+  color: #979797;
+  margin-top: -37px;
+}
+
+#blueGraySkyLeft {
+  text-align: left;
+  left: calc(50% - 158px);
+}
+
+#blueGraySkyMiddle {
+  text-align: left;
+  left: calc(50% - 5px);
+}
+
+#blueGraySkyRight {
+  text-align: left;
+  left: calc(50% + 148px);
+}
+
 #Scale1Divider > div{
   width: 62px;
   margin-top: -36px;
