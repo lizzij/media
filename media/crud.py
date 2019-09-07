@@ -252,13 +252,18 @@ def update_wechatID():
             (user_id, cohort,)
         ).fetchone()
         if user is None:
-            output_message = "User user_id {0} of cohort {1} doesn't exist.".format(user_id, cohort)
+            db.execute(
+                'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
+                ' VALUES (?, ?, ?, ?, ?, ?, ?)',
+                (user_id, 99, wechat_id, cohort, 'treatment', 'user_id_hashid', 'day_hashid')
+            )
+            db.commit()
+            output_message = 'Done:) <b>Inserted</b> user with user_id %s, wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
         else:
             db.execute(
                 'UPDATE user SET wechat_id=?, cohort = ? WHERE user_id = ?',
                 (wechat_id, cohort, user_id)
             )
             db.commit()
-            output_message = 'Done:) Updated user with user_id %s, to <br>\
-            wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
+            output_message = 'Done:) <b>Updated</b> user with user_id %s, wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
     return render_template('crud/updateWechatID.html', output_message=output_message)
