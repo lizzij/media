@@ -164,50 +164,58 @@ media
 ├── shanghai.py
 ├── static
 │   ├── img
-│   │   ├── AQLevelHint.png
-│   │   ├── ...
-│   │   └── xian2.jpg
+│   │   ├── favicon.ico
+│   │   ├── favicon_package_v0.16
+│   │   │   └── …
+│   │   └── …
 │   ├── scripts
-│   │   ├── bootstrap.js
-│   │   ├── ...
-│   │   └── xian2.js
+│   │   ├── bootstrap.min.js
+│   │   ├── jquery-3.3.1.slim.min.js
+│   │   ├── jweixin-1.2.0.js
+│   │   ├── popper.min.js
+│   │   └── …
 │   └── styles
 │       ├── bootstrap.css
-│       ├── consentForm.css
-│       ├── infoPage.css
-│       ├── infoPageTest.css
-│       └── questions.css
+│       └── …
 ├── templates
 │   ├── crud
 │   │   ├── README.md
 │   │   ├── activityList.html
+│   │   ├── getLink.html
 │   │   ├── home.html
 │   │   ├── infoList.html
 │   │   ├── surveyList.html
+│   │   ├── surveyorNumber.html
 │   │   ├── updateEvent.html
+│   │   ├── updateWechatID.html
 │   │   └── userList.html
 │   ├── pilot
 │   │   ├── README.md
 │   │   ├── completionPage.html
-│   │   ├── ...
-│   │   └── surveyInfo.html
+│   │   ├── consentForm.html
+│   │   ├── infoPage.html
+│   │   ├── infoPageAQ.html
+│   │   ├── infoPageCO.html
+│   │   ├── surveyInfo.html
+│   │   └── …
 │   ├── shanghai
-│   │   └── shanghai.md
+│   │   ├── README.md
+│   │   ├── consentForm.html
+│   │   ├── infoPage.html
+│   │   ├── infoPageAQ.html
+│   │   ├── …
 │   ├── ui_test
 │   │   ├── README.md
 │   │   ├── infoPagea.html
-│   │   ├── ...
-│   │   └── infoPaged.html
-│   ├── ui_test
-│   │   ├── README.md
-│   │   ├── infoPage.html
-│   │   ├── ...
-│   │   └── survey2.html
-│   └── shanghai
+│   │   └── …
+│   └── xian
 │       ├── README.md
 │       ├── infoPage.html
-│       ├── ...
-│       └── survey8.html
+│       ├── …
+│       ├── survey1.html
+│       └── …
 ├── ui_test.py
 └── xian.py
+
+12 directories, 166 files
 ```
