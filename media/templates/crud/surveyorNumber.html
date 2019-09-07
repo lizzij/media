@@ -18,28 +18,19 @@
   <div class="page" style="display: flex;flex-direction: column;position: relative; overflow: visible;">
 
     <div class="survey">
-      <div class="mainQuestion">你好，{{ surveyor }}！</div>
       <div class="question">
-        <div class="questionPrompt">请输入新好友的微信号（即 wechatID）</div>
+        <div class="questionPrompt">你好！你的名字是?</div>
         <div class="questionAnswer">
-          <div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="wechatID" name="wechatID" placeholder="wechatID" >
-            </div>
-          </div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="surveyorNumber" value="1" id="surveyorNumber1"><label class="form-check-label" for="surveyorNumber1">牛子琦</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="surveyorNumber" value="2" id="surveyorNumber2"><label class="form-check-label" for="surveyorNumber2">王岚</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="surveyorNumber" value="3" id="surveyorNumber3" required><label class="form-check-label" for="surveyorNumber3">赵奕菲</label></div>
         </div>
       </div>
     </div>
-    <div class="nextButton" style="padding-top: 10px;">
-      <input class="button" type="submit" value="提交" style="color: white; font-size: 14px;">
+    <div class="nextButton">
+      <input class="button" type="submit" value="submit" style="color: white; font-size: 14px;">
       </input>
     </div>
-    <div class="surveyorOutput"><b>您刚刚输入的微信号是：</b>{{ input_ID }}</div>
-    {% for line in output %}
-      {% autoescape false %}
-        <div class="surveyorOutput">{{ line }}</div>
-      {% endautoescape %}
-    {% endfor %}
   </div>
   </form>
 

@@ -134,9 +134,16 @@ def activity_update(user_id,day, day_complete, survey_page, h1, h2):
     db.commit()
     return 'complete'
 
-# to get links for surveyors
 @bp.route('/getLink', methods=['GET', 'POST'])
-def get_link():
+def get_link_for_surveyor():
+    if request.method == 'POST':
+        surveyorNumber = request.form['surveyorNumber']
+        return redirect(url_for('crud.get_link', surveyorNumber=surveyorNumber))
+    return render_template('crud/surveyorNumber.html')
+
+# to get links for a surveyor with corresponding surveyour number
+@bp.route('/<string:surveyorNumber>/getLink', methods=['GET', 'POST'])
+def get_link(surveyorNumber):
     URL = "https://dailyeventinfo.com/"
     ## Scripts (XXX check these before deployment)
     msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>对不起，由于人数限制，您暂时不能参与这次调研。非常感谢您的参与！'
@@ -147,7 +154,7 @@ def get_link():
 
     ## Parameters (XXX check these before deployment)
     cohort = "4"
-    maxnum_cohort = 200 ## Maximum number of cohorts in this trial
+    maxnum_cohort = 70 ## Maximum number of cohorts in this trial per surveyor
     maxday = 8
     seq = [3, 0, 2, 3, 0, 0, 3, 0, 0, 2, 0, 2, 1, 0, 2, 3, 3, 3, 2, 3, 3, 2, 0, 2, 2, 1, 1, 1, 1, 3, 1, 0, 0, 1, 0, 2, 0, 3, 2, 1, 3, 0, 3, 3, 2, 1, 0, 3, 0, 0, 0, 2, 2, 3, 2, 1, 2, 2, 1, 1, 2, 1, 1, 2, 0, 1, 3, 2, 2, 0, 2, 3, 0, 1, 3, 3, 3, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 3, 1, 3, 1, 3, 2, 0, 1, 1, 0, 3, 2, 1, 1, 2, 0, 2, 3, 1, 3, 3, 2, 3, 1, 0, 2, 2, 3, 0, 2, 0, 3, 0, 2, 0, 0, 3, 1, 0, 3, 3, 2, 0, 1, 2, 3, 0, 2, 1, 1, 1, 2, 3, 1, 0, 3, 2, 2, 3, 3, 1, 1, 1, 1, 1, 0, 2, 1, 0, 3, 2, 2, 3, 1, 1, 3, 0, 0, 2, 1, 0, 1, 0, 1, 3, 3, 0, 0, 2, 1, 3, 2, 3, 3, 0, 3, 0, 1, 2, 2, 2, 2, 0, 2, 3, 0, 3, 2, 0, 1, 1, 0, 1]
     # Note: the sequence is created randomly from "treatSequence.py"
@@ -163,14 +170,20 @@ def get_link():
         db = get_db()
         users = get_users()
         cohort_users = users.loc[users.cohort == int(cohort)].drop_duplicates(subset=['user_id'])
-        curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
+        if len(cohort_users) != 0: cohort_users['surveyor'] = int((max(pd.to_numeric(cohort_users['user_id'])) / 1e6) % 10)
+        curr_cohort_user_count = int(len(set(cohort_users.loc[cohort_users.surveyor==surveyorNumber]['user_id'])))
         if input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
             return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
-        elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort: just show the existing message
-            theUser = cohort_users.loc[(cohort_users.wechat_id == input_ID) & (cohort_users.day == 0)]
-            msg_URL = URL+"s/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
-            return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
-            <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<span>']
+
+        elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort
+            if cohort_users.loc[cohort_users.wechat_id == input_ID].iloc[0]['surveyor'] != surveyorNumber:
+                return [u'<font color="red">（其他研究员已输入过该微信号！请不要发送任何信息，并将此用户告知 Zixin 子鑫）<br></font>']
+            else:
+                theUser = cohort_users.loc[(cohort_users.wechat_id == input_ID) & (cohort_users.day == 0)]
+                msg_URL = URL+"s/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
+                return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
+                <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<span>']
+
         elif curr_cohort_user_count >= maxnum_cohort: # Max cohort size reached
             db.execute(
                 'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
@@ -183,7 +196,7 @@ def get_link():
             # Create nickname #
             if len(cohort_users) == 0: previousMax = 0
             else: previousMax = int((max(pd.to_numeric(cohort_users['user_id'])) % 1e6) / 1e3)
-            nextUserID = int(int(cohort)*1e6 + (previousMax+1)*1e3 + randint(1,999))
+            nextUserID = int(int(cohort)*1e7 + int(surveyorNumber)*1e6 + (previousMax+1)*1e3 + randint(1,999))
             # Assign treatment group #
             treatment = "T"+str(seq[previousMax]+1)
             # Save user profile in allUsers #
@@ -214,10 +227,14 @@ def get_link():
     output = [u'<font color="gray">（还未输入，请在上方框内输入新好友的微信号...）</font>']
     if request.method == 'POST':
         input_ID = request.form['wechatID']
-        output = new_user_process(input_ID)
+        cohort = '4'
+        output = new_user_process(surveyorNumber + cohort + input_ID)
 
     # TODO add forwarding email instructions
-    return render_template('crud/getLink.html', input_ID=input_ID, output=output)
+    surveyor = ''
+    surveyorNumberDict = {'1':u'牛子琦', '2':u'王岚', '3':u'赵奕菲'}
+    surveyor = surveyorNumberDict[surveyorNumber]
+    return render_template('crud/getLink.html', surveyor=surveyor, input_ID=input_ID, output=output)
 
 # to update (backlog) wechat_id for corresponding user_id
 @bp.route('/updateWechatID', methods=['GET', 'POST'])
