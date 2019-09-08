@@ -574,3 +574,97 @@ function blueGraySkyAmountSlide() {
   var left = 2 + 2.88 * value;
   document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
 }
+
+
+// new ================================================================
+function hideNumberOfTimes() {
+  document.getElementById("otherHowManyTimes").style.display = "none";
+}
+function showNumberOfTimes() {
+  document.getElementById("otherHowManyTimes").style.display = "block";
+}
+
+function hideNumberOfWeatherTimes() {
+  document.getElementById("otherHowManyWeatherTimes").style.display = "none";
+}
+function showNumberOfWeatherTimes() {
+  document.getElementById("otherHowManyWeatherTimes").style.display = "block";
+}
+
+function show(nextPart) {
+  document.getElementById("clearAllStarsButton").style.display='none';
+  if (nextPart == 'page7part2'){
+    if (validateOneChecked("recallNumberOfAirQualitySource")) {
+      if (validateWeatherSource()) {
+        guessWeatherSource();
+        document.getElementById('page10').style='display:none;';
+        window.scroll(0,0);
+        document.getElementById(nextPart).style='display: flex;flex-direction: column;position: relative;';
+      }
+    }
+    else {
+      document.getElementById("sourceTokenAlert").innerHTML = '请回答所有问题！';
+    }
+  }
+}
+
+// validate guess weather source question on page 7 => page 8
+function validateWeatherSource() {
+  var checkboxs=document.getElementsByName("recallWhichAirQualitySource");
+  var valid=false;
+  for(var i=0,l=checkboxs.length;i<l;i++) {
+    if(checkboxs[i].checked) {
+      valid=true;
+      break;
+    }
+  }
+  if (!valid) {
+    document.getElementById("sourceTokenAlert").innerHTML = '请选择空气质量信息的来源！';
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+function validateOneChecked(name) {
+  return ($('input[name='+name+']:checked').length == 1);
+}
+
+function validateShownAndFilled(formName, name) {
+
+  var display = document.getElementById(formName).style.display;
+  var value = document.getElementById(name).value;
+
+  if (display != "none") {
+    return (value != null && value != '');
+  }
+  return true;
+}
+
+function guessWeatherSource(){
+  var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
+  var checked = [];
+  var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
+  var isSEMCChecked = document.getElementById('source3').checked;
+  var isDunnoChecked = document.getElementById('sourceNo').checked;
+  for (i=0;i<options.length;i++) {
+    var isOptionChecked = document.getElementById(options[i]).checked;
+    if (isOptionChecked) {
+      checked.push(sources[i]);
+    }
+  }
+  var numChosen = checked.length;
+  // only SEMC is selected
+  if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
+    document.getElementById('page7part2').style.display = "none";
+    document.getElementById('guessWeatherSource').style.display = "none";
+    document.forms["surveyExperience"].submit();
+  }
+  else {
+    var randomIndex = Math.floor(Math.random() * (numChosen-1));
+    document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
+    document.getElementById('guessWeatherSource').style.display = "block";
+    document.getElementById("international").required = true;
+  }
+}
