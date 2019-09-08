@@ -433,13 +433,14 @@
   <form lang="zh" action="" method="post">
   <div class="page" id="page5" style="display:none">
     <div class="survey">
+      <div class="mainQuestion" align="center"><b>关于天气预测的问题</b></div>
       <div class="question">
         <div class="questionPrompt">
-          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_walkathon_day'] }}的那一周举办。您认为那段时间的空气质量会如何？</p>
+          <p>以上我们为您提供的活动将于{{ walkathon['phrase_for_day'] }}期间举行。您认为那段时间的空气质量会如何？</p>
           <div id="note">
-            <p>下面是两张同一个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块的位置。</b></p>
+            <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
             <p id="subNote"><b>例如：</b></br>
-              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；反之，将其移至最右边。</br>
+              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
               - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
               - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
           </div>
@@ -451,6 +452,16 @@
           <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
         </div>
         <div class="questionAnswer">
+          <div id="blueGrayLabel">
+            <div id="blueGrayLabelLeft" class="blueGrayLabel">左</div>
+            <div id="blueGrayLabelMiddle" class="blueGrayLabel">中</div>
+            <div id="blueGrayLabelRight" class="blueGrayLabel">右</div>
+          </div>
+          <div id="dividerDots">
+            <div id="blueGraySkyLeft" class="dividerDot">·</div>
+            <div id="blueGraySkyMiddle" class="dividerDot">·</div>
+            <div id="blueGraySkyRight" class="dividerDot">·</div>
+          </div>
           <div class="slidecontainer" id="blueGraySky">
             <div class="form-group" style="margin-top:16px; margin-bottom:0px">
               <output class="sliderAmount" name="amount"
@@ -692,7 +703,7 @@
               <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
                 <div >
                    我将在{{ walkathon['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里）
-                     —— 研究人员将代表您向中国儿童少年基金会捐赠0元人民币。</output>
+                     —— 研究人员将代表您向上海联合基金会捐赠0元人民币。</output>
                 </div>
             </pre>
             </div>
@@ -719,7 +730,7 @@
     <!-- page 7 -->
     <div id="page8" style="display:none">
       <div class="survey">
-        <div class="mainQuestion">用户体验反馈</div>
+        <div class="mainQuestion" align="center"><b>用户体验反馈</b></div>
         <div class="question">
           <div class="questionPrompt">在我们向您介绍户外活动之后，您是否通过<b>其他</b>网站了解别的活动？</div>
           <div class="questionAnswer">
@@ -745,7 +756,7 @@
           </div>
         </div>
         <div class="question" id="otherHowManyWeatherTimes" style="display:none">
-          <div class="questionPrompt">如果有，请问有多少次</div>
+          <div class="questionPrompt">如果有，请问有多少次（请填写数字）</div>
           <div class="questionAnswer">
             <div id="otherSourceNumberOfWeatherTimes">
               <div class="form-group">
@@ -895,7 +906,6 @@
   <form lang="zh" action="" method="post">
     <div id="page11" style="display:none">
       <div class="survey" id="survey2">
-        <div class="mainQuestion">关于日常新闻来源的问题</div>
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
           <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="123456">
