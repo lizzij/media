@@ -19,7 +19,7 @@
 
     <div class="survey">
       <!-- questions about the event -->
-      <div class="mainQuestion">关于该活动的问题</div>
+      <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div>
       <div class="question">
         <div class="questionPrompt">您是否有意向参加此活动？</div>
         <div class="questionAnswer">
@@ -31,7 +31,7 @@
             <div>请移动下面的滑块：</div>
             <pre style="font-family: PingFangHK-Regular, sans-serif; color: #4F4F4F; font-size: 14px; ">
               <div >
-                 我将在{{ walkathon['phrase_for_walkathon_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里)</output>
+                 我将在{{ walkathon['phrase_for_day'] }}<output name="amount" id="walkathonDistance" for="rangeInput">走0步（0公里)</output>
               </div>
           </pre>
           </div>
@@ -57,12 +57,12 @@
   <form lang="zh" action="" onsubmit="return validateWeatherStar();" method="post">
   <div class="page" id="page2" style="display:none">
     <div class="survey">
-      <div class="mainQuestion">关于天气预测的问题</div>
+      <div class="mainQuestion" align="center"><b>关于天气预测的问题</b></div>
       <div class="question">
         <div class="questionPrompt">
-          <p>该活动预计将在<b>{{ walkathon['phrase_for_week'] }}</b>举办。您认为那周的天气将如何？</p>
+          <p>该活动预计将在{{ walkathon['phrase_for_week'] }}期间举办。<b>您认为那周的天气将如何？</b></p>
           <div id="note">
-            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</p>
+            <p>分配给您12个星星，请把更多的星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</p>
             <p id="subNote"><b>注意：</b></br>
                - 每个星星代表十分之一的可能性</br>
                - 请用完所有十二个星星</br>
@@ -166,7 +166,7 @@
           </div>
           <div class="starGroup4">
             <div class="starPrompt">
-              <div>下雨下雪</div>
+              <div>下雨/下雪</div>
               <div>&nbsp</div>
               <div id="weatherStarCountGroup4" onchange="updateInput(4)">0</div>
               <input name="weatherStarCountGroup4Input" id="weatherStarCountGroup4Input" type="hidden" value="0">
@@ -209,13 +209,13 @@
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
-          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_walkathon_day'] }}的那一周举办。您认为那段时间的空气质量会如何？</p>
+          <p>以上的这项活动将在{{ walkathon['phrase_for_day'] }}期间进行。您认为那段时间的空气质量会如何？</p>
           <div id="note">
-            <p>下面是两张同一个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块的位置。</b></p>
+            <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
             <p id="subNote"><b>例如：</b></br>
-              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；反之，将其移至最右边。</br>
+              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
               - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
-              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
+              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
           </div>
         </div>
         <div id="blueGraySkyImage" style="padding-bottom: 46px;">
@@ -263,7 +263,7 @@
         <div class="questionPrompt">
           <p>您认为活动举办那周<b>{{ walkathon['phrase_for_week'] }}</b>的空气质量等级将如何？</p>
           <div id="note">
-            <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
+            <p>分配给您12个星星，请把更多的星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。</br>
               <p id="subNote"><b>注意：</b></br>
                  - 每个星星代表十分之一的可能性</br>
                  - 请用完所有十二个星星</br>
@@ -455,7 +455,7 @@
   <form lang="zh" action="" method="post">
   <div class="page" id="page5" style="display:none">
     <div class="survey">
-      <div class="mainQuestion">关于日常新闻来源的问题</div>
+      <div class="mainQuestion" align="center"><b>关于日常新闻来源的问题</b></div>
       <div class="question">
         <div class="questionPrompt">您对下面这些群体的信任程度如何？</div>
         <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="12345678">
