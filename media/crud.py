@@ -146,9 +146,9 @@ def get_link_for_surveyor():
 def get_link(surveyorNumber):
     URL = "https://dailyeventinfo.com/"
     ## Scripts (XXX check these before deployment)
-    msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>对不起，由于人数限制，您暂时不能参与这次调研。非常感谢您的参与！'
+    msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>很抱歉，由于您已参与过我们之前的调研，您将无法参与此次调研。感谢您的积极参与。'
     msg_maxnum_cohort = u'<br><b>请发送以下消息给该好友</b>：<br><br>本轮招募已完成，我们将在下轮开始时尽快联系您！'
-    msg_initial = u'<br><b>请发送以下消息给该好友</b>：<br><br>我们将在接下来的6天（包括今天）每天提供一些上海本地及周边的户外活动及场所的信息。我们将向您询问一些简短的问题（约5分钟)。<br><br>\
+    msg_initial = u'<br><b>请发送以下消息给该好友</b>：<br><br><b>🔻copy below</b><br><br>我们将在接下来的6天（包括今天）每天提供一些上海本地及周边的户外活动及场所的信息。我们将向您询问一些简短的问题（约5分钟)。<br><br>\
     我们也将会询问您一些关于各类话题的问题。 如果您想参加这项学术调研，请点击以下链接开始。 您的回答仅被用于学术研究，我们将对您的个人信息及回答进行严格保密。 调研结束后我们将进行抽奖，所有参与并完成调研的同学将有机会赢得800元人民币作为奖励。<br><br>\
     如果您遇到了技术上的问题（列入网页无法正常显示等），请您在此发微信告诉我们，我们将尽快解决。<br><br>'
 
@@ -176,13 +176,13 @@ def get_link(surveyorNumber):
             return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
 
         elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort
-            if cohort_users.loc[cohort_users.wechat_id == input_ID].iloc[0]['surveyor'] != surveyorNumber:
+            if (int(cohort_users.loc[cohort_users.wechat_id == input_ID].iloc[0]['surveyor']) != int(surveyorNumber)):
                 return [u'<font color="red">（其他研究员已输入过该微信号！请不要发送任何信息，并将此用户告知 Zixin 子鑫）<br></font>']
             else:
                 theUser = cohort_users.loc[(cohort_users.wechat_id == input_ID) & (cohort_users.day == 0)]
                 msg_URL = URL+"s/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
                 return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
-                <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<span>']
+                <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<br><br><b>🔺copy above (do not forget URL)</b><span>']
 
         elif curr_cohort_user_count >= maxnum_cohort: # Max cohort size reached
             db.execute(
@@ -221,14 +221,14 @@ def get_link(surveyorNumber):
             )
             db.commit()
             # Return output for surveyors #
-            return [u'<b>请将其备注名改为</b>：'+'<span style="background-color:PaleGreen;">'+str(nextUserID),msg_initial+msg_URL+'<span>']
+            return [u'<b>请将其备注名改为</b>：'+'<span style="background-color:PaleGreen;">'+str(nextUserID),msg_initial+msg_URL+'<br><br><b>🔺copy above (do not forget URL)</b><span>']
 
     input_ID = '/'
     output = [u'<font color="gray">（还未输入，请在上方框内输入新好友的微信号...）</font>']
     if request.method == 'POST':
         input_ID = request.form['wechatID']
         cohort = '4'
-        output = new_user_process(surveyorNumber + cohort + input_ID)
+        output = new_user_process(input_ID)
 
     # TODO add forwarding email instructions
     surveyor = ''
