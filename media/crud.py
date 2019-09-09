@@ -145,21 +145,20 @@ def get_link_for_surveyor():
 @bp.route('/<string:surveyorNumber>/getLink', methods=['GET', 'POST'])
 def get_link(surveyorNumber):
     URL = "https://dailyeventinfo.com/"
-    ## Scripts (XXX check these before deployment)
     msg_ineligible = u'<br><b>请发送以下消息给该好友</b>：<br><br>很抱歉，由于您已参与过我们之前的调研，您将无法参与此次调研。感谢您的积极参与。'
     msg_maxnum_cohort = u'<br><b>请发送以下消息给该好友</b>：<br><br>本轮招募已完成，我们将在下轮开始时尽快联系您！'
     msg_initial = u'<br><b>请发送以下消息给该好友</b>：<br><br><b>🔻copy below</b><br><br>我们将在接下来的6天（包括今天）每天提供一些上海本地及周边的户外活动及场所的信息。我们将向您询问一些简短的问题（约5分钟)。<br><br>\
     我们也将会询问您一些关于各类话题的问题。 如果您想参加这项学术调研，请点击以下链接开始。 您的回答仅被用于学术研究，我们将对您的个人信息及回答进行严格保密。 调研结束后我们将进行抽奖，所有参与并完成调研的同学将有机会赢得800元人民币作为奖励。<br><br>\
     如果您遇到了技术上的问题（列入网页无法正常显示等），请您在此发微信告诉我们，我们将尽快解决。<br><br>'
 
-    ## Parameters (XXX check these before deployment)
+    ## Parameters
     cohort = "4"
     maxnum_cohort = 70 ## Maximum number of cohorts in this trial per surveyor
     maxday = 8
     seq = [3, 0, 2, 3, 0, 0, 3, 0, 0, 2, 0, 2, 1, 0, 2, 3, 3, 3, 2, 3, 3, 2, 0, 2, 2, 1, 1, 1, 1, 3, 1, 0, 0, 1, 0, 2, 0, 3, 2, 1, 3, 0, 3, 3, 2, 1, 0, 3, 0, 0, 0, 2, 2, 3, 2, 1, 2, 2, 1, 1, 2, 1, 1, 2, 0, 1, 3, 2, 2, 0, 2, 3, 0, 1, 3, 3, 3, 1, 0, 1, 2, 0, 2, 1, 1, 0, 2, 3, 1, 3, 1, 3, 2, 0, 1, 1, 0, 3, 2, 1, 1, 2, 0, 2, 3, 1, 3, 3, 2, 3, 1, 0, 2, 2, 3, 0, 2, 0, 3, 0, 2, 0, 0, 3, 1, 0, 3, 3, 2, 0, 1, 2, 3, 0, 2, 1, 1, 1, 2, 3, 1, 0, 3, 2, 2, 3, 3, 1, 1, 1, 1, 1, 0, 2, 1, 0, 3, 2, 2, 3, 1, 1, 3, 0, 0, 2, 1, 0, 1, 0, 1, 3, 3, 0, 0, 2, 1, 3, 2, 3, 3, 0, 3, 0, 1, 2, 2, 2, 2, 0, 2, 3, 0, 3, 2, 0, 1, 1, 0, 1]
     # Note: the sequence is created randomly from "treatSequence.py"
 
-    ## Get list of users (XXX allUsers page should be updated with actual WeChat IDs of former users in Shanghai)
+    ## Get list of users
     def get_users():
         db = get_db()
         users = pd.read_sql_query('SELECT user_id, day, wechat_id, treatment, cohort, user_id_hashid, day_hashid FROM user s ORDER BY user_id ASC', db)
@@ -180,7 +179,7 @@ def get_link(surveyorNumber):
                 return [u'<font color="red">（其他研究员已输入过该微信号！请不要发送任何信息，并将此用户告知 Zixin 子鑫）<br></font>']
             else:
                 theUser = cohort_users.loc[(cohort_users.wechat_id == input_ID) & (cohort_users.day == 0)]
-                msg_URL = URL+"s/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
+                msg_URL = URL+"shanghai/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
                 return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
                 <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<br><br><b>🔺copy above (do not forget URL)</b><span>']
 
