@@ -103,13 +103,6 @@
       <!-- temperature -->
       <section class="temperature">
         <div id="temperatureHeader">去年{{ info['phrase_for_header'] }} 室外气温</div>
-        <!-- <div id="temperatureSource">* 来自中国青年报</div>
-          <div id="qingNian">
-            <img src="../img/QingNian.jpg" width="50" height="16.36">
-          </div> -->
-        <!-- <div id="temperatureSubtitle">{{ info['phrase_for_header'] }} <br />去年平均气温</div> -->
-
-        <!-- temperture low -->
         <div class="temperatureLow">
           <div id="lowValue">{{ (info['low_temp']) }}</div>
           <div id="lowUnit">°C</div>
@@ -125,6 +118,73 @@
       </section>
 
       <!-- air quality -->
+      {% if user['treatment'] == 'T4' %}
+      <section class="airQuality">
+        <div id="airQualityHeader">
+          <div id="airQualityTitle">
+            去年{{ info['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
+          </div>
+        </div>
+        <div id="T4AirQualitySource">{{ air_quality['air_quality_source'] }}</div>
+        <div id="primarySource">
+          （转载自：上海市环境监测中心）
+        </div>
+        <div id="T4AirQualityLogo">
+          <img src={{url_for('static', filename=air_quality['air_quality_source_logo']) }} height="40">
+        </div>
+
+        <!-- air quality scale -->
+        <div class="airQualityScale">
+
+          <!-- levels -->
+          <div class="levels">
+            <div id="infoLevel1">1级</div>
+            <div id="infoLevel2">2级</div>
+            <div id="infoLevel3">3级</div>
+            <div id="infoLevel4">4级</div>
+            <div id="infoLevel5">5级</div>
+            <div id="infoLevel6">6级</div>
+          </div>
+
+          <!-- level descriptions -->
+          <div class="levelDescription">
+            <div id="level1Description">优</div>
+            <div id="level2Description">良</div>
+            <div id="level3Description">轻度污染</div>
+            <div id="level4Description">中度污染</div>
+            <div id="level5Description">重度污染</div>
+            <div id="level6Description">严重污染</div>
+          </div>
+
+          <!-- color bar -->
+          <div>
+            <svg id="colorBar1">
+              <rect />
+            </svg>
+            <svg id="colorBar2">
+              <rect />
+            </svg>
+            <svg id="colorBar3">
+              <rect />
+            </svg>
+            <svg id="colorBar4">
+              <rect />
+            </svg>
+            <svg id="colorBar5">
+              <rect />
+            </svg>
+            <svg id="colorBar6">
+              <rect />
+            </svg>
+          </div>
+
+          <!-- air quality detail -->
+          <div id="airQualityDetail">
+            优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
+          </div>
+        </div>
+      </section>
+      {% else %}
       <section class="airQuality">
         <div id="airQualityHeader">
           <div id="airQualityTitle">
@@ -189,6 +249,7 @@
           </div>
         </div>
       </section>
+      {% endif %}
 
     </section>
 

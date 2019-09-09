@@ -131,17 +131,81 @@
             </div>
           </section>
 
-          {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
+          {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' %}
+          <section class="airQuality">
+            <div id="airQualityHeader">
+              <div id="airQualityTitle">
+                去年{{ walkathon['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
+              </div>
+            </div>
+            <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
+            <div id="airQualityLogo" style="right:10px;">
+              <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="40">
+            </div>
+
+            <!-- air quality scale -->
+            <div class="airQualityScale">
+
+              <!-- levels -->
+              <div class="levels">
+                <div id="infoLevel1">1级</div>
+                <div id="infoLevel2">2级</div>
+                <div id="infoLevel3">3级</div>
+                <div id="infoLevel4">4级</div>
+                <div id="infoLevel5">5级</div>
+                <div id="infoLevel6">6级</div>
+              </div>
+
+              <!-- level descriptions -->
+              <div class="levelDescription">
+                <div id="level1Description">优</div>
+                <div id="level2Description">良</div>
+                <div id="level3Description">轻度污染</div>
+                <div id="level4Description">中度污染</div>
+                <div id="level5Description">重度污染</div>
+                <div id="level6Description">严重污染</div>
+              </div>
+
+              <!-- color bar -->
+              <div>
+                <svg id="colorBar1">
+                  <rect />
+                </svg>
+                <svg id="colorBar2">
+                  <rect />
+                </svg>
+                <svg id="colorBar3">
+                  <rect />
+                </svg>
+                <svg id="colorBar4">
+                  <rect />
+                </svg>
+                <svg id="colorBar5">
+                  <rect />
+                </svg>
+                <svg id="colorBar6">
+                  <rect />
+                </svg>
+              </div>
+
+              <!-- air quality detail -->
+              <div id="airQualityDetail">
+                优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
+              </div>
+            </div>
+          </section>
+          {% elif user['treatment'] == 'T4' %}
           <section class="airQuality">
             <div id="airQualityHeader">
               <div id="airQualityTitle">
                 去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
               </div>
             </div>
-            <!-- <div id="airQualitySubtitle">去年{{ second_event['phrase_for_header'] }}<br />空气质量：</div> -->
-            <!-- <div id="airQualityCurr">优</div> -->
-            <div id="airQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
-            <div id="airQualityLogo" style="right:10px;">
+            <div id="T4AirQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
+            <div id="primarySource">
+              （转载自：上海市环境监测中心）
+            </div>
+            <div id="T4AirQualityLogo">
               <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="40">
             </div>
 
@@ -336,7 +400,7 @@
             </section>
 
             <!-- air quality -->
-            {% if user['treatment'] == 'T1' or user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
+            {% if user['treatment'] == 'T4' or user['treatment'] == 'T1' or user['treatment'] == 'T2' or user['treatment'] == 'T3' %}
             <section class="airQuality">
               <div id="airQualityHeader">
                 <div id="airQualityTitle">

@@ -419,6 +419,35 @@ header #eventLocation{
   float: right;
 }
 
+
+#T4AirQualityLogo{
+  height: 11.43px;
+  right: 16px;
+  margin-top: 50px;
+  margin-right: 10px;
+  float: right;
+}
+
+#primarySource{
+  position: absolute;
+  top: 112px;
+  right: 5px;
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 18px;
+  color: #4F4F4F;
+  line-height: 24px;
+}
+
+#T4AirQualitySource{
+  position: absolute;
+  top: 67px;
+  right: 115px;
+  font-family: PingFangHK-Regular, sans-serif;
+  font-size: 18px;
+  color: #4F4F4F;
+  line-height: 24px;
+}
+
 .airQualityScale{
   position: absolute;
   width: 334.5px;
