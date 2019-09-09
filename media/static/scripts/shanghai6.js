@@ -120,9 +120,24 @@ function showClearAllStarsButton() {
   }
 }
 
+function randomizeQuestion() {
+  var user_id;
+  user_id = document.getElementById("sourceTrustOrder").value;
+  // user_id odd, swap questions; even do nothing
+  if (user_id % 2) {
+    document.getElementById("sourceTrustOrder").value = "21";
+    $( "#page8" ).prepend( $( "#survey2" ) );
+    $( "#page9" ).prepend( $( "#survey1" ) );
+  }
+  else {
+    document.getElementById("sourceTrustOrder").value = "12";
+  }
+}
+
 $( document ).ready(function() {
   randomize();
   randomizeSource();
+  randomizeQuestion();
 });
 
 function outingSlide(index) {
@@ -597,7 +612,7 @@ function show(nextPart) {
     if (validateOneChecked("recallNumberOfAirQualitySource")) {
       if (validateWeatherSource()) {
         guessWeatherSource();
-        document.getElementById('page10').style='display:none;';
+        document.getElementById('page11').style='display:none;';
         window.scroll(0,0);
         document.getElementById(nextPart).style='display: flex;flex-direction: column;position: relative;';
       }
@@ -824,4 +839,15 @@ function outing5Slide() {
   }
   var left = 2 + 2.88 * value;
   document.getElementById("outing5Amount").style.paddingLeft = left + "px";
+}
+
+// validate how many times is filled page 9 => 10
+function validateHowManyTimesForcedAns() {
+  var bothFilled = validateShownAndFilled("otherHowManyTimes", "numberOfTimes")
+      && validateShownAndFilled("otherHowManyWeatherTimes", "numberOfWeatherTimes")
+  if (!bothFilled) {
+    document.getElementById("fillAll").innerHTML='请填写次数';
+    return false;
+  }
+  return true;
 }
