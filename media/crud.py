@@ -153,7 +153,8 @@ def get_link(surveyorNumber):
 
     ## Parameters
     cohort = "4"
-    maxnum_cohort = 70 ## Maximum number of cohorts in this trial per surveyor
+    maxnum_cohort = 213 ## Total maximum number
+    maxnum_cohort_each = int(maxnum_cohort/3) ## Maximum number of cohorts in this trial per surveyor
     maxday = 8
     seq = [3, 2, 1, 1, 3, 1, 0, 1, 0, 3, 2, 2, 1, 1, 3, 3, 2, 1, 3, 3, 3, 3, 2, 3, 2, 0, 0, 2, 2, 0, 1, 0, 1, 1, 1, 0, 0, 0, 2, 1, 1, 0, 3, 3, 2, 3, 0, 0, 2, 0, 2, 3, 1, 2, 2, 0, 2, 1, 3, 2, 0, 1, 3, 3, 0, 1, 1, 0, 1, 3, 1, 2, 2, 2, 3, 0, 3, 0, 2, 0, 2, 2, 2, 1, 1, 2, 3, 3, 1, 3, 3, 0, 2, 3, 1, 1, 0, 1, 2, 1, 1, 2, 0, 3, 3, 2, 0, 2, 0, 0, 2, 0, 1, 3, 2, 1, 0, 2, 0, 1, 1, 1, 2, 3, 0, 0, 1, 1, 0, 3, 0, 2, 2, 3, 3, 3, 3, 0, 2, 3, 3, 1, 3, 2, 1, 1, 3, 0, 0, 3, 1, 2, 1, 2, 3, 3, 1, 3, 3, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 0, 2, 3, 1, 2, 3, 0, 3, 0, 0, 2, 2, 3, 3, 2, 0, 1, 0, 1, 1, 0, 2, 2, 2, 2, 1, 1, 1, 0, 1, 1, 3, 2, 2, 0, 1, 0, 1, 2, 3, 0, 0, 0, 1]
     # Note: the sequence is created randomly from "treatSequence.py"
@@ -165,12 +166,13 @@ def get_link(surveyorNumber):
         return users
 
     ## Using the input, create user profile in DB, and produce output
-    def new_user_process(input_ID):
+    def new_user_process(input_ID,surveyorNumber):
         db = get_db()
         users = get_users()
         cohort_users = users.loc[users.cohort == int(cohort)].drop_duplicates(subset=['user_id'])
-        if len(cohort_users) != 0: cohort_users['surveyor'] = int((max(pd.to_numeric(cohort_users['user_id'])) / 1e6) % 10)
-        curr_cohort_user_count = int(len(set(cohort_users.loc[cohort_users.surveyor==surveyorNumber]['user_id'])))
+        cohort_users['surveyor'] = ((pd.to_numeric(cohort_users['user_id'])/1e6)%10).astype(int)
+        curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
+        curr_cohort_user_count_mine = int(len(set(cohort_users.loc[cohort_users.surveyor==int(surveyorNumber)]['user_id'])))
         if input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
             return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
 
@@ -182,19 +184,21 @@ def get_link(surveyorNumber):
                 msg_URL = URL+"shanghai/"+theUser.user_id_hashid.iloc[0]+"/"+theUser.day_hashid.iloc[0]+"/info"
                 return [u'<b><font color="red">（您已输入过该微信号！）<br></font>请将其备注名改为</b>：\
                 <span style="background-color:PaleGreen;">'+str(theUser.user_id.iloc[0]),msg_initial+msg_URL+'<br><br><b>🔺copy above (do not forget URL)</b><span>']
-
-        elif curr_cohort_user_count >= maxnum_cohort: # Max cohort size reached
-            db.execute(
-                'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
-                ' VALUES (?, ?, ?, ?, ?, ?, ?)',
-                ('WAITLIST', 'TBD', str(input_ID), str(int(cohort)+1), 'TBD', 'TBD', 'TBD')
-            )
-            db.commit()
-            return ["MAX SIZE REACHED: SAVED IN WAITLIST",msg_maxnum_cohort]
+        elif  curr_cohort_user_count_mine >= maxnum_cohort_each: # Surveyor's quota is filled
+            if curr_cohort_user_count >= maxnum_cohort: # Cohort mix size reached
+                db.execute(
+                    'INSERT INTO user (user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid)'
+                    ' VALUES (?, ?, ?, ?, ?, ?, ?)',
+                    ('WAITLIST', 'TBD', str(input_ID), str(int(cohort)+1), 'TBD', 'TBD', 'TBD')
+                )
+                db.commit()
+                return [u'<font color="red">MAX SIZE REACHED: SAVED IN WAITLIST</font>',msg_maxnum_cohort]
+            else:
+                return [u'<font color="red">YOUR QUOTA IS FILLED (GREAT JOB), BUT OTHER SURVEYORS QUOTA IS NOT. CONTACT ZIXIN SO THAT OTHER SURVEYORS CAN HAVE THIS PERSON</font>']
         else:
             # Create nickname #
             if len(cohort_users) == 0: previousMax = 0
-            else: previousMax = int((max(pd.to_numeric(cohort_users['user_id'])) % 1e6) / 1e3)
+            else: previousMax = int((max(pd.to_numeric(cohort_users['user_id']) % 1e6)) / 1e3)
             nextUserID = int(int(cohort)*1e7 + int(surveyorNumber)*1e6 + (previousMax+1)*1e3 + randint(1,999))
             # Assign treatment group #
             treatment = "T"+str(seq[previousMax]+1)
@@ -227,7 +231,7 @@ def get_link(surveyorNumber):
     if request.method == 'POST':
         input_ID = request.form['wechatID']
         cohort = '4'
-        output = new_user_process(input_ID)
+        output = new_user_process(input_ID,surveyorNumber)
 
     # TODO add forwarding email instructions
     surveyor = ''
