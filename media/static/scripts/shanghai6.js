@@ -657,30 +657,71 @@ function validateShownAndFilled(formName, name) {
   return true;
 }
 
+// function guessWeatherSource(){
+//   var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
+//   var checked = [];
+//   var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
+//   var isSEMCChecked = document.getElementById('source3').checked;
+//   var isDunnoChecked = document.getElementById('sourceNo').checked;
+//   for (i=0;i<options.length;i++) {
+//     var isOptionChecked = document.getElementById(options[i]).checked;
+//     if (isOptionChecked) {
+//       checked.push(sources[i]);
+//     }
+//   }
+//   var numChosen = checked.length;
+//   // only SEMC is selected
+//   if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
+//     document.getElementById('page7part2').style.display = "none";
+//     document.getElementById('guessWeatherSource').style.display = "none";
+//     document.forms["surveyExperience"].submit();
+//   }
+//   else {
+//     var randomIndex = Math.floor(Math.random() * (numChosen-1));
+//     document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
+//     document.getElementById('guessWeatherSource').style.display = "block";
+//     document.getElementById("international").required = true;
+//   }
+// }
+
 function guessWeatherSource(){
-  var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
-  var checked = [];
-  var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
-  var isSEMCChecked = document.getElementById('source3').checked;
-  var isDunnoChecked = document.getElementById('sourceNo').checked;
-  for (i=0;i<options.length;i++) {
-    var isOptionChecked = document.getElementById(options[i]).checked;
+  var options1 = ['source4', 'source5']
+  var sources1 = ['新闻晨报', '新闻广播FM93.4']
+  var options2 = ['source1', 'source2', 'source6', 'source7'];
+  var sources2 = ['人民日报', '参考消息', '上海环境东方网微博', '纽约时报'];
+  var checked1 = [];
+  var checked2 = [];
+  for (i=0;i<options1.length;i++) {
+    var isOptionChecked = document.getElementById(options1[i]).checked;
     if (isOptionChecked) {
-      checked.push(sources[i]);
+      checked1.push(sources1[i]);
     }
   }
-  var numChosen = checked.length;
-  // only SEMC is selected
-  if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
+  for (i=0;i<options2.length;i++) {
+    var isOptionChecked = document.getElementById(options2[i]).checked;
+    if (isOptionChecked) {
+      checked2.push(sources2[i]);
+    }
+  }
+  if (checked1.length > 0) {
+    var numChosen = checked1.length;
+    var randomIndex = Math.floor(Math.random() * (numChosen-1));
+    document.getElementById('specificWeatherSource').innerHTML = checked1[randomIndex];
+    document.getElementById('guessWeatherSource').style.display = "block";
+    document.getElementById("international").required = true;
+  }
+  else if (checked2.length > 0) {
+    var numChosen = checked2.length;
+    var randomIndex = Math.floor(Math.random() * (numChosen-1));
+    document.getElementById('specificWeatherSource').innerHTML = checked2[randomIndex];
+    document.getElementById('guessWeatherSource').style.display = "block";
+    document.getElementById("international").required = true;
+  }
+  else {
     document.getElementById('page7part2').style.display = "none";
     document.getElementById('guessWeatherSource').style.display = "none";
     document.forms["surveyExperience"].submit();
-  }
-  else {
-    var randomIndex = Math.floor(Math.random() * (numChosen-1));
-    document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
-    document.getElementById('guessWeatherSource').style.display = "block";
-    document.getElementById("international").required = true;
+
   }
 }
 
