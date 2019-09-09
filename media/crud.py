@@ -192,9 +192,9 @@ def get_link(surveyorNumber):
                     ('WAITLIST', 'TBD', str(input_ID), str(int(cohort)+1), 'TBD', 'TBD', 'TBD')
                 )
                 db.commit()
-                return [u'<font color="red">MAX SIZE REACHED: SAVED IN WAITLIST</font>',msg_maxnum_cohort]
+                return [u'<font color="red">人数上限已满：已存入候补名单</font>',msg_maxnum_cohort]
             else:
-                return [u'<font color="red">YOUR QUOTA IS FILLED (GREAT JOB), BUT OTHER SURVEYORS QUOTA IS NOT. CONTACT ZIXIN SO THAT OTHER SURVEYORS CAN HAVE THIS PERSON</font>']
+                return [u'<font color="red">你的招募人数上限已经达到（棒），但是其他调查者还没有完成。请联系子鑫，请其他调查者招募此用户！</font>']
         else:
             # Create nickname #
             if len(cohort_users) == 0: previousMax = 0
