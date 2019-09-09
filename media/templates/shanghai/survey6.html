@@ -727,8 +727,152 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <!-- page 7 -->
+    <!-- page 6 -->
     <div id="page8" style="display:none">
+      <div class="survey">
+        <!-- walkathon distance -->
+        <div class="question">
+          <div class="questionPrompt">在决定是否参加类似的户外活动时，以下因素对您做出决定的影响程度如何（请在0-100中选择）？</div>
+          <div class="questionAnswer">
+            <!-- option 1 -->
+            <div class="outingOption">
+              <div class="outingOptionPrompt">
+                <div class="outingOptionText">地点</div>
+              </div>
+              <div id="outingScale1Divider">
+                <div id="scaleOf4Divider1">·</div>
+                <div id="scaleOf4Divider2">·</div>
+                <div id="scaleOf4Divider3">·</div>
+                <div id="scaleOf4Divider4">·</div>
+              </div>
+              <div class="outingScaleLabel">
+                <div id="outing1ScaleLabel1">几乎不影响<br />我做决定</div>
+                <div id="outing1ScaleLabel2">可能会影响<br />我的决定</div>
+                <div id="outing1ScaleLabel3">是影响决定的重要因素之一</div>
+                <div id="outing1ScaleLabel4">对我做决定<br />非常重要</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="outing1Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="outingLocation" class="slider" id="outing1" oninput="outing1Slide()"></input>
+                </div>
+              </div>
+            </div><!-- option 2 -->
+            <div class="outingOption">
+              <div class="outingOptionPrompt">
+                <div class="outingOptionText">交通</div>
+              </div>
+              <div id="outingScale2Divider">
+                <div id="scaleOf4Divider1">·</div>
+                <div id="scaleOf4Divider2">·</div>
+                <div id="scaleOf4Divider3">·</div>
+                <div id="scaleOf4Divider4">·</div>
+              </div>
+              <div class="outingScaleLabel">
+                <div id="outing2ScaleLabel1">几乎不影响<br />我做决定</div>
+                <div id="outing2ScaleLabel2">可能会影响<br />我的决定</div>
+                <div id="outing2ScaleLabel3">是影响决定的重要因素之一</div>
+                <div id="outing2ScaleLabel4">对我做决定<br />非常重要</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="outing2Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="outingTransportation" class="slider" id="outing2" oninput="outing2Slide()"></input>
+                </div>
+              </div>
+            </div><!-- option 3 -->
+            <div class="outingOption">
+              <div class="outingOptionPrompt">
+                <div class="outingOptionText">温度</div>
+              </div>
+              <div id="outingScale3Divider">
+                <div id="scaleOf4Divider1">·</div>
+                <div id="scaleOf4Divider2">·</div>
+                <div id="scaleOf4Divider3">·</div>
+                <div id="scaleOf4Divider4">·</div>
+              </div>
+              <div class="outingScaleLabel">
+                <div id="outing3ScaleLabel1">几乎不影响<br />我做决定</div>
+                <div id="outing3ScaleLabel2">可能会影响<br />我的决定</div>
+                <div id="outing3ScaleLabel3">是影响决定的重要因素之一</div>
+                <div id="outing3ScaleLabel4">对我做决定<br />非常重要</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="outing3Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="outingTemperature" class="slider" id="outing3" oninput="outing3Slide()"></input>
+                </div>
+              </div>
+            </div><!-- option 4 -->
+            <div class="outingOption">
+              <div class="outingOptionPrompt">
+                <div class="outingOptionText">空气质量</div>
+              </div>
+              <div id="outingScale4Divider">
+                <div id="scaleOf4Divider1">·</div>
+                <div id="scaleOf4Divider2">·</div>
+                <div id="scaleOf4Divider3">·</div>
+                <div id="scaleOf4Divider4">·</div>
+              </div>
+              <div class="outingScaleLabel">
+                <div id="outing4ScaleLabel1">几乎不影响<br />我做决定</div>
+                <div id="outing4ScaleLabel2">可能会影响<br />我的决定</div>
+                <div id="outing4ScaleLabel3">是影响决定的重要因素之一</div>
+                <div id="outing4ScaleLabel4">对我做决定<br />非常重要</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="outing4Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="outingAirQuality" class="slider" id="outing4" oninput="outing4Slide()"></input>
+                </div>
+              </div>
+            </div><!-- option 5 -->
+            <div class="outingOption">
+              <div class="outingOptionPrompt">
+                <div class="outingOptionText">我的朋友们是否会同去</div>
+              </div>
+              <div id="outingScale5Divider">
+                <div id="scaleOf4Divider1">·</div>
+                <div id="scaleOf4Divider2">·</div>
+                <div id="scaleOf4Divider3">·</div>
+                <div id="scaleOf4Divider4">·</div>
+              </div>
+              <div class="outingScaleLabel">
+                <div id="outing5ScaleLabel1">几乎不影响<br />我做决定</div>
+                <div id="outing5ScaleLabel2">可能会影响<br />我的决定</div>
+                <div id="outing5ScaleLabel3">是影响决定的重要因素之一</div>
+                <div id="outing5ScaleLabel4">对我做决定<br />非常重要</div>
+              </div>
+              <div class="slidecontainer">
+                <div class="form-group" style="margin-top:5px; margin-bottom:0px">
+                  <output class="sliderAmount" name="amount" id="outing5Amount"
+                    for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="outingFriends" class="slider" id="outing5" oninput="outing5Slide()"></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 60%; background-color: #979797;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+    <!-- page 7 -->
+    <div id="page9" style="display:none">
       <div class="survey">
         <div class="mainQuestion" align="center"><b>用户体验反馈</b></div>
         <div class="question">
@@ -781,7 +925,7 @@
 
   <form lang="zh" action="" method="post">
     <!-- page 7 -->
-    <div id="page9" style="display:none">
+    <div id="page10" style="display:none">
       <div class="survey">
         <div class="question">
           <div class="questionPrompt">您是否还记得我们为您提供的{{ walkathon['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
@@ -826,7 +970,7 @@
 
   <form lang="zh" action="" method="post" onsubmit="return validateRandomizedForcedAns();" >
     <!-- page 7 -->
-    <div id="page10" style="display:none">
+    <div id="page11" style="display:none">
       <div class="survey">
         <div class="question">
           <div class="questionPrompt">您认为在过去的6天内，我们引用过多少个空气质量信息的来源</div>
@@ -904,7 +1048,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <div id="page11" style="display:none">
+    <div id="page12" style="display:none">
       <div class="survey" id="survey2">
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
@@ -1116,7 +1260,7 @@
     </div>
   </form>
 
-  <div id="page12" style="display:none">
+  <div id="page13" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。此次调研还剩下两天就全部结束了，第七天的调研将在两周后进行。我们将在两周之内向您发送微信消息！</div>
     </div>
