@@ -164,7 +164,7 @@ function walkathonSlide() {
   var donation = value * 0.002;
   distance = distance.toFixed(2);
   document.getElementById("walkathonAmount").value=walkathonAmount;
-  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向中国儿童少年基金会捐赠${donation}元人民币。`;
+  document.getElementById("walkathonDistance").value=`走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
   var left = value * 0.0172;
   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
 }
