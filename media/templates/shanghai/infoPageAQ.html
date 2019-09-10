@@ -66,7 +66,11 @@
     <section class="image">
       <div id="eventImage">
         <div>
-          <img src="{{ url_for('static', filename=info['image_file']) }}" width="376">
+          {% if user['day'] == 6 %}
+          <img src="{{ url_for('static', filename=info['image_file']) }}" height="257">
+          {% else %}
+          <img src="{{ url_for('static', filename=info['image_file']) }}" height="276">
+          {% endif %}
         </div>
       </div>
     </section>
