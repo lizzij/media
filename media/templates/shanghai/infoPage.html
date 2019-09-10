@@ -72,13 +72,11 @@
     <section class="image">
       <div id="eventImage">
         <div>
-
           {% if user['day'] == 6 %}
           <img src="{{ url_for('static', filename=info['image_file']) }}" height="257">
           {% else %}
           <img src="{{ url_for('static', filename=info['image_file']) }}" height="276">
           {% endif %}
-
         </div>
       </div>
     </section>
@@ -88,6 +86,10 @@
       <div class="paragraphShort">
         <!-- <div id="firstCharacter">{{ (info['headword']) }}</div> -->
         {% if user['day'] == 5 %}
+        <div id="descriptionShortPara" style="top: -12px;">
+          {{ (info['short_description']) }}
+        </div>
+        {% elif user['day'] == 6 and user['treatment'] == 'T1' %}
         <div id="descriptionShortPara" style="top: -12px;">
           {{ (info['short_description']) }}
         </div>
