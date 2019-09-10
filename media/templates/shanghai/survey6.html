@@ -76,7 +76,7 @@
         <section class="image">
           <div id="eventImage">
             <div>
-              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="276">
+              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="235">
             </div>
           </div>
         </section>
@@ -85,7 +85,7 @@
         <section class="descriptionShort">
           <div class="paragraphShort">
             <!-- <div id="firstCharacter">平</div> -->
-            <div id="descriptionShortPara">
+            <div id="descriptionShortPara" style="top: -50px;">
               {{ (second_event['short_description']) }}
             </div>
           </div>
