@@ -34,7 +34,7 @@ def get_event_info(event_id, cohort = 4):
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:12, 7:5, 8:3}): # excluding the info & final page
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}): # excluding the info & final page
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -162,7 +162,7 @@ def get_survey(user_id_hashid, day_hashid):
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
     # mark as completed
-    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:12, 7:5, 8:3}
+    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
 
     if request.method == 'POST':
         form = request.form
