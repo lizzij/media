@@ -97,6 +97,8 @@ def get_info(user_id_hashid, day_hashid):
         ).fetchone()
         day1_user_id_hashid = day1[0]
         day1_day_hashid = day1[1]
+        if get_activity_day(user_id) > 0:
+            return redirect(url_for('shanghai.get_info', user_id_hashid=day1_user_id_hashid, day_hashid=day1_day_hashid))
         if request.method == 'POST':
             now = datetime.now()
             consent = request.form['consent']
