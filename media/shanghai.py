@@ -162,7 +162,7 @@ def get_survey(user_id_hashid, day_hashid):
     # mark info page as read
     lastpage = get_lastpage(user_id, day)
     # mark as completed
-    day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:0, 5:1, 6:12, 7:5, 8:3}
+    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:12, 7:5, 8:3}
 
     if request.method == 'POST':
         form = request.form
