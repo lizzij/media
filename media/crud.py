@@ -99,6 +99,18 @@ def delete_event(event_id, cohort):
     db.commit()
     return 'complete'
 
+@bp.route('/userDelete/<user_id>', methods=['GET', 'POST'])
+def delete_user(user_id):
+    db = get_db()
+    db.execute(
+        'DELETE FROM user WHERE user_id = ?',(user_id,)
+    )
+    db.execute(
+        'DELETE FROM activity WHERE user_id = ?',(user_id,)
+    )
+    db.commit()
+    return 'complete'
+
 @bp.route('/userInsert/<user_id>/<day>/<wechat_id>/<cohort>/<treatment>/<user_id_hashid>/<day_hashid>', methods=['POST'])
 def user_insert(user_id, day, wechat_id, cohort, treatment, user_id_hashid, day_hashid):
     db = get_db()
@@ -173,9 +185,10 @@ def get_link(surveyorNumber):
         cohort_users['surveyor'] = ((pd.to_numeric(cohort_users['user_id'])/1e6)%10).astype(int)
         curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
         curr_cohort_user_count_mine = int(len(set(cohort_users.loc[cohort_users.surveyor==int(surveyorNumber)]['user_id'])))
-        if input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
+        if (' ' in str(input_ID)): # Prevent inputting string
+            return ['<b><font color="red">Invalid WeChat ID. Try again.</font></b>']
+        elif input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
             return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
-
         elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort
             if (int(cohort_users.loc[cohort_users.wechat_id == input_ID].iloc[0]['surveyor']) != int(surveyorNumber)):
                 return [u'<font color="red">（其他研究员已输入过该微信号！请不要发送任何信息，并将此用户告知 Zixin 子鑫）<br></font>']
