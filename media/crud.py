@@ -186,7 +186,7 @@ def get_link(surveyorNumber):
         curr_cohort_user_count = int(len(set(cohort_users['user_id'])))
         curr_cohort_user_count_mine = int(len(set(cohort_users.loc[cohort_users.surveyor==int(surveyorNumber)]['user_id'])))
         if (' ' in str(input_ID)): # Prevent inputting space in the input ID
-            return ['<b><font color="red">Invalid WeChat ID. Try again.</font></b>']
+            return ['<b><font color="red">无效微信号，请核对后再输入一次！</font></b>']
         elif input_ID in list(set(users.loc[users.cohort != int(cohort)]['wechat_id'])): # Already existing user from prev. cohorts
             return [u'<b><font color="red">该用户已存在</font></b>！',msg_ineligible]
         elif input_ID in list(set(cohort_users['wechat_id'])): # Already existing user in current cohort
