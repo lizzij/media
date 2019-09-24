@@ -20,13 +20,13 @@
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
-          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_walkathon_day'] }}的那一周举办。您认为那段时间的空气质量会如何？</p>
+          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_week'] }}<b>的那一周举办</b>。您认为那段时间的空气质量会如何？</p>
           <div id="note">
-            <p>下面是两张同一个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块的位置。</b></p>
+            <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
             <p id="subNote"><b>例如：</b></br>
-              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；反之，将其移至最右边。</br>
+              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
               - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
-              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
+              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
           </div>
         </div>
         <div id="blueGraySkyImage" style="padding-bottom: 46px;">
@@ -71,7 +71,7 @@
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
-          <p>您认为活动举办那周，即<b>{{ (walkathon['phrase_for_week']) }}</b>期间的空气质量等级如何？</p>
+          <p>您认为活动举办那周，即{{ (walkathon['phrase_for_week']) }}<b>期间的空气质量等级如何？</b></p>
           <div id="note">
             <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。<br />
               <p id="subNote"><b>注意：</b><br />
@@ -108,7 +108,7 @@
           <div id="starAlert" style="top:519px"></div>
           <div class="starGroup1">
             <div class="starPrompt">
-              <div>优</div>
+              <div>严重污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup1" onchange="updateStarInput1()">0</div>
               <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
@@ -131,7 +131,7 @@
           </div>
           <div class="starGroup2">
             <div class="starPrompt">
-              <div>良</div>
+              <div>重度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup2" onchange="updateStarInput2()">0</div>
               <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
@@ -154,7 +154,7 @@
           </div>
           <div class="starGroup3">
             <div class="starPrompt">
-              <div>轻度污染</div>
+              <div>中度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup3" onchange="updateStarInput3()">0</div>
               <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
@@ -177,7 +177,7 @@
           </div>
           <div class="starGroup4">
             <div class="starPrompt">
-              <div>中度污染</div>
+              <div>轻度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup4" onchange="updateStarInput4()">0</div>
               <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
@@ -200,7 +200,7 @@
           </div>
           <div class="starGroup5">
             <div class="starPrompt">
-              <div>重度污染</div>
+              <div>良</div>
               <div>&nbsp</div>
               <div id="starCountGroup5" onchange="updateStarInput5()">0</div>
               <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
@@ -223,7 +223,7 @@
           </div>
           <div class="starGroup6">
             <div class="starPrompt">
-              <div>严重污染</div>
+              <div>优</div>
               <div>&nbsp</div>
               <div id="starCountGroup6" onchange="updateStarInput6()">0</div>
               <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
