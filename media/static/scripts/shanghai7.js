@@ -358,7 +358,7 @@ function checkBeanNumberSource(){
   var CtoldMe = document.getElementById("CtoldMe").checked;
   var wongAnswers = document.getElementById("whoToldMeWrongAnswers").value;
   if (AtoldMe && (!BtoldMe) && CtoldMe) {
-    document.getElementById("beanNumberResult").innerHTML = '正确';
+    document.getElementById("beanNumberResult").innerHTML = '正确。您已经明白了此题的描述，请进入到下一题，猜测罐子里豆子的数目。';
     document.getElementById("beanNumberResult").style.color = "#28a745";
     document.getElementById("beanCountEstimateQuestion").style.display = "block";
   }

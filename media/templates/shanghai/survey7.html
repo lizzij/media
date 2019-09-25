@@ -324,28 +324,34 @@
   <!-- page 3 -->
   <div id="page4" style="display:none">
     <div class="survey">
-      <div class="mainQuestion">关于猜测豆子数量的问题</div>
+      <div class="mainQuestion" align="center"><b>关于猜测豆子数量的问题</b></div>
       <!-- walkathon distance -->
       <div class="question">
-        <div class="questionPrompt">在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。 您将根据猜测与实际结果的相近程度获得奖励。 例如：</div>
+        <div class="questionPrompt">在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。
+        您将根据猜测与实际结果的相近程度获得奖励。您应当还记得，若您能够按时完成我们的调研，您将有机会活动800元人民币的奖励。
+        如果您有幸被选中，我们将基于您对此题目的回答准确程度，额外为您添加最高至200元的奖励。 例如：</div>
         <div id="subNote">
-          <p>- 如果您的猜测完全正确，您将获得5元人民币。<br />
-             - 如果您的猜测与真实值相差2.2，您将获得4元人民币。<br />
-             - 如果您的猜测与真实值相差3.2，您将获得3元人民币。<br />
-             - 如果您的猜测与真实值相差3.9，您将获得2元人民币。<br />
-             - 如果您的猜测与真实值相差4.4，您将获得1元人民币。<br />
-             - 如果您的猜测与真实值相差5或更多，您将获得0元人民币。
+          <p>- 如果您的猜测完全正确，您将获得200元额外奖励，总奖励1000元。<br />
+             - 如果您的猜测与真实值相差 2.2，您将获得160元额外奖励，总奖励960元。<br />
+             - 如果您的猜测与真实值相差 3.2，您将获得120元额外奖励，总奖励920元。<br />
+             - 如果您的猜测与真实值相差 3.9，您将获得80元额外奖励，总奖励880元。<br />
+             - 如果您的猜测与真实值相差 4.5，您将获得40元额外奖励，总奖励840元。<br />
+             - 如果您的猜测与真实值相差 5 或更多，您将不能获得任何额外奖励，总奖励800元。
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt"></div>
         <div id="note">
-          <p>但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友<font color="red">小红</font>和<font color="blue">小蓝</font>，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。<font color="red">小红</font>告诉你罐子里有50个豆子。</p>
-          <p><font color="red">小红</font>和<font color="blue">小蓝</font>各自告诉<font color="green">小绿</font>他们的估计。注意<font color="green">小绿</font>没有看到罐子，且<font color="red">小红</font>和<font color="blue">小蓝</font>之间也没有互相交谈过。听完<font color="red">小红</font>和<font color="blue">小蓝</font>的估计后，<font color="green">小绿</font>告诉你，她认为罐子里有40个豆子。</p>
+          <p>在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友 <font color="red">小红</font> 和 <font color="blue">小蓝</font>，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。</p>
+          <p>基于短暂的观测，<font color="red">小红</font>告诉你罐子里有50个豆子。随后，<font color="red">小红</font>将他（她）的估计同样告诉了<font color="green">小绿</font>。</p>
+          <p><font color="blue">小蓝</font>没有直接告诉你他 (她）的猜测，而是将自己的估计告诉了<font color="green">小绿</font>。</p>
+          <p>也就是说，<font color="red">小红</font>和<font color="blue">小蓝</font>各自将他们的猜测告诉了<font color="green">小绿</font>。
+             请注意，<font color="green">小绿</font>自己并没有直接看到罐子，且<font color="red">小红</font>和<font color="blue">小蓝</font>之间也没有互相交谈过。
+             听完 <font color="red">小红</font> 和 <font color="blue">小蓝</font> 的估计后，<font color="green">小绿</font> 告诉你，他（她）认为罐子里有40个豆子。</p>
         </div>
       </div>
       <div class="question">
-        <div class="questionPrompt">为了确保您理解了此题描述，请您选择都有谁<b>直接</b>告诉了你他（她）对豆子数量的估计【多选】。</div>
+        <div class="questionPrompt">为了确保您理解了此题描述，请您选择都有谁<b>"直接"</b>告诉了你他（她）对豆子数量的估计【多选】。</div>
         <div class="questionAnswer">
           <input name="whoToldMeWrongAnswers" id="whoToldMeWrongAnswers" type="hidden" value="">
           <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="A" id="AtoldMe"><label class="form-check-label" for="AtoldMe"><font color="red">小红</font></label></div>
