@@ -219,3 +219,8 @@ def get_survey(user_id_hashid, day_hashid):
     air_quality = treatment_to_air_quality_dict[treatment]
 
     return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
+
+@bp.route('/blueGraySkyQn')
+def blue_gray_sky_qn():
+    walkathon = get_event_info(13,4)
+    return render_template('shanghai/survey7.html', walkathon=walkathon)
