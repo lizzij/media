@@ -416,4 +416,5 @@ function blueGraySkyAmountSlide() {
   document.getElementById("blueGraySkyAmount").value=blueGraySkyAmount;
   var left = 3 + 2.88 * value;
   document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
+  document.getElementById("graySky").style.opacity = value/100;
 }
