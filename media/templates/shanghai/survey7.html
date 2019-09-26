@@ -20,13 +20,13 @@
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
-          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_walkathon_day'] }}的那一周举办。您认为那段时间的空气质量会如何？</p>
+          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_week'] }}<b>的那一周举办</b>。您认为那段时间的空气质量会如何？</p>
           <div id="note">
-            <p>下面是两张同一个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块的位置。</b></p>
+            <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
             <p id="subNote"><b>例如：</b></br>
-              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；反之，将其移至最右边。</br>
+              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
               - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
-              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
+              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
           </div>
         </div>
         <div id="blueGraySkyImage" style="padding-bottom: 46px;">
@@ -77,7 +77,7 @@
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
-          <p>您认为活动举办那周，即<b>{{ (walkathon['phrase_for_week']) }}</b>期间的空气质量等级如何？</p>
+          <p>您认为活动举办那周，即{{ (walkathon['phrase_for_week']) }}<b>期间的空气质量等级如何？</b></p>
           <div id="note">
             <p>分配给您12个星星，请把更多星星分配给您认为更有可能的类别，并把更少的星星分配给您认为不太可能的类别。<br />
               <p id="subNote"><b>注意：</b><br />
@@ -114,7 +114,7 @@
           <div id="starAlert" style="top:519px"></div>
           <div class="starGroup1">
             <div class="starPrompt">
-              <div>优</div>
+              <div>严重污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup1" onchange="updateStarInput1()">0</div>
               <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
@@ -137,7 +137,7 @@
           </div>
           <div class="starGroup2">
             <div class="starPrompt">
-              <div>良</div>
+              <div>重度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup2" onchange="updateStarInput2()">0</div>
               <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
@@ -160,7 +160,7 @@
           </div>
           <div class="starGroup3">
             <div class="starPrompt">
-              <div>轻度污染</div>
+              <div>中度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup3" onchange="updateStarInput3()">0</div>
               <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
@@ -183,7 +183,7 @@
           </div>
           <div class="starGroup4">
             <div class="starPrompt">
-              <div>中度污染</div>
+              <div>轻度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup4" onchange="updateStarInput4()">0</div>
               <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
@@ -206,7 +206,7 @@
           </div>
           <div class="starGroup5">
             <div class="starPrompt">
-              <div>重度污染</div>
+              <div>良</div>
               <div>&nbsp</div>
               <div id="starCountGroup5" onchange="updateStarInput5()">0</div>
               <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
@@ -229,7 +229,7 @@
           </div>
           <div class="starGroup6">
             <div class="starPrompt">
-              <div>严重污染</div>
+              <div>优</div>
               <div>&nbsp</div>
               <div id="starCountGroup6" onchange="updateStarInput6()">0</div>
               <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
@@ -330,28 +330,34 @@
   <!-- page 3 -->
   <div id="page4" style="display:none">
     <div class="survey">
-      <div class="mainQuestion">关于猜测豆子数量的问题</div>
+      <div class="mainQuestion" align="center"><b>关于猜测豆子数量的问题</b></div>
       <!-- walkathon distance -->
       <div class="question">
-        <div class="questionPrompt">在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。 您将根据猜测与实际结果的相近程度获得奖励。 例如：</div>
+        <div class="questionPrompt">在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。
+        您将根据猜测与实际结果的相近程度获得奖励。您应当还记得，若您能够按时完成我们的调研，您将有机会活动800元人民币的奖励。
+        如果您有幸被选中，我们将基于您对此题目的回答准确程度，额外为您添加最高至200元的奖励。 例如：</div>
         <div id="subNote">
-          <p>- 如果您的猜测完全正确，您将获得5元人民币。<br />
-             - 如果您的猜测与真实值相差2.2，您将获得4元人民币。<br />
-             - 如果您的猜测与真实值相差3.2，您将获得3元人民币。<br />
-             - 如果您的猜测与真实值相差3.9，您将获得2元人民币。<br />
-             - 如果您的猜测与真实值相差4.4，您将获得1元人民币。<br />
-             - 如果您的猜测与真实值相差5或更多，您将获得0元人民币。
+          <p>- 如果您的猜测完全正确，您将获得200元额外奖励，总奖励1000元。<br />
+             - 如果您的猜测与真实值相差 2.2，您将获得160元额外奖励，总奖励960元。<br />
+             - 如果您的猜测与真实值相差 3.2，您将获得120元额外奖励，总奖励920元。<br />
+             - 如果您的猜测与真实值相差 3.9，您将获得80元额外奖励，总奖励880元。<br />
+             - 如果您的猜测与真实值相差 4.5，您将获得40元额外奖励，总奖励840元。<br />
+             - 如果您的猜测与真实值相差 5 或更多，您将不能获得任何额外奖励，总奖励800元。
         </div>
       </div>
       <div class="question">
         <div class="questionPrompt"></div>
         <div id="note">
-          <p>但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友<font color="red">小红</font>和<font color="blue">小蓝</font>，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。<font color="red">小红</font>告诉你罐子里有50个豆子。</p>
-          <p><font color="red">小红</font>和<font color="blue">小蓝</font>各自告诉<font color="green">小绿</font>他们的估计。注意<font color="green">小绿</font>没有看到罐子，且<font color="red">小红</font>和<font color="blue">小蓝</font>之间也没有互相交谈过。听完<font color="red">小红</font>和<font color="blue">小蓝</font>的估计后，<font color="green">小绿</font>告诉你，她认为罐子里有40个豆子。</p>
+          <p>在下面这个问题中，您将面临一个任务：猜测一个假想的罐子里有多少豆子。但是，您自己无法亲眼看到罐子。您有两个同样信任的好朋友 <font color="red">小红</font> 和 <font color="blue">小蓝</font>，看到了罐子，但只是非常短暂的一瞥。他们根据各自的粗略观察作出判断。</p>
+          <p>基于短暂的观测，<font color="red">小红</font>告诉你罐子里有50个豆子。随后，<font color="red">小红</font>将他（她）的估计同样告诉了<font color="green">小绿</font>。</p>
+          <p><font color="blue">小蓝</font>没有直接告诉你他 (她）的猜测，而是将自己的估计告诉了<font color="green">小绿</font>。</p>
+          <p>也就是说，<font color="red">小红</font>和<font color="blue">小蓝</font>各自将他们的猜测告诉了<font color="green">小绿</font>。
+             请注意，<font color="green">小绿</font>自己并没有直接看到罐子，且<font color="red">小红</font>和<font color="blue">小蓝</font>之间也没有互相交谈过。
+             听完 <font color="red">小红</font> 和 <font color="blue">小蓝</font> 的估计后，<font color="green">小绿</font> 告诉你，他（她）认为罐子里有40个豆子。</p>
         </div>
       </div>
       <div class="question">
-        <div class="questionPrompt">为了确保您理解了此题描述，请您选择都有谁<b>直接</b>告诉了你他（她）对豆子数量的估计【多选】。</div>
+        <div class="questionPrompt">为了确保您理解了此题描述，请您选择都有谁<b>"直接"</b>告诉了你他（她）对豆子数量的估计【多选】。</div>
         <div class="questionAnswer">
           <input name="whoToldMeWrongAnswers" id="whoToldMeWrongAnswers" type="hidden" value="">
           <div class="form-check"><input class="form-check-input" type="checkbox" name="whoToldMe" value="A" id="AtoldMe"><label class="form-check-label" for="AtoldMe"><font color="red">小红</font></label></div>
@@ -392,7 +398,8 @@
 <form lang="zh" action="" onsubmit="return validateMathQn();" method="post">
   <div id="page5" style="display:none">
     <div class="survey">
-      <div class="mainQuestion"><b>一些计算问题。 </b>对以下每个问题您都有一分钟的回答时间。</div>
+      <div class="mainQuestion" align="center"><b>一些计算问题 </b></div>
+      <div class="question"><p>对以下每个问题您都有一分钟的回答时间。</p></div>
     </div>
 
     <section class="nextButton" >
