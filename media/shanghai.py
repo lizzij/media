@@ -197,6 +197,16 @@ def get_survey(user_id_hashid, day_hashid):
                     )
                     db.commit()
 
+                # replace value with new value for now
+                else:
+                    to_next_page = True
+                    db.execute(
+                        'REPLACE INTO survey (user_id, day, result, created, question_id)'
+                        ' VALUES (?, ?, ?, ?, ?)',
+                        (user_id, day, result, now, question)
+                    )
+                    db.commit()
+
         # update last page, activity (for day completion)
         if to_next_page:
             lastpage += 1
