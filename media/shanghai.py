@@ -203,7 +203,7 @@ def get_survey(user_id_hashid, day_hashid):
                     db.execute(
                         'REPLACE INTO survey (user_id, day, result, created, question_id)'
                         ' VALUES (?, ?, ?, ?, ?)',
-                        (user_id, day, result, now, question)
+                        (user_id, day, result+'[replaced]', now, question)
                     )
                     db.commit()
 
