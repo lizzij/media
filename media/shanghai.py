@@ -54,6 +54,27 @@ def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 
             lastpage = 0
     return lastpage
 
+def get_lastpage_from_result(user_id):
+    db = get_db()
+    # CREATE TABLE survey (
+    #   survey_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #   user_id INTEGER NOT NULL,
+    #   day INTEGER,
+    #   result TEXT NOT NULL,
+    #   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    #   question_id TEXT,
+    #   FOREIGN KEY (user_id) REFERENCES user (user_id)
+    # );
+    last_result = db.execute(
+        'SELECT result'
+        ' FROM survey s'
+        ' WHERE s.user_id = ?'
+        ' ORDER BY s.created DESC LIMIT 1',
+        (user_id,)
+    ).fetchone()
+    lastpage = last_result[0].split(':')[0]
+    return int(lastpage)
+
 def update_lastpage(lastpage, day_complete, user_id, day):
     now = datetime.now()
     db = get_db()
@@ -162,7 +183,8 @@ def get_survey(user_id_hashid, day_hashid):
         return u'抱歉，此调查已过时效。'
 
     # mark info page as read
-    lastpage = get_lastpage(user_id, day)
+    lastpage = get_lastpage_from_result(user_id, day)
+    current_page = lastpage + 1
     # mark as completed
     day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
 
@@ -178,41 +200,36 @@ def get_survey(user_id_hashid, day_hashid):
         # save answer
         for question in form.keys():
             for result in form.getlist(question):
-                # check if answer already exists (prevent duplication)
-                previous_result = db.execute(
-                    'SELECT result'
-                    ' FROM survey s'
-                    ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
-                    (user_id, day, question)
-                ).fetchone()
-
-                # save result if not duplicated
-                if previous_result is None:
-                    # and go to next page
-                    to_next_page = True
-                    db.execute(
-                        'INSERT INTO survey (user_id, day, result, created, question_id)'
-                        ' VALUES (?, ?, ?, ?, ?)',
-                        (user_id, day, result, now, question)
-                    )
-                    db.commit()
-
-                # replace value with new value for now
-                else:
-                    to_next_page = True
-                    db.execute(
-                        'REPLACE INTO survey (user_id, day, result, created, question_id)'
-                        ' VALUES (?, ?, ?, ?, ?)',
-                        (user_id, day, result+'[replaced]', now, question)
-                    )
-                    db.commit()
+                # # check if answer already exists (prevent duplication)
+                # previous_result = db.execute(
+                #     'SELECT result'
+                #     ' FROM survey s'
+                #     ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
+                #     (user_id, day, question)
+                # ).fetchone()
+                #
+                # # save result if not duplicated
+                # if previous_result is None:
+                #     # and go to next page
+                #     to_next_page = True
+                #     db.execute(
+                #         'INSERT INTO survey (user_id, day, result, created, question_id)'
+                #         ' VALUES (?, ?, ?, ?, ?)',
+                #         (user_id, day, str(current_page) + ':' + str(result), now, question)
+                #     )
+                #     db.commit()
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, day, str(current_page) + ':' + str(result), now, question)
+                )
+                db.commit()
 
         # update last page, activity (for day completion)
-        if to_next_page:
-            lastpage += 1
-            update_lastpage(lastpage, 0, user_id, day)
-            if lastpage == day_to_lastpage_dict[day]:
-                update_lastpage(lastpage, 1, user_id, day)
+        lastpage += 1
+        update_lastpage(lastpage, 0, user_id, day)
+        if lastpage == day_to_lastpage_dict[day]:
+            update_lastpage(lastpage, 1, user_id, day)
 
     second_event = get_event_info(19,4)
     walkathon = get_event_info(13,4)
@@ -234,3 +251,8 @@ def get_survey(user_id_hashid, day_hashid):
 def blue_gray_sky_qn():
     walkathon = get_event_info(13,4)
     return render_template('shanghai/survey7.html', walkathon=walkathon)
+
+@bp.route('/testLastPage')
+def test_last_page():
+    lastpage = get_lastpage_from_result(1003)
+    return str(lastpage)
