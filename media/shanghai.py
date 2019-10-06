@@ -165,8 +165,8 @@ def get_info(user_id_hashid, day_hashid):
     info = get_event_info(day_to_info_id_dict[day])
 
     # air quality source for treatment groups different on day 6
-    treatment_to_aq_source_dict = {'T1':'', 'T2':u'（来自：上海市环境监测中心）', 'T3':u'（来自：新闻晨报）', 'T4':u'（来自：新闻晨报）' }
-    treatment_to_aq_source_logo_dict = {'T1':'img/transparent.png', 'T2':'img/SourceSHEnvironmentLogo.jpg', 'T3':'img/SourceMorningPostLogo.jpg', 'T4':'img/SourceMorningPostLogo.jpg' }
+    treatment_to_aq_source_dict = {'T0':'', 'T1':'', 'T2-1':u'（来自：上海市环境监测中心）', 'T2-2':u'（来自：上海广播电视台-STV新闻坊）', 'T3':u'（来自：新闻晨报）'}
+    treatment_to_aq_source_logo_dict = {'T0':'img/transparent.png', 'T1':'img/transparent.png', 'T2-1':'img/SourceSHEnvironmentLogo.jpg', 'T2-2':'img/SourceSTVLogo.png', 'T3':'img/SourceMorningPostLogo.jpg'}
     air_quality_source = treatment_to_aq_source_dict[treatment]
     air_quality_source_logo = treatment_to_aq_source_logo_dict[treatment]
     air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
@@ -189,15 +189,17 @@ def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
     second_event = get_event_info(26,5)
     walkathon = get_event_info(20,5)
 
+    t0_air_quality_source = { 'second_event' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' },
+                              'walkathon' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' } }
     t1_air_quality_source = { 'second_event' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    t2_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' },
+    t2_1_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
+    t2_2_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' },
+                            'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
     t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    t4_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
-                              'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    treatment_to_air_quality_dict = {'T1': t1_air_quality_source, 'T2': t2_air_quality_source, 'T3': t3_air_quality_source, 'T4': t4_air_quality_source}
+    treatment_to_air_quality_dict = {'T0': t0_air_quality_source, 'T1': t1_air_quality_source, 'T2-1': t2_1_air_quality_source, 'T2-2': t2_2_air_quality_source, 'T3': t3_air_quality_source}
     air_quality = treatment_to_air_quality_dict[treatment]
 
 
