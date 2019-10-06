@@ -203,24 +203,6 @@ def get_survey(user_id_hashid, day_hashid):
         # save answer
         for question in form.keys():
             for result in form.getlist(question):
-                # # check if answer already exists (prevent duplication)
-                # previous_result = db.execute(
-                #     'SELECT result'
-                #     ' FROM survey s'
-                #     ' WHERE s.user_id = ? AND s.day = ? AND s.question_id = ?',
-                #     (user_id, day, question)
-                # ).fetchone()
-                #
-                # # save result if not duplicated
-                # if previous_result is None:
-                #     # and go to next page
-                #     to_next_page = True
-                #     db.execute(
-                #         'INSERT INTO survey (user_id, day, result, created, question_id)'
-                #         ' VALUES (?, ?, ?, ?, ?)',
-                #         (user_id, day, str(current_page) + ':' + str(result), now, question)
-                #     )
-                #     db.commit()
                 db.execute(
                     'INSERT INTO survey (user_id, day, result, created, question_id)'
                     ' VALUES (?, ?, ?, ?, ?)',

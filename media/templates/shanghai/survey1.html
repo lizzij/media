@@ -23,8 +23,8 @@
       <div class="question">
         <div class="questionPrompt">您是否有意向参加此活动？</div>
         <div class="questionAnswer">
-          <div class="form-check"><input class="form-check-input" type="radio" name="1:walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
-          <div class="form-check"><input class="form-check-input" type="radio" name="1:walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()" required><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="notInterested" id="walkathonNotInterested" onClick="hideWalkathonSlider()"><label class="form-check-label" for="walkathonNotInterested">不，我不感兴趣</label></div>
+          <div class="form-check"><input class="form-check-input" type="radio" name="walkathonInterest" value="yesInterested" id="walkathonInterested" onClick="showWalkathonSlider()" required><label class="form-check-label" for="walkathonInterested">是的，我很感兴趣</label></div>
         </div>
         <div class="slidecontainer" id="walkathon" style="display:none">
           <div id="note" style="padding-top:20px">
@@ -37,7 +37,7 @@
           </div>
           <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
             <output class="sliderAmount" name="amount" id="walkathonAmount" for="rangeInput">0步</output>
-            <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="1:walkathonSteps" oninput="walkathonSlide()"></input>
+            <input type="range" min="0" max="15000" value="0" step="500" class="slider" id="walkathonSlider" name="walkathonSteps" oninput="walkathonSlide()"></input>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@
               <div>阳光普照</div>
               <div>&nbsp</div>
               <div id="weatherStarCountGroup1" onchange="updateInput(1)">0</div>
-              <input name="2:weatherStarCountGroup1Input" id="weatherStarCountGroup1Input" type="hidden" value="0">
+              <input name="weatherStarCountGroup1Input" id="weatherStarCountGroup1Input" type="hidden" value="0">
             </div>
             <div class="starGroup1Cover" id="weatherStarGroup1Cover"></div>
             <div class="starContainer">
@@ -123,7 +123,7 @@
               <div>多云</div>
               <div>&nbsp</div>
               <div id="weatherStarCountGroup2" onchange="updateInput(2)">0</div>
-              <input name="2:weatherStarCountGroup2Input" id="weatherStarCountGroup2Input" type="hidden" value="0">
+              <input name="weatherStarCountGroup2Input" id="weatherStarCountGroup2Input" type="hidden" value="0">
             </div>
             <div class="starGroup2Cover" id="weatherStarGroup2Cover"></div>
             <div class="starContainer">
@@ -146,7 +146,7 @@
               <div>阴天</div>
               <div>&nbsp</div>
               <div id="weatherStarCountGroup3" onchange="updateInput(3)">0</div>
-              <input name="2:weatherStarCountGroup3Input" id="weatherStarCountGroup3Input" type="hidden" value="0">
+              <input name="weatherStarCountGroup3Input" id="weatherStarCountGroup3Input" type="hidden" value="0">
             </div>
             <div class="starGroup3Cover" id="weatherStarGroup3Cover"></div>
             <div class="starContainer">
@@ -169,7 +169,7 @@
               <div>下雨/下雪</div>
               <div>&nbsp</div>
               <div id="weatherStarCountGroup4" onchange="updateInput(4)">0</div>
-              <input name="2:weatherStarCountGroup4Input" id="weatherStarCountGroup4Input" type="hidden" value="0">
+              <input name="weatherStarCountGroup4Input" id="weatherStarCountGroup4Input" type="hidden" value="0">
             </div>
             <div class="starGroup4Cover" id="weatherStarGroup4Cover"></div>
             <div class="starContainer">
@@ -237,9 +237,9 @@
           </div>
           <div class="slidecontainer" id="blueGraySky">
             <div class="form-group" style="margin-top:16px; margin-bottom:0px">
-              <output class="sliderAmount" name="3:amount"
+              <output class="sliderAmount" name="amount"
                 id="blueGraySkyAmount" for="rangeInput" style="margin-left:146px;">50</output>
-              <input type="range" min="0" max="100" value="50" step="2" class="slider" name="3:blueGraySky" id="blueGraySkyAmountSlider" oninput="blueGraySkyAmountSlide()"></input>
+              <input type="range" min="0" max="100" value="50" step="2" class="slider" name="blueGraySky" id="blueGraySkyAmountSlider" oninput="blueGraySkyAmountSlide()"></input>
               </div>
           </div>
         </div>
@@ -301,7 +301,7 @@
               <div>严重污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup1" onchange="updateStarInput(1)">0</div>
-              <input name="4:starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
+              <input name="starCountGroup1Input" id="starCountGroup1Input" type="hidden" value="0">
             </div>
             <div class="starGroup1Cover" id="starGroup1Cover"></div>
             <div class="starContainer">
@@ -324,7 +324,7 @@
               <div>重度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup2" onchange="updateStarInput(2)">0</div>
-              <input name="4:starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
+              <input name="starCountGroup2Input" id="starCountGroup2Input" type="hidden" value="0">
             </div>
             <div class="starGroup2Cover" id="starGroup2Cover"></div>
             <div class="starContainer">
@@ -347,7 +347,7 @@
               <div>中度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup3" onchange="updateStarInput(3)">0</div>
-              <input name="4:starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
+              <input name="starCountGroup3Input" id="starCountGroup3Input" type="hidden" value="0">
             </div>
             <div class="starGroup3Cover" id="starGroup3Cover"></div>
             <div class="starContainer">
@@ -370,7 +370,7 @@
               <div>轻度污染</div>
               <div>&nbsp</div>
               <div id="starCountGroup4" onchange="updateStarInput(4)">0</div>
-              <input name="4:starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
+              <input name="starCountGroup4Input" id="starCountGroup4Input" type="hidden" value="0">
             </div>
             <div class="starGroup4Cover" id="starGroup4Cover"></div>
             <div class="starContainer">
@@ -393,7 +393,7 @@
               <div>良</div>
               <div>&nbsp</div>
               <div id="starCountGroup5" onchange="updateStarInput(5)">0</div>
-              <input name="4:starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
+              <input name="starCountGroup5Input" id="starCountGroup5Input" type="hidden" value="0">
             </div>
             <div class="starGroup5Cover" id="starGroup5Cover"></div>
             <div class="starContainer">
@@ -416,7 +416,7 @@
               <div>优</div>
               <div>&nbsp</div>
               <div id="starCountGroup6" onchange="updateStarInput(6)">0</div>
-              <input name="4:starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
+              <input name="starCountGroup6Input" id="starCountGroup6Input" type="hidden" value="0">
             </div>
             <div class="starGroup6Cover" id="starGroup6Cover"></div>
             <div class="starContainer">
@@ -458,14 +458,14 @@
       <div class="mainQuestion" align="center"><b>关于日常新闻来源的问题</b></div>
       <div class="question">
         <div class="questionPrompt">您对下面这些群体的信任程度如何？</div>
-        <input name="5:trustOptionsOrder" id="trustOrder" type="hidden" value="12345678">
+        <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="12345678">
         <div class="questionAnswer">
           <!-- option 1 -->
           <div class="peopleTrustOption" id="question1">
             <div class="trustOptionPrompt">
               <div class="trustOptionText">家人和朋友</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="5:dontKnowFamilyFriends" onclick="dunno(1)">
+                <input type="checkbox" class="form-check-input" id="dunno1checkbox" name="dontKnowFamilyFriends" onclick="dunno(1)">
                 <label class="form-check-label" for="dunno1">不够了解，无法回答</label>
               </div>
             </div>
@@ -486,9 +486,9 @@
               </div>
               <div class="slidecontainer">
                 <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                  <output class="sliderAmount" name="5:amount" id="trust1Amount"
+                  <output class="sliderAmount" name="amount" id="trust1Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust1" class="slider" id="trust1" oninput="trustSlide(1)"></input>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust1" class="slider" id="trust1" oninput="trustSlide(1)"></input>
                   </div>
               </div>
             </div>
@@ -498,7 +498,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">初次见面的陌生人</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="5:dontKnowStrangers" onclick="dunno(2)">
+                <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowStrangers" onclick="dunno(2)">
                 <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
               </div>
             </div>
@@ -519,8 +519,8 @@
               </div>
               <div class="slidecontainer">
                 <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                  <output class="sliderAmount" name="5:amount" id="trust2Amount" for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust2" class="slider" id="trust2" oninput="trustSlide(2)"></input>
+                  <output class="sliderAmount" name="amount" id="trust2Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust2" class="slider" id="trust2" oninput="trustSlide(2)"></input>
                 </div>
               </div>
             </div>
@@ -530,7 +530,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">外国人</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="5:dontKnowForeigners" onclick="dunno(3)">
+                <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowForeigners" onclick="dunno(3)">
                 <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
               </div>
             </div>
@@ -551,8 +551,8 @@
               </div>
               <div class="slidecontainer">
                 <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                  <output class="sliderAmount" name="5:amount" id="trust3Amount" for="range">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust3" class="slider" id="trust3" oninput="trustSlide(3)"></input>
+                  <output class="sliderAmount" name="amount" id="trust3Amount" for="range">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust3" class="slider" id="trust3" oninput="trustSlide(3)"></input>
                   </div>
               </div>
             </div>
@@ -561,7 +561,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">媒体</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="5:dontKnowMedia" onclick="dunno(4)">
+                <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="dontKnowMedia" onclick="dunno(4)">
                 <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
               </div>
             </div>
@@ -582,8 +582,8 @@
               </div>
               <div class="slidecontainer">
                 <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                  <output class="sliderAmount" name="5:amount" id="trust4Amount" for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust4" class="slider" id="trust4" oninput="trustSlide(4)"></input>
+                  <output class="sliderAmount" name="amount" id="trust4Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust4" class="slider" id="trust4" oninput="trustSlide(4)"></input>
                 </div>
               </div>
             </div>
@@ -593,7 +593,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">政府</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno5checkbox" name="5:dontKnowGovernment" onclick="dunno(5)">
+                <input type="checkbox" class="form-check-input" id="dunno5checkbox" name="dontKnowGovernment" onclick="dunno(5)">
                 <label class="form-check-label" for="dunno5">不够了解，无法回答</label>
               </div>
             </div>
@@ -614,8 +614,8 @@
               </div>
               <div class="slidecontainer">
                 <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                  <output class="sliderAmount" name="5:amount" id="trust5Amount" for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust5" class="slider" id="trust5" oninput="trustSlide(5)"></input>
+                  <output class="sliderAmount" name="amount" id="trust5Amount" for="rangeInput">0</output>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trust5" class="slider" id="trust5" oninput="trustSlide(5)"></input>
                 </div>
               </div>
             </div>
@@ -624,7 +624,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">高校</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno6checkbox" name="5:dontKnowHS" onclick="dunno(6)">
+                <input type="checkbox" class="form-check-input" id="dunno6checkbox" name="dontKnowHS" onclick="dunno(6)">
                 <label class="form-check-label" for="dunno6">不够了解，无法回答</label>
               </div>
             </div>
@@ -645,8 +645,8 @@
             </div>
             <div class="slidecontainer">
               <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                <output class="sliderAmount" name="5:amount" id="trust6Amount" for="rangeInput">0</output>
-                <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust6" class="slider" id="trust6" oninput="trustSlide(6)"></input>
+                <output class="sliderAmount" name="amount" id="trust6Amount" for="rangeInput">0</output>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust6" class="slider" id="trust6" oninput="trustSlide(6)"></input>
               </div>
             </div>
             </div>
@@ -655,7 +655,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">慈善团体</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno7checkbox" name="5:dontKnowNGO" onclick="dunno(7)">
+                <input type="checkbox" class="form-check-input" id="dunno7checkbox" name="dontKnowNGO" onclick="dunno(7)">
                 <label class="form-check-label" for="dunno7">不够了解，无法回答</label>
               </div>
             </div>
@@ -676,9 +676,9 @@
             </div>
             <div class="slidecontainer">
               <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                <output class="sliderAmount" name="5:amount" id="trust7Amount"
+                <output class="sliderAmount" name="amount" id="trust7Amount"
                   for="rangeInput">0</output>
-                <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust7" class="slider" id="trust7" oninput="trustSlide(7)"></input>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust7" class="slider" id="trust7" oninput="trustSlide(7)"></input>
                 </div>
             </div>
             </div>
@@ -687,7 +687,7 @@
             <div class="trustOptionPrompt">
               <div class="trustOptionText">公司企业</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno8checkbox" name="5:dontKnowCorporation" onclick="dunno(8)">
+                <input type="checkbox" class="form-check-input" id="dunno8checkbox" name="dontKnowCorporation" onclick="dunno(8)">
                 <label class="form-check-label" for="dunno8">不够了解，无法回答</label>
               </div>
             </div>
@@ -708,9 +708,9 @@
             </div>
             <div class="slidecontainer">
               <div class="form-group" style="margin-top:26px; margin-bottom:0px">
-                <output class="sliderAmount" name="5:amount" id="trust8Amount"
+                <output class="sliderAmount" name="amount" id="trust8Amount"
                   for="rangeInput">0</output>
-                <input type="range" min="0" max="100" value="0" step="0.01" name="5:trust8" class="slider" id="trust8" oninput="trustSlide(8)"></input>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="trust8" class="slider" id="trust8" oninput="trustSlide(8)"></input>
                 </div>
             </div>
             </div>
@@ -752,9 +752,9 @@
             </div>
             <div class="slidecontainer">
               <div class="form-group" style="margin-top:50px; margin-bottom:0px">
-                <output class="sliderAmount" name="6:amount" id="willingnessAmount"
+                <output class="sliderAmount" name="amount" id="willingnessAmount"
                   for="rangeInput">0</output>
-                <input type="range" min="0" max="100" value="0" step="0.01" name="6:goodDeedWillingness" class="slider" id="willingness" oninput="willingnessSlide()"></input>
+                <input type="range" min="0" max="100" value="0" step="0.01" name="goodDeedWillingness" class="slider" id="willingness" oninput="willingnessSlide()"></input>
                 </div>
             </div>
           </div>
@@ -765,9 +765,9 @@
         <div class="questionAnswer">
           <div class="slidecontainer" id="donationWilling">
             <div class="form-group" style="margin-top:16px; margin-bottom:0px">
-              <output class="sliderAmount" name="6:amount"
+              <output class="sliderAmount" name="amount"
                 id="donationWillingAmount2" for="rangeInput">0元</output>
-              <input type="range" min="0" max="10000" value="0" step="100" class="slider" name="6:donationWillingness" id="donationWillingSlider2" oninput="donationWillingSlide2()"></input>
+              <input type="range" min="0" max="10000" value="0" step="100" class="slider" name="donationWillingness" id="donationWillingSlider2" oninput="donationWillingSlide2()"></input>
               </div>
           </div>
         </div>
