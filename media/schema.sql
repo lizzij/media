@@ -521,7 +521,17 @@ VALUES
   (1, 5, 'dontKnowCorporation', 4),
   (1, 5, 'trust8', 4),
   (1, 6, 'willingnessAmount', 4),
-  (1, 6, 'donationWillingness', 4);
+  (1, 6, 'donationWillingness', 4),
+
+  (2, 1, 'eventNameOrder', 4),
+  (2, 1, 'eventName', 4),
+  (2, 1, 'signUpFeeAmount', 4),
+  (2, 2, 'outingLocation', 4),
+  (2, 2, 'outingTransportation', 4),
+  (2, 2, 'outingTemperature', 4),
+  (2, 2, 'outingAirQuality', 4),
+  (2, 2, 'outingFriends', 4),
+  ;
 
 
 

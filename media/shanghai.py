@@ -217,6 +217,7 @@ def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
         update_lastpage(current_page, 1, user_id, day)
     # mark as completed
 
+    # go to next page on valid submit
     if optional_last_page:
         lastpage = optional_last_page
 
