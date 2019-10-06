@@ -75,7 +75,7 @@ def get_lastpage_from_result(user_id):
     if last_result:
         lastpage = int(last_result[0].split(':')[0])
     else:
-        lastpage = 1
+        lastpage = 0
     return lastpage
 
 def update_lastpage(lastpage, day_complete, user_id, day):

@@ -406,30 +406,3 @@ function updateStarInput5() {
 function updateStarInput6() {
   document.getElementById("starCountGroup6Input").value = document.getElementById("starCountGroup6").innerHTML;
 }
-
-//
-// function updateWalkathonSlide(value) {
-//   var walkathonAmount = `${value}步`;
-//   var distance = value * 0.0008;
-//   var donation = (value - 4000) * 0.01;
-//   distance = distance.toFixed(2);
-//   donation = donation.toFixed(2);
-//   document.getElementById("walkathonAmount").value=walkathonAmount;
-//   document.getElementById("walkathonDistance").value=`我将在2019年5月18日走${value}步（${distance}公里）\n—— 研究人员将代表您向上海联合基金会捐赠${donation}元人民币。`;
-//   var left = 0.1 * value - 435;
-//   document.getElementById("walkathonAmount").style.paddingLeft = left + "px";
-// }
-//
-// function randomizeSlider(min, max, sliderName, sliderAmount, leftStart, moveStep, unit) {
-//   var random = Math.floor(Math.random() * (max - min)) + min;
-//   $(sliderName).val(random);
-//   $(sliderAmount).val(random + unit);
-//   var left = leftStart + moveStep * random;
-//   $(sliderAmount).css("padding-left", left);
-// }
-//
-// $( document ).ready(function() {
-//   randomizeSlider(4000, 7000, "#walkathonSlider", "#walkathonAmount", -435, 0.1, "步");
-//   var walkathonRandom = document.getElementById("walkathonAmount").value.replace("步", ""); ;
-//   updateWalkathonSlide(walkathonRandom);
-// });
