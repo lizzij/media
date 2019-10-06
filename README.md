@@ -75,6 +75,11 @@ Click [here](https://github.com/lizzij/media/blob/master/media/templates/xian/RE
 For Shanghai cohort 4 in Sept/Oct.  
 Click [here](https://github.com/lizzij/media/blob/master/media/templates/shanghai/README.md) for testing links and detailed README.
 
+### Shanghai Trial V2
+For Shanghai cohort 5 in Oct.  
+Click [here](https://github.com/lizzij/media/blob/master/media/templates/shanghai/README.md) for testing links and detailed README.  
+Distribution protocol [here](https://docs.google.com/document/d/1X7trhFmjKuQd4UWLsr00Zr5oqtovVxmtUySEcGZhhbQ/edit).
+
 ## How to run locally:
 - Clone repo locally
 ```

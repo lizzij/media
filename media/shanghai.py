@@ -183,7 +183,7 @@ def get_survey(user_id_hashid, day_hashid):
         return u'抱歉，此调查已过时效。'
 
     # mark info page as read
-    lastpage = get_lastpage_from_result(user_id, day)
+    lastpage = get_lastpage_from_result(user_id)
     current_page = lastpage + 1
     # mark as completed
     day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
