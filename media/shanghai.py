@@ -13,7 +13,7 @@ from werkzeug.exceptions import abort
 
 bp = Blueprint("shanghai", __name__, url_prefix="/shanghai")
 
-def get_user(user_id_hashid, day_hashid, cohort = 4):
+def get_user(user_id_hashid, day_hashid, cohort = 5):
     user = get_db().execute(
         'SELECT user_id, day, treatment'
         ' FROM user u'
@@ -25,7 +25,7 @@ def get_user(user_id_hashid, day_hashid, cohort = 4):
     else:
         return user
 
-def get_event_info(event_id, cohort = 4):
+def get_event_info(event_id, cohort = 5):
     info = get_db().execute(
         'SELECT i.event_id,title,subtitle,info_date,info_time,location,image_file,short_description,low_temp,high_temp,suitable_for_family,suitable_for_friends,suitable_for_lover,suitable_for_baby,suitable_for_elderly,suitable_for_pet,event_details,phrase_for_week, phrase_for_day, phrase_for_header'
         ' FROM infos i'
@@ -69,7 +69,7 @@ def get_last_question(user_id):
         last_question = 'null'
     return last_question
 
-def get_page_from_question_name(day, question_name, cohort = 4):
+def get_page_from_question_name(day, question_name, cohort = 5):
     db = get_db()
     page_query = db.execute(
         'SELECT page'
@@ -160,8 +160,8 @@ def get_info(user_id_hashid, day_hashid):
     if day > 6:
         return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
-    # get event details if on day 1-6 (cohort set to 4)
-    day_to_info_id_dict = {1:13, 2:14, 3:15, 4:16, 5:17, 6:18}
+    # get event details if on day 1-6 (cohort set to 5)
+    day_to_info_id_dict = {1:20, 2:21, 3:22, 4:23, 5:24, 6:25}
     info = get_event_info(day_to_info_id_dict[day])
 
     # air quality source for treatment groups different on day 6
