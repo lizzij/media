@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS survey;
 DROP TABLE IF EXISTS activity;
 DROP TABLE IF EXISTS treatments;
 DROP TABLE IF EXISTS infos;
+DROP TABLE IF EXISTS pages;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -478,3 +479,72 @@ VALUES
 'long description',
 '2019年10月07-13日', '2019年10月12日', '十月07至13日',
 4);
+
+CREATE TABLE pages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  day INTEGER NOT NULL,
+  page INTEGER NOT NULL,
+  question_name TEXT NOT NULL,
+  cohort INTEGER NOT NULL
+);
+
+INSERT INTO pages (day, page, question_name, cohort)
+VALUES
+  (1, 1, 'walkathonInterest', 4),
+  (1, 1, 'walkathonSteps', 4),
+  (1, 2, 'weatherStarCountGroup1Input', 4),
+  (1, 2, 'weatherStarCountGroup2Input', 4),
+  (1, 2, 'weatherStarCountGroup3Input', 4),
+  (1, 2, 'weatherStarCountGroup4Input', 4),
+  (1, 3, 'blueGraySky', 4),
+  (1, 4, 'starCountGroup1Input', 4),
+  (1, 4, 'starCountGroup2Input', 4),
+  (1, 4, 'starCountGroup3Input', 4),
+  (1, 4, 'starCountGroup4Input', 4),
+  (1, 4, 'starCountGroup5Input', 4),
+  (1, 4, 'starCountGroup6Input', 4),
+  (1, 5, 'trustOptionsOrder', 4),
+  (1, 5, 'dontKnowFamilyFriends', 4),
+  (1, 5, 'trust1', 4),
+  (1, 5, 'dontKnowStrangers', 4),
+  (1, 5, 'trust2', 4),
+  (1, 5, 'dontKnowForeigners', 4),
+  (1, 5, 'trust3', 4),
+  (1, 5, 'dontKnowMedia', 4),
+  (1, 5, 'trust4', 4),
+  (1, 5, 'dontKnowGovernment', 4),
+  (1, 5, 'trust5', 4),
+  (1, 5, 'dontKnowHS', 4),
+  (1, 5, 'trust6', 4),
+  (1, 5, 'dontKnowNGO', 4),
+  (1, 5, 'trust7', 4),
+  (1, 5, 'dontKnowCorporation', 4),
+  (1, 5, 'trust8', 4),
+  (1, 6, 'willingnessAmount', 4),
+  (1, 6, 'donationWillingness', 4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------

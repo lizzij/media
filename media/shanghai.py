@@ -54,29 +54,34 @@ def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 
             lastpage = 0
     return lastpage
 
-def get_lastpage_from_result(user_id):
+def get_last_question(user_id):
     db = get_db()
-    # CREATE TABLE survey (
-    #   survey_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #   user_id INTEGER NOT NULL,
-    #   day INTEGER,
-    #   result TEXT NOT NULL,
-    #   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    #   question_id TEXT,
-    #   FOREIGN KEY (user_id) REFERENCES user (user_id)
-    # );
-    last_result = db.execute(
-        'SELECT result'
+    last_question_query = db.execute(
+        'SELECT question_id'
         ' FROM survey s'
         ' WHERE s.user_id = ?'
         ' ORDER BY s.created DESC LIMIT 1',
         (user_id,)
     ).fetchone()
-    if last_result:
-        lastpage = int(last_result[0].split(':')[0])
+    if last_question_query:
+        last_question = last_question_query[0]
     else:
-        lastpage = 0
-    return lastpage
+        last_question = 'null'
+    return last_question
+
+def get_page_from_question_name(day, question_name, cohort = 4):
+    db = get_db()
+    page_query = db.execute(
+        'SELECT page'
+        ' FROM pages p'
+        ' WHERE p.day = ? AND p.cohort = ? AND p.question_name = ?',
+        (day, cohort, question_name,)
+    ).fetchone()
+    if page_query:
+        page = page_query[0]
+    else:
+        page = 0
+    return page
 
 def update_lastpage(lastpage, day_complete, user_id, day):
     now = datetime.now()
@@ -174,47 +179,12 @@ def get_info(user_id_hashid, day_hashid):
     return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
-def get_survey(user_id_hashid, day_hashid):
+def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
     user = get_user(user_id_hashid, day_hashid)
     user_id = user[0]
     day = user[1]
     treatment = user[2]
     user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
-
-    # show survey not available on day 99
-    if get_activity_day(user_id) == 99:
-        return u'抱歉，此调查已过时效。'
-
-    # mark info page as read
-    lastpage = get_lastpage_from_result(user_id)
-    current_page = lastpage + 1
-    # mark as completed
-    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
-
-    if request.method == 'POST':
-        form = request.form
-        now = datetime.now()
-        db = get_db()
-
-        # default do not go to next page on refresh or submit
-        global to_next_page
-        to_next_page = False
-
-        # save answer
-        for question in form.keys():
-            for result in form.getlist(question):
-                db.execute(
-                    'INSERT INTO survey (user_id, day, result, created, question_id)'
-                    ' VALUES (?, ?, ?, ?, ?)',
-                    (user_id, day, str(current_page) + ':' + result, now, question)
-                )
-                db.commit()
-
-        # update last page, activity (for day completion)
-        lastpage += 1
-        update_lastpage(lastpage, 0, user_id, day)
-        if lastpage == day_to_lastpage_dict[day]:
-            update_lastpage(lastpage, 1, user_id, day)
 
     second_event = get_event_info(19,4)
     walkathon = get_event_info(13,4)
@@ -230,6 +200,42 @@ def get_survey(user_id_hashid, day_hashid):
     treatment_to_air_quality_dict = {'T1': t1_air_quality_source, 'T2': t2_air_quality_source, 'T3': t3_air_quality_source, 'T4': t4_air_quality_source}
     air_quality = treatment_to_air_quality_dict[treatment]
 
+
+    # show survey not available on day 99
+    if get_activity_day(user_id) == 99:
+        return u'抱歉，此调查已过时效。'
+
+    # mark info page as read
+    last_question = get_last_question(user_id)
+    lastpage = get_page_from_question_name(day, last_question)
+    # update last page, activity (for day completion)
+    current_page = lastpage + 1
+    update_lastpage(current_page, 0, user_id, day)
+
+    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
+    if current_page == day_to_lastpage_dict[day]:
+        update_lastpage(current_page, 1, user_id, day)
+    # mark as completed
+
+    if optional_last_page:
+        lastpage = optional_last_page
+
+    if request.method == 'POST':
+        form = request.form
+        now = datetime.now()
+        db = get_db()
+
+        # save answer
+        for question in form.keys():
+            for result in form.getlist(question):
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, day, result, now, question)
+                )
+                db.commit()
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, optional_last_page=current_page))
+
     return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
 
 @bp.route('/blueGraySkyQn')
@@ -237,7 +243,8 @@ def blue_gray_sky_qn():
     walkathon = get_event_info(13,4)
     return render_template('shanghai/survey7.html', walkathon=walkathon)
 
-@bp.route('/testLastPage')
-def test_last_page():
-    lastpage = get_lastpage_from_result(1003)
-    return str(lastpage)
+@bp.route('/testPageFromQuestionName')
+def test_page():
+    last_question = get_last_question(1003)
+    page = get_page_from_question_name(1, last_question)
+    return str(page) + '\n\n' + last_question
