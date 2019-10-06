@@ -186,8 +186,8 @@ def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
     treatment = user[2]
     user = {'treatment':treatment, 'user_id_hashid':user_id_hashid, 'day_hashid':day_hashid}
 
-    second_event = get_event_info(19,4)
-    walkathon = get_event_info(13,4)
+    second_event = get_event_info(26,5)
+    walkathon = get_event_info(20,5)
 
     t1_air_quality_source = { 'second_event' : { 'air_quality_source':u'', 'air_quality_source_logo':'img/transparent.png' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
@@ -241,7 +241,7 @@ def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
 
 @bp.route('/blueGraySkyQn')
 def blue_gray_sky_qn():
-    walkathon = get_event_info(13,4)
+    walkathon = get_event_info(20,5)
     return render_template('shanghai/survey7.html', walkathon=walkathon)
 
 @bp.route('/testPageFromQuestionName')
