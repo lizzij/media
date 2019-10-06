@@ -599,9 +599,26 @@ VALUES
   (6, 8, 'outingFriends', 4),
   (6, 9, 'otherSource', 4),
   (6, 9, 'otherSourceNumberOfTimes', 4),
-  (6, 9, 'weatherNumberOfTimes', 4)
-
-  ;
+  (6, 9, 'weatherNumberOfTimes', 4),
+  (6, 10, 'recallAirQuality', 4),
+  (6, 10, 'recallAirQualitySource', 4),
+  (6, 11, 'recallNumberOfAirQualitySource', 4),
+  (6, 11, 'recallWhichAirQualitySource', 4),
+  (6, 11, 'weatherInfoFrom', 4),
+  (6, 12, 'notReportingProbability', 4),
+  (6, 13, 'trustOptionsOrder', 4),
+  (6, 13, 'dontKnowPeoplesDaily', 4),
+  (6, 13, 'trustPeoplesDaily', 4),
+  (6, 13, 'dontKnowMorningPost', 4),
+  (6, 13, 'trustMorningPost', 4),
+  (6, 13, 'dontKnowFM', 4),
+  (6, 13, 'trustFM', 4),
+  (6, 13, 'dontKnowSEMC', 4),
+  (6, 13, 'trustSEMC', 4),
+  (6, 13, 'dontKnowCNTA', 4),
+  (6, 13, 'trustCNTA', 4),
+  (6, 13, 'dontKnowNYT', 4),
+  (6, 13, 'trustNYT', 4);
 
 
 
