@@ -247,5 +247,5 @@ def blue_gray_sky_qn():
 @bp.route('/testPageFromQuestionName')
 def test_page():
     last_question = get_last_question(1003)
-    page = get_page_from_question_name(1, last_question)
+    page = get_page_from_question_name(2, last_question)
     return str(page) + '\n\n' + last_question
