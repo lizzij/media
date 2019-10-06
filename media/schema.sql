@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS survey;
 DROP TABLE IF EXISTS activity;
@@ -560,12 +561,12 @@ VALUES
   (2, 5, 'dormName', 4),
   (2, 5, 'otherMailInfo', 4),
   (2, 5, 'major', 4),
-  (2, 5, 'grade', 4)
+  (2, 5, 'grade', 4),
 
   (3, 1, 'donationWilling', 4),
   (3, 2, 'activity1', 4),
   (3, 2, 'activity2', 4),
-  (3, 2, 'activity3', 4),;
+  (3, 2, 'activity3', 4),
   (3, 2, 'outdoorTime', 4),
   (3, 2, 'exerciseTime', 4),
   (3, 2, 'beenToCountries', 4),
@@ -618,7 +619,53 @@ VALUES
   (6, 13, 'dontKnowCNTA', 4),
   (6, 13, 'trustCNTA', 4),
   (6, 13, 'dontKnowNYT', 4),
-  (6, 13, 'trustNYT', 4);
+  (6, 13, 'trustNYT', 4),
+
+  (7, 1, 'blueGraySky', 4),
+  (7, 2, 'starCountGroup1Input', 4),
+  (7, 2, 'starCountGroup2Input', 4),
+  (7, 2, 'starCountGroup3Input', 4),
+  (7, 2, 'starCountGroup4Input', 4),
+  (7, 2, 'starCountGroup5Input', 4),
+  (7, 2, 'starCountGroup6Input', 4),
+  (7, 3, 'walkathonInterest', 4),
+  (7, 3, 'walkathonSteps', 4),
+  (7, 4, 'whoToldMeWrongAnswers', 4),
+  (7, 4, 'whoToldMe', 4),
+  (7, 4, 'checkBeanNumberSourceButton', 4),
+  (7, 4, 'guessedBeanNumber', 4),
+  (7, 5, 'math1Answer', 4),
+  (7, 5, 'math1timeover', 4),
+  (7, 5, 'math2Answer', 4),
+  (7, 5, 'math2timeover', 4),
+  (7, 5, 'math3Answer', 4),
+  (7, 5, 'math3timeover', 4),
+  (7, 5, 'math4Answer', 4),
+  (7, 5, 'math4timeover', 4),
+  (7, 5, 'math5Answer', 4),
+  (7, 5, 'math5timeover', 4),
+
+  (8, 1, 'blueGraySky', 4),
+  (8, 2, 'questionOrder', 4),
+  (8, 2, 'starCountGroup1Input', 4),
+  (8, 2, 'starCountGroup2Input', 4),
+  (8, 2, 'starCountGroup3Input', 4),
+  (8, 2, 'starCountGroup4Input', 4),
+  (8, 2, 'starCountGroup5Input', 4),
+  (8, 2, 'starCountGroup6Input', 4),
+  (8, 3, 'trustOptionsOrder', 4),
+  (8, 3, 'dontKnowPeoplesDaily', 4),
+  (8, 3, 'trustPeoplesDaily', 4),
+  (8, 3, 'dontKnowMorningPost', 4),
+  (8, 3, 'trustMorningPost', 4),
+  (8, 3, 'dontKnowFM', 4),
+  (8, 3, 'trustFM', 4),
+  (8, 3, 'dontKnowSEMC', 4),
+  (8, 3, 'trustSEMC', 4),
+  (8, 3, 'dontKnowCNTA', 4),
+  (8, 3, 'trustCNTA', 4),
+  (8, 3, 'dontKnowNYT', 4),
+  (8, 3, 'trustNYT', 4);
 
 
 
