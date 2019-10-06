@@ -72,8 +72,11 @@ def get_lastpage_from_result(user_id):
         ' ORDER BY s.created DESC LIMIT 1',
         (user_id,)
     ).fetchone()
-    lastpage = last_result[0].split(':')[0]
-    return int(lastpage)
+    if last_result:
+        lastpage = int(last_result[0].split(':')[0])
+    else:
+        lastpage = 1
+    return lastpage
 
 def update_lastpage(lastpage, day_complete, user_id, day):
     now = datetime.now()
@@ -221,7 +224,7 @@ def get_survey(user_id_hashid, day_hashid):
                 db.execute(
                     'INSERT INTO survey (user_id, day, result, created, question_id)'
                     ' VALUES (?, ?, ?, ?, ?)',
-                    (user_id, day, str(current_page) + ':' + str(result), now, question)
+                    (user_id, day, str(current_page) + ':' + result, now, question)
                 )
                 db.commit()
 
