@@ -103,6 +103,31 @@ def get_activity_day(user_id):
     day = activity_day[1]
     return day
 
+def get_survey_answer(user_id, day):
+    db = get_db()
+    answers = db.execute(
+        'SELECT question_id, result'
+        ' FROM survey s'
+        ' WHERE s.user_id = ? AND s.day = ?',
+        (user_id, day, )
+    ).fetchall()
+    if answers:
+        return answers
+    return None
+
+def check_result(user_id, day):
+    correct_answer_dict = {
+        2: { 'eventName': 'name1', 'eventNameOrder': None },
+    }
+    answers = get_survey_answer(user_id, day)
+    all_correct = True
+    for answer in answers:
+        question = answer['question_id']
+        result = answer['result']
+        correct_answer = correct_answer_dict[day][question] or result
+        all_correct = all_correct and (result == correct_answer)
+    return all_correct
+
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
     user = get_user(user_id_hashid, day_hashid)
@@ -237,17 +262,10 @@ def get_survey(user_id_hashid, day_hashid, optional_last_page=None):
                     (user_id, day, result, now, question)
                 )
                 db.commit()
+
+        # check answer and redirect if needed
+        if day in [2, 3, 4, 5, 6] and current_page == 1:
+            if_all_correct = check_result(user_id, day)
         return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, optional_last_page=current_page))
 
     return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
-
-@bp.route('/blueGraySkyQn')
-def blue_gray_sky_qn():
-    walkathon = get_event_info(20,5)
-    return render_template('shanghai/survey7.html', walkathon=walkathon)
-
-@bp.route('/testPageFromQuestionName')
-def test_page():
-    last_question = get_last_question(1003)
-    page = get_page_from_question_name(2, last_question)
-    return str(page) + '\n\n' + last_question
