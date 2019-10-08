@@ -117,16 +117,23 @@ def get_survey_answer(user_id, day):
 
 def check_result(user_id, day):
     correct_answer_dict = {
-        2: { 'eventName': 'name1', 'eventNameOrder': None },
+        2: { 'eventName': 'name1' },
     }
     answers = get_survey_answer(user_id, day)
-    all_correct = True
+    all_correct = {}
     for answer in answers:
         question = answer['question_id']
-        result = answer['result']
-        correct_answer = correct_answer_dict[day][question] or result
-        all_correct = all_correct and (result == correct_answer)
-    return all_correct
+        # ignore non-checkpoint question
+        if question in correct_answer_dict[day].keys():
+            user_answer = answer['result']
+            # check if one of the answer to the same question is correct
+            question_correct = (user_answer == correct_answer_dict[day][question])
+            if question in all_correct.keys():
+                all_correct[question] = all_correct[question] or question_correct
+            else:
+                all_correct[question] = question_correct
+    return (not (False in all_correct.values()))
+
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/info', methods=['GET', 'POST'])
 def get_info(user_id_hashid, day_hashid):
@@ -266,15 +273,18 @@ def get_survey(user_id_hashid, day_hashid, p=None):
         # check answer and redirect if needed
         if day in [2, 3, 4, 5, 6] and current_page == 1:
             all_correct = check_result(user_id, day)
+            timestamp = now
+            if not all_correct:
+                update_lastpage(0, 0, user_id, day)
+                timestamp = now+timedelta(microseconds=100)
             # save result in survey table as True (correct) / False (incorrect & redirect) to 'correctAnswerAtCheckpoints'
+            # add timedelta to ensure it's the last answer inserted in the survey table
             db.execute(
                 'INSERT INTO survey (user_id, day, result, created, question_id)'
                 ' VALUES (?, ?, ?, ?, ?)',
-                (user_id, day, str(all_correct), now, 'correctAnswerAtCheckpoints')
+                (user_id, day, str(all_correct), timestamp, 'correctAnswerAtCheckpoints')
             )
             db.commit()
-            if not all_correct:
-                update_lastpage(0, 0, user_id, day)
             return redirect(url_for('shanghai.redirect_at_checkpoint', user_id_hashid=user_id_hashid, day_hashid=day_hashid, all_correct=all_correct))
         return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, p=current_page))
 
