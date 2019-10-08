@@ -1,410 +1,85 @@
 <!DOCTYPE html>
-
 <html lang="zh" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="eventTitle" content="活动名称">
+  <meta property="og:image" content="../img/ShanghaiIcon.png">
 
   <title>问卷</title>
-
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/questions.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/infoPageTest.css') }}">
+  <!-- favicon -->
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
-<body>
-  <form lang="zh" action="" method="post">
-    <!-- page 1 -->
-    <div id="page1">
-      <div class="survey">
-        <!-- sign up fee -->
-        <div class="question">
-          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="signUpFee">
-              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
-                <output class="sliderAmount" name="amount" id="signUpFeeAmount" for="rangeInput">0元</output>
-                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider" name="signUpFeeEvent1" oninput="signUpFeeSlide()"></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
+<!-- Title -->
+
+<body style="margin:0px; background:white;">
+
+  <!-- The Modal -->
+  <div id="myModal" class="modalLarge">
+
+    <!-- Modal content -->
+    <div class="modal-content" style="width:285px;">
+      <span class="close">&times;</span>
+      {% if all_correct == 'True' %}
+          <p>恭喜您，回答正确！😃 请继续下一题。</p>
+      {% else %}
+          <p>很抱歉，您的回答不正确。😞 让我们再试一次</p>
+      {% endif %}
     </div>
-  </form>
+  </div>
 
-  <form lang="zh" action="" method="post">
-    <!-- page 2 -->
-    <div id="page2" style="display:none;">
-      <div style="display: block;margin: 8px;
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    margin-left: 8px;height:3000px;">
-        <!-- The Modal -->
-        <div id="myModal1" class="modal">
+  <script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
-          <!-- Modal content -->
-          <div class="modal-content" style="width:285px;">
-            <span id="close1">&times;</span>
-            <p>以下是一项关于上海本地或周边的户外活动及场所的信息。该活动将于{{ (second_event['phrase_for_week']) }}期间举行。请您仔细思考是否有意向参与该活动。(我们从多种来源获得该活动的信息，这些来源对信息的准确性负责。)</p>
-          </div>
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-        </div>
+    modal.style.display = "block";
 
-        <header>
-          <div class="title">
-            <div id="eventName">{{ (second_event['title']) }}<br />{{ (second_event['subtitle']) }}</div>
-            <div id="eventDate">{{ (second_event['info_date']) }}</div>
-            <div id="eventTime">{{ (second_event['info_time']) }}</div>
-            <div id="eventLocation">{{ (second_event['location']) }}</div>
-          </div>
-        </header>
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
 
-        <!-- Image -->
-        <section class="image">
-          <div id="eventImage">
-            <div>
-              <img src="{{ url_for('static', filename=second_event['image_file']) }}" width="376" height="235">
-            </div>
-          </div>
-        </section>
-
-        <!-- description short -->
-        <section class="descriptionShort">
-          <div class="paragraphShort">
-            <!-- <div id="firstCharacter">平</div> -->
-            <div id="descriptionShortPara" style="top: -50px;">
-              {{ (second_event['short_description']) }}
-            </div>
-          </div>
-        </section>
-
-        <div id="moreInfoButton1">
-          <div>
-            <img src="{{ url_for('static', filename='img/Button.png') }}">
-          </div>
-          <div id="moreInfoButtonNext">下一页</div>
-          <script type="text/javascript">
-            document.getElementById("moreInfoButton1").onclick = function() {
-              document.getElementById("moreInfoButton1").style.display = 'none';
-              window.scrollTo(0, 517);
-              document.getElementById("moreInfo1").style.display = 'block';
-            }
-          </script>
-        </div>
-      </div>
-
-      <div id="moreInfo1" style="display:none;">
-
-        <!-- weather -->
-        <section class="weather">
-
-          <!-- temperature -->
-          <section class="temperature">
-            <div id="temperatureHeader">去年{{ second_event['phrase_for_header'] }} 室外气温</div>
-            <!-- <div id="temperatureSubtitle">{{ second_event['phrase_for_header'] }} <br />平均历史气温</div> -->
-
-            <!-- temperture low -->
-            <div class="temperatureLow">
-              <div id="lowValue">{{ '%d' % (second_event['low_temp']) }}</div>
-              <div id="lowUnit">°C</div>
-              <div id="low">平均最低<br />气温</div>
-            </div>
-
-            <!-- temperture high -->
-            <div class="temperatureHigh">
-              <div id="highValue">{{ '%d' % (second_event['high_temp']) }}</div>
-              <div id="highUnit">°C</div>
-              <div id="high">平均最高<br />气温</div>
-            </div>
-          </section>
-
-          {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' %}
-          <section class="airQuality">
-            <div id="airQualityHeader">
-              <div id="airQualityTitle">
-                去年{{ walkathon['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
-              </div>
-            </div>
-            <div id="airQualitySource">{{ air_quality['walkathon']['air_quality_source'] }}</div>
-            <div id="airQualityLogo" style="right:10px;">
-              <img src={{url_for('static', filename=air_quality['walkathon']['air_quality_source_logo']) }} height="40">
-            </div>
-
-            <!-- air quality scale -->
-            <div class="airQualityScale">
-
-              <!-- levels -->
-              <div class="levels">
-                <div id="infoLevel1">1级</div>
-                <div id="infoLevel2">2级</div>
-                <div id="infoLevel3">3级</div>
-                <div id="infoLevel4">4级</div>
-                <div id="infoLevel5">5级</div>
-                <div id="infoLevel6">6级</div>
-              </div>
-
-              <!-- level descriptions -->
-              <div class="levelDescription">
-                <div id="level1Description">优</div>
-                <div id="level2Description">良</div>
-                <div id="level3Description">轻度污染</div>
-                <div id="level4Description">中度污染</div>
-                <div id="level5Description">重度污染</div>
-                <div id="level6Description">严重污染</div>
-              </div>
-
-              <!-- color bar -->
-              <div>
-                <svg id="colorBar1">
-                  <rect />
-                </svg>
-                <svg id="colorBar2">
-                  <rect />
-                </svg>
-                <svg id="colorBar3">
-                  <rect />
-                </svg>
-                <svg id="colorBar4">
-                  <rect />
-                </svg>
-                <svg id="colorBar5">
-                  <rect />
-                </svg>
-                <svg id="colorBar6">
-                  <rect />
-                </svg>
-              </div>
-
-              <!-- air quality detail -->
-              <div id="airQualityDetail">
-                优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
-              </div>
-            </div>
-          </section>
-          {% elif user['treatment'] == 'T4' %}
-          <section class="airQuality">
-            <div id="airQualityHeader">
-              <div id="airQualityTitle">
-                去年{{ second_event['phrase_for_header'] }} 空气质量：<b style="font-weight:bold">优</b>
-              </div>
-            </div>
-            <div id="T4AirQualitySource">{{ air_quality['second_event']['air_quality_source'] }}</div>
-            <div id="primarySource">
-              （转载自：上海市环境监测中心）
-            </div>
-            <div id="T4AirQualityLogo">
-              <img src={{url_for('static', filename=air_quality['second_event']['air_quality_source_logo']) }} height="40">
-            </div>
-
-            <!-- air quality scale -->
-            <div class="airQualityScale">
-
-              <!-- levels -->
-              <div class="levels">
-                <div id="infoLevel1">1级</div>
-                <div id="infoLevel2">2级</div>
-                <div id="infoLevel3">3级</div>
-                <div id="infoLevel4">4级</div>
-                <div id="infoLevel5">5级</div>
-                <div id="infoLevel6">6级</div>
-              </div>
-
-              <!-- level descriptions -->
-              <div class="levelDescription">
-                <div id="level1Description">优</div>
-                <div id="level2Description">良</div>
-                <div id="level3Description">轻度污染</div>
-                <div id="level4Description">中度污染</div>
-                <div id="level5Description">重度污染</div>
-                <div id="level6Description">严重污染</div>
-              </div>
-
-              <!-- color bar -->
-              <div>
-                <svg id="colorBar1">
-                  <rect />
-                </svg>
-                <svg id="colorBar2">
-                  <rect />
-                </svg>
-                <svg id="colorBar3">
-                  <rect />
-                </svg>
-                <svg id="colorBar4">
-                  <rect />
-                </svg>
-                <svg id="colorBar5">
-                  <rect />
-                </svg>
-                <svg id="colorBar6">
-                  <rect />
-                </svg>
-              </div>
-
-              <!-- air quality detail -->
-              <div id="airQualityDetail">
-                优：空气质量令人满意，基本无空气污染。各类人群可正常活动。
-              </div>
-            </div>
-          </section>
-          {% endif %}
-
-        </section>
-
-        {% if user['treatment'] == 'T2' or user['treatment'] == 'T3' or user['treatment'] == 'T4' %}
-        <!-- next button -->
-        <div class="nextButton" style="
-            position: absolute;
-            width: 375px;
-            height: 124px;
-            left: calc(50% - 375px/2 + 64px);
-            top: 950px;">
-          <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
-          </input>
-        </div>
-        {% else %}
-        <div class="nextButton" style="
-            position: absolute;
-            width: 375px;
-            height: 164px;
-            left: calc(50% - 375px/2 + 64px);
-            top: 650px;">
-          <input class="button" type="submit" value="下一页" name="secondEventNextButton" style="color: white; font-size: 14px;">
-          </input>
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    </div>
-  </form>
-
-  <form lang="zh" action="" method="post">
-    <!-- page 3 -->
-    <div id="page3" style="display:none">
-      <div class="survey">
-        <!-- sign up fee -->
-        <div class="question">
-          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="signUpFee2">
-              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
-                <output class="sliderAmount" name="amount" id="signUpFeeAmount2" for="rangeInput">0元</output>
-                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider2" name="signUpFeeEvent2" oninput="signUpFeeSlide2()"></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </form>
-
-  <form lang="zh" action="" method="post">
-    <!-- page 4 -->
-    <div id="page4" style="display:none">
-      <div style="display: block;height: 1350px;" >
-        <!-- The Modal -->
-        <div id="myModal2" class="modalLarge">
-
-          <!-- Modal content -->
-          <div class="modal-content" style="width:285px;">
-            <span id="close2">&times;</span>
-            <p>您或许还记得我们向您介绍的“儿童慈善徒步运动”。 该活动将于{{ (walkathon['phrase_for_week']) }}举办，以下是此次活动的详细信息。请您仔细思考是否有意向参加该活动。（我们从其他来源获得有关的天气信息，这些来源对信息的准确性负责）。</p>
-          </div>
-
-        </div>
-
-        <div>
-          <header>
-            <div class="title">
-              <div id="eventName">{{ (walkathon['title']) }}<br />{{ (walkathon['subtitle']) }}</div>
-              <div id="eventDate">{{ (walkathon['info_date']) }}</div>
-              <div id="eventTime">{{ (walkathon['info_time']) }}</div>
-              <div id="eventLocation">{{ (walkathon['location']) }}</div>
-            </div>
-          </header>
-
-        <div class="nextButton" style="
-            position: absolute;
-            width: 375px;
-            height: 124px;
-            left: calc(50% - 375px/2 + 64px);
-            top: 950px;">
-          <input class="button" type="submit" value="下一步" name="redirectPageNextButton" style="color: white; font-size: 14px;">
-          </input>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <script type="text/javascript">
-    (function(global) {
-
-      if (typeof(global) === "undefined") {
-        throw new Error("window is undefined");
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
       }
-
-      var _hash = "!";
-      var noBackPlease = function() {
-        global.location.href += "#";
-
-        // making sure we have the fruit available for juice....
-        // 50 milliseconds for just once do not cost much (^__^)
-        global.setTimeout(function() {
-          global.location.href += "!";
-        }, 50);
-      };
-
-      // Earlier we had setInerval here....
-      global.onhashchange = function() {
-        if (global.location.hash !== _hash) {
-          global.location.hash = _hash;
-        }
-      };
-
-      global.onload = function() {
-
-        noBackPlease();
-
-        // disables backspace on page except on input fields and textarea..
-        document.body.onkeydown = function(e) {
-          var elm = e.target.nodeName.toLowerCase();
-          if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
-            e.preventDefault();
-          }
-          // stopping event bubbling up the DOM tree..
-          e.stopPropagation();
-        };
-
-      };
-
-    })(window);
+    }
   </script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/shanghai6.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
 
+  <!-- next button -->
+  <section class="infoNextButton" style="top:100px">
+    <div id="nextButton">
+      <div id="infoButton">
+        <img src="{{ url_for('static', filename='img/Button.png') }}">
+      </div>
+      <div id="infoNext">下一步</div>
+      {% if all_correct == 'True' %}
+        <script type="text/javascript">
+          document.getElementById("nextButton").onclick = function() {
+            location.href = "{{ url_for('shanghai.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+          }
+        </script>
+      {% else %}
+        <script type="text/javascript">
+          document.getElementById("nextButton").onclick = function() {
+            location.href = "{{ url_for('shanghai.get_info', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
+          }
+        </script>
+      {% endif %}
+    </div>
+    <div class="nextButtonNotice">
+
+    </div>
+  </section>
+
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
 </body>
 
 </html>

@@ -34,7 +34,7 @@ def get_event_info(event_id, cohort = 5):
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}): # excluding the info & final page
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}): # excluding the info & final page
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -239,7 +239,7 @@ def get_survey(user_id_hashid, day_hashid, p=None):
     current_page = lastpage + 1
     update_lastpage(current_page, 0, user_id, day)
 
-    day_to_lastpage_dict = {1:6, 2:5, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
+    day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
     if current_page == day_to_lastpage_dict[day]:
         update_lastpage(current_page, 1, user_id, day)
     # mark as completed
@@ -265,7 +265,22 @@ def get_survey(user_id_hashid, day_hashid, p=None):
 
         # check answer and redirect if needed
         if day in [2, 3, 4, 5, 6] and current_page == 1:
-            if_all_correct = check_result(user_id, day)
+            all_correct = check_result(user_id, day)
+            # save result in survey table as True (correct) / False (incorrect & redirect) to 'correctAnswerAtCheckpoints'
+            db.execute(
+                'INSERT INTO survey (user_id, day, result, created, question_id)'
+                ' VALUES (?, ?, ?, ?, ?)',
+                (user_id, day, str(all_correct), now, 'correctAnswerAtCheckpoints')
+            )
+            db.commit()
+            if not all_correct:
+                update_lastpage(0, 0, user_id, day)
+            return redirect(url_for('shanghai.redirect_at_checkpoint', user_id_hashid=user_id_hashid, day_hashid=day_hashid, all_correct=all_correct))
         return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, p=current_page))
 
     return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
+
+@bp.route('/<string:user_id_hashid>/<string:day_hashid>/<all_correct>/redirect', methods=['GET', 'POST'])
+def redirect_at_checkpoint(user_id_hashid, day_hashid, all_correct):
+    user = { 'user_id_hashid':user_id_hashid, 'day_hashid': day_hashid }
+    return render_template('shanghai/redirect.html', user=user, all_correct=all_correct)
