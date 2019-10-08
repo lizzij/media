@@ -19,6 +19,10 @@ To read more about the research project and the development process, please head
 - Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
   - 8 days Shanghai Pilot
 
+### shanghai v2
+- Read documentation here: [Google docs (edit mode)](https://docs.google.com/document/d/1AGfqTfGdcXFwWeM3YDiKz9QFVAWLMIoK75PEA8e1hwI/edit?usp=sharing)
+  - 8 days Shanghai Pilot
+
 ## Results
 Paste the code into terminal, and hit Return key.
 ### Get allActivites.csv
