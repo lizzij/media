@@ -126,6 +126,7 @@ def check_result(user_id, day):
         2: { 'eventName': 'name1' },
         3: { 'eventLocation': 'location1' },
         4: { 'eventTime': 'time1' },
+        5: { 'eventTemp': 'temp1' },
     }
     answers = get_survey_answer(user_id, day)
     all_correct = {}

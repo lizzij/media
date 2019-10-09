@@ -849,7 +849,9 @@ VALUES
   (4, 2, 'signUpFee', 5),
 
   (5, 0, 'correctAnswerAtCheckpoints', 5),
-  (5, 1, 'signUpFee', 5),
+  (5, 1, 'tempOrder', 5),
+  (5, 1, 'eventTemp', 5),
+  (5, 2, 'signUpFee', 5),
 
   (6, 0, 'correctAnswerAtCheckpoints', 5),
   (6, 1, 'signUpFeeEvent1', 5),

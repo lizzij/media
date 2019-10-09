@@ -15,8 +15,37 @@
 
 <body>
   <form lang="zh" action="" method="post">
+    <!-- page 1 -->
+    <div id="page1" >
+      <div class="survey">
+        <!-- questions about the event -->
+        <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event temp question -->
+        <div class="question">
+          <div class="form-group" style="margin-bottom:0px">
+            <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出该活动举办周{{ walkathon['phrase_for_week'] }}上海市的历史平均气温:</div>
+            <input name="tempOrder" id="eventTempOptionsOrder" type="hidden" value="1234">
+            <div class="questionAnswer">
+              <div class="form-check" id="tempOption1" ><input class="form-check-input" type="radio" name="eventTemp" id="temp1" value="temp1" ><label class="form-check-label" for="temp1">13摄氏度</label></div>
+              <div class="form-check" id="tempOption2" ><input class="form-check-input" type="radio" name="eventTemp" id="temp2" value="temp2" ><label class="form-check-label" for="temp2">15摄氏度</label></div>
+              <div class="form-check" id="tempOption3" ><input class="form-check-input" type="radio" name="eventTemp" id="temp3" value="temp3" ><label class="form-check-label" for="temp3">18摄氏度</label></div>
+              <div class="form-check" id="tempOption4" ><input class="form-check-input" type="radio" name="eventTemp" id="temp4" value="temp4" required><label class="form-check-label" for="temp4">10摄氏度</label></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 16%; background-color: #979797;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
   <!-- page 1 -->
-  <div id="page1">
+  <div id="page2" style="display:none">
     <div class="survey">
       <!-- time on event -->
       <div class="question">
@@ -44,7 +73,7 @@
   </form>
 
   <!-- page 2 -->
-  <div id="page2" style="display:none">
+  <div id="page3" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
     </div>
@@ -103,7 +132,7 @@
     {% endif %}
   </script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='scripts/survey5.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='scripts/shanghai5.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/popper.min.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/bootstrap.min.js') }}"></script>
 </body>
