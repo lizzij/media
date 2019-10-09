@@ -24,12 +24,12 @@
       <div class="question">
         <div class="form-group" style="margin-bottom:0px">
           <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出该活动的举办地点:</div>
-          <input name="locationOrder" id="locationOptionsOrder" type="hidden" value="1234">
+          <input name="locationOrder" id="eventLocationOptionsOrder" type="hidden" value="1234">
           <div class="questionAnswer">
-            <div class="form-check" id="nameOption1" ><input class="form-check-input" type="radio" name="eventLocation" id="location1" value="location1" ><label class="form-check-label" for="location1">浦东新区 杨家渡渡口</label></div>
-            <div class="form-check" id="locationOption2" ><input class="form-check-input" type="radio" name="eventName" id="location2" value="location2" ><label class="form-check-label" for="location2">徐汇区 武康大楼</label></div>
-            <div class="form-check" id="locationOption3" ><input class="form-check-input" type="radio" name="eventName" id="location3" value="location3" ><label class="form-check-label" for="location3">闵行区 上海康城</label></div>
-            <div class="form-check" id="locationOption4" ><input class="form-check-input" type="radio" name="eventName" id="location4" value="location4" required><label class="form-check-label" for="location4">青浦区 森林度假村卡丁车场</label></div>
+            <div class="form-check" id="locationOption1" ><input class="form-check-input" type="radio" name="eventLocation" id="location1" value="location1" ><label class="form-check-label" for="location1">浦东新区 杨家渡渡口</label></div>
+            <div class="form-check" id="locationOption2" ><input class="form-check-input" type="radio" name="eventLocation" id="location2" value="location2" ><label class="form-check-label" for="location2">徐汇区 武康大楼</label></div>
+            <div class="form-check" id="locationOption3" ><input class="form-check-input" type="radio" name="eventLocation" id="location3" value="location3" ><label class="form-check-label" for="location3">闵行区 上海康城</label></div>
+            <div class="form-check" id="locationOption4" ><input class="form-check-input" type="radio" name="eventLocation" id="location4" value="location4" required><label class="form-check-label" for="location4">青浦区 森林度假村卡丁车场</label></div>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
 </form>
 
 <form lang="zh" action="" method="post">
-  <div id="page2">
+  <div id="page2" style="display:none">
     <div class="survey">
       <!-- questions about the event -->
       <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
