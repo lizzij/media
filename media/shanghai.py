@@ -21,7 +21,13 @@ def get_user(user_id_hashid, day_hashid, cohort = 5):
         (user_id_hashid, day_hashid, cohort,)
     ).fetchone()
     if user is None:
-        abort(404, "User {0}/{1}/{2} doesn't exist.".format(user_id_hashid, day_hashid, cohort))
+        # abort(404, "User {0}/{1}/{2} doesn't exist.".format(user_id_hashid, day_hashid, cohort))
+        user = get_db().execute(
+            'SELECT user_id, day, treatment'
+            ' FROM user u'
+            ' WHERE u.user_id_hashid = ? AND u.day_hashid = ? AND u.cohort = ?',
+            (user_id_hashid, day_hashid, 4,)
+        ).fetchone()
     else:
         return user
 
