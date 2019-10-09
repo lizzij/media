@@ -40,7 +40,7 @@ def get_event_info(event_id, cohort = 5):
     ).fetchone()
     return info
 
-def get_lastpage(user_id, day, day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}): # excluding the info & final page
+def get_lastpage(user_id, day, day_to_lastpage_dict = {1:7, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}): # excluding the info & final page
     db = get_db()
     last_activity = db.execute(
         'SELECT survey_page, day'
@@ -252,7 +252,7 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
     current_page = lastpage + 1
     update_lastpage(current_page, 0, user_id, day)
 
-    day_to_lastpage_dict = {1:6, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
+    day_to_lastpage_dict = {1:7, 2:6, 3:3, 4:1, 5:1, 6:13, 7:5, 8:3}
     if current_page == day_to_lastpage_dict[day]:
         update_lastpage(current_page, 1, user_id, day)
     # mark as completed

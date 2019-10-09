@@ -205,54 +205,60 @@
 
 
   <form lang="zh" action="" method="post">
-  <div class="page" id="page3" style="display:none">
-    <div class="survey">
-      <div class="question">
-        <div class="questionPrompt">
-          <p>以上的这项活动将在{{ walkathon['phrase_for_day'] }}期间进行。您认为那段时间的空气质量会如何？</p>
-          <div id="note">
-            <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
-            <p id="subNote"><b>例如：</b></br>
-              - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
-              - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
-              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
+    <div class="page" id="page3" style="display:none">
+      <div class="survey">
+        <div class="question">
+          <div class="questionPrompt">
+            <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_week'] }}<b>的那一周举办</b>。您认为那段时间的空气质量会如何？</p>
+            <div id="note">
+              <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
+              <p id="subNote"><b>例如：</b></br>
+                - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
+                - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
+                - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
+            </div>
+          </div>
+          <div id="blueGraySkyImage" style="padding-bottom: 46px;">
+            <div>
+              <img src="{{ url_for('static', filename='img/blueGraySky.jpg') }}" width="320">
+            </div>
+            <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
+          </div>
+          <div id="blueGraySkyMerge" style="padding-bottom: 46px;">
+            <div>
+              <img src="{{ url_for('static', filename='img/graySky.jpg') }}" width="320" id="graySky" style="position: absolute;opacity:0.5">
+              <img src="{{ url_for('static', filename='img/blueSky.jpg') }}" width="320" id="blueSky">
+            </div>
+          </div>
+          <div class="questionAnswer">
+            <div id="blueGrayLabel">
+              <div id="blueGrayLabelLeft" class="blueGrayLabel">左</div>
+              <div id="blueGrayLabelMiddle" class="blueGrayLabel">中</div>
+              <div id="blueGrayLabelRight" class="blueGrayLabel">右</div>
+            </div>
+            <div id="dividerDots">
+              <div id="blueGraySkyLeft" class="dividerDot">·</div>
+              <div id="blueGraySkyMiddle" class="dividerDot">·</div>
+              <div id="blueGraySkyRight" class="dividerDot">·</div>
+            </div>
+            <div class="slidecontainer" id="blueGraySky">
+              <div class="form-group" style="margin-top:16px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount"
+                  id="blueGraySkyAmount" for="rangeInput" style="margin-left:146px;">50</output>
+                <input type="range" min="0" max="100" value="50" step="2" class="slider" name="blueGraySky" id="blueGraySkyAmountSlider" oninput="blueGraySkyAmountSlide()"></input>
+                </div>
+            </div>
           </div>
         </div>
-        <div id="blueGraySkyImage" style="padding-bottom: 46px;">
-          <div>
-            <img src="{{ url_for('static', filename='img/blueGraySky.jpg') }}" width="320">
-          </div>
-          <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
-        </div>
-        <div class="questionAnswer">
-          <div id="blueGrayLabel">
-            <div id="blueGrayLabelLeft" class="blueGrayLabel">左</div>
-            <div id="blueGrayLabelMiddle" class="blueGrayLabel">中</div>
-            <div id="blueGrayLabelRight" class="blueGrayLabel">右</div>
-          </div>
-          <div id="dividerDots">
-            <div id="blueGraySkyLeft" class="dividerDot">·</div>
-            <div id="blueGraySkyMiddle" class="dividerDot">·</div>
-            <div id="blueGraySkyRight" class="dividerDot">·</div>
-          </div>
-          <div class="slidecontainer" id="blueGraySky">
-            <div class="form-group" style="margin-top:16px; margin-bottom:0px">
-              <output class="sliderAmount" name="amount"
-                id="blueGraySkyAmount" for="rangeInput" style="margin-left:146px;">50</output>
-              <input type="range" min="0" max="100" value="50" step="2" class="slider" name="blueGraySky" id="blueGraySkyAmountSlider" oninput="blueGraySkyAmountSlide()"></input>
-              </div>
-          </div>
-        </div>
+      </div><!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
       </div>
-    </div><!-- next button -->
-    <div class="nextButton">
-      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-      </input>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 14%; background-color: #979797;" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
-    <div class="progress" style="height: 8px;">
-      <div class="progress-bar" role="progressbar" style="width: 42%; background-color: #979797;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </div>
   </form>
 
 
@@ -453,7 +459,58 @@
 
 
   <form lang="zh" action="" method="post">
-  <div class="page" id="page5" style="display:none">
+    <div class="page" id="page5" style="display:none">
+      <div class="survey">
+        <div class="question">
+          <div class="questionPrompt">
+            <p>在国家当前使用的空气质量等级评估体系下，您认为什么样的空气质量会被划为”优“等级？请移动滑块选择出您认为最符合的照片。</p>
+          </div>
+          <div id="blueGraySkyImage" style="padding-bottom: 46px;">
+            <div>
+              <img src="{{ url_for('static', filename='img/blueGraySky.jpg') }}" width="320">
+            </div>
+            <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
+          </div>
+          <div id="blueGraySkyMerge" style="padding-bottom: 46px;">
+            <div>
+              <img src="{{ url_for('static', filename='img/graySky.jpg') }}" width="320" id="graySky2" style="position: absolute;opacity:0.5">
+              <img src="{{ url_for('static', filename='img/blueSky.jpg') }}" width="320" id="blueSky2">
+            </div>
+          </div>
+          <div class="questionAnswer">
+            <div id="blueGrayLabel">
+              <div id="blueGrayLabelLeft" class="blueGrayLabel">左</div>
+              <div id="blueGrayLabelMiddle" class="blueGrayLabel">中</div>
+              <div id="blueGrayLabelRight" class="blueGrayLabel">右</div>
+            </div>
+            <div id="dividerDots">
+              <div id="blueGraySkyLeft" class="dividerDot">·</div>
+              <div id="blueGraySkyMiddle" class="dividerDot">·</div>
+              <div id="blueGraySkyRight" class="dividerDot">·</div>
+            </div>
+            <div class="slidecontainer" id="blueGraySky">
+              <div class="form-group" style="margin-top:16px; margin-bottom:0px">
+                <output class="sliderAmount" name="amount"
+                  id="exellentAQAmount" for="rangeInput" style="margin-left:146px;">50</output>
+                <input type="range" min="0" max="100" value="50" step="2" class="slider" name="exellentAQAmount" id="exellentAQAmountSlider" oninput="exellentAQAmountSlide()"></input>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 14%; background-color: #979797;" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page6" style="display:none">
     <div class="survey">
       <div class="mainQuestion" align="center"><b>关于日常新闻来源的问题</b></div>
       <div class="question">
@@ -729,7 +786,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-  <div class="page" id="page6" style="display:none">
+  <div class="page" id="page7" style="display:none">
     <div class="survey">
       <!-- good deed willingness degree -->
       <div class="question">
@@ -783,7 +840,7 @@
   </div>
   </form>
 
-  <div id="page7" style="display:none">
+  <div id="page8" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
     </div>

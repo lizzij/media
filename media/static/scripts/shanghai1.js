@@ -134,6 +134,16 @@ function weatherClearAllStars() {
 
 // page 3 ======================================================================
 
+function blueGraySkyAmountSlide() {
+  var value=document.getElementById("blueGraySkyAmountSlider").value;
+  var blueGraySkyAmount = `${value}`;
+  document.getElementById("blueGraySkyAmount").value=blueGraySkyAmount;
+  var left = 3 + 2.88 * value;
+  document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
+  document.getElementById("graySky").style.opacity = (100-value)/100;
+}
+
+
 // page 4 ======================================================================
 
 // validate star question on page 5 => page 6
@@ -243,6 +253,17 @@ function showClearAllStarsButton() {
 
 // page 5 ======================================================================
 
+function exellentAQAmountSlide() {
+  var value=document.getElementById("exellentAQAmountSlider").value;
+  var exellentAQAmount = `${value}`;
+  document.getElementById("exellentAQAmount").value=exellentAQAmount;
+  var left = 3 + 2.88 * value;
+  document.getElementById("exellentAQAmount").style.marginLeft = left + "px";
+  document.getElementById("graySky2").style.opacity = (100-value)/100;
+}
+
+// page 6 ======================================================================
+
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
   // While there remain elements to shuffle...
@@ -321,7 +342,7 @@ $( document ).ready(function() {
   randomize();
 });
 
-// page 6 ======================================================================
+// page 7 ======================================================================
 
 function willingnessSlide() {
   document.getElementById("willingnessAmount").value=Math.floor(document.getElementById("willingness").value/2)*2;
@@ -366,12 +387,4 @@ function donationWillingSlide2() {
   document.getElementById("donationWillingAmount2").value=donationWillingAmount;
   var left = 2 + 0.026 * value;
   document.getElementById("donationWillingAmount2").style.marginLeft = left + "px";
-}
-
-function blueGraySkyAmountSlide() {
-  var value=document.getElementById("blueGraySkyAmountSlider").value;
-  var blueGraySkyAmount = `${value}`;
-  document.getElementById("blueGraySkyAmount").value=blueGraySkyAmount;
-  var left = 3 + 2.88 * value;
-  document.getElementById("blueGraySkyAmount").style.marginLeft = left + "px";
 }
