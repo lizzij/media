@@ -63,7 +63,7 @@
       {% if all_correct == 'True' %}
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
-            location.href = "{{ url_for('shanghai.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid'], p=2) }}";
+            location.href = "{{ url_for('shanghai.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid'], jrti=2) }}";
           }
         </script>
       {% else %}

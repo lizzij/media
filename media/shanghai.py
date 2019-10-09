@@ -211,7 +211,7 @@ def get_info(user_id_hashid, day_hashid):
     return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])
-def get_survey(user_id_hashid, day_hashid, p=None):
+def get_survey(user_id_hashid, day_hashid, jrti=None):
     user = get_user(user_id_hashid, day_hashid)
     user_id = user[0]
     day = user[1]
@@ -252,8 +252,8 @@ def get_survey(user_id_hashid, day_hashid, p=None):
     # mark as completed
 
     # go to next page on valid submit
-    if p:
-        lastpage = p
+    if jrti:
+        lastpage = jrti
 
     if request.method == 'POST':
         form = request.form
@@ -286,7 +286,7 @@ def get_survey(user_id_hashid, day_hashid, p=None):
             )
             db.commit()
             return redirect(url_for('shanghai.redirect_at_checkpoint', user_id_hashid=user_id_hashid, day_hashid=day_hashid, all_correct=all_correct))
-        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, p=current_page))
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid, jrti=current_page))
 
     return render_template('shanghai/survey' + str(day) + '.html', user=user, lastpage=lastpage, second_event=second_event, walkathon=walkathon, air_quality=air_quality)
 
