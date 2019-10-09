@@ -329,9 +329,9 @@
           </div><!-- option 2 -->
           <div class="peopleTrustOption" id="question2">
             <div class="trustOptionPrompt">
-              <div class="trustOptionText">新闻晨报</div>
+              <div class="trustOptionText">上海发布</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowMorningPost" onclick="dunno2()">
+                <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowSHRelease" onclick="dunno2()">
                 <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
               </div>
             </div>
@@ -354,16 +354,16 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust2Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="trustMorningPost" class="slider" id="trust2" oninput="trust2Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trustSHRelease" class="slider" id="trust2" oninput="trust2Slide()"></input>
                 </div>
               </div>
             </div>
           </div><!-- option 3 -->
           <div class="peopleTrustOption" id="question3">
             <div class="trustOptionPrompt">
-              <div class="trustOptionText">新闻广播FM93.4</div>
+              <div class="trustOptionText">STV新闻坊</div>
               <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
-                <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowFM"  onclick="dunno3()">
+                <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowSTV"  onclick="dunno3()">
                 <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
               </div>
             </div>
@@ -386,7 +386,7 @@
                 <div class="form-group" style="margin-bottom:0; margin-bottom:0px">
                   <output class="sliderAmount" name="amount" id="trust3Amount"
                     for="rangeInput">0</output>
-                  <input type="range" min="0" max="100" value="0" step="0.01" name="trustFM" class="slider" id="trust3" oninput="trust3Slide()"></input>
+                  <input type="range" min="0" max="100" value="0" step="0.01" name="trustSTV" class="slider" id="trust3" oninput="trust3Slide()"></input>
                   </div>
               </div>
             </div>
@@ -619,7 +619,7 @@
 
       <!-- address -->
       <div class="question">
-        <div class="questionPrompt">您的地址是？（如果您住校，请提供学校住址。为了方便邮寄调研参与证明，请将地址具体到宿舍门牌号）</div>
+        <div class="questionPrompt">您的地址是？（如果您住校，请提供学校住址。</div>
         <div class="questionAnswer">
           <div id="address">
             <div class="form-group">
