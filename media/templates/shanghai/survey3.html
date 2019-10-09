@@ -14,8 +14,38 @@
 </head>
 
 <body>
-  <form lang="zh" action="" method="post">
-  <div id="page1">
+
+<form lang="zh" action="" method="post">
+  <!-- page 1 -->
+  <div id="page1" >
+    <div class="survey">
+      <!-- questions about the event -->
+      <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
+      <div class="question">
+        <div class="form-group" style="margin-bottom:0px">
+          <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出该活动的举办地点:</div>
+          <input name="locationOrder" id="locationOptionsOrder" type="hidden" value="1234">
+          <div class="questionAnswer">
+            <div class="form-check" id="nameOption1" ><input class="form-check-input" type="radio" name="eventLocation" id="location1" value="location1" ><label class="form-check-label" for="location1">浦东新区 杨家渡渡口</label></div>
+            <div class="form-check" id="locationOption2" ><input class="form-check-input" type="radio" name="eventName" id="location2" value="location2" ><label class="form-check-label" for="location2">徐汇区 武康大楼</label></div>
+            <div class="form-check" id="locationOption3" ><input class="form-check-input" type="radio" name="eventName" id="location3" value="location3" ><label class="form-check-label" for="location3">闵行区 上海康城</label></div>
+            <div class="form-check" id="locationOption4" ><input class="form-check-input" type="radio" name="eventName" id="location4" value="location4" required><label class="form-check-label" for="location4">青浦区 森林度假村卡丁车场</label></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- next button -->
+    <div class="nextButton">
+      <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+      </input>
+    </div>
+    <div class="progress" style="height: 8px;">
+      <div class="progress-bar" role="progressbar" style="width: 16%; background-color: #979797;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+</form>
+
+<form lang="zh" action="" method="post">
+  <div id="page2">
     <div class="survey">
       <!-- questions about the event -->
       <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
@@ -42,7 +72,7 @@
 </form>
 
 <form lang="zh" action="" method="post">
-<div id="page2" style="display:none">
+<div id="page3" style="display:none">
   <div class="survey">
     <!-- list school activities -->
     <div class="question">
@@ -103,7 +133,7 @@
 </form>
 
 <form lang="zh" action="" method="post">
-  <div id="page3" style="display:none">
+  <div id="page4" style="display:none">
     <div class="survey">
       <div class="mainQuestion" align="center"><b>关于新闻涉猎的问题</b></div>
       <input name="newsQuestionsOrder" id="newsOrder" type="hidden" value="12345">
@@ -194,16 +224,13 @@
   </div>
 </form>
 
-  <div id="page4" style="display:none">
+  <div id="page5" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。 我们将在明天下午6点至7点左右发送另一条微信消息给您，并提供有关本地活动的信息。</div>
-      <!-- <div class="mainQuestion">感谢您完成第三天的调研。第3天结束。如果您想继续第4天，请单击下面的链接。 （您看到此消息是因为您是此Web应用程序的beta测试人员。）</div>
-      <a href="{{ url_for('pilot.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}">{{ url_for('pilot.get_info', user_id_hashid=next_user_id_hashid, day_hashid=next_day_hashid) }}</a> -->
     </div>
     <div class="progress" style="height: 8px;">
       <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #979797;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-    </div><!-- powered by -->
-    <!-- <div id="lizzij"><img src="{{ url_for('static', filename='img/powered by lizzij.png') }}" width="80px"></div> -->
+    </div>
   </div>
   <script type="text/javascript">
   (function (global) {

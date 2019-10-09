@@ -68,6 +68,20 @@ function randomize() {
   }
 }
 
+function randomizeEventLocationOptions() {
+  // shuffle order
+  var order = [1, 2, 3, 4];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("eventLocationOptionsOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#locationOption"+order[i] ).after( $( "#locationOption"+order[i+1] ) );
+  }
+}
+
 $( document ).ready(function() {
+  randomizeEventLocationOptions();
   randomize();
 });
