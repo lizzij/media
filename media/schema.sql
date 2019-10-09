@@ -940,10 +940,11 @@ VALUES
   (8, 3, 'dontKnowNYT', 5),
   (8, 3, 'trustNYT', 5);
 
-
-
-
-
+CREATE TABLE werun (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  steps INTEGER NOT NULL
+);
 
 
 

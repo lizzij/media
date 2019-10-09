@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <title>WeRun</title>
+  </head>
+  <body>
+    <form lang="zh" action="" method="post">
+      <table style="width:100%">
+        <tr>
+          <th>用户代号</th>
+          <th>微信号</th>
+          <th>是否安装了微信运动？</th>
+          <th>目标步数</th>
+          <th>实际步数为？</th>
+        </tr>
+        <!-- content -->
+        {% block content %}
+          {% for user in users %}
+            <tr>
+              <td align="center">{{ user['user_id'] }}</td>
+              <td align="center">{{ user['wechat_id'] }}</td>
+              <td align="center">
+                <input type="checkbox" class="form-check-input" name="{{ user['user_id'] }}-installed">
+              </td>
+              <td align="center">pledged_steps</td>
+              <td align="center">
+                <input type="number" class="form-control" name="{{ user['user_id'] }}-steps" >
+              </td>
+            </tr>
+          {% endfor %}
+        {% endblock %}
+      </table>
+      <div class="nextButton" style="
+          align-self: center;
+          padding-left: calc(50% - 124px);
+          padding-top: 40px;">
+        <input class="button" type="submit" value="下一页" style="
+          color: white;
+          font-size: 14px;
+          width: 248px;
+          height: 42px;
+          background: #979797;
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        </input>
+      </div>
+    </form>
+  </body>
+</html>

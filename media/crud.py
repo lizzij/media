@@ -283,3 +283,33 @@ def update_wechatID():
             db.commit()
             output_message = 'Done:) <b>Updated</b> user with user_id %s, wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
     return render_template('crud/updateWechatID.html', output_message=output_message)
+
+# to update werun steps for day 8
+@bp.route('/<string:surveyor_id>/werun', methods=['GET', 'POST'])
+def update_werun(surveyor_id):
+    db = get_db()
+    users = db.execute(
+        'SELECT DISTINCT user_id, wechat_id'
+        ' FROM user u'
+        ' WHERE u.cohort = ?'
+        ' ORDER BY user_id ASC',
+        (4,)
+    ).fetchall()
+
+    # save actual steps in werun table
+    # question names are set to: {{ user['user_id'] }}-installed and {{ user['user_id'] }}-name
+    if request.method == 'POST':
+        form = request.form
+        now = datetime.now()
+        db = get_db()
+
+        for user in users:
+            user_id = user['user_id']
+            db.execute(
+                'INSERT INTO werun (user_id, steps)'
+                ' VALUES (?, ?)',
+                (user_id, form[user_id],)
+            )
+            db.commit()
+
+    return render_template('crud/werun.html', users=users)
