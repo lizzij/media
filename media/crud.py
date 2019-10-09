@@ -288,6 +288,8 @@ def update_wechatID():
 @bp.route('/<string:surveyor_id>/werun', methods=['GET', 'POST'])
 def update_werun(surveyor_id):
     db = get_db()
+    # TODO change to query from day 7 survey result
+    # and select users based on surveyor_id
     users = db.execute(
         'SELECT DISTINCT user_id, wechat_id'
         ' FROM user u'
@@ -296,7 +298,7 @@ def update_werun(surveyor_id):
         (4,)
     ).fetchall()
 
-    # save actual steps in werun table
+    # TODO save actual steps in werun table
     # question names are set to: {{ user['user_id'] }}-installed and {{ user['user_id'] }}-name
     if request.method == 'POST':
         form = request.form
