@@ -844,7 +844,9 @@ VALUES
   (3, 4, 'event5HasHappened', 5),
 
   (4, 0, 'correctAnswerAtCheckpoints', 5),
-  (4, 1, 'signUpFee', 5),
+  (4, 1, 'timeOrder', 5),
+  (4, 1, 'eventTime', 5),
+  (4, 2, 'signUpFee', 5),
 
   (5, 0, 'correctAnswerAtCheckpoints', 5),
   (5, 1, 'signUpFee', 5),
