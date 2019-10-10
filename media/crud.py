@@ -284,6 +284,20 @@ def update_wechatID():
             output_message = 'Done:) <b>Updated</b> user with user_id %s, wechat_id %s, cohort %s' % (user_id, wechat_id, cohort)
     return render_template('crud/updateWechatID.html', output_message=output_message)
 
+# to view all werun steps for day 8
+@bp.route('/werun', methods=['GET', 'POST'])
+def get_werun():
+    users = get_db().execute(
+        'SELECT DISTINCT u.user_id, u.wechat_id, s.result, w.installed, w.steps'
+        ' FROM user u'
+        ' LEFT JOIN survey s ON u.user_id = s.user_id '
+        ' LEFT JOIN werun w ON u.user_id = w.user_id '
+        ' WHERE u.cohort = ? AND s.day = ? AND s.question_id = ?'
+        ' ORDER BY u.user_id ASC',
+        (5, 7, 'walkathonSteps',)
+    ).fetchall()
+    return render_template('crud/werun.html', users=users)
+
 # to update werun steps for day 8
 @bp.route('/<int:surveyor_id>/werun', methods=['GET', 'POST'])
 def update_werun(surveyor_id):
@@ -305,20 +319,20 @@ def update_werun(surveyor_id):
         if int(user['user_id']/1e6)%10 == surveyor_id:
             relevent_users.append(user)
 
-    # TODO save actual steps in werun table
+    # save actual steps in werun table
     # question names are set to: {{ user['user_id'] }}-installed and {{ user['user_id'] }}-name
     if request.method == 'POST':
         form = request.form
         now = datetime.now()
         db = get_db()
 
-        for user in users:
+        for user in relevent_users:
             user_id = user['user_id']
             db.execute(
-                'INSERT INTO werun (user_id, steps)'
-                ' VALUES (?, ?)',
-                (user_id, form[user_id],)
+                'INSERT INTO werun (user_id, steps, installed)'
+                ' VALUES (?, ?, ?)',
+                (user_id, int(form[str(user_id)+'-steps']), form[str(user_id)+'-installed'],)
             )
             db.commit()
 
-    return render_template('crud/werun.html', users=relevent_users)
+    return render_template('crud/updateWeRun.html', users=relevent_users)

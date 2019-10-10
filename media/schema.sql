@@ -944,7 +944,8 @@ VALUES
 CREATE TABLE werun (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
-  steps INTEGER NOT NULL
+  installed TEXT,
+  steps INTEGER
 );
 
 

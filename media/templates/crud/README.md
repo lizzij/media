@@ -16,3 +16,7 @@ i.e. create, read, update and delete
 - https://dailyeventinfo.com/allUsers
 - https://dailyeventinfo.com/allEvents
 - https://dailyeventinfo.com/eventUpdate
+
+### WeRun endpoints
+- update: http://localhost:5000/<surveyor_id>/werun
+- view all: http://localhost:5000/werun
