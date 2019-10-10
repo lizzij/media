@@ -285,10 +285,11 @@ def update_wechatID():
     return render_template('crud/updateWechatID.html', output_message=output_message)
 
 # to update werun steps for day 8
-@bp.route('/<string:surveyor_id>/werun', methods=['GET', 'POST'])
+@bp.route('/<int:surveyor_id>/werun', methods=['GET', 'POST'])
 def update_werun(surveyor_id):
     db = get_db()
 
+    # query pledged steps
     users = db.execute(
         'SELECT DISTINCT u.user_id, u.wechat_id, s.result'
         ' FROM user u'
@@ -298,7 +299,11 @@ def update_werun(surveyor_id):
         (5, 7, 'walkathonSteps',)
     ).fetchall()
 
-    # TODO and select users based on surveyor_id
+    # select users based on surveyor_id
+    relevent_users = []
+    for user in users:
+        if int(user['user_id']/1e6)%10 == surveyor_id:
+            relevent_users.append(user)
 
     # TODO save actual steps in werun table
     # question names are set to: {{ user['user_id'] }}-installed and {{ user['user_id'] }}-name
@@ -316,4 +321,4 @@ def update_werun(surveyor_id):
             )
             db.commit()
 
-    return render_template('crud/werun.html', users=users)
+    return render_template('crud/werun.html', users=relevent_users)
