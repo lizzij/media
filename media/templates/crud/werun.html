@@ -25,11 +25,18 @@
               <tr>
                 <td align="center" style="vertical-align: middle;">{{ user['user_id'] }}</td>
                 <td align="center" style="vertical-align: middle;">{{ user['wechat_id'] }}</td>
-                <td align="center" style="vertical-align: middle;">
-                  <input type="checkbox" class="form-check-input" name="{{ user['user_id'] }}-installed">
+                <td align="center">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="{{ user['user_id'] }}-installed" value="installed" id="werunInstalled">
+                    <label class="form-check-label" for="werunInstalled">是</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="{{ user['user_id'] }}-installed" value="notInstalled" id="werunNotInstalled">
+                    <label class="form-check-label" for="werunNotInstalled">否</label>
+                  </div>
                 </td>
-                <td align="center" style="vertical-align: middle;">pledged_steps</td>
-                <td align="center" style="vertical-align: middle;">
+                <td align="center" style="vertical-align: middle;">{{ user['result'] }}</td>
+                <td>
                   <input type="number" class="form-control" name="{{ user['user_id'] }}-steps" >
                 </td>
               </tr>
