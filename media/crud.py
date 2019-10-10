@@ -164,12 +164,13 @@ def get_link(surveyorNumber):
     如果您遇到了技术上的问题（列入网页无法正常显示等），请您在此发微信告诉我们，我们将尽快解决。<br><br>'
 
     ## Parameters
-    cohort = "4"
-    maxnum_cohort = 213 ## Total maximum number
-    maxnum_cohort_each = int(maxnum_cohort/3) ## Maximum number of cohorts in this trial per surveyor
+    cohort = "5"
+    maxnum_cohort = 244 ## Total maximum number
+    maxnum_cohort_each = int(maxnum_cohort/4) ## Maximum number of cohorts in this trial per surveyor
     maxday = 8
-    seq = [3, 2, 1, 1, 3, 1, 0, 1, 0, 3, 2, 2, 1, 1, 3, 3, 2, 1, 3, 3, 3, 3, 2, 3, 2, 0, 0, 2, 2, 0, 1, 0, 1, 1, 1, 0, 0, 0, 2, 1, 1, 0, 3, 3, 2, 3, 0, 0, 2, 0, 2, 3, 1, 2, 2, 0, 2, 1, 3, 2, 0, 1, 3, 3, 0, 1, 1, 0, 1, 3, 1, 2, 2, 2, 3, 0, 3, 0, 2, 0, 2, 2, 2, 1, 1, 2, 3, 3, 1, 3, 3, 0, 2, 3, 1, 1, 0, 1, 2, 1, 1, 2, 0, 3, 3, 2, 0, 2, 0, 0, 2, 0, 1, 3, 2, 1, 0, 2, 0, 1, 1, 1, 2, 3, 0, 0, 1, 1, 0, 3, 0, 2, 2, 3, 3, 3, 3, 0, 2, 3, 3, 1, 3, 2, 1, 1, 3, 0, 0, 3, 1, 2, 1, 2, 3, 3, 1, 3, 3, 2, 3, 0, 1, 0, 2, 3, 3, 0, 1, 0, 2, 3, 1, 2, 3, 0, 3, 0, 0, 2, 2, 3, 3, 2, 0, 1, 0, 1, 1, 0, 2, 2, 2, 2, 1, 1, 1, 0, 1, 1, 3, 2, 2, 0, 1, 0, 1, 2, 3, 0, 0, 0, 1]
-    # Note: the sequence is created randomly from "treatSequence.py"
+    seq = [2, 1, 0, 3, 3, 3, 4, 2, 1, 3, 2, 3, 4, 3, 4, 1, 4, 3, 1, 4, 3, 2, 2, 2, 0, 1, 0, 1, 0, 3, 2, 3, 3, 3, 3, 0, 1, 1, 4, 1, 4, 3, 2, 3, 1, 0, 4, 0, 2, 3, 0, 0, 2, 2, 1, 4, 2, 1, 2, 0, 0, 4, 4, 1, 2, 3, 0, 0, 1, 1, 4, 4, 1, 4, 2, 2, 4, 2, 4, 1, 4, 2, 0, 0, 1, 0, 2, 0, 1, 4, 0, 2, 2, 0, 0, 1, 1, 4, 3, 4, 4, 3, 0, 3, 4, 0, 0, 1, 3, 2, 2, 1, 3, 0, 3, 2, 1, 2, 3, 2, 3, 1, 0, 3, 4, 4, 0, 1, 3, 4, 0, 2, 4, 3, 1, 3, 4, 1, 2, 4, 1, 2, 1, 3, 3, 4, 2, 4, 3, 0, 3, 1, 0, 1, 3, 3, 4, 0, 0, 1, 0, 2, 2, 1, 1, 1, 3, 4, 1, 0, 2, 0, 4, 2, 3, 0, 0, 4, 2, 1, 2, 0, 4, 3, 3, 2, 0, 2, 1, 3, 2, 3, 3, 3, 4, 4, 2, 0, 3, 4, 0, 2, 0, 4, 3, 4, 4, 0, 1, 1, 1, 2, 4, 4, 0, 0, 0, 4, 2, 3, 1, 1, 2, 1, 3, 1, 4, 1, 0, 1, 4, 1, 0, 0, 2, 4, 1, 2, 2, 2, 4, 3, 1, 3]
+    seq_str = ["T0","T1","T2-1","T2-2","T3"]
+    # Note: the sequence is created randomly from "treatSequenceV2.py"
 
     ## Get list of users
     def get_users():
@@ -214,7 +215,7 @@ def get_link(surveyorNumber):
             else: previousMax = int((max(pd.to_numeric(cohort_users['user_id']) % 1e6)) / 1e3)
             nextUserID = int(int(cohort)*1e7 + int(surveyorNumber)*1e6 + (previousMax+1)*1e3 + randint(1,999))
             # Assign treatment group #
-            treatment = "T"+str(seq[previousMax]+1)
+            treatment = seq_str[seq[previousMax]]
             # Save user profile in allUsers #
             for day in range(maxday+1):
                 user_id_hashids = Hashids(salt=str(10 * nextUserID + day) + "user_id", min_length=16)
@@ -243,7 +244,6 @@ def get_link(surveyorNumber):
     output = [u'<font color="gray">（还未输入，请在上方框内输入新好友的微信号...）</font>']
     if request.method == 'POST':
         input_ID = request.form['wechatID']
-        cohort = '4'
         output = new_user_process(input_ID,surveyorNumber)
 
     # TODO add forwarding email instructions
