@@ -310,7 +310,7 @@ def update_werun(surveyor_id):
         ' LEFT JOIN survey s ON u.user_id = s.user_id '
         ' WHERE u.cohort = ? AND s.day = ? AND s.question_id = ?'
         ' ORDER BY u.user_id ASC',
-        (5, 7, 'walkathonSteps',)
+        (4, 7, 'walkathonSteps',)
     ).fetchall()
 
     # select users based on surveyor_id

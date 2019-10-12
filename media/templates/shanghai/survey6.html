@@ -16,37 +16,10 @@
 </head>
 
 <body>
-  <form lang="zh" action="" method="post">
-    <!-- page 1 -->
-    <div id="page1">
-      <div class="survey">
-        <!-- sign up fee -->
-        <div class="question">
-          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="signUpFee">
-              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
-                <output class="sliderAmount" name="amount" id="signUpFeeAmount" for="rangeInput">0元</output>
-                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider" name="signUpFeeEvent1" oninput="signUpFeeSlide()"></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </form>
 
   <form lang="zh" action="" method="post">
     <!-- page 2 -->
-    <div id="page2" style="display:none;">
+    <div id="page1" style="display:none;">
       <div style="display: block;margin: 8px;
     margin-top: 8px;
     margin-right: 8px;
@@ -292,36 +265,8 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <!-- page 3 -->
-    <div id="page3" style="display:none">
-      <div class="survey">
-        <!-- sign up fee -->
-        <div class="question">
-          <div class="questionPrompt">请问您愿意为参加该活动交多少元报名费？</div>
-          <div class="questionAnswer">
-            <div class="slidecontainer" id="signUpFee2">
-              <div class="form-group" style="margin-top:35px; margin-bottom:0px">
-                <output class="sliderAmount" name="amount" id="signUpFeeAmount2" for="rangeInput">0元</output>
-                <input type="range" min="0" max="300" step="10" value="0" class="slider" id="signUpFeeSlider2" name="signUpFeeEvent2" oninput="signUpFeeSlide2()"></input>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 20%; background-color: #979797;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </form>
-
-  <form lang="zh" action="" method="post">
     <!-- page 4 -->
-    <div id="page4" style="display:none">
+    <div id="page2" style="display:none">
       <div style="display: block;height: 1350px;" >
         <!-- The Modal -->
         <div id="myModal2" class="modalLarge">
@@ -495,7 +440,51 @@
   </form>
 
   <form lang="zh" action="" method="post">
-  <div class="page" id="page5" style="display:none">
+    <div id="page3" >
+      <div class="survey">
+        <!-- questions about the event -->
+        <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
+        <div class="question">
+          <div class="form-group" style="margin-bottom:0px">
+            <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出以上这些活动举办当周{{ walkathon['phrase_for_day'] }}上海市历史平均空气质量等级:</div>
+            <div class="questionAnswer">
+              <div class="form-check" id="AQLevelOption1" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel1" value="AQLevel1" ><label class="form-check-label" for="AQLevel1">优</label></div>
+              <div class="form-check" id="AQLevelOption2" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel2" value="AQLevel2" ><label class="form-check-label" for="AQLevel2">良</label></div>
+              <div class="form-check" id="AQLevelOption3" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel3" value="AQLevel3" ><label class="form-check-label" for="AQLevel3">轻度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">中度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">重度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" required><label class="form-check-label" for="AQLevel4">严重污染</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="question">
+          <div class="questionPrompt">请您选择出<b>以上显示的</b>报道空气质量等级信息的媒体名称【多选-请选出以上所有显示过的媒体名称】</div>
+          <input name="checkAQSourceOptionsOrder" id="checkAQSourceOrder" type="hidden" value="1234567">
+          <div class="questionAnswer">
+            <div class="form-group">
+              <div class="form-check" id="checkSourceOption1"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source1" value="source1"><label class="form-check-label" for="source1">上海发布</label></div>
+              <div class="form-check" id="checkSourceOption2"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source2" value="source2"><label class="form-check-label" for="source2">STV新闻坊</label></div>
+              <div class="form-check" id="checkSourceOption3"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source3" value="source3"><label class="form-check-label" for="source3">上海环境监测中心</label></div>
+              <div class="form-check" id="checkSourceOption4"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source4" value="source4"><label class="form-check-label" for="source4">人民日报</label></div>
+              <div class="form-check" id="checkSourceOption5"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source5" value="source5"><label class="form-check-label" for="source5">上海本地宝</label></div>
+              <div class="form-check" id="checkSourceOption6"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source6" value="source6"><label class="form-check-label" for="source6">新闻晨报</label></div>
+              <div class="form-check" id="checkSourceOption7"><input class="form-check-input" type="checkbox" name="checkAQSource" id="source7" value="source7"><label class="form-check-label" for="source7">新闻广播FM 93.4</label></div>
+            </div>
+          </div>
+        </div>
+      </div><!-- next button -->
+      <div class="nextButton">
+        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
+        </input>
+      </div>
+      <div class="progress" style="height: 8px;">
+        <div class="progress-bar" role="progressbar" style="width: 16%; background-color: #979797;" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  </form>
+
+  <form lang="zh" action="" method="post">
+  <div class="page" id="page4" style="display:none">
     <div class="survey">
       <div class="mainQuestion" align="center"><b>关于天气预测的问题</b></div>
       <div class="question">
@@ -547,8 +536,7 @@
   </form>
 
   <form lang="zh" action="" onsubmit="return validateStar();" method="post">
-  <!-- page 3 -->
-  <div class="page" id="page6" style="display:none">
+  <div class="page" id="page5" style="display:none">
     <div class="survey">
       <div class="question">
         <div class="questionPrompt">
@@ -743,8 +731,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <!-- page 6 -->
-    <div id="page7" style="display:none">
+    <div id="page6" style="display:none">
       <div class="survey">
         <!-- walkathon distance -->
         <div class="question">
@@ -791,8 +778,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <!-- page 6 -->
-    <div id="page8" style="display:none">
+    <div id="page7" style="display:none">
       <div class="survey">
         <!-- walkathon distance -->
         <div class="question">
@@ -935,8 +921,7 @@
   </form>
 
   <form lang="zh" action="" method="post" onsubmit="return validateHowManyTimesForcedAns();">
-    <!-- page 7 -->
-    <div id="page9" style="display:none">
+    <div id="page8" style="display:none">
       <div class="survey">
         <div class="mainQuestion" align="center"><b>用户体验反馈</b></div>
         <div class="question">
@@ -987,115 +972,17 @@
     </div>
   </form>
 
-  <form lang="zh" action="" method="post">
-    <!-- page 7 -->
-    <div id="page10" style="display:none">
-      <div class="survey">
-        <div class="question">
-          <div class="questionPrompt">您是否还记得我们为您提供的{{ walkathon['phrase_for_header'] }}的空气质量类别是什么？这里我们<b>不是</b>在询问您的想法，而是想了解您是否还记得提供的信息内容。</div>
-          <div id="AQLevelHint">
-            <img src="{{ url_for('static', filename='img/AQLevelHint.png') }}" width="300px">
-          </div>
-          <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="cantRemember" value="cantRemember"><label class="form-check-label" for="cantRemember">我不记得了</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="varies" value="varies"><label class="form-check-label" for="varies">类别随活动种类而异</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="severelyPolluted" value="severelyPolluted"><label class="form-check-label" for="severelyPolluted">严重污染</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="highlyPolluted" value="highlyPolluted"><label class="form-check-label" for="highlyPolluted">重度污染</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="moderatelyPolluted" value="moderatelyPolluted"><label class="form-check-label" for="moderatelyPolluted">中度污染</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="lightlyPolluted" value="lightlyPolluted"><label class="form-check-label" for="lightlyPolluted">轻度污染</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="good" value="good"><label class="form-check-label" for="good">良</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQuality" id="excellent" value="excellent" required><label class="form-check-label" for="excellent">优</label></div>
-          </div>
-        </div>
-        <div class="question">
-          <div class="questionPrompt">请问您还记得我们引用<b>空气质量</b>信息的来源吗？</div>
-          <div id="AQSourceHint">
-            <img src="{{ url_for('static', filename='img/AQSourceHint.png') }}" width="300px">
-          </div>
-          <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="no" value="no"><label class="form-check-label" for="no">不记得了</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="maybe" value="maybe"><label class="form-check-label" for="maybe">也许记得</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="probably" value="probably"><label class="form-check-label" for="probably">大概记得</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallAirQualitySource" id="yes" value="yes" required><label class="form-check-label" for="yes">记得</label></div>
-          </div>
-        </div>
-      </div>
-      <!-- next button -->
-      <div class="nextButton">
-        <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
-        </input>
-      </div>
-
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </form>
-
-  <form lang="zh"  id="surveyExperience" action="" method="post" onsubmit="return validateRandomizedForcedAns();" >
-    <!-- page 7 -->
-    <div id="page11" style="display:none">
-      <div class="survey">
-        <div class="question">
-          <div class="questionPrompt">您认为在过去的6天内，我们引用过多少个空气质量信息的来源</div>
-          <div class="questionAnswer">
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="1" value="1"><label class="form-check-label" for="1">1</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="2" value="2"><label class="form-check-label" for="2">2</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="3" value="3"><label class="form-check-label" for="3">3</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="4" value="4"><label class="form-check-label" for="4">4</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="5orMore" value="5orMore"><label class="form-check-label" for="5orMore">5个或更多</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="recallNumberOfAirQualitySource" id="dunno" value="dunno" required><label class="form-check-label" for="dunno">我不知道</label></div>
-          </div>
-        </div>
-        <div class="question">
-          <div class="questionPrompt">根据您的回忆，请选择我们在过去6天内引用过的所有空气质量信息的来源。（可多选）</div>
-          <input name="sourceOptionsOrder" id="sourceOrder" type="hidden" value="1234567">
-          <div class="questionAnswer">
-            <div class="form-group">
-              <div class="form-check" id="sourceOption1"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source1" value="source1"><label class="form-check-label" for="source1">人民日报</label></div>
-              <div class="form-check" id="sourceOption2"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source2" value="source2"><label class="form-check-label" for="source2">参考消息</label></div>
-              <div class="form-check" id="sourceOption3"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source3" value="source3"><label class="form-check-label" for="source3">上海环境监测中心</label></div>
-              <div class="form-check" id="sourceOption4"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source4" value="source4"><label class="form-check-label" for="source4">新闻晨报</label></div>
-              <div class="form-check" id="sourceOption5"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source5" value="source5"><label class="form-check-label" for="source5">新闻广播FM93.4</label></div>
-              <div class="form-check" id="sourceOption6"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source6" value="source6"><label class="form-check-label" for="source6">上海环境东方网微博</label></div>
-              <div class="form-check" id="sourceOption7"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="source7" value="source7"><label class="form-check-label" for="source7">纽约时报</label></div>
-              <div class="form-check" id="sourceOptionNo"><input class="form-check-input" type="checkbox" name="recallWhichAirQualitySource" id="sourceNo" value="sourceNo"><label class="form-check-label" for="sourceNo">我不知道</label></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="fillAll" class="fillAllAlert"></div>
-      <!-- next button -->
-      <section class="nextButton">
-        <div id="sourceTokenAlert" class="fillAllAlert"></div>
-        <div id="p7nextButton">
-          <div class="button">
-            <div id="next">下一页</div>
-          </div>
-          <script type="text/javascript">
-            document.getElementById("p7nextButton").onclick = function() {
-              return show('page7part2');
-            };
-          </script>
-        </div>
-      </section>
-
-      <div class="progress" style="height: 8px;">
-        <div class="progress-bar" role="progressbar" style="width: 80%; background-color: #979797;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-
-    <!-- page page7 part2 -->
-    <div id="page7part2" style="display:none">
+  <form lang="zh"  id="surveyExperience" action="" method="post">
+    <div id="page9" style="display:none">
       <div class="survey">
         <div class="question" id="guessWeatherSource">
-          <div class="questionPrompt">您认为<text id="specificWeatherSource"></text>是从哪里获得的天气信息？</div>
+          <div class="questionPrompt">您认为上海发布是从哪里获得的天气信息？</div>
           <div class="questionAnswer">
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="dunnoSource" value="dunnoSource"><label class="form-check-label" for="dunnoSource">我不知道</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="own" value="own"><label class="form-check-label" for="own">我认为他们有自己的天气监测站</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="government" value="government"><label class="form-check-label" for="government">我认为他们从政府机构处获得，如上海环境监测中心</label></div>
             <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="ngo" value="ngo"><label class="form-check-label" for="ngo">我认为他们从当地非政府组织处获得</label></div>
-            <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="international" value="international" ><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="weatherInfoFrom" id="international" value="international" required><label class="form-check-label" for="international">我认为他们从国际组织处获得，如美国大使馆</label></div>
           </div>
         </div>
 
@@ -1113,7 +1000,7 @@
 
   <form lang="zh" action="" method="post">
     <input name="questionOrder" id="sourceTrustOrder" type="hidden" value="{{ user['user_id'] }}">
-    <div id="page12" style="display:none">
+    <div id="page10" style="display:none">
       <div class="survey" id="survey1">
         <div class="question">
           <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
@@ -1139,7 +1026,7 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <div id="page13" style="display:none">
+    <div id="page11" style="display:none">
       <div class="survey" id="survey2">
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
@@ -1179,7 +1066,7 @@
             </div><!-- option 2 -->
             <div class="peopleTrustOption" id="question2">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">西安市生态环境局</div>
+                <div class="trustOptionText">上海发布</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno2checkbox" name="dontKnowMorningPost" onclick="dunno(2)">
                   <label class="form-check-label" for="dunno2">不够了解，无法回答</label>
@@ -1210,7 +1097,7 @@
             </div><!-- option 3 -->
             <div class="peopleTrustOption" id="question3">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">华商报</div>
+                <div class="trustOptionText">STV新闻坊</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno3checkbox" name="dontKnowFM" onclick="dunno(3)">
                   <label class="form-check-label" for="dunno3">不够了解，无法回答</label>
@@ -1241,7 +1128,7 @@
             </div><!-- option 4 -->
             <div class="peopleTrustOption" id="question4">
               <div class="trustOptionPrompt">
-                <div class="trustOptionText">陕西交通广播 FM91.6</div>
+                <div class="trustOptionText">上海市环境监测中心</div>
                 <div class="form-group form-check" style="margin-top:0px; margin-bottom:0px">
                   <input type="checkbox" class="form-check-input" id="dunno4checkbox" name="dontKnowSEMC" onclick="dunno(4)">
                   <label class="form-check-label" for="dunno4">不够了解，无法回答</label>
@@ -1351,7 +1238,7 @@
     </div>
   </form>
 
-  <div id="page14" style="display:none">
+  <div id="page12" style="display:none">
     <div class="survey">
       <div class="mainQuestion">感谢您完成今天的调研。此次调研还剩下两天就全部结束了，第七天的调研将在两周后进行。我们将在两周之内向您发送微信消息！</div>
     </div>

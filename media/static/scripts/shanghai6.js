@@ -1,27 +1,23 @@
-function signUpFeeSlide() {
-  var value=document.getElementById("signUpFeeSlider").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
-  var left = 2 + 0.9 * value;
-  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
+function randomizeCheckAQSource() {
+  // shuffle order
+  var order = [1, 2, 3, 4, 5, 6, 7];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("checkAQSourceOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#checkSourceOption"+order[i] ).after( $( "#checkSourceOption"+order[i+1] ) );
+  }
 }
-
-function signUpFeeSlide2() {
-  var value=document.getElementById("signUpFeeSlider2").value;
-  var signUpFeeAmount = `${value}元`;
-  document.getElementById("signUpFeeAmount2").value=signUpFeeAmount;
-  var left = 2 + 0.9 * value;
-  document.getElementById("signUpFeeAmount2").style.paddingLeft = left + "px";
-}
-
 // Page 5 ======================================================================
-// validate star question on page 6 => page 7
+// validate star question on page 5 => page 6
 function validateStar() {
   var alert = document.getElementById("starAlert").innerHTML;
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page6').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
@@ -126,8 +122,8 @@ function randomizeQuestion() {
   // user_id odd, swap questions; even do nothing
   if (user_id % 2) {
     document.getElementById("sourceTrustOrder").value = "21";
-    $( "#page8" ).prepend( $( "#survey2" ) );
-    $( "#page9" ).prepend( $( "#survey1" ) );
+    $( "#page10" ).prepend( $( "#survey2" ) );
+    $( "#page11" ).prepend( $( "#survey1" ) );
   }
   else {
     document.getElementById("sourceTrustOrder").value = "12";
@@ -135,6 +131,7 @@ function randomizeQuestion() {
 }
 
 $( document ).ready(function() {
+  randomizeCheckAQSource();
   randomize();
   randomizeSource();
   randomizeQuestion();
@@ -300,116 +297,6 @@ function trustSlide(index) {
   }
   var left = 2 + 2.88 * trust;
   document.getElementById("trust"+index+"Amount").style.paddingLeft = left + "px";
-}
-
-// new Star qn =================================================================
-function validatestarSatisfied() {
-  var alert = document.getElementById("starSatisfiedAlert").innerHTML;
-  var numStarLeft = document.getElementById("starSatisfiedLeftCount").innerHTML;
-  if ((parseInt(numStarLeft)) > 0) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
-    document.getElementById("clearAllstarSatisfiedsButton").style.display='block';
-    return false;
-  }
-  document.getElementById('page5').style='display: none;';
-  return true;
-}
-
-function validateRandomizedForcedAns() {
-  var alert = document.getElementById("fillAll").innerHTML;
-  const options = ['source1', 'source2', 'source3', 'source4', 'source5', 'source6', 'source7', 'sourceNo']
-  var filled = false;
-  options.forEach(option => {
-    filled = filled || document.getElementById(option).checked
-  })
-  if (!filled) {
-    document.getElementById("fillAll").innerHTML = "请选择！"
-    return false;
-  }
-  return true;
-}
-
-function updatestarSatisfiedInput(index) {
-  document.getElementById("starSatisfiedCountGroup"+index+"Input").value = document.getElementById("starSatisfiedCountGroup"+index).innerHTML;
-}
-
-function starSatisfiedCountGroup(index, number) {
-  var starSatisfiedLeftCount = document.getElementById("starSatisfiedLeftCount").innerHTML;
-  var count = document.getElementById("starSatisfiedCountGroup" + index).innerHTML;
-  if (starSatisfiedLeftCount == 0 && number > count) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '已用完10个星星！';
-  }
-  else if (number - count > starSatisfiedLeftCount) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '超过剩余星星！';
-  }
-  else if (number == 1 && count == 0) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '';
-    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = '<div class="star" onclick="starSatisfiedCountGroup('+index+'1)">&starf;</div>';
-    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = '1';
-  }
-  else if (number == 1 && count == 1) {
-    document.getElementById("starSatisfiedAlert").innerHTML = '';
-    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = '';
-    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = '0';
-  }
-  else {
-    document.getElementById("starSatisfiedAlert").innerHTML = '';
-    var starSatisfied = '';
-    var i;
-    for (i = 0; i < number; i++) {
-      starSatisfied = starSatisfied + '<div class="star" onclick="starSatisfiedCountGroup(' + index + ',' + (i+1) + ')">&starf;</div>';
-    }
-    document.getElementById("starSatisfiedGroup"+index+"Cover").innerHTML = starSatisfied;
-    document.getElementById("starSatisfiedCountGroup"+index).innerHTML = number;
-  }
-  starSatisfiedLeft();
-  updatestarSatisfiedInput(index);
-  return false;
-}
-
-function clearAllstarSatisfieds() {
-  document.getElementById("starSatisfiedAlert").innerHTML = '';
-  var starSatisfiedCounts = ["starSatisfiedCountGroup1", "starSatisfiedCountGroup2", "starSatisfiedCountGroup3",
-  "starSatisfiedCountGroup4", "starSatisfiedCountGroup5"];
-  var starSatisfiedCovers = ["starSatisfiedGroup1Cover", "starSatisfiedGroup2Cover", "starSatisfiedGroup3Cover",
-  "starSatisfiedGroup4Cover", "starSatisfiedGroup5Cover"];
-  var i;
-  for (i = 0; i < starSatisfiedCounts.length; i++) {
-    var starSatisfiedCount = starSatisfiedCounts[i];
-    document.getElementById(starSatisfiedCount).innerHTML = '0';
-    var starSatisfiedCover = starSatisfiedCovers[i];
-    document.getElementById(starSatisfiedCover).innerHTML = '';
-  }
-  starSatisfiedLeft();
-}
-
-function starSatisfiedLeft() {
-  var starSatisfiedLeftCount = 10;
-  var starSatisfiedLeft = '';
-  starSatisfiedLeftCount = starSatisfiedLeftCount
-  - document.getElementById("starSatisfiedCountGroup1").innerHTML
-  - document.getElementById("starSatisfiedCountGroup2").innerHTML
-  - document.getElementById("starSatisfiedCountGroup3").innerHTML
-  - document.getElementById("starSatisfiedCountGroup4").innerHTML
-  - document.getElementById("starSatisfiedCountGroup5").innerHTML;
-  var i;
-  for (i = 0; i < starSatisfiedLeftCount; i++) {
-    starSatisfiedLeft = starSatisfiedLeft + '<div class="star">&starf;</div>';
-  }
-  document.getElementById("starSatisfiedLeftCount").innerHTML = starSatisfiedLeftCount + "";
-  document.getElementById("starSatisfiedLeftContainer").innerHTML = starSatisfiedLeft;
-  showClearAllstarSatisfiedsButton();
-}
-
-function showClearAllstarSatisfiedsButton() {
-  var starSatisfiedLeftCount = document.getElementById("starSatisfiedLeftCount").innerHTML;
-  if ((parseInt(starSatisfiedLeftCount)) < 10) {
-    document.getElementById("clearAllstarSatisfiedsButton").style.display='block';
-  }
-  else {
-    document.getElementById("clearAllstarSatisfiedsButton").style.display='none';
-  }
 }
 
 // Get the modal ===============================================================
@@ -606,42 +493,6 @@ function showNumberOfWeatherTimes() {
   document.getElementById("otherHowManyWeatherTimes").style.display = "block";
 }
 
-function show(nextPart) {
-  document.getElementById("clearAllStarsButton").style.display='none';
-  if (nextPart == 'page7part2'){
-    if (validateOneChecked("recallNumberOfAirQualitySource")) {
-      if (validateWeatherSource()) {
-        guessWeatherSource();
-        document.getElementById('page11').style='display:none;';
-        window.scroll(0,0);
-        document.getElementById(nextPart).style='display: flex;flex-direction: column;position: relative;';
-      }
-    }
-    else {
-      document.getElementById("sourceTokenAlert").innerHTML = '请回答所有问题！';
-    }
-  }
-}
-
-// validate guess weather source question on page 7 => page 8
-function validateWeatherSource() {
-  var checkboxs=document.getElementsByName("recallWhichAirQualitySource");
-  var valid=false;
-  for(var i=0,l=checkboxs.length;i<l;i++) {
-    if(checkboxs[i].checked) {
-      valid=true;
-      break;
-    }
-  }
-  if (!valid) {
-    document.getElementById("sourceTokenAlert").innerHTML = '请选择空气质量信息的来源！';
-    return false;
-  }
-  else {
-    return true;
-  }
-}
-
 function validateOneChecked(name) {
   return ($('input[name='+name+']:checked').length == 1);
 }
@@ -656,75 +507,6 @@ function validateShownAndFilled(formName, name) {
   }
   return true;
 }
-
-// function guessWeatherSource(){
-//   var options = ['source1', 'source2', 'source4', 'source5', 'source6', 'source7'];
-//   var checked = [];
-//   var sources = ['人民日报', '参考消息', '新闻晨报', '新闻广播FM93.4', '上海环境东方网微博', '纽约时报'];
-//   var isSEMCChecked = document.getElementById('source3').checked;
-//   var isDunnoChecked = document.getElementById('sourceNo').checked;
-//   for (i=0;i<options.length;i++) {
-//     var isOptionChecked = document.getElementById(options[i]).checked;
-//     if (isOptionChecked) {
-//       checked.push(sources[i]);
-//     }
-//   }
-//   var numChosen = checked.length;
-//   // only SEMC is selected
-//   if ((isSEMCChecked && numChosen == 0) || (isDunnoChecked && numChosen == 0)) {
-//     document.getElementById('page7part2').style.display = "none";
-//     document.getElementById('guessWeatherSource').style.display = "none";
-//     document.forms["surveyExperience"].submit();
-//   }
-//   else {
-//     var randomIndex = Math.floor(Math.random() * (numChosen-1));
-//     document.getElementById('specificWeatherSource').innerHTML = checked[randomIndex];
-//     document.getElementById('guessWeatherSource').style.display = "block";
-//     document.getElementById("international").required = true;
-//   }
-// }
-
-function guessWeatherSource(){
-  var options1 = ['source4', 'source5']
-  var sources1 = ['新闻晨报', '新闻广播FM93.4']
-  var options2 = ['source1', 'source2', 'source6', 'source7'];
-  var sources2 = ['人民日报', '参考消息', '上海环境东方网微博', '纽约时报'];
-  var checked1 = [];
-  var checked2 = [];
-  for (i=0;i<options1.length;i++) {
-    var isOptionChecked = document.getElementById(options1[i]).checked;
-    if (isOptionChecked) {
-      checked1.push(sources1[i]);
-    }
-  }
-  for (i=0;i<options2.length;i++) {
-    var isOptionChecked = document.getElementById(options2[i]).checked;
-    if (isOptionChecked) {
-      checked2.push(sources2[i]);
-    }
-  }
-  if (checked1.length > 0) {
-    var numChosen = checked1.length;
-    var randomIndex = Math.floor(Math.random() * (numChosen-1));
-    document.getElementById('specificWeatherSource').innerHTML = checked1[randomIndex];
-    document.getElementById('guessWeatherSource').style.display = "block";
-    document.getElementById("international").required = true;
-  }
-  else if (checked2.length > 0) {
-    var numChosen = checked2.length;
-    var randomIndex = Math.floor(Math.random() * (numChosen-1));
-    document.getElementById('specificWeatherSource').innerHTML = checked2[randomIndex];
-    document.getElementById('guessWeatherSource').style.display = "block";
-    document.getElementById("international").required = true;
-  }
-  else {
-    document.getElementById('page7part2').style.display = "none";
-    document.getElementById('guessWeatherSource').style.display = "none";
-    document.forms["surveyExperience"].submit();
-
-  }
-}
-
 
 // =====
 function outing1Slide() {
@@ -882,7 +664,7 @@ function outing5Slide() {
   document.getElementById("outing5Amount").style.paddingLeft = left + "px";
 }
 
-// validate how many times is filled page 9 => 10
+// validate how many times is filled page 8 => 9
 function validateHowManyTimesForcedAns() {
   var bothFilled = validateShownAndFilled("otherHowManyTimes", "numberOfTimes")
       && validateShownAndFilled("otherHowManyWeatherTimes", "numberOfWeatherTimes")
