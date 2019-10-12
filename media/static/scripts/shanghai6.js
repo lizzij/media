@@ -133,7 +133,6 @@ function randomizeQuestion() {
 $( document ).ready(function() {
   randomizeCheckAQSource();
   randomize();
-  randomizeSource();
   randomizeQuestion();
 });
 
@@ -247,19 +246,6 @@ function randomize() {
   var i;
   for (i = 0; i < order.length - 1; i++) {
     $( "#question"+order[i] ).after( $( "#question"+order[i+1] ) );
-  }
-}
-
-function randomizeSource() {
-  // shuffle order
-  var order = [1, 2, 3, 4, 5, 6, 7];
-  order = shuffle(order);
-  // record as hidden input
-  document.getElementById("sourceOrder").value = order.join('');
-  // update order
-  var i;
-  for (i = 0; i < order.length - 1; i++) {
-    $( "#sourceOption"+order[i] ).after( $( "#sourceOption"+order[i+1] ) );
   }
 }
 

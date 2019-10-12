@@ -127,6 +127,7 @@ def check_result(user_id, day):
         3: { 'eventLocation': 'location1' },
         4: { 'eventTime': 'time1' },
         5: { 'eventTemp': 'temp1' },
+        6: { 'eventAQLevel': 'AQLevel1' },
     }
     answers = get_survey_answer(user_id, day)
     all_correct = {}
@@ -280,7 +281,7 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
                 db.commit()
 
         # check answer and redirect if needed
-        if day in [2, 3, 4, 5, 6] and current_page == 1:
+        if (day in [2, 3, 4, 5] and current_page == 1) or (day == 6 and current_page == 3):
             all_correct = check_result(user_id, day)
             timestamp = now
             if not all_correct:

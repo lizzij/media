@@ -19,7 +19,7 @@
 
   <form lang="zh" action="" method="post">
     <!-- page 2 -->
-    <div id="page1" style="display:none;">
+    <div id="page1">
       <div style="display: block;margin: 8px;
     margin-top: 8px;
     margin-right: 8px;
@@ -440,25 +440,31 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <div id="page3" >
+    <div id="page3" style="display:none">
       <div class="survey">
         <!-- questions about the event -->
         <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
         <div class="question">
           <div class="form-group" style="margin-bottom:0px">
             <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出以上这些活动举办当周{{ walkathon['phrase_for_day'] }}上海市历史平均空气质量等级:</div>
+            <div id="AQLevelHint">
+              <img src="{{ url_for('static', filename='img/AQLevelHint.png') }}" width="300px">
+            </div>
             <div class="questionAnswer">
-              <div class="form-check" id="AQLevelOption1" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel1" value="AQLevel1" ><label class="form-check-label" for="AQLevel1">优</label></div>
-              <div class="form-check" id="AQLevelOption2" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel2" value="AQLevel2" ><label class="form-check-label" for="AQLevel2">良</label></div>
-              <div class="form-check" id="AQLevelOption3" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel3" value="AQLevel3" ><label class="form-check-label" for="AQLevel3">轻度污染</label></div>
-              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">中度污染</label></div>
-              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">重度污染</label></div>
-              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" AQLevel="eventAQLevel" id="AQLevel4" value="AQLevel4" required><label class="form-check-label" for="AQLevel4">严重污染</label></div>
+              <div class="form-check" id="AQLevelOption1" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel1" value="AQLevel1" ><label class="form-check-label" for="AQLevel1">优</label></div>
+              <div class="form-check" id="AQLevelOption2" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel2" value="AQLevel2" ><label class="form-check-label" for="AQLevel2">良</label></div>
+              <div class="form-check" id="AQLevelOption3" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel3" value="AQLevel3" ><label class="form-check-label" for="AQLevel3">轻度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">中度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel4" value="AQLevel4" ><label class="form-check-label" for="AQLevel4">重度污染</label></div>
+              <div class="form-check" id="AQLevelOption4" ><input class="form-check-input" type="radio" name="eventAQLevel" id="AQLevel4" value="AQLevel4" required><label class="form-check-label" for="AQLevel4">严重污染</label></div>
             </div>
           </div>
         </div>
         <div class="question">
           <div class="questionPrompt">请您选择出<b>以上显示的</b>报道空气质量等级信息的媒体名称【多选-请选出以上所有显示过的媒体名称】</div>
+          <div id="AQSourceHint">
+            <img src="{{ url_for('static', filename='img/AQSourceHint.png') }}" width="300px">
+          </div>
           <input name="checkAQSourceOptionsOrder" id="checkAQSourceOrder" type="hidden" value="1234567">
           <div class="questionAnswer">
             <div class="form-group">
