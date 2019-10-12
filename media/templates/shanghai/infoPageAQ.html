@@ -66,11 +66,7 @@
     <section class="image">
       <div id="eventImage">
         <div>
-          {% if user['day'] == 6 %}
-          <img src="{{ url_for('static', filename=info['image_file']) }}" height="257">
-          {% else %}
           <img src="{{ url_for('static', filename=info['image_file']) }}" height="276">
-          {% endif %}
         </div>
       </div>
     </section>
@@ -78,20 +74,9 @@
     <!-- description short -->
     <section class="descriptionShort">
       <div class="paragraphShort">
-        <!-- <div id="firstCharacter">{{ (info['headword']) }}</div> -->
-        {% if user['day'] == 5 %}
-        <div id="descriptionShortPara" style="top: -12px;">
-          {{ (info['short_description']) }}
-        </div>
-        {% elif user['day'] == 6 %}
-        <div id="descriptionShortPara" style="top: -30px;">
-          {{ (info['short_description']) }}
-        </div>
-        {% else %}
         <div id="descriptionShortPara">
           {{ (info['short_description']) }}
         </div>
-        {% endif %}
       </div>
     </section>
 
@@ -104,7 +89,7 @@
         document.getElementById("moreInfoButton").onclick = function() {
           document.getElementById("moreInfoButton").style.display = 'none';
           document.getElementById("moreInfo").style.display = 'block';
-          window.scrollTo(0, 517);
+          window.scrollTo(0, 535);
         }
       </script>
     </div>
@@ -281,7 +266,7 @@
         </script>
       </div>
       <div class="nextButtonNotice">
-        
+
       </div>
     </section>
   </div>

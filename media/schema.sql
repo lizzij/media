@@ -1046,7 +1046,7 @@ VALUES
 
 (25, '看看别人的世界之边走边聊：', '滨江线行走八公里',
 '2019.11.17 周日', '06:30 pm - 21:30 pm', '地点 浦东新区 中华艺术宫-4口',
-'img/shv2_event4.jpg', '', 'img/transparent.png',
+'img/shv2_event5.jpg', '', 'img/transparent.png',
 '这是一条很长的滨江线，可以吹着江风，看着夜上海的灯火辉煌。添加微信号：pei1711944147 备注：夜跑', -3, 10,
 1,1,1,0,0,1,
 'long description',
