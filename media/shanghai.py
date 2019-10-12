@@ -28,8 +28,7 @@ def get_user(user_id_hashid, day_hashid, cohort = 5):
             ' WHERE u.user_id_hashid = ? AND u.day_hashid = ? AND u.cohort = ?',
             (user_id_hashid, day_hashid, 4,)
         ).fetchone()
-    else:
-        return user
+    return user
 
 def get_event_info(event_id, cohort = 5):
     info = get_db().execute(
