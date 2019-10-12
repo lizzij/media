@@ -121,7 +121,7 @@ def get_survey_answer(user_id, day):
         return answers
     return None
 
-def check_result(user_id, day):
+def check_result(user_id, day, treatment):
     correct_answer_dict = {
         2: { 'eventName': 'name1' },
         3: { 'eventLocation': 'location1' },
@@ -192,8 +192,8 @@ def get_info(user_id_hashid, day_hashid):
                 flash(u'如果您不想参与此次调研，只需关闭窗口并删除此联系人即可。如果误点“我不同意”，请点击“我同意参与”。')
         return render_template('shanghai/consentForm.html')
 
-    # only show AQ to T2/3/4 on day 6
-    if day == 6 and treatment != 'T1':
+    # only show AQ to T2-1/2-2/3 on day 6
+    if day == 6 and treatment not in ['T0', 'T1']:
         template = 'AQ'
     else:
         template = ''
@@ -207,8 +207,8 @@ def get_info(user_id_hashid, day_hashid):
     info = get_event_info(day_to_info_id_dict[day])
 
     # air quality source for treatment groups different on day 6
-    treatment_to_aq_source_dict = {'T0':'', 'T1':'', 'T2-1':u'（来自：上海市环境监测中心）', 'T2-2':u'（来自：上海广播电视台-STV新闻坊）', 'T3':u'（来自：新闻晨报）'}
-    treatment_to_aq_source_logo_dict = {'T0':'img/transparent.png', 'T1':'img/transparent.png', 'T2-1':'img/SourceSHEnvironmentLogo.jpg', 'T2-2':'img/SourceSTVLogo.png', 'T3':'img/SourceMorningPostLogo.jpg'}
+    treatment_to_aq_source_dict = {'T0':'', 'T1':'', 'T2-1':u'（来自：上海市环境监测中心）', 'T2-2':u'（来自：上海广播电视台-STV新闻坊）', 'T3':u'（来自：上海发布）'}
+    treatment_to_aq_source_logo_dict = {'T0':'img/transparent.png', 'T1':'img/transparent.png', 'T2-1':'img/SourceSHEnvironmentLogo.jpg', 'T2-2':'img/SourceSTVLogo.png', 'T3':'img/SourceSHRLogo.jpg'}
     air_quality_source = treatment_to_aq_source_dict[treatment]
     air_quality_source_logo = treatment_to_aq_source_logo_dict[treatment]
     air_quality = {'air_quality_source':air_quality_source, 'air_quality_source_logo':air_quality_source_logo}
@@ -238,8 +238,8 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
     t2_1_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
     t2_2_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' },
-                            'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：新闻广播FM93.4）', 'air_quality_source_logo':'img/SourceNewsRadioLogo.jpg' },
+                            'walkathon' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' } }
+    t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
     treatment_to_air_quality_dict = {'T0': t0_air_quality_source, 'T1': t1_air_quality_source, 'T2-1': t2_1_air_quality_source, 'T2-2': t2_2_air_quality_source, 'T3': t3_air_quality_source}
     air_quality = treatment_to_air_quality_dict[treatment]
@@ -282,7 +282,7 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
 
         # check answer and redirect if needed
         if (day in [2, 3, 4, 5] and current_page == 1) or (day == 6 and current_page == 3):
-            all_correct = check_result(user_id, day)
+            all_correct = check_result(user_id, day, treatment)
             timestamp = now
             if not all_correct:
                 update_lastpage(0, 0, user_id, day)
