@@ -1174,7 +1174,9 @@ VALUES
   (5, 2, 'signUpFee', 5),
 
   (6, 0, 'correctAnswerAtCheckpoints', 5),
+  (6, 1, 'day6SecondEventMoreInfoTime', 5),
   (6, 1, 'secondEventNextButton', 5),
+  (6, 2, 'day6WalkathonMoreInfoTime', 5),
   (6, 2, 'walkathonNextButton', 5),
   (6, 3, 'eventAQLevel', 5),
   (6, 3, 'checkAQSourceOptionsOrder', 5),

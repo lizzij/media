@@ -218,6 +218,23 @@ def get_info(user_id_hashid, day_hashid):
     if lastpage > 0: # have seen the survey page
         return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
+    # save show more info timestamp
+    if request.method == 'POST':
+
+        form = request.form
+        now = datetime.now()
+        db = get_db()
+
+        # save answer
+        for question in form.keys():
+            for result in form.getlist(question):
+                db.execute(
+                    'INSERT INTO survey (user_id, day, result, created, question_id)'
+                    ' VALUES (?, ?, ?, ?, ?)',
+                    (user_id, day, result, now, question)
+                )
+                db.commit()
+
     return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
 
 @bp.route('/<string:user_id_hashid>/<string:day_hashid>/survey', methods=['GET', 'POST'])

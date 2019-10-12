@@ -65,7 +65,7 @@
         </section>
 
         <div id="moreInfoButton1">
-          <input name="day6SecondEventMoreInfo" id="day6SecondEventMoreInfoButton" type="hidden" value="currTime">
+          <input name="day6SecondEventMoreInfoTime" id="day6SecondEventMoreInfoTime" type="hidden" value="currTime">
           <div>
             <img src="{{ url_for('static', filename='img/Button.png') }}">
           </div>
@@ -79,7 +79,7 @@
               var today = new Date();
               var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
               var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
-              document.getElementById("day6SecondEventMoreInfoButton").value = date+' '+time;
+              document.getElementById("day6SecondEventMoreInfoTime").value = date+' '+time;
             }
           </script>
         </div>
@@ -249,6 +249,7 @@
           </section>
 
           <div id="moreInfoButton2">
+            <input name="day6WalkathonMoreInfoTime" id="day6WalkathonMoreInfoTime" type="hidden" value="currTime">
             <div>
               <img src="{{ url_for('static', filename='img/Button.png') }}">
             </div>
@@ -258,6 +259,11 @@
                 document.getElementById("moreInfoButton2").style.display = 'none';
                 document.getElementById("moreInfo2").style.display = 'block';
                 window.scrollTo(0, 535);
+
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
+                document.getElementById("day6WalkathonMoreInfoTime").value = date+' '+time;
               }
             </script>
           </div>

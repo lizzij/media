@@ -16,6 +16,7 @@
 <!-- Title -->
 
 <body style="margin:0px; background:white;">
+  <form lang="zh" action="" method="post">
 
   <!-- The Modal -->
   <div id="myModal" class="modalLarge">
@@ -81,6 +82,7 @@
     </section>
 
     <div id="moreInfoButton">
+      <input name="day{{ user['day'] }}MoreInfoTime" id="moreInfoTime" type="hidden" value="currTime">
       <div>
         <img src="{{ url_for('static', filename='img/Button.png') }}">
       </div>
@@ -90,6 +92,11 @@
           document.getElementById("moreInfoButton").style.display = 'none';
           document.getElementById("moreInfo").style.display = 'block';
           window.scrollTo(0, 535);
+
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
+          document.getElementById("moreInfoTime").value = date+' '+time;
         }
       </script>
     </div>
@@ -270,6 +277,7 @@
       </div>
     </section>
   </div>
+  </form>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
 </body>
 

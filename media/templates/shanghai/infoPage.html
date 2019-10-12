@@ -16,6 +16,7 @@
 <!-- Title -->
 
 <body style="margin:0px; background:white;">
+  <form lang="zh" action="" method="post" id="infoForm">
 
   <!-- The Modal -->
   <div id="myModal" class="modalLarge">
@@ -94,6 +95,7 @@
     </section>
 
     <div id="moreInfoButton">
+      <input name="moreInfoButtonTimestamp" id="moreInfoTime" type="hidden" value="currTime">
       <div>
         <img src="{{ url_for('static', filename='img/Button.png') }}">
       </div>
@@ -104,6 +106,11 @@
           document.getElementById("moreInfoButton").style.display = 'none';
           document.getElementById("moreInfo").style.display = 'block';
           window.scrollTo(0, 517);
+
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
+          document.getElementById("moreInfoTime").value = date+' '+time;
         }
       </script>
       {% elif user['day'] == 5 %}
@@ -112,6 +119,11 @@
           document.getElementById("moreInfoButton").style.display = 'none';
           document.getElementById("moreInfo").style.display = 'block';
           window.scrollTo(0, 539);
+
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
+          document.getElementById("moreInfoTime").value = date+' '+time;
         }
       </script>
       {% else %}
@@ -120,6 +132,11 @@
           document.getElementById("moreInfoButton").style.display = 'none';
           document.getElementById("moreInfo").style.display = 'block';
           window.scrollTo(0, 535);
+
+          var today = new Date();
+          var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+          var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
+          document.getElementById("moreInfoTime").value = date+' '+time;
         }
       </script>
       {% endif %}
@@ -161,6 +178,7 @@
         <div id="infoNext">下一页</div>
         <script type="text/javascript">
           document.getElementById("nextButton").onclick = function() {
+            document.getElementById("infoForm").submit();
             location.href = "{{ url_for('shanghai.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
           }
         </script>
@@ -169,7 +187,7 @@
 
       </div>
     </section>
-  </div>
+  </form>
   <script type=text/javascript src="{{ url_for('static', filename='scripts/jquery-3.3.1.slim.min.js') }}"></script>
 </body>
 
