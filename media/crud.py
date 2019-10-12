@@ -295,7 +295,7 @@ def get_werun():
         ' LEFT JOIN werun w ON u.user_id = w.user_id '
         ' WHERE u.cohort = ? AND s.day = ? AND s.question_id = ?'
         ' ORDER BY u.user_id ASC',
-        (5, 7, 'walkathonSteps',)
+        (4, 7, 'walkathonSteps',)
     ).fetchall()
     return render_template('crud/werun.html', users=users)
 
@@ -329,11 +329,13 @@ def update_werun(surveyor_id):
 
         for user in relevent_users:
             user_id = user['user_id']
-            db.execute(
-                'INSERT INTO werun (user_id, steps, installed)'
-                ' VALUES (?, ?, ?)',
-                (user_id, int(form[str(user_id)+'-steps']), form[str(user_id)+'-installed'],)
-            )
+            steps = form[str(user_id)+'-steps']
+            if steps != '':
+                db.execute(
+                    'INSERT INTO werun (user_id, steps, installed)'
+                    ' VALUES (?, ?, ?)',
+                    (user_id, int(steps), form[str(user_id)+'-installed'],)
+                )
             db.commit()
 
     return render_template('crud/updateWeRun.html', users=relevent_users)
