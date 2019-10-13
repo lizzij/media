@@ -257,7 +257,8 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
                             'walkathon' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' } }
     t3_air_quality_source = { 'second_event' : { 'air_quality_source':u'（来自：上海广播电视台-STV新闻坊）', 'air_quality_source_logo':'img/SourceSTVLogo.png' },
                               'walkathon' : { 'air_quality_source':u'（来自：上海市环境监测中心）', 'air_quality_source_logo':'img/SourceSHEnvironmentLogo.jpg' } }
-    treatment_to_air_quality_dict = {'T0': t0_air_quality_source, 'T1': t1_air_quality_source, 'T2-1': t2_1_air_quality_source, 'T2-2': t2_2_air_quality_source, 'T3': t3_air_quality_source}
+    treatment_to_air_quality_dict = {'T0': t0_air_quality_source, 'T1': t1_air_quality_source, 'T2-1': t2_1_air_quality_source, 'T2-2': t2_2_air_quality_source, 'T3': t3_air_quality_source,
+                                     'T2':t3_air_quality_source, 'T4':t3_air_quality_source}
     air_quality = treatment_to_air_quality_dict[treatment]
 
 
