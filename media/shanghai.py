@@ -273,7 +273,7 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
     current_page = lastpage + 1
     update_lastpage(current_page, 0, user_id, day)
 
-    day_to_lastpage_dict = {1:7, 2:6, 3:4, 4:2, 5:2, 6:11, 7:5, 8:3}
+    day_to_lastpage_dict = {1:8, 2:7, 3:4, 4:2, 5:2, 6:11, 7:5, 8:4}
     if current_page == day_to_lastpage_dict[day]:
         update_lastpage(current_page, 1, user_id, day)
     # mark as completed
