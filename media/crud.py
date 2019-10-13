@@ -338,4 +338,4 @@ def update_werun(surveyor_id):
                 )
             db.commit()
 
-    return render_template('crud/updateWeRun.html', users=relevent_users)
+    return render_template('crud/updateWerun.html', users=relevent_users)
