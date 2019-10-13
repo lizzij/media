@@ -1103,7 +1103,7 @@ VALUES
   (1, 6, 'trust7', 5),
   (1, 6, 'dontKnowCorporation', 5),
   (1, 6, 'trust8', 5),
-  (1, 7, 'willingnessAmount', 5),
+  (1, 7, 'goodDeedWillingness', 5),
   (1, 7, 'donationWillingness', 5),
 
   (2, 0, 'correctAnswerAtCheckpoints', 5),
