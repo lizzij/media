@@ -300,7 +300,7 @@ def get_werun():
     return render_template('crud/werun.html', users=users)
 
 # to update werun steps for day 8
-@bp.route('/<int:surveyor_id>/werun', methods=['GET', 'POST'])
+@bp.route('/werun/<int:surveyor_id>', methods=['GET', 'POST'])
 def update_werun(surveyor_id):
     db = get_db()
 
