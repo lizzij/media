@@ -339,3 +339,18 @@ def update_werun(surveyor_id):
             db.commit()
 
     return render_template('crud/updateWerun.html', users=relevent_users)
+
+@bp.route('/pages/<string:action>/<int:day>/<int:page>/<string:question_name>/<int:cohort>', methods=['GET', 'POST'])
+def update_page(action, day, page, question_name, cohort):
+    db = get_db()
+    if action == 'delete':
+        db.execute(
+            'DELETE FROM pages WHERE day = ? AND page = ? AND question_name = ? AND cohort = ?',(day, page, question_name, cohort,)
+        )
+        db.commit()
+    elif action == 'insert':
+        db.execute(
+            'INSERT INTO pages (day, page, question_name, cohort) VALUES (?, ?, ?, ?)',(day, page, question_name, cohort,)
+        )
+        db.commit()
+    return "Success: {} day {}, page {}, question {}, cohort {}".format(action, day, page, question_name, cohort)
