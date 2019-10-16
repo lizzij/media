@@ -152,7 +152,7 @@ function validateStar() {
   var numStarLeft = document.getElementById("starLeftCount").innerHTML;
   if ((parseInt(numStarLeft)) > 0) {
     document.getElementById("starAlert").innerHTML = '请用完所有星星！';
-    document.getElementById('page5').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
+    document.getElementById('page4').style='display: flex;flex-direction: column;position: relative; overflow: visible;';
     document.getElementById("clearAllStarsButton").style.display='block';
     return false;
   }
