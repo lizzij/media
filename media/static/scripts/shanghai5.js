@@ -13,9 +13,9 @@ function shuffle(array) {
   return array;
 }
 
-function randomizeEventTimeOptions() {
+function randomizeEventTempOptions() {
   // shuffle order
-  var order = [1, 2, 3];
+  var order = [1, 2, 3, 4];
   order = shuffle(order);
   // record as hidden input
   document.getElementById("eventTempOptionsOrder").value = order.join('');
@@ -27,5 +27,5 @@ function randomizeEventTimeOptions() {
 }
 
 $( document ).ready(function() {
-  randomizeEventTimeOptions();
+  randomizeEventTempOptions();
 });

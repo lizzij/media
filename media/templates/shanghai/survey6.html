@@ -387,6 +387,24 @@
 
   <form lang="zh" action="" method="post">
     <div id="page3" style="display:none">
+      {% if user['treatment'] == 'T0' %}
+      <div class="survey">
+        <!-- questions about the event -->
+        <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
+        <div class="question">
+          <div class="form-group" style="margin-bottom:0px">
+            <div class="questionPrompt">我们希望确认我们为您提供的活动信息清晰明了，请您选出该活动举办周{{ walkathon['phrase_for_week'] }}上海市的历史平均最高气温:</div>
+            <input name="tempOrder" id="eventTempOptionsOrder" type="hidden" value="1234">
+            <div class="questionAnswer">
+              <div class="form-check" id="tempOption1" ><input class="form-check-input" type="radio" name="eventTemp" id="temp1" value="temp1" ><label class="form-check-label" for="temp1">18摄氏度</label></div>
+              <div class="form-check" id="tempOption2" ><input class="form-check-input" type="radio" name="eventTemp" id="temp2" value="temp2" ><label class="form-check-label" for="temp2">15摄氏度</label></div>
+              <div class="form-check" id="tempOption3" ><input class="form-check-input" type="radio" name="eventTemp" id="temp3" value="temp3" ><label class="form-check-label" for="temp3">13摄氏度</label></div>
+              <div class="form-check" id="tempOption4" ><input class="form-check-input" type="radio" name="eventTemp" id="temp4" value="temp4" required><label class="form-check-label" for="temp4">10摄氏度</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
       <div class="survey">
         <!-- questions about the event -->
         <div class="mainQuestion" align="center"><b>关于该活动的问题</b></div><!-- event location question -->
@@ -424,7 +442,8 @@
             </div>
           </div>
         </div>
-      </div><!-- next button -->
+      </div>
+      {% endif %}
       <div class="nextButton">
         <input class="button" type="submit" value="下一页" style="color: white; font-size: 14px;">
         </input>
@@ -951,9 +970,8 @@
   </form>
 
   <form lang="zh" action="" method="post">
-    <input name="questionOrder" id="sourceTrustOrder" type="hidden" value="{{ user['user_id'] }}">
     <div id="page10" style="display:none">
-      <div class="survey" id="survey1">
+      <div class="survey">
         <div class="question">
           <div class="questionPrompt">上海金融报从中国指数研究院获得关于<b>房价</b>的信息。假设根据其独立的研究单位的调查，上海金融报认为中国指数研究院提供的信息不准确或存在偏差。在这种情况下，您认为上海金融报决定<b>不发布</b>该信息的可能性有多大？</div>
           <div class="questionAnswer">
@@ -979,7 +997,7 @@
 
   <form lang="zh" action="" method="post">
     <div id="page11" style="display:none">
-      <div class="survey" id="survey2">
+      <div class="survey">
         <div class="question">
           <div class="questionPrompt">您对以下新闻媒体和政府机构的信任程度如何？</div>
           <input name="trustOptionsOrder" id="trustOrder" type="hidden" value="123456">

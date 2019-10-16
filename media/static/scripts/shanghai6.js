@@ -116,24 +116,27 @@ function showClearAllStarsButton() {
   }
 }
 
-function randomizeQuestion() {
-  var user_id;
-  user_id = document.getElementById("sourceTrustOrder").value;
-  // user_id odd, swap questions; even do nothing
-  if (user_id % 2) {
-    document.getElementById("sourceTrustOrder").value = "21";
-    $( "#page10" ).prepend( $( "#survey2" ) );
-    $( "#page11" ).prepend( $( "#survey1" ) );
-  }
-  else {
-    document.getElementById("sourceTrustOrder").value = "12";
+function randomizeEventTempOptions() {
+  // shuffle order
+  var order = [1, 2, 3, 4];
+  order = shuffle(order);
+  // record as hidden input
+  document.getElementById("eventTempOptionsOrder").value = order.join('');
+  // update order
+  var i;
+  for (i = 0; i < order.length - 1; i++) {
+    $( "#tempOption"+order[i] ).after( $( "#tempOption"+order[i+1] ) );
   }
 }
 
 $( document ).ready(function() {
+  randomizeEventTempOptions();
+});
+
+$( document ).ready(function() {
   randomizeCheckAQSource();
   randomize();
-  randomizeQuestion();
+  randomizeEventTempOptions();
 });
 
 function outingSlide(index) {
