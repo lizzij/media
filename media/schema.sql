@@ -1147,7 +1147,7 @@ VALUES
   (2, 6, 'grade', 5),
 
   (3, 0, 'correctAnswerAtCheckpoints', 5),
-  (3, 1, 'eventLocationOrder', 5),
+  (3, 1, 'locationOrder', 5),
   (3, 1, 'eventLocation', 5),
   (3, 2, 'donationWilling', 5),
   (3, 3, 'activity1', 5),
