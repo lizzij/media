@@ -63,6 +63,16 @@ def all_events():
     ).fetchall()
     return render_template('crud/infoList.html', events=events)
 
+@bp.route('/allPages')
+def all_pages():
+    """Show all the surveys, and all results."""
+    db = get_db()
+    pages = db.execute(
+        'SELECT day, page, question_name, cohort'
+        ' FROM pages p'
+    ).fetchall()
+    return render_template('crud/pageList.html', pages=pages)
+
 @bp.route('/eventUpdate', methods=['GET', 'POST'])
 def update_events():
     info = None
