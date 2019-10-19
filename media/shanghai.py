@@ -240,6 +240,7 @@ def get_info(user_id_hashid, day_hashid):
                     (user_id, day, result, now, question)
                 )
                 db.commit()
+        return redirect(url_for('shanghai.get_survey', user_id_hashid=user_id_hashid, day_hashid=day_hashid))
 
     return render_template('shanghai/infoPage' + template + '.html', info=info, user=user, air_quality=air_quality)
 
