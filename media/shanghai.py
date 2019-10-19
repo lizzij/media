@@ -62,16 +62,16 @@ def get_lastpage(user_id, day, day_to_lastpage_dict = {1:7, 2:6, 3:4, 4:2, 5:2, 
 def get_last_question(user_id):
     db = get_db()
     last_question_query = db.execute(
-        'SELECT question_id'
+        'SELECT question_id, day'
         ' FROM survey s'
         ' WHERE s.user_id = ?'
         ' ORDER BY s.created DESC LIMIT 1',
         (user_id,)
     ).fetchone()
     if last_question_query:
-        last_question = last_question_query[0]
+        last_question = {'last_question_name': last_question_query[0], 'last_question_day': last_question_query[1]}
     else:
-        last_question = 'null'
+        last_question = None
     return last_question
 
 def get_page_from_question_name(day, question_name, cohort = 5):
@@ -267,7 +267,10 @@ def get_survey(user_id_hashid, day_hashid, jrti=None):
 
     # mark info page as read
     last_question = get_last_question(user_id)
-    lastpage = get_page_from_question_name(day, last_question)
+    if not last_question or last_question['last_question_day'] < day:
+        lastpage = 0
+    else:
+        lastpage = get_page_from_question_name(day, last_question['last_question_name'])
     # update last page, activity (for day completion)
     current_page = lastpage + 1
     update_lastpage(current_page, 0, user_id, day)
