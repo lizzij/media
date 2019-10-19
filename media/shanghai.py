@@ -146,7 +146,7 @@ def check_result(user_id, day, treatment):
     for treatment in ['T0', 'T1', 'T2-1', 'T2-2', 'T3']:
         correct_answer_dict[treatment] = non_treatment_correct_answer_dict
     # day 6 answers depends on treatment
-    correct_answer_dict['T1'][6] = { 'eventTemp': 'temp1' }
+    correct_answer_dict['T0'][6] = { 'eventTemp': 'temp1' }
     correct_answer_dict['T1'][6]['checkAQSource'] = {'source3'}
     correct_answer_dict['T2-1'][6]['checkAQSource'] = {'source3'}
     correct_answer_dict['T2-2'][6]['checkAQSource'] = {'source2'}
