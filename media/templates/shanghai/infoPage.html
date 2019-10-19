@@ -112,8 +112,10 @@
           var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
           var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "." + today.getMilliseconds();
           document.getElementById("moreInfoTime").value = date+' '+time;
-          // document.getElementById('infoForm').submit(function(e) {e.preventDefault});
-          // console.log('submitted');
+          $("#infoForm").submit(function(e) {
+            e.preventDefault
+          });
+          console.log('submitted');
         }
       </script>
       {% elif user['day'] == 5 %}
@@ -205,6 +207,7 @@
     document.getElementById("nextButton").onclick = function(e) {
       e.preventDefault();
       document.getElementById('infoForm').submit();
+      
       console.log('submitted!!!!!');
       location.href = "{{ url_for('shanghai.get_survey', user_id_hashid=user['user_id_hashid'], day_hashid=user['day_hashid']) }}";
     }

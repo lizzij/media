@@ -135,23 +135,13 @@ def get_latest_checkpoint_answers(user_id, day):
     return None
 
 def check_result(user_id, day, treatment):
-    non_treatment_correct_answer_dict = {
-        2: { 'eventName': 'name1' },
-        3: { 'eventLocation': 'location1' },
-        4: { 'eventTime': 'time1' },
-        5: { 'eventTemp': 'temp1' },
-        6: { 'eventAQLevel': 'AQLevel1' },
+    correct_answer_dict = {
+        'T0': {2: { 'eventName': 'name1' }, 3: { 'eventLocation': 'location1' }, 4: { 'eventTime': 'time1' }, 5: { 'eventTemp': 'temp1' }, 6: { 'eventTemp': 'temp1' }},
+        'T1': {2: { 'eventName': 'name1' }, 3: { 'eventLocation': 'location1' }, 4: { 'eventTime': 'time1' }, 5: { 'eventTemp': 'temp1' }, 6: { 'eventAQLevel': 'AQLevel1', 'checkAQSource': {'source3'} }},
+        'T2-1': {2: { 'eventName': 'name1' }, 3: { 'eventLocation': 'location1' }, 4: { 'eventTime': 'time1' }, 5: { 'eventTemp': 'temp1' }, 6: { 'eventAQLevel': 'AQLevel1', 'checkAQSource': {'source3'} }},
+        'T2-2': {2: { 'eventName': 'name1' }, 3: { 'eventLocation': 'location1' }, 4: { 'eventTime': 'time1' }, 5: { 'eventTemp': 'temp1' }, 6: { 'eventAQLevel': 'AQLevel1', 'checkAQSource': {'source2'} }},
+        'T3': {2: { 'eventName': 'name1' }, 3: { 'eventLocation': 'location1' }, 4: { 'eventTime': 'time1' }, 5: { 'eventTemp': 'temp1' }, 6: { 'eventAQLevel': 'AQLevel1', 'checkAQSource': {'source1', 'source2', 'source3'} }},
     }
-    correct_answer_dict = {}
-    for treatment in ['T0', 'T1', 'T2-1', 'T2-2', 'T3']:
-        correct_answer_dict[treatment] = non_treatment_correct_answer_dict
-    # day 6 answers depends on treatment
-    correct_answer_dict['T0'][6] = { 'eventTemp': 'temp1' }
-    correct_answer_dict['T1'][6]['checkAQSource'] = {'source3'}
-    correct_answer_dict['T2-1'][6]['checkAQSource'] = {'source3'}
-    correct_answer_dict['T2-2'][6]['checkAQSource'] = {'source2'}
-    correct_answer_dict['T3'][6]['checkAQSource'] = {'source1', 'source2', 'source3'}
-
     answers = get_latest_checkpoint_answers(user_id, day)
     all_correct = {}
     correct_answer_for_day_treatment = correct_answer_dict[treatment][day]
