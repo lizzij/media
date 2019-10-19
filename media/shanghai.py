@@ -219,7 +219,6 @@ def get_info(user_id_hashid, day_hashid):
 
     # save show more info timestamp
     if request.method == 'POST':
-
         form = request.form
         now = datetime.now()
         db = get_db()

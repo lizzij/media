@@ -460,13 +460,13 @@
       <div class="mainQuestion" align="center"><b>关于天气预测的问题</b></div>
       <div class="question">
         <div class="questionPrompt">
-          <p>以上我们为您提供的活动将于{{ walkathon['phrase_for_day'] }}期间举行。您认为那段时间的空气质量会如何？</p>
+          <p>几周前我们为您介绍的活动将在{{ walkathon['phrase_for_week'] }}<b>的那一周举办</b>。您认为那段时间的空气质量会如何？</p>
           <div id="note">
             <p>下面是两张同个城市在不同时间拍摄的照片，空气质量一好一差。请移动下面的滑块代表您的预测。<b>请根据您预测的好差程度相应摆放滑块位置。</b></p>
             <p id="subNote"><b>例如：</b></br>
               - 如果您认为那一周上海市内的空气质量<b>如左图所示或更差</b>，请将滑块移至最左边；<b>反之</b>，将其移至最右边。</br>
               - 如果您认为那一周上海市内的空气质量<b>正好介于两者之间</b>，请将滑块移至正中间。</br>
-              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更加接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，则将滑块移至靠近右边的位置。</p>
+              - 如果您认为那一周上海市内的空气质量介于两者之间并<b>更接近于左图</b>，请将滑块放至偏左的位置，具体位置根据您的预测而定：越接近左图所示则越靠近左边。<b>反之</b>，将滑块移至靠右的位置。</p>
           </div>
         </div>
         <div id="blueGraySkyImage" style="padding-bottom: 46px;">
@@ -474,6 +474,12 @@
             <img src="{{ url_for('static', filename='img/blueGraySky.jpg') }}" width="320">
           </div>
           <div id="subNote">来源：http://www.pm25.com/news/41.html</div>
+        </div>
+        <div id="blueGraySkyMerge" style="padding-bottom: 46px;">
+          <div>
+            <img src="{{ url_for('static', filename='img/graySky.jpg') }}" width="320" id="graySky" style="position: absolute;opacity:0.5">
+            <img src="{{ url_for('static', filename='img/blueSky.jpg') }}" width="320" id="blueSky">
+          </div>
         </div>
         <div class="questionAnswer">
           <div id="blueGrayLabel">

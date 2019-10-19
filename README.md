@@ -61,6 +61,7 @@ wget -qO- https://dailyeventinfo.com/allEvents | sed -e 's/<[^>]*>//g;s/^ //g;s/
 | http://localhost:5000/allActivities | https://dailyeventinfo.com/allActivities |
 | http://localhost:5000/allUsers      | https://dailyeventinfo.com/allUsers      |
 | http://localhost:5000/allEvents     | https://dailyeventinfo.com/allEvents     |
+| http://localhost:5000/allPages      | https://dailyeventinfo.com/allPagse      |
 | http://localhost:5000/eventUpdate   | https://dailyeventinfo.com/eventUpdate   |
 
 ### Pilot
