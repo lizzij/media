@@ -108,39 +108,57 @@ def get_activity_day(user_id):
     day = activity_day[1]
     return day
 
-def get_survey_answer(user_id, day):
+def get_latest_checkpoint_answers(user_id, day):
     db = get_db()
     answers = db.execute(
         'SELECT question_id, result'
         ' FROM survey s'
-        ' WHERE s.user_id = ? AND s.day = ?',
+        ' WHERE s.user_id = ? AND s.day = ?'
+        ' ORDER BY s.created DESC',
         (user_id, day, )
     ).fetchall()
     if answers:
-        return answers
+        latest_answers = {}
+        for answer in answers:
+            question = answer['question_id']
+            result = answer['result']
+            if question == 'correctAnswerAtCheckpoints':
+                break
+            if question == 'checkAQSource':
+                if question in latest_answers.keys():
+                    latest_answers[question].add(result)
+                else:
+                    latest_answers[question] = {result}
+            else:
+                latest_answers[question] = result
+        return latest_answers
     return None
 
 def check_result(user_id, day, treatment):
-    correct_answer_dict = {
+    non_treatment_correct_answer_dict = {
         2: { 'eventName': 'name1' },
         3: { 'eventLocation': 'location1' },
         4: { 'eventTime': 'time1' },
         5: { 'eventTemp': 'temp1' },
         6: { 'eventAQLevel': 'AQLevel1' },
     }
-    answers = get_survey_answer(user_id, day)
+    correct_answer_dict = {}
+    for treatment in ['T0', 'T1', 'T2-1', 'T2-2', 'T3']:
+        correct_answer_dict[treatment] = non_treatment_correct_answer_dict
+    # day 6 answers depends on treatment
+    correct_answer_dict['T1'][6] = { 'eventTemp': 'temp1' }
+    correct_answer_dict['T1'][6]['checkAQSource'] = {'source3'}
+    correct_answer_dict['T2-1'][6]['checkAQSource'] = {'source3'}
+    correct_answer_dict['T2-2'][6]['checkAQSource'] = {'source2'}
+    correct_answer_dict['T3'][6]['checkAQSource'] = {'source1', 'source2', 'source3'}
+
+    answers = get_latest_checkpoint_answers(user_id, day)
     all_correct = {}
-    for answer in answers:
-        question = answer['question_id']
+    correct_answer_for_day_treatment = correct_answer_dict[treatment][day]
+    for question, user_answer in answers.items():
         # ignore non-checkpoint question
-        if question in correct_answer_dict[day].keys():
-            user_answer = answer['result']
-            # check if one of the answer to the same question is correct
-            question_correct = (user_answer == correct_answer_dict[day][question])
-            if question in all_correct.keys():
-                all_correct[question] = all_correct[question] or question_correct
-            else:
-                all_correct[question] = question_correct
+        if question in correct_answer_for_day_treatment.keys():
+            all_correct[question] = (user_answer == correct_answer_for_day_treatment[question])
     return (not (False in all_correct.values()))
 
 
