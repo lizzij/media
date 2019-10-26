@@ -70,7 +70,7 @@ def all_pages():
     pages = db.execute(
         'SELECT day, page, question_name, cohort'
         ' FROM pages p'
-        ' ORDER BY cohort ASC, day ASC, page ASC'
+        ' ORDER BY cohort ASC, day ASC, page ASC, question_name ASC'
     ).fetchall()
     return render_template('crud/pageList.html', pages=pages)
 
