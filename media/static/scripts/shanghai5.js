@@ -29,3 +29,11 @@ function randomizeEventTempOptions() {
 $( document ).ready(function() {
   randomizeEventTempOptions();
 });
+
+function signUpFeeSlide() {
+  var value=document.getElementById("signUpFeeSlider").value;
+  var signUpFeeAmount = `${value}元`;
+  document.getElementById("signUpFeeAmount").value=signUpFeeAmount;
+  var left = 2 + 0.9 * value;
+  document.getElementById("signUpFeeAmount").style.paddingLeft = left + "px";
+}
