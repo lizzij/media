@@ -306,7 +306,7 @@ def get_werun():
         ' LEFT JOIN werun w ON u.user_id = w.user_id '
         ' WHERE u.cohort = ? AND s.day = ? AND s.question_id = ?'
         ' ORDER BY u.user_id ASC',
-        (4, 7, 'walkathonSteps',)
+        (5, 7, 'walkathonSteps',)
     ).fetchall()
     return render_template('crud/werun.html', users=users)
 
@@ -322,7 +322,7 @@ def update_werun(surveyor_id):
         ' LEFT JOIN survey s ON u.user_id = s.user_id '
         ' WHERE u.cohort = ? AND s.day = ? AND s.question_id = ?'
         ' ORDER BY u.user_id ASC',
-        (4, 7, 'walkathonSteps',)
+        (5, 7, 'walkathonSteps',)
     ).fetchall()
 
     # select users based on surveyor_id
