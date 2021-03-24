@@ -40,7 +40,7 @@ pyparsing==2.2.0
 python-dateutil==2.8.0
 pytz==2019.2
 requests==2.5.0
-rsa==3.4.2
+rsa==4.1
 six==1.11.0
 sh==1.9
 somepackage==1.2.3
