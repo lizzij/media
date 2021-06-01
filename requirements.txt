@@ -48,7 +48,7 @@ soupsieve==1.9
 SQLAlchemy==0.8.3
 ua-parser==0.3.6
 uritemplate==3.0.0
-urllib3==1.23
+urllib3==1.26.5
 user-agents==0.2.0
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
